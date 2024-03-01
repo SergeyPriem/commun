@@ -1,0 +1,14 @@
+.but_as_link {
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+
+.but_as_link:hover {
+  text-decoration: underline !important;
+  border: none !important;
+  font-weight: bold !important;
+}
+
+.but_as_link:active {
+  border: none !important;
+}
