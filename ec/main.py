@@ -37,6 +37,6 @@ initial_state = ss.init_state({
     "counter": 26,
 })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?4")
+initial_state.import_stylesheet("theme", "/static/custom.css?6")
 
 _update_message(initial_state)
