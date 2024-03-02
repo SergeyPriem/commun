@@ -53,13 +53,15 @@ def send_confirmation_code(state):
 
 def register_user(state):
     troubles = []
-    if not valid_email(state["user"]['email']):
-        troubles.append("Wrong email address")
+
     try:
         if len(state["user"]['first_name']) <= 1:
             troubles.append("Wrong first name")
     except:
         troubles.append("Wrong first name")
+
+    if not valid_email(state["user"]['email']):
+        troubles.append("Wrong email address")
 
     try:
         if len(state["user"]['phone']) < 10:
