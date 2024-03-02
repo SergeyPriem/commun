@@ -1274,6 +1274,10 @@
             "parentId": "w3xtvr7k6t3idenf",
             "position": 0,
             "handlers": {},
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.first_name"
+            },
             "visible": true
         },
         "mip8lb0cxv4wxvxz": {
@@ -1285,6 +1289,10 @@
             "parentId": "w3xtvr7k6t3idenf",
             "position": 1,
             "handlers": {},
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.last_name"
+            },
             "visible": true
         },
         "w1txoybgkq1txxyh": {
@@ -1296,17 +1304,21 @@
             "parentId": "w3xtvr7k6t3idenf",
             "position": 2,
             "handlers": {},
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.email"
+            },
             "visible": true
         },
         "tahl5mwmdcp4qb94": {
             "id": "tahl5mwmdcp4qb94",
             "type": "horizontalstack",
             "content": {
-                "contentPadding": "15px 15px 50px 15px",
+                "contentPadding": "15px 15px 25px 15px",
                 "contentHAlign": "center"
             },
             "parentId": "w3xtvr7k6t3idenf",
-            "position": 7,
+            "position": 8,
             "handlers": {},
             "visible": true
         },
@@ -1320,7 +1332,9 @@
             },
             "parentId": "tahl5mwmdcp4qb94",
             "position": 0,
-            "handlers": {},
+            "handlers": {
+                "ss-click": "register_user"
+            },
             "visible": true
         },
         "zk5to1li20i7hj5i": {
@@ -1896,8 +1910,12 @@
                 "passwordMode": "yes"
             },
             "parentId": "w3xtvr7k6t3idenf",
-            "position": 5,
+            "position": 6,
             "handlers": {},
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.password"
+            },
             "visible": true
         },
         "797gnvgph6mvg9d5": {
@@ -1908,8 +1926,12 @@
                 "passwordMode": "yes"
             },
             "parentId": "w3xtvr7k6t3idenf",
-            "position": 6,
+            "position": 7,
             "handlers": {},
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.password2"
+            },
             "visible": true
         },
         "47k8w7rf33tds0ob": {
@@ -1919,8 +1941,12 @@
                 "label": "\u041b\u043e\u0433\u0438\u043d*"
             },
             "parentId": "w3xtvr7k6t3idenf",
-            "position": 4,
+            "position": 5,
             "handlers": {},
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.login"
+            },
             "visible": true
         },
         "k820fs3mex1poc6k": {
@@ -2393,7 +2419,7 @@
                 "containerShadow": "5px 5px 7px -4px #000000"
             },
             "parentId": "1cnhl56hpeydnmbz",
-            "position": 2,
+            "position": 3,
             "handlers": {},
             "visible": true
         },
@@ -4509,14 +4535,129 @@
         "xn0fs8bexmi6jgyc": {
             "id": "xn0fs8bexmi6jgyc",
             "type": "radioinput",
-            "parentId": "w3xtvr7k6t3idenf",
             "content": {
                 "label": "",
                 "options": "{\n  \"\u0441\": \"\u0417\u0430\u043a\u0430\u0437\u0447\u0438\u043a\",\n  \"e\": \"\u0418\u043d\u0436\u0435\u043d\u0435\u0440\"\n}",
                 "orientation": "horizontal"
             },
+            "parentId": "w3xtvr7k6t3idenf",
+            "position": 4,
             "handlers": {},
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "user.role"
+            },
+            "visible": true
+        },
+        "jdiemekzc10nn7xn": {
+            "id": "jdiemekzc10nn7xn",
+            "type": "textinput",
+            "content": {
+                "label": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d*"
+            },
+            "parentId": "w3xtvr7k6t3idenf",
             "position": 3,
+            "handlers": {},
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.phone"
+            },
+            "visible": true
+        },
+        "3qx9hp92bowww5lr": {
+            "id": "3qx9hp92bowww5lr",
+            "type": "section",
+            "content": {
+                "title": "",
+                "accentColor": "#ffffff",
+                "containerBackgroundColor": "#1d4087",
+                "contentHAlign": "center",
+                "primaryTextColor": "#ffffff"
+            },
+            "parentId": "1cnhl56hpeydnmbz",
+            "position": 2,
+            "handlers": {},
+            "visible": "email_confirmation.show"
+        },
+        "jn3a6mancs1jwgd5": {
+            "id": "jn3a6mancs1jwgd5",
+            "type": "columns",
+            "content": {},
+            "parentId": "3qx9hp92bowww5lr",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "scsljjl9otxato2a": {
+            "id": "scsljjl9otxato2a",
+            "type": "column",
+            "content": {
+                "width": "0.2",
+                "contentPadding": "0px 0px 0px 0px"
+            },
+            "parentId": "jn3a6mancs1jwgd5",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "yx4d59dyjh31l17d": {
+            "id": "yx4d59dyjh31l17d",
+            "type": "column",
+            "content": {
+                "width": "8"
+            },
+            "parentId": "jn3a6mancs1jwgd5",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "frdnw78wgmccjcez": {
+            "id": "frdnw78wgmccjcez",
+            "type": "text",
+            "content": {
+                "text": "@{email_confirmation.message}",
+                "useMarkdown": "yes",
+                "alignment": "center"
+            },
+            "parentId": "yx4d59dyjh31l17d",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "unqlxne2s39y08id": {
+            "id": "unqlxne2s39y08id",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center",
+                "contentPadding": "15px"
+            },
+            "parentId": "yx4d59dyjh31l17d",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "5k5ocw23elj57y0b": {
+            "id": "5k5ocw23elj57y0b",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center",
+                "contentPadding": "15px"
+            },
+            "parentId": "yx4d59dyjh31l17d",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "ldg5knzd7gsi775j": {
+            "id": "ldg5knzd7gsi775j",
+            "type": "column",
+            "content": {
+                "width": "0.2",
+                "contentPadding": "0px 0px 0px 0px"
+            },
+            "parentId": "jn3a6mancs1jwgd5",
+            "position": 2,
+            "handlers": {},
             "visible": true
         }
     }
