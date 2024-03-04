@@ -32,7 +32,7 @@ def increment(state):
 
 def _get_user_data(login):
     hashed_pass_now = ""
-    hashed_pass_db =""
+    hashed_pass_db = ""
 
     if hashed_pass_now == hashed_pass_db:
         return {
@@ -61,11 +61,13 @@ def _get_user_data(login):
             "logged": False
         }
 
+
 def log_user(state):
-
-    user = _get_user_data(state["user"]["login"])
-
-
+    state["user"] = _get_user_data(state["user"]["login"])
+    if state["user"]["logged"]:
+        state["status_message"] = "Добро пожаловать"
+    else:
+        state["status_message"] = "Не удалось войти"
 
 
 
@@ -188,7 +190,9 @@ initial_state = ss.init_state({
         "password": None,
         "password2": None,
         "logged": False
-    }
+    },
+
+    "status_message": None
 
 })
 
