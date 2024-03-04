@@ -50,13 +50,13 @@ def validate_email(state):
     state["email_confirmation"]["right_code"] = True
     state["email_confirmation"]["message"] = "Регистрация успешная"
 
+
 def send_confirmation_code(state):
     ...
     return "Вам на почту отправлен код активации. Введите его в окне ниже"
 
 
 def activate_reg_form(state):
-
     state["email_confirmation"]["reg_form"] = True
     state["email_confirmation"]["warning_form"] = False
     state["email_confirmation"]["code_form"] = False
