@@ -46,15 +46,22 @@ def valid_email(email):
     return bool(re.fullmatch(regex, email))
 
 
+def validate_email(state):
+    state["email_confirmation"]["right_code"] = True
+    state["email_confirmation"]["message"] = "Регистрация успешная"
+
 def send_confirmation_code(state):
     ...
     return "Вам на почту отправлен код активации. Введите его в окне ниже"
 
 
 def activate_reg_form(state):
+
     state["email_confirmation"]["reg_form"] = True
     state["email_confirmation"]["warning_form"] = False
     state["email_confirmation"]["code_form"] = False
+    state["email_confirmation"]["wrong_code"] = False
+    state["email_confirmation"]["right_code"] = False
 
 
 def register_user(state):
@@ -62,27 +69,27 @@ def register_user(state):
 
     try:
         if len(state["user"]['first_name']) <= 1:
-            troubles.append("Wrong first name")
+            troubles.append("Неправильно введено имя")
     except:
-        troubles.append("Wrong first name")
+        troubles.append("Неправильно введено имя")
 
     if not valid_email(state["user"]['email']):
-        troubles.append("Wrong email address")
+        troubles.append("Неправильный email")
 
     try:
         if len(state["user"]['phone']) < 10:
-            troubles.append("Wrong phone number")
+            troubles.append("Неправильно введен номер телефона")
     except:
-        troubles.append("Wrong phone number")
+        troubles.append("Неправильно введен номер телефона")
 
     if state["user"]['role'] is None:
-        troubles.append("Role is not selected")
+        troubles.append("Неправильно введена роль")
 
     if state["user"]['password'] is None:
-        troubles.append("Wrong password")
+        troubles.append("Неправильный пароль")
 
     if state["user"]['password'] != state["user"]['password2']:
-        troubles.append("Passwords not matching")
+        troubles.append("Пароли не совпадают")
 
     if len(troubles) > 0:
         troubles_text = "\n".join(troubles)
@@ -114,6 +121,8 @@ initial_state = ss.init_state({
         "reg_form": True,
         "warning_form": False,
         "code_form": False,
+        "wrong_code": False,
+        "right_code": False,
         "message": None,
 
     },

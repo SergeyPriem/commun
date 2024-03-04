@@ -4520,7 +4520,7 @@
             "id": "3qx9hp92bowww5lr",
             "type": "section",
             "content": {
-                "title": "Warning",
+                "title": "\u041f\u0440\u0435\u0434\u0443\u043f\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0435",
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
@@ -4616,7 +4616,7 @@
             "id": "ildob7s3srcnx7x2",
             "type": "section",
             "content": {
-                "title": "Code confirmation",
+                "title": "\u041a\u043e\u0434 \u0430\u043a\u0442\u0438\u0432\u0430\u0446\u0438\u0438",
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
@@ -4668,31 +4668,7 @@
                 "alignment": "center"
             },
             "parentId": "w2m1buk5ec8wo802",
-            "position": 1,
-            "handlers": {},
-            "visible": true
-        },
-        "ywqzqz4wa8xi36ob": {
-            "id": "ywqzqz4wa8xi36ob",
-            "type": "horizontalstack",
-            "content": {
-                "contentHAlign": "center",
-                "contentPadding": "15px"
-            },
-            "parentId": "w2m1buk5ec8wo802",
             "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "wnb0a3gyr55lxmhz": {
-            "id": "wnb0a3gyr55lxmhz",
-            "type": "horizontalstack",
-            "content": {
-                "contentHAlign": "center",
-                "contentPadding": "15px"
-            },
-            "parentId": "w2m1buk5ec8wo802",
-            "position": 2,
             "handlers": {},
             "visible": true
         },
@@ -4724,76 +4700,76 @@
         "ojjnr1791rbdmmra": {
             "id": "ojjnr1791rbdmmra",
             "type": "columns",
-            "parentId": "w2m1buk5ec8wo802",
             "content": {},
+            "parentId": "w2m1buk5ec8wo802",
+            "position": 1,
             "handlers": {},
-            "position": 3,
             "visible": true
         },
         "4yhi2wqr6rkipwv6": {
             "id": "4yhi2wqr6rkipwv6",
             "type": "column",
-            "parentId": "ojjnr1791rbdmmra",
             "content": {
                 "width": "1"
             },
-            "handlers": {},
+            "parentId": "ojjnr1791rbdmmra",
             "position": 0,
+            "handlers": {},
             "visible": true
         },
         "0r8d8t2s0owm3s8i": {
             "id": "0r8d8t2s0owm3s8i",
             "type": "column",
-            "parentId": "ojjnr1791rbdmmra",
             "content": {
                 "width": "1"
             },
-            "handlers": {},
+            "parentId": "ojjnr1791rbdmmra",
             "position": 1,
+            "handlers": {},
             "visible": true
         },
         "8wwrz7efjqv1sd4y": {
             "id": "8wwrz7efjqv1sd4y",
             "type": "column",
-            "parentId": "ojjnr1791rbdmmra",
             "content": {
                 "width": "1"
             },
-            "handlers": {},
+            "parentId": "ojjnr1791rbdmmra",
             "position": 2,
+            "handlers": {},
             "visible": true
         },
         "4b1ju09qlcen3ild": {
             "id": "4b1ju09qlcen3ild",
             "type": "textinput",
-            "parentId": "0r8d8t2s0owm3s8i",
             "content": {
                 "label": ""
             },
-            "handlers": {},
+            "parentId": "0r8d8t2s0owm3s8i",
             "position": 0,
+            "handlers": {},
             "visible": true
         },
         "3ajb4tief9ywzqv3": {
             "id": "3ajb4tief9ywzqv3",
             "type": "button",
-            "parentId": "1zd63ax8r8b1ahbv",
             "content": {
                 "text": "\u041f\u043e\u0434\u0432\u0435\u0440\u0434\u0438\u0442\u044c"
             },
-            "handlers": {},
+            "parentId": "1zd63ax8r8b1ahbv",
             "position": 0,
+            "handlers": {},
             "visible": true
         },
         "1zd63ax8r8b1ahbv": {
             "id": "1zd63ax8r8b1ahbv",
             "type": "horizontalstack",
-            "parentId": "0r8d8t2s0owm3s8i",
             "content": {
                 "contentHAlign": "center"
             },
-            "handlers": {},
+            "parentId": "0r8d8t2s0owm3s8i",
             "position": 1,
+            "handlers": {},
             "visible": true
         }
     }
