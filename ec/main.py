@@ -30,6 +30,46 @@ def increment(state):
     _update_message(state)
 
 
+def _get_user_data(login):
+    hashed_pass_now = ""
+    hashed_pass_db =""
+
+    if hashed_pass_now == hashed_pass_db:
+        return {
+            "current": True,  # new or current
+            "first_name": "FN",
+            "last_name": "LN",
+            "email": "None",
+            "phone": "None",
+            "role": "None",
+            "login": login,
+            "password": None,
+            "password2": None,
+            "logged": True
+        }
+    else:
+        return {
+            "current": False,  # new or current
+            "first_name": None,
+            "last_name": None,
+            "email": None,
+            "phone": None,
+            "role": None,
+            "login": "Login not Exists in DB",
+            "password": None,
+            "password2": None,
+            "logged": False
+        }
+
+def log_user(state):
+
+    user = _get_user_data(state["user"]["login"])
+
+
+
+
+
+
 def valid_email(email):
     """
     Validates an email address using a regular expression.
@@ -111,6 +151,7 @@ def register_user(state):
         state["email_confirmation"]["message"] = send_confirmation_code(state)
 
     state["email_confirmation"]["reg_form"] = False
+    state["user"]["current"] = False
 
 
 # Initialise the state
@@ -137,7 +178,7 @@ initial_state = ss.init_state({
 
     "counter": 26,
     "user": {
-        "status": None,  # new or current
+        "current": False,  # new or current
         "first_name": None,
         "last_name": None,
         "email": None,
@@ -146,9 +187,8 @@ initial_state = ss.init_state({
         "login": None,
         "password": None,
         "password2": None,
-        "logged": False,
-        'service_page': None
-    },
+        "logged": False
+    }
 
 })
 

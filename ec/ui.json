@@ -1448,7 +1448,11 @@
             "parentId": "4wmi3nlo8cyz2rhv",
             "position": 0,
             "handlers": {},
-            "visible": true
+            "visible": true,
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.login"
+            }
         },
         "9wcgerdgdqdrc0d9": {
             "id": "9wcgerdgdqdrc0d9",
@@ -1460,7 +1464,11 @@
             "parentId": "4wmi3nlo8cyz2rhv",
             "position": 1,
             "handlers": {},
-            "visible": true
+            "visible": true,
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user,password"
+            }
         },
         "ytksua2spdlpux2o": {
             "id": "ytksua2spdlpux2o",
@@ -1485,7 +1493,9 @@
             },
             "parentId": "ytksua2spdlpux2o",
             "position": 0,
-            "handlers": {},
+            "handlers": {
+                "ss-click": "log_user"
+            },
             "visible": true
         },
         "soabtwrkw1twxo58": {
@@ -4846,21 +4856,21 @@
         "9ftw0f5v0lzljawa": {
             "id": "9ftw0f5v0lzljawa",
             "type": "text",
-            "parentId": "ifpzefabxskt8ggq",
             "content": {
                 "text": "\u0412\u0430\u0448\u0430 \u0440\u043e\u043b\u044c*"
             },
-            "handlers": {},
+            "parentId": "ifpzefabxskt8ggq",
             "position": 0,
+            "handlers": {},
             "visible": true
         },
         "ifpzefabxskt8ggq": {
             "id": "ifpzefabxskt8ggq",
             "type": "horizontalstack",
-            "parentId": "w3xtvr7k6t3idenf",
             "content": {},
-            "handlers": {},
+            "parentId": "w3xtvr7k6t3idenf",
             "position": 4,
+            "handlers": {},
             "visible": true
         },
         "z39ydwmwfbt4cwem": {
@@ -4878,14 +4888,14 @@
         "ry4adbutt8yeb72g": {
             "id": "ry4adbutt8yeb72g",
             "type": "button",
-            "parentId": "5k5ocw23elj57y0b",
             "content": {
                 "text": "\u041f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u044c \u0432\u0432\u043e\u0434"
             },
+            "parentId": "5k5ocw23elj57y0b",
+            "position": 0,
             "handlers": {
                 "ss-click": "activate_reg_form"
             },
-            "position": 0,
             "visible": true
         }
     }
