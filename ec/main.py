@@ -1,3 +1,5 @@
+import time
+
 import streamsync as ss
 import re
 
@@ -52,7 +54,9 @@ def send_email(state):
 
 def validate_email(state):
     state["email_confirmation"]["right_code"] = True
+    state["email_confirmation"]["code_form"] = False
     state["email_confirmation"]["message"] = "Регистрация успешная"
+    time.sleep(3)
 
 
 def send_confirmation_code(state):
