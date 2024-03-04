@@ -46,13 +46,17 @@ def valid_email(email):
     return bool(re.fullmatch(regex, email))
 
 
+def send_email(state):
+    ...
+
+
 def validate_email(state):
     state["email_confirmation"]["right_code"] = True
     state["email_confirmation"]["message"] = "Регистрация успешная"
 
 
 def send_confirmation_code(state):
-    ...
+    send_email(state)
     return "Вам на почту отправлен код активации. Введите его в окне ниже"
 
 
