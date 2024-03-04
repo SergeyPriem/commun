@@ -48,7 +48,13 @@ def valid_email(email):
 
 def send_confirmation_code(state):
     ...
-    return "Confirm your email by entering received code"
+    return "Вам на почту отправлен код активации. Введите его в окне ниже"
+
+
+def activate_reg_form(state):
+    state["email_confirmation"]["reg_form"] = True
+    state["email_confirmation"]["warning_form"] = False
+    state["email_confirmation"]["code_form"] = False
 
 
 def register_user(state):
@@ -80,12 +86,16 @@ def register_user(state):
 
     if len(troubles) > 0:
         troubles_text = "\n".join(troubles)
-        state["email_confirmation"]["show"] = True
+        state["email_confirmation"]["warning_form"] = True
+        state["email_confirmation"]["code_form"] = False
         state["email_confirmation"]["message"] = troubles_text
     else:
         state["user"]['status'] = "new"
-        state["email_confirmation"]["show"] = True
+        state["email_confirmation"]["warning_form"] = False
+        state["email_confirmation"]["code_form"] = True
         state["email_confirmation"]["message"] = send_confirmation_code(state)
+
+    state["email_confirmation"]["reg_form"] = False
 
 
 # Initialise the state
@@ -101,8 +111,11 @@ initial_state = ss.init_state({
     "message": None,
 
     "email_confirmation": {
-        "show": False,
-        "message": None
+        "reg_form": True,
+        "warning_form": False,
+        "code_form": False,
+        "message": None,
+
     },
 
     "counter": 26,

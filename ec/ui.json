@@ -475,55 +475,6 @@
             "handlers": {},
             "visible": true
         },
-        "ytz4fb0qo8wg0sy0": {
-            "id": "ytz4fb0qo8wg0sy0",
-            "type": "text",
-            "content": {
-                "text": "### \u041c\u044b \u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0437\u0438\u0440\u0443\u0435\u043c\u0441\u044f \u043d\u0430 \u0442\u043e\u043c, \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u043c\u043e\u0433\u0430\u0442\u044c \u0437\u0430\u043a\u0430\u0437\u0447\u0438\u043a\u0430\u043c \u0438 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u0430\u043c \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c \u0434\u0440\u0443\u0433 \u0434\u0440\u0443\u0433\u0430. \u041d\u0430\u0448\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0437\u0430\u043d\u0438\u043c\u0430\u0435\u0442\u0441\u044f \u043f\u043e\u0438\u0441\u043a\u043e\u043c \u0438 \u0441\u0432\u044f\u0437\u044c\u044e \u043c\u0435\u0436\u0434\u0443 \u0437\u0430\u043a\u0430\u0437\u0447\u0438\u043a\u0430\u043c\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0438\u0449\u0443\u0442 \u043f\u0440\u043e\u0444\u0435\u0441\u0441\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0445 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u043e\u0432, \u0438 \u0442\u0430\u043b\u0430\u043d\u0442\u043b\u0438\u0432\u044b\u043c\u0438 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u0430\u043c\u0438, \u0433\u043e\u0442\u043e\u0432\u044b\u043c\u0438 \u0432\u0437\u044f\u0442\u044c\u0441\u044f \u0437\u0430 \u0440\u0430\u0437\u043d\u043e\u043e\u0431\u0440\u0430\u0437\u043d\u044b\u0435 \u043f\u0440\u043e\u0435\u043a\u0442\u044b. \u041c\u044b \u043f\u043e\u043d\u0438\u043c\u0430\u0435\u043c, \u0447\u0442\u043e \u043f\u043e\u0438\u0441\u043a \u043f\u043e\u0434\u0445\u043e\u0434\u044f\u0449\u0435\u0433\u043e \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u0430 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0441\u043b\u043e\u0436\u043d\u043e\u0439 \u0437\u0430\u0434\u0430\u0447\u0435\u0439 \u0434\u043b\u044f \u0437\u0430\u043a\u0430\u0437\u0447\u0438\u043a\u0430, \u0432 \u0442\u043e \u0436\u0435 \u0432\u0440\u0435\u043c\u044f, \u043d\u0430\u0439\u0442\u0438 \u0438\u043d\u0442\u0435\u0440\u0435\u0441\u043d\u044b\u0439 \u043f\u0440\u043e\u0435\u043a\u0442 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0432\u044b\u0437\u043e\u0432\u043e\u043c \u0434\u043b\u044f \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u0430. \u041d\u0430\u0448\u0430 \u0446\u0435\u043b\u044c - \u0443\u043f\u0440\u043e\u0441\u0442\u0438\u0442\u044c \u044d\u0442\u043e\u0442 \u043f\u0440\u043e\u0446\u0435\u0441\u0441, \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u0435\u0433\u043e \u0431\u043e\u043b\u0435\u0435 \u044d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u044b\u043c \u0438 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0438\u0432\u043d\u044b\u043c. \u041c\u044b \u0441\u0442\u0440\u0435\u043c\u0438\u043c\u0441\u044f \u0441\u043e\u0437\u0434\u0430\u0442\u044c \u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0443, \u0433\u0434\u0435 \u0437\u0430\u043a\u0430\u0437\u0447\u0438\u043a\u0438 \u0438 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u044b \u043c\u043e\u0433\u0443\u0442 \u043b\u0435\u0433\u043a\u043e \u043d\u0430\u0439\u0442\u0438 \u0434\u0440\u0443\u0433 \u0434\u0440\u0443\u0433\u0430, \u043e\u0431\u0441\u0443\u0434\u0438\u0442\u044c \u0434\u0435\u0442\u0430\u043b\u0438 \u043f\u0440\u043e\u0435\u043a\u0442\u0430 \u0438 \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u0447\u0430\u0442\u044c. \u0415\u0441\u043b\u0438 \u0432\u044b \u0438\u0449\u0435\u0442\u0435 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u0430 \u0438\u043b\u0438 \u0433\u043e\u0442\u043e\u0432\u044b \u043f\u0440\u0438\u043d\u044f\u0442\u044c \u0443\u0447\u0430\u0441\u0442\u0438\u0435 \u0432 \u043d\u043e\u0432\u043e\u043c \u043f\u0440\u043e\u0435\u043a\u0442\u0435, \u043e\u0431\u0440\u0430\u0442\u0438\u0442\u0435\u0441\u044c \u043a \u043d\u0430\u043c - \u043c\u044b \u043f\u043e\u043c\u043e\u0436\u0435\u043c \u0432\u0430\u043c \u043d\u0430\u0439\u0442\u0438 \u0438\u0434\u0435\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0435\u0448\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0432\u0430\u0448\u0435\u0433\u043e \u0431\u0438\u0437\u043d\u0435\u0441\u0430.",
-                "useMarkdown": "yes"
-            },
-            "parentId": "g8swmq60g6juo6su",
-            "position": 3,
-            "handlers": {},
-            "visible": true
-        },
-        "vlv6xj79w5m2adk1": {
-            "id": "vlv6xj79w5m2adk1",
-            "type": "image",
-            "content": {
-                "src": "static/hand_on_dwg.JPG",
-                "caption": ""
-            },
-            "parentId": "g8swmq60g6juo6su",
-            "position": 4,
-            "handlers": {},
-            "visible": true
-        },
-        "dsz28f2qx1m9zo3r": {
-            "id": "dsz28f2qx1m9zo3r",
-            "type": "text",
-            "content": {
-                "text": "### \u0412 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043d\u0430\u0439\u0442\u0438 \u0443 \u043d\u0430\u0441 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u043e\u0432 \u043f\u0440\u043e\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0449\u0438\u043a\u043e\u0432 \u043f\u043e \u0441\u043f\u0435\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044f\u043c: \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u0442\u0435\u0445\u043d\u0438\u043a\u0430, \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u043a\u0430, \u043e\u0442\u043e\u043f\u043b\u0435\u043d\u0438\u0435 \u0438 \u0432\u0435\u043d\u0442\u0438\u043b\u044f\u0446\u0438\u044f, \u0432\u043e\u0434\u043e\u0441\u043d\u0430\u0431\u0436\u0435\u043d\u0438\u0435 \u0438 \u0432\u043e\u0434\u043e\u043e\u0442\u0432\u0435\u0434\u0435\u043d\u0438\u0435, \u0433\u0435\u043d\u043f\u043b\u0430\u043d, \u0441\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u0447\u0430\u0441\u0442\u044c, \u0442\u0435\u043f\u043b\u043e\u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0447\u0430\u0441\u0442\u044c.\n",
-                "useMarkdown": "yes",
-                "alignment": "left"
-            },
-            "parentId": "g8swmq60g6juo6su",
-            "position": 5,
-            "handlers": {},
-            "visible": true
-        },
-        "oz9htebiu16w28oy": {
-            "id": "oz9htebiu16w28oy",
-            "type": "text",
-            "content": {
-                "text": "### _\u0415\u0441\u043b\u0438 \u0412\u044b \u043d\u0435 \u043d\u0430\u0448\u043b\u0438 \u043d\u0443\u0436\u043d\u043e\u0433\u043e \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u0430 \u043d\u0430 \u0441\u0430\u0439\u0442\u0435, \u0441\u0432\u044f\u0436\u0438\u0442\u0435\u0441\u044c \u0441 \u043d\u0430\u043c\u0438, \u043c\u044b \u043f\u043e\u0441\u0442\u0430\u0440\u0430\u0435\u043c\u0441\u044f \u043f\u043e\u043c\u043e\u0447\u044c \u0441 \u043f\u043e\u0438\u0441\u043a\u043e\u043c \u043d\u0443\u0436\u043d\u043e\u0433\u043e \u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442\u0430._",
-                "useMarkdown": "yes"
-            },
-            "parentId": "g8swmq60g6juo6su",
-            "position": 6,
-            "handlers": {},
-            "visible": true
-        },
         "cc60s45zjz13nugm": {
             "id": "cc60s45zjz13nugm",
             "type": "column",
@@ -1163,7 +1114,7 @@
             "parentId": "1cnhl56hpeydnmbz",
             "position": 1,
             "handlers": {},
-            "visible": true
+            "visible": "email_confirmation.reg_form"
         },
         "6dc8haup6go9e07s": {
             "id": "6dc8haup6go9e07s",
@@ -2419,7 +2370,7 @@
                 "containerShadow": "5px 5px 7px -4px #000000"
             },
             "parentId": "1cnhl56hpeydnmbz",
-            "position": 3,
+            "position": 4,
             "handlers": {},
             "visible": true
         },
@@ -3894,7 +3845,8 @@
             "parentId": "5p42kou09joas4jf",
             "position": 1,
             "handlers": {
-                "ss-click": "$goToPage_registration"
+                "ss-click": "$goToPage_registration",
+                "click": "activate_reg_form"
             },
             "visible": true
         },
@@ -4568,7 +4520,7 @@
             "id": "3qx9hp92bowww5lr",
             "type": "section",
             "content": {
-                "title": "",
+                "title": "Warning",
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
@@ -4577,7 +4529,7 @@
             "parentId": "1cnhl56hpeydnmbz",
             "position": 2,
             "handlers": {},
-            "visible": "email_confirmation.show"
+            "visible": "email_confirmation.warning_form"
         },
         "jn3a6mancs1jwgd5": {
             "id": "jn3a6mancs1jwgd5",
@@ -4658,6 +4610,190 @@
             "parentId": "jn3a6mancs1jwgd5",
             "position": 2,
             "handlers": {},
+            "visible": true
+        },
+        "ildob7s3srcnx7x2": {
+            "id": "ildob7s3srcnx7x2",
+            "type": "section",
+            "content": {
+                "title": "Code confirmation",
+                "accentColor": "#ffffff",
+                "containerBackgroundColor": "#1d4087",
+                "contentHAlign": "center",
+                "primaryTextColor": "#ffffff"
+            },
+            "parentId": "1cnhl56hpeydnmbz",
+            "position": 3,
+            "handlers": {},
+            "visible": "email_confirmation.code_form"
+        },
+        "348ud2gdesagzpse": {
+            "id": "348ud2gdesagzpse",
+            "type": "columns",
+            "content": {},
+            "parentId": "ildob7s3srcnx7x2",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "p4b1lnlivm0qjycn": {
+            "id": "p4b1lnlivm0qjycn",
+            "type": "column",
+            "content": {
+                "width": "0.2",
+                "contentPadding": "0px 0px 0px 0px"
+            },
+            "parentId": "348ud2gdesagzpse",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "w2m1buk5ec8wo802": {
+            "id": "w2m1buk5ec8wo802",
+            "type": "column",
+            "content": {
+                "width": "8"
+            },
+            "parentId": "348ud2gdesagzpse",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "bmi1jxwwhx8maiz1": {
+            "id": "bmi1jxwwhx8maiz1",
+            "type": "text",
+            "content": {
+                "text": "## @{email_confirmation.message}",
+                "useMarkdown": "yes",
+                "alignment": "center"
+            },
+            "parentId": "w2m1buk5ec8wo802",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "ywqzqz4wa8xi36ob": {
+            "id": "ywqzqz4wa8xi36ob",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center",
+                "contentPadding": "15px"
+            },
+            "parentId": "w2m1buk5ec8wo802",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "wnb0a3gyr55lxmhz": {
+            "id": "wnb0a3gyr55lxmhz",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center",
+                "contentPadding": "15px"
+            },
+            "parentId": "w2m1buk5ec8wo802",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "2nzvd3f01xj7xl9o": {
+            "id": "2nzvd3f01xj7xl9o",
+            "type": "column",
+            "content": {
+                "width": "0.2",
+                "contentPadding": "0px 0px 0px 0px"
+            },
+            "parentId": "348ud2gdesagzpse",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "451npw2ug7aw0vvp": {
+            "id": "451npw2ug7aw0vvp",
+            "type": "text",
+            "content": {
+                "text": "# **COMING SOON....**",
+                "useMarkdown": "yes",
+                "alignment": "center"
+            },
+            "parentId": "g8swmq60g6juo6su",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "ojjnr1791rbdmmra": {
+            "id": "ojjnr1791rbdmmra",
+            "type": "columns",
+            "parentId": "w2m1buk5ec8wo802",
+            "content": {},
+            "handlers": {},
+            "position": 3,
+            "visible": true
+        },
+        "4yhi2wqr6rkipwv6": {
+            "id": "4yhi2wqr6rkipwv6",
+            "type": "column",
+            "parentId": "ojjnr1791rbdmmra",
+            "content": {
+                "width": "1"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "0r8d8t2s0owm3s8i": {
+            "id": "0r8d8t2s0owm3s8i",
+            "type": "column",
+            "parentId": "ojjnr1791rbdmmra",
+            "content": {
+                "width": "1"
+            },
+            "handlers": {},
+            "position": 1,
+            "visible": true
+        },
+        "8wwrz7efjqv1sd4y": {
+            "id": "8wwrz7efjqv1sd4y",
+            "type": "column",
+            "parentId": "ojjnr1791rbdmmra",
+            "content": {
+                "width": "1"
+            },
+            "handlers": {},
+            "position": 2,
+            "visible": true
+        },
+        "4b1ju09qlcen3ild": {
+            "id": "4b1ju09qlcen3ild",
+            "type": "textinput",
+            "parentId": "0r8d8t2s0owm3s8i",
+            "content": {
+                "label": ""
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "3ajb4tief9ywzqv3": {
+            "id": "3ajb4tief9ywzqv3",
+            "type": "button",
+            "parentId": "1zd63ax8r8b1ahbv",
+            "content": {
+                "text": "\u041f\u043e\u0434\u0432\u0435\u0440\u0434\u0438\u0442\u044c"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "1zd63ax8r8b1ahbv": {
+            "id": "1zd63ax8r8b1ahbv",
+            "type": "horizontalstack",
+            "parentId": "0r8d8t2s0owm3s8i",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "handlers": {},
+            "position": 1,
             "visible": true
         }
     }
