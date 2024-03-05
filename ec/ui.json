@@ -3531,8 +3531,9 @@
             "type": "column",
             "content": {
                 "width": "1.6",
-                "contentHAlign": "center",
-                "contentVAlign": "center"
+                "contentHAlign": "end",
+                "contentVAlign": "center",
+                "cssClasses": "but_as_link"
             },
             "parentId": "wk6hqg66bz3zzq95",
             "position": 4,
@@ -3565,7 +3566,7 @@
                 "ss-click": "show_login_form",
                 "click": "$goToPage_login"
             },
-            "visible": true
+            "visible": "not user.logged"
         },
         "rbp8406c1lhkll87": {
             "id": "rbp8406c1lhkll87",
@@ -3581,7 +3582,7 @@
             "handlers": {
                 "ss-click": "$goToPage_registration"
             },
-            "visible": true
+            "visible": "not user logged"
         },
         "k3a1diywcx1ybl55": {
             "id": "k3a1diywcx1ybl55",
@@ -5201,6 +5202,20 @@
             "parentId": "ooefhh1v8i0oyvf4",
             "position": 2,
             "handlers": {},
+            "visible": true
+        },
+        "fcu8dbnmehxhnb5f": {
+            "id": "fcu8dbnmehxhnb5f",
+            "type": "button",
+            "parentId": "1vodw62x69cfgrli",
+            "content": {
+                "text": "\u0412\u044b\u0445\u043e\u0434",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#ffffff",
+                "cssClasses": "but_as_link"
+            },
+            "handlers": {},
+            "position": 2,
             "visible": true
         }
     }

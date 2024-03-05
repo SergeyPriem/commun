@@ -12,23 +12,6 @@ print("Hello world!")
 
 
 # Its name starts with _, so this function won't be exposed
-def _update_message(state):
-    is_even = state["counter"] % 2 == 0
-    message = ("+Even" if is_even else "-Odd")
-    state["message"] = message
-
-
-def decrement(state):
-    state["counter"] -= 1
-    _update_message(state)
-
-
-def increment(state):
-    state["counter"] += 1
-    # Shows in the log when the event handler is run
-    print(f"The counter has been incremented.")
-    _update_message(state)
-
 
 def _get_user_data(state):
     hashed_pass_now = "1234567890"
@@ -174,16 +157,28 @@ def register_user(state):
     state["user"]["current"] = False
 
 
+def quit(state):
+    state['user'] = {
+            "current": False,  # new or current
+            "first_name": None,
+            "last_name": None,
+            "email": None,
+            "phone": None,
+            "role": None,
+            "login": None,
+            "password": None,
+            "password2": None,
+            "logged": False
+        }
+
 # Initialise the state
 
 # "_my_private_element" won't be serialised or sent to the frontend,
 # because it starts with an underscore
 
 initial_state = ss.init_state({
-    "my_app": {
-        "title": "My App"
-    },
-    "_my_private_element": 1337,
+
+
     "message": None,
 
     "email_confirmation": {
@@ -196,7 +191,6 @@ initial_state = ss.init_state({
 
     },
 
-    "counter": 26,
     "user": {
         "current": False,  # new or current
         "first_name": None,
