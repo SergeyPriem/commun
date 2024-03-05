@@ -7,6 +7,7 @@
     <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="registration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/ec/ui.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +81,8 @@
       <workItem from="1709370766243" duration="8296000" />
       <workItem from="1709382974787" duration="479000" />
       <workItem from="1709523490622" duration="4384000" />
-      <workItem from="1709527933272" duration="6436000" />
+      <workItem from="1709527933272" duration="6966000" />
+      <workItem from="1709619818875" duration="1765000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <option name="closed" value="true" />
@@ -178,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709557377349</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="registration">
+      <option name="closed" value="true" />
+      <created>1709557990221</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1709557990221</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

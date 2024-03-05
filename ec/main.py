@@ -30,9 +30,9 @@ def increment(state):
     _update_message(state)
 
 
-def _get_user_data(login):
-    hashed_pass_now = ""
-    hashed_pass_db = ""
+def _get_user_data(state):
+    hashed_pass_now = "1234567890"
+    hashed_pass_db = "1234567890"
 
     if hashed_pass_now == hashed_pass_db:
         return {
@@ -42,7 +42,7 @@ def _get_user_data(login):
             "email": "None",
             "phone": "None",
             "role": "None",
-            "login": login,
+            "login": state["user"]["login"],
             "password": None,
             "password2": None,
             "logged": True
@@ -63,13 +63,12 @@ def _get_user_data(login):
 
 
 def log_user(state):
-    state["user"] = _get_user_data(state["user"]["login"])
+    state["user"] = _get_user_data(state)
+    print(state["user"])
     if state["user"]["logged"]:
-        state["status_message"] = "Добро пожаловать"
+        state["show_user_logged"] = True
     else:
-        state["status_message"] = "Не удалось войти"
-
-
+        state["show_user_not_logged"] = True
 
 
 def valid_email(email):
@@ -113,6 +112,10 @@ def activate_reg_form(state):
     state["email_confirmation"]["wrong_code"] = False
     state["email_confirmation"]["right_code"] = False
 
+def show_login_form(state):
+    state["show_login_form"] = True
+    state["show_user_logged"] = False
+    state["show_user_not_logged"] = False
 
 def register_user(state):
     troubles = []
@@ -192,7 +195,10 @@ initial_state = ss.init_state({
         "logged": False
     },
 
-    "status_message": None
+    "status_message": None,
+    "show_user_logged": False,
+    "show_user_not_logged": False,
+    "show_login_form": False
 
 })
 
