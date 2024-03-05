@@ -112,8 +112,8 @@ def send_confirmation_code(state):
     return "Вам на почту отправлен код активации. Введите его в окне ниже"
 
 
-def activate_reg_form(state):
-    if state["logged"]:
+def show_reg_form(state):
+    if state["user"]["logged"]:
         state["email_confirmation"]["reg_form"] = False
     else:
         state["email_confirmation"]["reg_form"] = True
@@ -124,7 +124,9 @@ def activate_reg_form(state):
     state["email_confirmation"]["right_code"] = False
 
 def show_login_form(state):
-    if not state['show_user_logged']:
+    if state["user"]["logged"]:
+        state["show_login_form"] = False
+    else:
         state["show_login_form"] = True
 
     state["show_user_logged"] = False

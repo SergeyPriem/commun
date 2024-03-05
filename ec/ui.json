@@ -1114,7 +1114,7 @@
             "parentId": "1cnhl56hpeydnmbz",
             "position": 1,
             "handlers": {},
-            "visible": "email_confirmation.reg_form"
+            "visible": "show_reg_form"
         },
         "6dc8haup6go9e07s": {
             "id": "6dc8haup6go9e07s",
@@ -3856,7 +3856,7 @@
             "parentId": "5p42kou09joas4jf",
             "position": 1,
             "handlers": {
-                "ss-click": "activate_reg_form",
+                "ss-click": "show_reg_form",
                 "click": "$goToPage_registration"
             },
             "visible": true
