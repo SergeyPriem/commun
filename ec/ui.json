@@ -3856,8 +3856,8 @@
             "parentId": "5p42kou09joas4jf",
             "position": 1,
             "handlers": {
-                "ss-click": "$goToPage_registration",
-                "click": "activate_reg_form"
+                "ss-click": "activate_reg_form",
+                "click": "$goToPage_registration"
             },
             "visible": true
         },
