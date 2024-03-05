@@ -68,10 +68,11 @@ def log_user(state):
     print(state["user"]["logged"])
 
     state["show_login_form"] = False
+    state["email_confirmation"]["reg_form"] = False
+    state['email_confirmation']['right_code'] = False
 
     if state["user"]["logged"]:
         state["show_user_logged"] = True
-        state["email_confirmation"]["reg_form"] = False
     else:
         state["show_user_not_logged"] = True
 
@@ -119,7 +120,9 @@ def activate_reg_form(state):
     state["email_confirmation"]["right_code"] = False
 
 def show_login_form(state):
-    state["show_login_form"] = True
+    if not state['show_user_logged']:
+        state["show_login_form"] = True
+
     state["show_user_logged"] = False
     state["show_user_not_logged"] = False
 
