@@ -55,10 +55,11 @@ def log_user(state):
     state['email_confirmation']['right_code'] = False
 
     if state["user"]["logged"]:
-        state["show_user_logged"] = True
+        state["logged"] = True
+        state["not_logged"] = False
     else:
-        state["show_user_not_logged"] = True
-
+        state["logged"] = False
+        state["not_logged"] = True
 
 
 def valid_email(email):
@@ -106,6 +107,7 @@ def show_reg_form(state):
     state["email_confirmation"]["wrong_code"] = False
     state["email_confirmation"]["right_code"] = False
 
+
 def show_login_form(state):
     if state["user"]["logged"]:
         state["show_login_form"] = False
@@ -114,6 +116,7 @@ def show_login_form(state):
 
     state["show_user_logged"] = False
     state["show_user_not_logged"] = False
+
 
 def register_user(state):
     troubles = []
@@ -159,17 +162,17 @@ def register_user(state):
 
 def quit(state):
     state['user'] = {
-            "current": False,  # new or current
-            "first_name": None,
-            "last_name": None,
-            "email": None,
-            "phone": None,
-            "role": None,
-            "login": None,
-            "password": None,
-            "password2": None,
-            "logged": False
-        }
+        "current": False,  # new or current
+        "first_name": None,
+        "last_name": None,
+        "email": None,
+        "phone": None,
+        "role": None,
+        "login": None,
+        "password": None,
+        "password2": None,
+        "logged": False
+    }
 
     state["email_confirmation"] = {
         "reg_form": True,
@@ -191,7 +194,6 @@ def quit(state):
     state['show_quit_button'] = False
 
 
-
 # Initialise the state
 
 # "_my_private_element" won't be serialised or sent to the frontend,
@@ -199,8 +201,9 @@ def quit(state):
 
 initial_state = ss.init_state({
 
-
     "message": None,
+    'logged': False,
+    'not_logged': True,
 
     "email_confirmation": {
         "reg_form": True,
@@ -228,7 +231,7 @@ initial_state = ss.init_state({
     "status_message": None,
     "show_user_logged": False,
     "show_user_not_logged": False,
-    "show_login_form": False,
+    "show_login_form": True,
     'show_login_button': True,
     'show_registration_button': True,
     'show_quit_button': False
@@ -236,5 +239,3 @@ initial_state = ss.init_state({
 })
 
 initial_state.import_stylesheet("theme", "/static/custom.css?6")
-
-

@@ -1113,8 +1113,7 @@
             },
             "parentId": "1cnhl56hpeydnmbz",
             "position": 1,
-            "handlers": {},
-            "visible": "show_reg_form"
+            "handlers": {}
         },
         "6dc8haup6go9e07s": {
             "id": "6dc8haup6go9e07s",
@@ -1610,7 +1609,7 @@
             "handlers": {
                 "ss-click": "$goToPage_login"
             },
-            "visible": "show_login_button"
+            "visible": "not_logged"
         },
         "huhdr9z11q8vp0yj": {
             "id": "huhdr9z11q8vp0yj",
@@ -1626,7 +1625,7 @@
             "handlers": {
                 "ss-click": "$goToPage_registration"
             },
-            "visible": "show_registration_button"
+            "visible": "not_logged"
         },
         "u58nuzt98hnjh39p": {
             "id": "u58nuzt98hnjh39p",
@@ -3565,8 +3564,7 @@
             "handlers": {
                 "ss-click": "show_login_form",
                 "click": "$goToPage_login"
-            },
-            "visible": "not user.logged"
+            }
         },
         "rbp8406c1lhkll87": {
             "id": "rbp8406c1lhkll87",
@@ -3581,8 +3579,7 @@
             "position": 1,
             "handlers": {
                 "ss-click": "$goToPage_registration"
-            },
-            "visible": "not user logged"
+            }
         },
         "k3a1diywcx1ybl55": {
             "id": "k3a1diywcx1ybl55",
@@ -5217,8 +5214,7 @@
             "position": 2,
             "handlers": {
                 "ss-click": "quit"
-            },
-            "visible": "not user.logged"
+            }
         },
         "aj2rj1auydw6msvr": {
             "id": "aj2rj1auydw6msvr",
@@ -5234,7 +5230,7 @@
             "handlers": {
                 "ss-click": "$goToPage_registration"
             },
-            "visible": "show_quit_button"
+            "visible": "logged"
         }
     }
 }
