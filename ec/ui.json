@@ -1610,7 +1610,7 @@
             "handlers": {
                 "ss-click": "$goToPage_login"
             },
-            "visible": true
+            "visible": "show_login_button"
         },
         "huhdr9z11q8vp0yj": {
             "id": "huhdr9z11q8vp0yj",
@@ -1626,7 +1626,7 @@
             "handlers": {
                 "ss-click": "$goToPage_registration"
             },
-            "visible": true
+            "visible": "show_registration_button"
         },
         "u58nuzt98hnjh39p": {
             "id": "u58nuzt98hnjh39p",
@@ -5207,16 +5207,34 @@
         "fcu8dbnmehxhnb5f": {
             "id": "fcu8dbnmehxhnb5f",
             "type": "button",
-            "parentId": "1vodw62x69cfgrli",
             "content": {
                 "text": "\u0412\u044b\u0445\u043e\u0434",
                 "buttonColor": "#152e61",
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
-            "handlers": {},
+            "parentId": "1vodw62x69cfgrli",
             "position": 2,
-            "visible": true
+            "handlers": {
+                "ss-click": "quit"
+            },
+            "visible": "not user.logged"
+        },
+        "aj2rj1auydw6msvr": {
+            "id": "aj2rj1auydw6msvr",
+            "type": "button",
+            "content": {
+                "text": "\u0412\u044b\u0445\u043e\u0434",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#ffffff",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "j9vfesh0cv6y5svw",
+            "position": 2,
+            "handlers": {
+                "ss-click": "$goToPage_registration"
+            },
+            "visible": "show_quit_button"
         }
     }
 }

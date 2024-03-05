@@ -186,6 +186,10 @@ def quit(state):
     state["show_user_logged"] = False
     state["show_user_not_logged"] = False
     state["show_login_form"] = False
+    state['show_login_button'] = True
+    state['show_registration_button'] = True
+    state['show_quit_button'] = False
+
 
 
 # Initialise the state
@@ -224,10 +228,13 @@ initial_state = ss.init_state({
     "status_message": None,
     "show_user_logged": False,
     "show_user_not_logged": False,
-    "show_login_form": False
+    "show_login_form": False,
+    'show_login_button': True,
+    'show_registration_button': True,
+    'show_quit_button': False
 
 })
 
 initial_state.import_stylesheet("theme", "/static/custom.css?6")
 
-_update_message(initial_state)
+
