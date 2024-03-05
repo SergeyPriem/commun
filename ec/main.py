@@ -171,6 +171,23 @@ def quit(state):
             "logged": False
         }
 
+    state["email_confirmation"] = {
+        "reg_form": True,
+        "warning_form": False,
+        "code_form": False,
+        "wrong_code": False,
+        "right_code": False,
+        "message": None
+    }
+
+    state["message"] = None
+
+    state["status_message"] = None
+    state["show_user_logged"] = False
+    state["show_user_not_logged"] = False
+    state["show_login_form"] = False
+
+
 # Initialise the state
 
 # "_my_private_element" won't be serialised or sent to the frontend,
