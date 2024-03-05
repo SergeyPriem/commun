@@ -65,10 +65,16 @@ def _get_user_data(state):
 def log_user(state):
     state["user"] = _get_user_data(state)
     print(state["user"])
+    print(state["user"]["logged"])
+
+    state["show_login_form"] = False
+
     if state["user"]["logged"]:
         state["show_user_logged"] = True
+        state["email_confirmation"]["reg_form"] = False
     else:
         state["show_user_not_logged"] = True
+
 
 
 def valid_email(email):

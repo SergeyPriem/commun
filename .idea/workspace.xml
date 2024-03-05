@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="registration">
+    <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/ec/ui.json" afterDir="false" />
@@ -82,7 +82,7 @@
       <workItem from="1709382974787" duration="479000" />
       <workItem from="1709523490622" duration="4384000" />
       <workItem from="1709527933272" duration="6966000" />
-      <workItem from="1709619818875" duration="1765000" />
+      <workItem from="1709619818875" duration="2279000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <option name="closed" value="true" />
@@ -188,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709557990221</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="login">
+      <option name="closed" value="true" />
+      <created>1709621598561</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1709621598561</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +207,7 @@
     <MESSAGE value="Initial" />
     <MESSAGE value="padding adjustment" />
     <MESSAGE value="registration" />
-    <option name="LAST_COMMIT_MESSAGE" value="registration" />
+    <MESSAGE value="login" />
+    <option name="LAST_COMMIT_MESSAGE" value="login" />
   </component>
 </project>

@@ -2380,7 +2380,7 @@
                 "containerShadow": "5px 5px 7px -4px #000000"
             },
             "parentId": "1cnhl56hpeydnmbz",
-            "position": 5,
+            "position": 6,
             "handlers": {},
             "visible": true
         },
@@ -3562,8 +3562,8 @@
             "parentId": "1vodw62x69cfgrli",
             "position": 0,
             "handlers": {
-                "ss-click": "$goToPage_login",
-                "click": "show_login_form"
+                "ss-click": "show_login_form",
+                "click": "$goToPage_login"
             },
             "visible": true
         },
@@ -4825,7 +4825,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "parentId": "1cnhl56hpeydnmbz",
-            "position": 6,
+            "position": 7,
             "handlers": {},
             "visible": "email_confirmation.wrong_code"
         },
@@ -4924,7 +4924,7 @@
             "parentId": "lg1dg4rk9qkvx4gf",
             "position": 2,
             "handlers": {},
-            "visible": "user_logged"
+            "visible": "show_user_logged"
         },
         "xx5m3x838pf4jrwo": {
             "id": "xx5m3x838pf4jrwo",
@@ -4962,7 +4962,7 @@
             "id": "zucbm9clwj8dxw9a",
             "type": "text",
             "content": {
-                "text": "# **\u0412\u0445\u043e\u0434 \u0443\u0441\u043f\u0435\u0448\u043d\u044b\u0439**",
+                "text": "# **\u0412\u044b \u0432\u043e\u0448\u043b\u0438. \u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c**",
                 "useMarkdown": "yes",
                 "alignment": "center"
             },
@@ -5105,6 +5105,102 @@
             "handlers": {
                 "ss-click": "$goToPage_login"
             },
+            "visible": true
+        },
+        "vd12ybt3uw20j8ik": {
+            "id": "vd12ybt3uw20j8ik",
+            "type": "section",
+            "content": {
+                "title": "\u0412\u0425\u041e\u0414 \u0423\u0421\u041f\u0415\u0428\u041d\u042b\u0419",
+                "accentColor": "#ffffff",
+                "containerBackgroundColor": "#1d4087",
+                "contentHAlign": "center",
+                "primaryTextColor": "#ffffff"
+            },
+            "parentId": "1cnhl56hpeydnmbz",
+            "position": 5,
+            "handlers": {},
+            "visible": "show_user_logged"
+        },
+        "ooefhh1v8i0oyvf4": {
+            "id": "ooefhh1v8i0oyvf4",
+            "type": "columns",
+            "content": {},
+            "parentId": "vd12ybt3uw20j8ik",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "3v3igm0xem561ip5": {
+            "id": "3v3igm0xem561ip5",
+            "type": "column",
+            "content": {
+                "width": "0.2",
+                "contentPadding": "0px 0px 0px 0px"
+            },
+            "parentId": "ooefhh1v8i0oyvf4",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "c7ff6i6c8swp1m4q": {
+            "id": "c7ff6i6c8swp1m4q",
+            "type": "column",
+            "content": {
+                "width": "8"
+            },
+            "parentId": "ooefhh1v8i0oyvf4",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "gh4c8p55ujmwdm8z": {
+            "id": "gh4c8p55ujmwdm8z",
+            "type": "text",
+            "content": {
+                "text": "# **\u0412\u044b \u0432\u043e\u0448\u043b\u0438. \u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c**",
+                "useMarkdown": "yes",
+                "alignment": "center"
+            },
+            "parentId": "c7ff6i6c8swp1m4q",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "pvh6wzhibrnzhmu1": {
+            "id": "pvh6wzhibrnzhmu1",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center",
+                "contentPadding": "15px"
+            },
+            "parentId": "c7ff6i6c8swp1m4q",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "04fddgy8krxyen9f": {
+            "id": "04fddgy8krxyen9f",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center",
+                "contentPadding": "15px"
+            },
+            "parentId": "c7ff6i6c8swp1m4q",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "bjpqywuybojhids7": {
+            "id": "bjpqywuybojhids7",
+            "type": "column",
+            "content": {
+                "width": "0.2",
+                "contentPadding": "0px 0px 0px 0px"
+            },
+            "parentId": "ooefhh1v8i0oyvf4",
+            "position": 2,
+            "handlers": {},
             "visible": true
         }
     }
