@@ -259,10 +259,10 @@ initial_state = ss.init_state({
     "specs": {
         "el": "Электроснабжение",
         "ins": "КИПиА",
-        "telecom": "",
-        "plot_plan": "",
-        "piping_linear": "",
-        "piping_area": "",
+        "telecom": "Связь",
+        "plot_plan": "Генплан",
+        "piping_linear": "Линейная часть трубопроводов",
+        "piping_area": "Можнтаж технолог. оборудования",
         "hvac": "ОВиК",
         "wss": "Водоснабжение и Водоотведение",
         "term": "Теплоснабжение"

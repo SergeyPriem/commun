@@ -5416,7 +5416,7 @@
             "id": "zp0z3ccdbedrxkyv",
             "type": "text",
             "content": {
-                "text": "# **\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0412\u0430\u0448\u0443 \u0440\u043e\u043b\u044c**",
+                "text": "# **\u0412\u0430\u0448\u0430 \u0440\u043e\u043b\u044c**",
                 "useMarkdown": "yes",
                 "alignment": "center"
             },
@@ -6152,11 +6152,11 @@
             "parentId": "rtaq4eszk4sxeblk",
             "position": 0,
             "handlers": {},
+            "visible": true,
             "binding": {
                 "eventType": "ss-change",
-                "stateRef": "major"
-            },
-            "visible": true
+                "stateRef": "description"
+            }
         },
         "infkgkvn80siolid": {
             "id": "infkgkvn80siolid",
@@ -6212,18 +6212,19 @@
             "type": "multiselectinput",
             "content": {
                 "label": "\u0412\u0430\u0448\u0430 \u0421\u043f\u0435\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c",
-                "options": "",
-                "primaryTextColor": "#fbf9f9",
+                "options": "@{specs}",
+                "primaryTextColor": "#fcfcfc",
                 "chipTextColor": "#1d4087",
                 "placeholder": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043e\u0434\u043d\u0443 \u0438\u043b\u0438 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0441\u043f\u0435\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u0435\u0439",
-                "containerBackgroundColor": "#fefbfb"
+                "containerBackgroundColor": "#1d4087",
+                "accentColor": "#dbeef6"
             },
             "parentId": "4v9qxg0rxbvhy77u",
             "position": 0,
             "handlers": {},
             "binding": {
                 "eventType": "ss-options-change",
-                "stateRef": "@{specs}"
+                "stateRef": "user.major"
             },
             "visible": true
         }
