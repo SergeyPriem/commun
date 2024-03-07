@@ -275,4 +275,4 @@ initial_state = ss.init_state({
 
 })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?7")
+initial_state.import_stylesheet("theme", "/static/custom.css?8")

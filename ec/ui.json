@@ -167,7 +167,7 @@
             "id": "eo6dy44i9x0ypdwy",
             "type": "section",
             "content": {
-                "title": "eng_intro",
+                "title": "",
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
@@ -572,7 +572,7 @@
             "id": "1nxrqri07s45kb28",
             "type": "horizontalstack",
             "content": {
-                "contentPadding": "15px 15px 150px 15px",
+                "contentPadding": "15px 15px 15px 15px",
                 "contentHAlign": "center"
             },
             "parentId": "6ygb728katsjr9tg",
@@ -758,7 +758,7 @@
             "id": "qhqnhrss3529zfjd",
             "type": "horizontalstack",
             "content": {
-                "contentPadding": "15px 15px 150px 15px",
+                "contentPadding": "15px 15px 15px 15px",
                 "contentHAlign": "center"
             },
             "parentId": "b9hri75rsrctcb98",
@@ -1370,7 +1370,7 @@
             "id": "pwgrgsvp6z1tun83",
             "type": "section",
             "content": {
-                "title": "footer",
+                "title": "",
                 "accentColor": "#000000",
                 "containerBackgroundColor": "#152e61",
                 "containerShadow": "5px 5px 7px -4px #000000",
@@ -1494,7 +1494,7 @@
             "id": "k820fs3mex1poc6k",
             "type": "section",
             "content": {
-                "title": "about-footer",
+                "title": "",
                 "accentColor": "#000000",
                 "containerBackgroundColor": "#152e61",
                 "containerShadow": "5px 5px 7px -4px #000000",
@@ -1587,7 +1587,7 @@
             "id": "puc0deh1rbpr5oa9",
             "type": "section",
             "content": {
-                "title": "projects-footer",
+                "title": "",
                 "accentColor": "#000000",
                 "containerBackgroundColor": "#152e61",
                 "containerShadow": "5px 5px 7px -4px #000000",
@@ -1680,7 +1680,7 @@
             "id": "pnp4db24gui4u8ca",
             "type": "section",
             "content": {
-                "title": "vacancy_footer",
+                "title": "",
                 "accentColor": "#000000",
                 "containerBackgroundColor": "#152e61",
                 "containerShadow": "5px 5px 7px -4px #000000",
@@ -2049,7 +2049,7 @@
             "id": "1qbo57nviz0q2dty",
             "type": "section",
             "content": {
-                "title": "FOOTER",
+                "title": "",
                 "accentColor": "#000000",
                 "containerBackgroundColor": "#152e61",
                 "containerShadow": "5px 5px 7px -4px #000000",
@@ -2639,7 +2639,7 @@
             "id": "zwhmxei75oww30tl",
             "type": "section",
             "content": {
-                "title": "vacancy_header",
+                "title": "",
                 "accentColor": "#000000",
                 "containerBackgroundColor": "#152e61",
                 "contentHAlign": "center",
@@ -2934,7 +2934,7 @@
             "id": "paffscn9zikt73z3",
             "type": "section",
             "content": {
-                "title": "engineers-header",
+                "title": "",
                 "containerBackgroundColor": "#152e61",
                 "contentHAlign": "center",
                 "containerShadow": "5px 5px 5px -4px #000000",
@@ -3228,7 +3228,7 @@
             "id": "p1kxhymakvdnrg70",
             "type": "section",
             "content": {
-                "title": "projects_header",
+                "title": "",
                 "accentColor": "#000000",
                 "containerBackgroundColor": "#152e61",
                 "contentHAlign": "center",
@@ -4850,7 +4850,7 @@
             "id": "jonn8ec5va1bjy6l",
             "type": "section",
             "content": {
-                "title": "projects_intro",
+                "title": "",
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
@@ -4957,7 +4957,7 @@
             "id": "e0zkuj19971azzdp",
             "type": "section",
             "content": {
-                "title": "vacancy_intro",
+                "title": "",
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
@@ -5263,7 +5263,8 @@
             "id": "ntz9zkxjy5kozt18",
             "type": "message",
             "content": {
-                "message": "\u0422\u043e\u043b\u044c\u043a\u043e \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u044b \u043c\u043e\u0433\u0443\u0442 \u043f\u0440\u043e\u0441\u043c\u0430\u0442\u0440\u0438\u0432\u0430\u0442\u044c \u041f\u0440\u043e\u0435\u043a\u0442\u044b. \u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u0439\u0442\u0435\u0441\u044c \u0438\u043b\u0438 \u0412\u043e\u0439\u0434\u0438\u0442\u0435"
+                "message": "\u0422\u043e\u043b\u044c\u043a\u043e \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u044b \u043c\u043e\u0433\u0443\u0442 \u043f\u0440\u043e\u0441\u043c\u0430\u0442\u0440\u0438\u0432\u0430\u0442\u044c \u0412\u0430\u043a\u0430\u043d\u0441\u0438\u0438. \u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u0439\u0442\u0435\u0441\u044c \u0438\u043b\u0438 \u0412\u043e\u0439\u0434\u0438\u0442\u0435",
+                "cssClasses": "textarea"
             },
             "parentId": "u58nuzt98hnjh39p",
             "position": 3,
@@ -5778,11 +5779,11 @@
             "parentId": "1zq1ycf1ug9w98bn",
             "position": 0,
             "handlers": {},
-            "visible": true,
             "binding": {
                 "eventType": "ss-change",
                 "stateRef": "user.description"
-            }
+            },
+            "visible": true
         },
         "8uiugy2sy0tnm04t": {
             "id": "8uiugy2sy0tnm04t",
@@ -6106,11 +6107,11 @@
             "parentId": "lhr6zdzpau28x2jb",
             "position": 3,
             "handlers": {},
-            "visible": true,
             "binding": {
                 "eventType": "ss-number-change",
                 "stateRef": "user.experience"
-            }
+            },
+            "visible": true
         },
         "xzda5a0eeg2eopyc": {
             "id": "xzda5a0eeg2eopyc",
