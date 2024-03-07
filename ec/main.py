@@ -127,14 +127,25 @@ def validate_reg_data(state):
     except:
         troubles.append("Введите логин")
 
-    if state["user"]['role'] is None:
-        troubles.append("Выберите Вашу роль")
 
     if state["user"]['password'] is None:
         troubles.append("Введите пароль")
 
     if state["user"]['password'] != state["user"]['password2']:
         troubles.append("Пароли не совпадают")
+
+    if state["user"]['role'] == 'engineer':
+        try:
+            if state["user"]['experience'] < 1 or state["user"]['experience'] > 80:
+                troubles.append("Введите корректный опыт работы")
+        except:
+            troubles.append("Введите опыт работы")
+
+        try:
+            if len(state["user"]['description']) < 10:
+                troubles.append("Введите описание навыков более детально")
+        except:
+            troubles.append("Введите описание навыков")
 
     if len(troubles) > 0:
         troubles_text = ", ".join(troubles)
@@ -185,15 +196,6 @@ def quit_fun(state):
         "password": None,
         "password2": None,
         "logged": False
-    }
-
-    state["email_confirmation"] = {
-        "reg_form": True,
-        "warning_form": False,
-        "code_form": False,
-        "wrong_code": False,
-        "right_code": False,
-        "message": None
     }
 
     state["message"] = None
@@ -262,7 +264,7 @@ initial_state = ss.init_state({
         "telecom": "Связь",
         "plot_plan": "Генплан",
         "piping_linear": "Линейная часть трубопроводов",
-        "piping_area": "Можнтаж технолог. оборудования",
+        "piping_area": "Монтаж технолог. оборудования",
         "hvac": "ОВиК",
         "wss": "Водоснабжение и Водоотведение",
         "term": "Теплоснабжение"

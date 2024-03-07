@@ -5487,7 +5487,11 @@
             "parentId": "zk5to1li20i7hj5i",
             "position": 3,
             "handlers": {},
-            "visible": true
+            "visible": true,
+            "binding": {
+                "eventType": "ss-number-change",
+                "stateRef": "user.experience"
+            }
         },
         "9urqw0ebp16x1g43": {
             "id": "9urqw0ebp16x1g43",
@@ -6152,11 +6156,11 @@
             "parentId": "rtaq4eszk4sxeblk",
             "position": 0,
             "handlers": {},
-            "visible": true,
             "binding": {
                 "eventType": "ss-change",
                 "stateRef": "description"
-            }
+            },
+            "visible": true
         },
         "infkgkvn80siolid": {
             "id": "infkgkvn80siolid",
