@@ -5351,7 +5351,7 @@
             "handlers": {},
             "binding": {
                 "eventType": "ss-change",
-                "stateRef": "major"
+                "stateRef": "user.description"
             },
             "visible": true
         },
@@ -5479,7 +5479,7 @@
             "id": "lpvfg2qv4pw4p137",
             "type": "numberinput",
             "content": {
-                "label": "\u041e\u043f\u044b\u0442 \u0440\u0430\u0431\u043e\u0442\u044b (\u043b\u0435\u0442)",
+                "label": "\u041e\u043f\u044b\u0442 \u0440\u0430\u0431\u043e\u0442\u044b (\u043b\u0435\u0442)*",
                 "minValue": "1",
                 "maxValue": "80",
                 "valueStep": "0.5"
@@ -5487,11 +5487,11 @@
             "parentId": "zk5to1li20i7hj5i",
             "position": 3,
             "handlers": {},
-            "visible": true,
             "binding": {
                 "eventType": "ss-number-change",
                 "stateRef": "user.experience"
-            }
+            },
+            "visible": true
         },
         "9urqw0ebp16x1g43": {
             "id": "9urqw0ebp16x1g43",
@@ -5778,7 +5778,11 @@
             "parentId": "1zq1ycf1ug9w98bn",
             "position": 0,
             "handlers": {},
-            "visible": true
+            "visible": true,
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.description"
+            }
         },
         "8uiugy2sy0tnm04t": {
             "id": "8uiugy2sy0tnm04t",
@@ -6094,7 +6098,7 @@
             "id": "a643kwsnh39afrxq",
             "type": "numberinput",
             "content": {
-                "label": "\u041e\u043f\u044b\u0442 \u0440\u0430\u0431\u043e\u0442\u044b (\u043b\u0435\u0442)",
+                "label": "\u041e\u043f\u044b\u0442 \u0440\u0430\u0431\u043e\u0442\u044b (\u043b\u0435\u0442)*",
                 "minValue": "1",
                 "maxValue": "80",
                 "valueStep": "0.5"
@@ -6102,7 +6106,11 @@
             "parentId": "lhr6zdzpau28x2jb",
             "position": 3,
             "handlers": {},
-            "visible": true
+            "visible": true,
+            "binding": {
+                "eventType": "ss-number-change",
+                "stateRef": "user.experience"
+            }
         },
         "xzda5a0eeg2eopyc": {
             "id": "xzda5a0eeg2eopyc",
@@ -6158,7 +6166,7 @@
             "handlers": {},
             "binding": {
                 "eventType": "ss-change",
-                "stateRef": "description"
+                "stateRef": "user.description"
             },
             "visible": true
         },

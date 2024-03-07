@@ -107,26 +107,26 @@ def validate_reg_data(state):
     """
     troubles = []
 
-    try:
+    if state["user"]['first_name']:
         if len(state["user"]['first_name']) <= 1:
             troubles.append("Введите имя длиннее двух символов")
-    except:
+    else:
         troubles.append("Введите имя")
 
     if not valid_email(state["user"]['email']):
-        troubles.append("Введите корректны1 email")
+        troubles.append("Введите корректный email")
 
-    try:
+    if state["user"]['phone']:
         if len(state["user"]['phone']) < 10:
             troubles.append("Введите корректный номер телефона")
-    except:
+    else:
         troubles.append("Введите номер телефона")
-    try:
-        if len(state["user"]['login']) < 3:
-            troubles.append("Введите логин не менее 3 симоволов")
-    except:
-        troubles.append("Введите логин")
 
+    if state["user"]['login']:
+        if len(state["user"]['login']) < 3:
+            troubles.append("Введите логин не менее 3 символов")
+    else:
+        troubles.append("Введите логин")
 
     if state["user"]['password'] is None:
         troubles.append("Введите пароль")
@@ -135,16 +135,19 @@ def validate_reg_data(state):
         troubles.append("Пароли не совпадают")
 
     if state["user"]['role'] == 'engineer':
-        try:
+        if not state["user"]['major']:
+            troubles.append("Выберите специальность из списка")
+
+        if state["user"]['experience']:
             if state["user"]['experience'] < 1 or state["user"]['experience'] > 80:
                 troubles.append("Введите корректный опыт работы")
-        except:
+        else:
             troubles.append("Введите опыт работы")
 
-        try:
+        if state["user"]['description']:
             if len(state["user"]['description']) < 10:
                 troubles.append("Введите описание навыков более детально")
-        except:
+        else:
             troubles.append("Введите описание навыков")
 
     if len(troubles) > 0:
