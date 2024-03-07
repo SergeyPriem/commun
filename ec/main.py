@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+import datetime
+import bcrypt
 import streamsync as ss
-
-from utilities import valid_email, send_email, random_code_alphanumeric
+from pony.orm import *
+from utilities import valid_email, send_email, random_code_alphanumeric, err_handler, hash_password, specialities
+from models import User
 
 # Shows in the log when the app starts
 print("Hello world!")
@@ -9,55 +12,69 @@ print("Hello world!")
 
 # Its name starts with _, so this function won't be exposed
 
-def _get_user_data(state):
-    hashed_pass_now = "1234567890"
-    hashed_pass_db = "1234567890"
+def _get_default_user_data(message):
+    return {
+        "first_name": None,
+        "last_name": None,
+        "email": None,
+        "phone": None,
+        "role": None,
+        "login": message,
+        "password": None,
+        "password2": None,
+        "logged": False
+    }
 
-    if hashed_pass_now == hashed_pass_db:
-        return {
-            "current": True,  # new or current
-            "first_name": "FN",
-            "last_name": "LN",
-            "email": "None",
-            "phone": "None",
-            "role": "None",
-            "login": state["user"]["login"],
-            "password": None,
-            "password2": None,
-            "logged": True
-        }
+
+def _get_user_data(state):
+    print("line 30")
+    try:
+        with db_session:
+            current_user = User.get(login=state["user"]["login"])
+            print("line 34")
+    except Exception as e:
+        state["message"] = err_handler(e, "_get_user_data")
+        return _get_default_user_data()
+    print(current_user.h_pass)
+    print(state["user"]["password"])
+    if current_user:
+        print("Yes< current user")
+        if bcrypt.checkpw(state["user"]["password"].encode(), str(current_user.h_pass).encode()):
+            return {
+                "first_name": current_user.first_name,
+                "last_name": current_user.last_name,
+                "email": current_user.email,
+                "phone": current_user.phone,
+                "role": current_user.role,
+                "login": state["user"]["login"],
+                "password": None,
+                "password2": None,
+                "logged": True
+            }
+        else:
+            return _get_default_user_data("- Неверный логин или пароль")
     else:
-        return {
-            "current": False,  # new or current
-            "first_name": None,
-            "last_name": None,
-            "email": None,
-            "phone": None,
-            "role": None,
-            "login": "Login not Exists in DB",
-            "password": None,
-            "password2": None,
-            "logged": False
-        }
+        print('empty dict')
+        return _get_default_user_data("- Пользователь не найден")
 
 
 def log_user(state):
     state["user"] = _get_user_data(state)
 
+    print(_get_user_data(state))
+
     if state["user"]["logged"]:
         state["logged"] = 1
         state["not_logged"] = 0
 
-        if state["user"]["role"] == 'c':
+        if state["user"]["role"] == 'client':
             state.set_page('engineers')
             state["eng_content"] = 1
             state["projects_content"] = 0
-
-        elif state["user"]["role"] == 'e':
+        elif state["user"]["role"] == 'engineer':
             state.set_page('projects')
             state["projects_content"] = 1
             state["eng_content"] = 0
-
         else:
             state.set_page('about')
     else:
@@ -66,11 +83,33 @@ def log_user(state):
 
 
 def add_user_to_db(state):
-    ...
-    return {
-        'status': 200,
-        'message': 'User Added'
-    }
+
+    major = ", ".join(state["user"]["major"])
+
+    try:
+        with db_session:
+            User(
+                first_name=state["user"]["first_name"],
+                last_name=state["user"]["last_name"] if state["user"]["last_name"] else "-",
+                email=state["user"]["email"],
+                phone=state["user"]["phone"],
+                login=state["user"]["login"],
+                role=state["user"]["role"],
+                h_pass=hash_password(state["user"]["password"]),
+                description=state["user"]["description"] if state["user"]["description"] else "-",
+                url='-',
+                date_time=datetime.datetime.now(),
+                experience=int(state["user"]["experience"]) if state["user"]["experience"] else 0,
+                major=major,
+                company=state["user"]["company"] if state["user"]["company"] else "-",
+            )
+
+        state["reg_db_text"] = '+ Вы добавлены в базу данных'
+        return 200
+
+    except TransactionIntegrityError:
+        state["reg_db_text"] = f'- Пользователь с таким логином уже есть в базе данных. Измените логин'
+        return 500
 
 
 def validate_email_by_code(state):
@@ -80,8 +119,8 @@ def validate_email_by_code(state):
     if code_sent == code_entered:
         state['reg_code_error'] = 0
         state['reg_code_ok'] = 1
-        reply = add_user_to_db(state)
-        if reply['status'] == 200:
+        state['reg_db_message'] = 1
+        if add_user_to_db(state) == 200:
             state['reg_code_ok'] = 1
             state['reg_form'] = 0
             state['reg_data_ok'] = 0
@@ -158,6 +197,7 @@ def validate_reg_data(state):
         state["reg_data_error"] = 0
         state["reg_data_error_message"] = None
         state["reg_data_ok"] = 1
+        state["eng_form"] = 0
 
 
 def show_engineer_form(state):
@@ -165,6 +205,8 @@ def show_engineer_form(state):
     state["eng_form"] = 1
     state["client_form"] = 0
     state["inst_form"] = 0
+    state["reg_code_ok"] = 0
+    state["reg_data_ok"] = 0
     state["user"]['role'] = "engineer"
 
 
@@ -172,6 +214,8 @@ def show_installer_form(state):
     state["eng_form"] = 0
     state["client_form"] = 0
     state["inst_form"] = 1
+    state["reg_code_ok"] = 0
+    state["reg_data_ok"] = 0
     state["user"]['role'] = "installer"
 
 
@@ -179,6 +223,8 @@ def show_client_form(state):
     state["client_form"] = 1
     state["eng_form"] = 0
     state["inst_form"] = 0
+    state["reg_code_ok"] = 0
+    state["reg_data_ok"] = 0
     state["user"]['role'] = "client"
 
 
@@ -228,7 +274,8 @@ initial_state = ss.init_state({
     "reg_code": 0,
     "reg_code_ok": 0,
     "reg_code_error": 0,
-    "reg_ok": 0,
+    "reg_db_message": 0,
+    "reg_db_text": "",
     "login_form": 1,
     "login_data_error": 0,
     "login_not_in_db": 0,
@@ -245,7 +292,6 @@ initial_state = ss.init_state({
     "inst_form": 0,
 
     "user": {
-        "current": False,  # new or current
         "first_name": None,
         "last_name": None,
         "email": None,
@@ -261,17 +307,7 @@ initial_state = ss.init_state({
         "logged": 0
     },
 
-    "specs": {
-        "el": "Электроснабжение",
-        "ins": "КИПиА",
-        "telecom": "Связь",
-        "plot_plan": "Генплан",
-        "piping_linear": "Линейная часть трубопроводов",
-        "piping_area": "Монтаж технолог. оборудования",
-        "hvac": "ОВиК",
-        "wss": "Водоснабжение и Водоотведение",
-        "term": "Теплоснабжение"
-    }
+    "specs": specialities
 
 })
 

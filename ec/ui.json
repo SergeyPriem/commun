@@ -1168,7 +1168,7 @@
             "handlers": {},
             "binding": {
                 "eventType": "ss-change",
-                "stateRef": "user,password"
+                "stateRef": "user.password"
             },
             "visible": true
         },
@@ -4710,7 +4710,7 @@
             "id": "33ffnndfyfvv6z2b",
             "type": "message",
             "content": {
-                "message": "+ \u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f \u0443\u0441\u043f\u0435\u0448\u043d\u0430\u044f"
+                "message": "@{reg_db_text}"
             },
             "parentId": "1cnhl56hpeydnmbz",
             "position": 5,
