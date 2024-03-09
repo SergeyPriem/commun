@@ -4,6 +4,7 @@ import re
 import string
 import random
 import bcrypt
+import time
 
 
 def valid_email(email):
@@ -26,7 +27,8 @@ def valid_email(email):
 
 def send_email(state):
     email = state["user"]["email"]
-    code = state['reg_code']
+    code = state['reg']['code']
+
     return {
         "status": 200,
         "message": "Email sent successfully"
@@ -52,14 +54,19 @@ def hash_password(password: str) -> str:
     return hashed.decode()
 
 
-specialities = {
-    "el": "Электроснабжение",
-    "ins": "КИПиА",
-    "telecom": "Связь",
-    "plot_plan": "Генплан",
-    "piping_linear": "Линейная часть трубопроводов",
-    "piping_area": "Монтаж технолог. оборудования",
-    "hvac": "ОВиК",
-    "wss": "Водоснабжение и Водоотведение",
-    "term": "Теплоснабжение"
-}
+
+
+def timing(f):
+    def wrap(*args, **kwargs):
+        time1 = time.time()
+        ret = f(*args, **kwargs)
+        time2 = time.time()
+        print(
+            "{:s} function took {:.3f} ms".format(f.__name__, (time2 - time1) * 1000.0)
+        )
+        return ret
+
+    return wrap
+
+
+

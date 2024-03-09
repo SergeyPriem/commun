@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 import datetime
+import time
+
 import bcrypt
 import streamsync as ss
 from pony.orm import *
-from utilities import valid_email, send_email, random_code_alphanumeric, err_handler, hash_password, specialities
+from utilities import valid_email, send_email, random_code_alphanumeric, err_handler, hash_password
+from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy
 from models import User
 
 # Shows in the log when the app starts
 print("Hello world!")
 
-
-# Its name starts with _, so this function won't be exposed
 
 def _get_default_user_data(message):
     return {
@@ -27,19 +28,24 @@ def _get_default_user_data(message):
 
 
 def _get_user_data(state):
-    print("line 30")
+    print("------------------------")
+    print(state["user"]["login"])
+    print(state["user"]["password"])
     try:
         with db_session:
             current_user = User.get(login=state["user"]["login"])
             print("line 34")
     except Exception as e:
         state["message"] = err_handler(e, "_get_user_data")
-        return _get_default_user_data()
-    print(current_user.h_pass)
+        return _get_default_user_data(None)
+
+    print("*********************")
+    print(state["user"]["login"])
     print(state["user"]["password"])
+
     if current_user:
-        print("Yes< current user")
-        if bcrypt.checkpw(state["user"]["password"].encode(), str(current_user.h_pass).encode()):
+
+        if bcrypt.checkpw(str(state["user"]["password"]).encode("utf-8"), current_user.h_pass.encode("utf-8")):
             return {
                 "first_name": current_user.first_name,
                 "last_name": current_user.last_name,
@@ -54,88 +60,100 @@ def _get_user_data(state):
         else:
             return _get_default_user_data("- Неверный логин или пароль")
     else:
-        print('empty dict')
+        print('Пользователь не найден')
         return _get_default_user_data("- Пользователь не найден")
 
 
 def log_user(state):
+    print(state["user"])
     state["user"] = _get_user_data(state)
 
-    print(_get_user_data(state))
-
     if state["user"]["logged"]:
-        state["logged"] = 1
-        state["not_logged"] = 0
+
+        state["user"]["not_logged"] = 0
 
         if state["user"]["role"] == 'client':
             state.set_page('engineers')
-            state["eng_content"] = 1
-            state["projects_content"] = 0
+            state["engineers"]["content"] = 1
+            state["projects"]["content"] = 0
         elif state["user"]["role"] == 'engineer':
             state.set_page('projects')
-            state["projects_content"] = 1
-            state["eng_content"] = 0
+            state["engineers"]["content"] = 0
+            state["projects"]["content"] = 1
         else:
             state.set_page('about')
     else:
-        state["logged"] = 0
-        state["not_logged"] = 1
+        state["user"]["not_logged"] = 1
 
 
 def add_user_to_db(state):
 
-    major = ", ".join(state["user"]["major"])
+    if state["user"]["engineer"]:
+        major = ", ".join(state["user"]["major"])
+    else:
+        major = "-"
 
     try:
         with db_session:
             User(
                 first_name=state["user"]["first_name"],
-                last_name=state["user"]["last_name"] if state["user"]["last_name"] else "-",
+                last_name=state["user"]["last_name"] or "-",
                 email=state["user"]["email"],
                 phone=state["user"]["phone"],
                 login=state["user"]["login"],
                 role=state["user"]["role"],
                 h_pass=hash_password(state["user"]["password"]),
-                description=state["user"]["description"] if state["user"]["description"] else "-",
+                description=state["user"]["description"] or "-",
                 url='-',
                 date_time=datetime.datetime.now(),
-                experience=int(state["user"]["experience"]) if state["user"]["experience"] else 0,
+                experience=int(state["user"]["experience"]) or 0,
                 major=major,
-                company=state["user"]["company"] if state["user"]["company"] else "-",
+                company= state["user"]["company"] or "-"
             )
 
-        state["reg_db_text"] = '+ Вы добавлены в базу данных'
+        state["reg"]["db_message_text"] = '+ Вы добавлены в базу данных'
         return 200
 
     except TransactionIntegrityError:
-        state["reg_db_text"] = f'- Пользователь с таким логином уже есть в базе данных. Измените логин'
+        state["reg"]["db_message_text"] = f'- Пользователь с таким логином уже есть в базе данных. Измените логин'
         return 500
 
 
 def validate_email_by_code(state):
-    code_sent = state['reg_code']
-    code_sent = "12345"
-    code_entered = "12345"
-    if code_sent == code_entered:
-        state['reg_code_error'] = 0
-        state['reg_code_ok'] = 1
-        state['reg_db_message'] = 1
+
+    if state['reg']['code_sent'] == state['reg']['code_entered']:
+
+        state["reg"]["code_message"] = "+ Код подтвержден"
+
+        state["reg"]["code_section"] = 0
+        state["user"]["client"] = 0
+        state["user"]["engineer"] = 0
+        state["user"]["installer"] = 0
+        state["reg"]['code_error'] = 0
+        state["reg"]['code_ok'] = 1
+        state["reg"]['db_message'] = 1
+
         if add_user_to_db(state) == 200:
-            state['reg_code_ok'] = 1
-            state['reg_form'] = 0
-            state['reg_data_ok'] = 0
+
+            state["reg"]['form'] = 0
+            state["reg"]['data_ok'] = 0
+            time.sleep(2)
+            state.set_page("login")
     else:
-        state['reg_code_error'] = 1
-        state['reg_code_ok'] = 0
+        state["reg"]['code_error'] = 1
+        state["reg"]['code_ok'] = 0
+        state["reg"]["code_section"] = 1
+        state["reg"]["code_message"] = "- Код ошибочный. Попробуйте еще раз"
 
 
 def send_confirmation_code(state):
-    state['reg_code'] = random_code_alphanumeric(6)
+    state['reg']['code_sent'] = random_code_alphanumeric(6)
+    print(f"Code sent: {state['reg']['code_sent']}")
     reply = send_email(state)
     if reply['status'] == 200:
-        state["reg_code"] = True
+        state["reg"]["code_section"] = 1
     else:
-        state["reg_code"] = False
+        state["reg"]["code_section"] = 0
 
 
 def validate_reg_data(state):
@@ -173,10 +191,11 @@ def validate_reg_data(state):
     if state["user"]['password'] != state["user"]['password2']:
         troubles.append("Пароли не совпадают")
 
-    if state["user"]['role'] == 'engineer':
+    if state["user"]['engineer']:
         if not state["user"]['major']:
             troubles.append("Выберите специальность из списка")
 
+    if not state["user"]['client']:
         if state["user"]['experience']:
             if state["user"]['experience'] < 1 or state["user"]['experience'] > 80:
                 troubles.append("Введите корректный опыт работы")
@@ -191,41 +210,50 @@ def validate_reg_data(state):
 
     if len(troubles) > 0:
         troubles_text = ", ".join(troubles)
-        state["reg_data_error"] = 1
-        state["reg_data_error_message"] = troubles_text
+        state["reg"]["data_error"] = 1
+        state["reg"]["data_error_message"] = troubles_text
     else:
-        state["reg_data_error"] = 0
-        state["reg_data_error_message"] = None
-        state["reg_data_ok"] = 1
-        state["eng_form"] = 0
+        state["reg"]["data_error"] = 0
+        state["reg"]["data_error_message"] = None
+        state["reg"]["data_ok"] = 1
+        state["reg"]["form"] = 0
 
+        state["user"]["client"] = 0
+        state["user"]["engineer"] = 0
+        state["user"]["installer"] = 0
 
-def show_engineer_form(state):
-    # state["role_selector"] = 0
-    state["eng_form"] = 1
-    state["client_form"] = 0
-    state["inst_form"] = 0
-    state["reg_code_ok"] = 0
-    state["reg_data_ok"] = 0
-    state["user"]['role'] = "engineer"
-
-
-def show_installer_form(state):
-    state["eng_form"] = 0
-    state["client_form"] = 0
-    state["inst_form"] = 1
-    state["reg_code_ok"] = 0
-    state["reg_data_ok"] = 0
-    state["user"]['role'] = "installer"
+        send_confirmation_code(state)
 
 
 def show_client_form(state):
-    state["client_form"] = 1
-    state["eng_form"] = 0
-    state["inst_form"] = 0
-    state["reg_code_ok"] = 0
-    state["reg_data_ok"] = 0
-    state["user"]['role'] = "client"
+    state["user"]["client"] = 1
+    state["user"]["engineer"] = 0
+    state["user"]["installer"] = 0
+    state["user"]["role"] = "client"
+
+    state["reg"]["data_error"] = 0
+    state["reg"]["code_ok"] = 0
+    state["reg"]["data_ok"] = 0
+
+
+def show_engineer_form(state):
+    state["user"]["client"] = 0
+    state["user"]["engineer"] = 1
+    state["user"]["installer"] = 0
+    state["user"]["role"] = "engineer"
+    state["reg"]["data_error"] = 0
+    state["reg"]["code_ok"] = 0
+    state["reg"]["data_ok"] = 0
+
+
+def show_installer_form(state):
+    state["user"]["client"] = 0
+    state["user"]["engineer"] = 0
+    state["user"]["installer"] = 1
+    state["user"]["role"] = "installer"
+    state["reg"]["data_error"] = 0
+    state["reg"]["code_ok"] = 0
+    state["reg"]["data_ok"] = 0
 
 
 def quit_fun(state):
@@ -234,81 +262,30 @@ def quit_fun(state):
     :param state:
     :return: None
     """
-    state['user'] = {
-        "current": False,  # new or current
-        "first_name": None,
-        "last_name": None,
-        "email": None,
-        "phone": None,
-        "role": None,
-        "login": None,
-        "password": None,
-        "password2": None,
-        "logged": False
-    }
+    state["reg"] = init_reg
+    state["login"] = init_login
+    state["user"] = init_user
+    state["projects"] = init_projects
+    state["engineers"] = init_engineers
+    state["vacancy"] = init_vacancy
+    state["specs"] = specialities
 
     state["message"] = None
-
-    state["status_message"] = None
-    state["show_user_logged"] = False
-    state["show_user_not_logged"] = False
-    state["show_login_form"] = False
-    state['show_login_button'] = True
-    state['show_registration_button'] = True
-    state['show_quit_button'] = False
-
-    state["logged"] = False
-    state["not_logged"] = True
 
 
 initial_state = ss.init_state({
 
     "message": None,
 
-    "not_logged": 1,
-    "logged": 0,
-    "reg_form": 1,
-    "reg_data_ok": 0,
-    "reg_data_error": 0,
-    "reg_data_error_message": "",
-    "reg_code": 0,
-    "reg_code_ok": 0,
-    "reg_code_error": 0,
-    "reg_db_message": 0,
-    "reg_db_text": "",
-    "login_form": 1,
-    "login_data_error": 0,
-    "login_not_in_db": 0,
-    "projects_intro": 1,
-    "projects_warning": 1,
-    "projects_content": 0,
-    "eng_warning": 1,
-    "eng_content": 0,
-    "vacancy_warning": 1,
-    "vacancy_content": 0,
-    "role_selector": 1,
-    "eng_form": 0,
-    "client_form": 0,
-    "inst_form": 0,
-
-    "user": {
-        "first_name": None,
-        "last_name": None,
-        "email": None,
-        "phone": None,
-        "role": None,
-        "login": None,
-        "password": None,
-        "password2": None,
-        "experience": None,
-        "major": None,  # speciality
-        "description": None,  # description for project or experience
-        "company": None,
-        "logged": 0
-    },
-
+    "reg": init_reg,
+    "login": init_login,
+    "user": init_user,
+    "projects": init_projects,
+    "engineers": init_engineers,
+    "vacancy": init_vacancy,
     "specs": specialities
-
 })
 
 initial_state.import_stylesheet("theme", "/static/custom.css?8")
+
+
