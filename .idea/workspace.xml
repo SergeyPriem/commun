@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="login">
       <change afterPath="$PROJECT_DIR$/ec/database" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ec/init_states.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ec/static/flag_en.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ec/static/flag_ru.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ec/static/flag_ua.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/Dockerfile" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/assets/main_df.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/assets/story.txt" afterDir="false" />
@@ -15,11 +17,8 @@
       <change afterPath="$PROJECT_DIR$/hello/static/README.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/static/favicon.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/static/pigeon1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hello/test_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hello/ui.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/tempo.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/tempo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/ec/ui.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/utilities.py" afterDir="false" />
     </list>
@@ -54,32 +53,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.tempo.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
-    "database.data.extractors.current.id": "JSON-Groovy.json.groovy",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "File.Encoding",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.tempo.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
+    &quot;database.data.extractors.current.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -116,6 +115,9 @@
       <workItem from="1709783164141" duration="4212000" />
       <workItem from="1709800544899" duration="14485000" />
       <workItem from="1709974255069" duration="16725000" />
+      <workItem from="1709991216423" duration="52000" />
+      <workItem from="1710127965504" duration="15196000" />
+      <workItem from="1710164233494" duration="1984000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <option name="closed" value="true" />
@@ -341,7 +343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709816512467</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="login">
+      <option name="closed" value="true" />
+      <created>1709991256834</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1709991256834</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

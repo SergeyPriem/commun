@@ -5,7 +5,7 @@ import time
 import bcrypt
 import streamsync as ss
 from pony.orm import *
-from utilities import valid_email, send_email, random_code_alphanumeric, err_handler, hash_password
+from utilities import valid_email, _send_email, random_code_alphanumeric, err_handler, hash_password, dic
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy
 from models import User
 
@@ -28,9 +28,7 @@ def _get_default_user_data(message):
 
 
 def _get_user_data(state):
-    print("------------------------")
-    print(state["user"]["login"])
-    print(state["user"]["password"])
+
     try:
         with db_session:
             current_user = User.get(login=state["user"]["login"])
@@ -38,10 +36,6 @@ def _get_user_data(state):
     except Exception as e:
         state["message"] = err_handler(e, "_get_user_data")
         return _get_default_user_data(None)
-
-    print("*********************")
-    print(state["user"]["login"])
-    print(state["user"]["password"])
 
     if current_user:
 
@@ -65,29 +59,40 @@ def _get_user_data(state):
 
 
 def log_user(state):
-    print(state["user"])
+
     state["user"] = _get_user_data(state)
 
     if state["user"]["logged"]:
 
-        state["user"]["not_logged"] = 0
-
         if state["user"]["role"] == 'client':
             state.set_page('engineers')
             state["engineers"]["content"] = 1
+            state["engineers"]["warning"] = 0
             state["projects"]["content"] = 0
-        elif state["user"]["role"] == 'engineer':
+            state["projects"]["warning"] = 1
+            state["vacancy"]["content"] = 0
+            state["vacancy"]["warning"] = 1
+
+        if state["user"]["role"] == 'engineer':
             state.set_page('projects')
             state["engineers"]["content"] = 0
+            state["engineers"]["warning"] = 1
             state["projects"]["content"] = 1
-        else:
-            state.set_page('about')
-    else:
-        state["user"]["not_logged"] = 1
+            state["projects"]["warning"] = 0
+            state["vacancy"]["content"] = 1
+            state["vacancy"]["warning"] = 0
+
+        if state["user"]["role"] == 'installer':
+            state.set_page('projects')
+            state["engineers"]["content"] = 1
+            state["engineers"]["warning"] = 0
+            state["projects"]["content"] = 1
+            state["projects"]["warning"] = 0
+            state["vacancy"]["content"] = 1
+            state["vacancy"]["warning"] = 0
 
 
 def add_user_to_db(state):
-
     if state["user"]["engineer"]:
         major = ", ".join(state["user"]["major"])
     else:
@@ -106,9 +111,9 @@ def add_user_to_db(state):
                 description=state["user"]["description"] or "-",
                 url='-',
                 date_time=datetime.datetime.now(),
-                experience=int(state["user"]["experience"]) or 0,
+                experience=int(state["user"]["experience"] or 0),
                 major=major,
-                company= state["user"]["company"] or "-"
+                company=state["user"]["company"] or "-"
             )
 
         state["reg"]["db_message_text"] = '+ Вы добавлены в базу данных'
@@ -120,7 +125,6 @@ def add_user_to_db(state):
 
 
 def validate_email_by_code(state):
-
     if state['reg']['code_sent'] == state['reg']['code_entered']:
 
         state["reg"]["code_message"] = "+ Код подтвержден"
@@ -134,7 +138,6 @@ def validate_email_by_code(state):
         state["reg"]['db_message'] = 1
 
         if add_user_to_db(state) == 200:
-
             state["reg"]['form'] = 0
             state["reg"]['data_ok'] = 0
             time.sleep(2)
@@ -148,8 +151,10 @@ def validate_email_by_code(state):
 
 def send_confirmation_code(state):
     state['reg']['code_sent'] = random_code_alphanumeric(6)
+
     print(f"Code sent: {state['reg']['code_sent']}")
-    reply = send_email(state)
+
+    reply = _send_email(state)
     if reply['status'] == 200:
         state["reg"]["code_section"] = 1
     else:
@@ -272,10 +277,21 @@ def quit_fun(state):
 
     state["message"] = None
 
+def switch_to_rus(state):
+    state["lang"] = "R"
+
+def switch_to_eng(state):
+    state["lang"] = "E"
+
+def switch_to_ukr(state):
+    state["lang"] = "U"
+
 
 initial_state = ss.init_state({
 
     "message": None,
+    "lang": "R",
+    "dic": dic,
 
     "reg": init_reg,
     "login": init_login,
@@ -287,5 +303,3 @@ initial_state = ss.init_state({
 })
 
 initial_state.import_stylesheet("theme", "/static/custom.css?8")
-
-
