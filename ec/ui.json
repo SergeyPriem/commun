@@ -1467,99 +1467,6 @@
             },
             "visible": true
         },
-        "k820fs3mex1poc6k": {
-            "id": "k820fs3mex1poc6k",
-            "type": "section",
-            "content": {
-                "title": "",
-                "accentColor": "#000000",
-                "containerBackgroundColor": "#152e61",
-                "containerShadow": "5px 5px 7px -4px #000000",
-                "primaryTextColor": "#ff0000"
-            },
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "position": 2,
-            "handlers": {},
-            "visible": true
-        },
-        "e6v6bgrqvh87qy3q": {
-            "id": "e6v6bgrqvh87qy3q",
-            "type": "columns",
-            "content": {},
-            "parentId": "k820fs3mex1poc6k",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "nf2jy374c5jmpdpg": {
-            "id": "nf2jy374c5jmpdpg",
-            "type": "column",
-            "content": {
-                "width": "1",
-                "contentHAlign": "center",
-                "contentVAlign": "center"
-            },
-            "parentId": "e6v6bgrqvh87qy3q",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "yn7r45laaj94yxlx": {
-            "id": "yn7r45laaj94yxlx",
-            "type": "button",
-            "content": {
-                "text": "\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u043d\u043e\u0432\u043e\u0441\u0442\u0438",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#fcfcfc",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "nf2jy374c5jmpdpg",
-            "position": 0,
-            "handlers": {
-                "ss-click": "$goToPage_subscribe"
-            },
-            "visible": true
-        },
-        "ba8x09qi3y9xl8pf": {
-            "id": "ba8x09qi3y9xl8pf",
-            "type": "column",
-            "content": {
-                "width": "1"
-            },
-            "parentId": "e6v6bgrqvh87qy3q",
-            "position": 1,
-            "handlers": {},
-            "visible": true
-        },
-        "cg7t1mfw735pd8gc": {
-            "id": "cg7t1mfw735pd8gc",
-            "type": "column",
-            "content": {
-                "width": "1",
-                "contentHAlign": "center",
-                "contentVAlign": "center"
-            },
-            "parentId": "e6v6bgrqvh87qy3q",
-            "position": 2,
-            "handlers": {},
-            "visible": true
-        },
-        "6v48l6w8jec0n4dd": {
-            "id": "6v48l6w8jec0n4dd",
-            "type": "button",
-            "content": {
-                "text": "\u0421\u0432\u044f\u0437\u0430\u0442\u044c\u0441\u044f \u0441 \u043d\u0430\u043c\u0438",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#fcfcfc",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "cg7t1mfw735pd8gc",
-            "position": 0,
-            "handlers": {
-                "ss-click": "$goToPage_contact_us"
-            },
-            "visible": true
-        },
         "puc0deh1rbpr5oa9": {
             "id": "puc0deh1rbpr5oa9",
             "type": "section",
@@ -2307,300 +2214,6 @@
             },
             "parentId": "vhich18yowdparb0",
             "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "vkhdytjqllaocz1k": {
-            "id": "vkhdytjqllaocz1k",
-            "type": "section",
-            "content": {
-                "title": "",
-                "accentColor": "#000000",
-                "containerBackgroundColor": "#152e61",
-                "contentHAlign": "center",
-                "containerShadow": "5px 5px 5px -4px #000000"
-            },
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "q5o1nywexcf50o0b": {
-            "id": "q5o1nywexcf50o0b",
-            "type": "columns",
-            "content": {},
-            "parentId": "vkhdytjqllaocz1k",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "saabbxd1ge34wy63": {
-            "id": "saabbxd1ge34wy63",
-            "type": "column",
-            "content": {
-                "width": "3.6",
-                "contentHAlign": "center",
-                "contentVAlign": "center"
-            },
-            "parentId": "q5o1nywexcf50o0b",
-            "position": 2,
-            "handlers": {},
-            "visible": true
-        },
-        "1i1al3kp4bscpm64": {
-            "id": "1i1al3kp4bscpm64",
-            "type": "horizontalstack",
-            "content": {
-                "contentHAlign": "center"
-            },
-            "parentId": "saabbxd1ge34wy63",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "kra67vh5mpf96dor": {
-            "id": "kra67vh5mpf96dor",
-            "type": "button",
-            "content": {
-                "text": "\u041e \u043d\u0430\u0441",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#ffffff",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "1i1al3kp4bscpm64",
-            "position": 0,
-            "handlers": {
-                "ss-click": "$goToPage_about"
-            },
-            "visible": true
-        },
-        "y2jv4xuvllbwreb7": {
-            "id": "y2jv4xuvllbwreb7",
-            "type": "button",
-            "content": {
-                "text": "\u041f\u0440\u043e\u0435\u043a\u0442\u044b",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#ffffff",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "1i1al3kp4bscpm64",
-            "position": 1,
-            "handlers": {
-                "ss-click": "$goToPage_projects"
-            },
-            "visible": true
-        },
-        "xbt8q4e2u8rsxu56": {
-            "id": "xbt8q4e2u8rsxu56",
-            "type": "button",
-            "content": {
-                "text": "\u0418\u043d\u0436\u0435\u043d\u0435\u0440\u044b",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#ffffff",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "1i1al3kp4bscpm64",
-            "position": 2,
-            "handlers": {
-                "ss-click": "$goToPage_engineers"
-            },
-            "visible": true
-        },
-        "yy897hps4d992wo2": {
-            "id": "yy897hps4d992wo2",
-            "type": "button",
-            "content": {
-                "text": "\u0412\u0430\u043a\u0430\u043d\u0441\u0438\u0438",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#ffffff",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "1i1al3kp4bscpm64",
-            "position": 3,
-            "handlers": {
-                "ss-click": "$goToPage_vacancy"
-            },
-            "visible": true
-        },
-        "bpzdtn32ozqvlwcx": {
-            "id": "bpzdtn32ozqvlwcx",
-            "type": "column",
-            "content": {
-                "width": "1.5",
-                "contentHAlign": "start",
-                "contentVAlign": "center"
-            },
-            "parentId": "q5o1nywexcf50o0b",
-            "position": 1,
-            "handlers": {},
-            "visible": true
-        },
-        "jlb52mtpn520i024": {
-            "id": "jlb52mtpn520i024",
-            "type": "text",
-            "content": {
-                "text": "# **\u0421\u041e\u041e\u0411\u0429\u0415\u0421\u0422\u0412\u041e \u0418\u041d\u0416\u0415\u041d\u0415\u0420\u041e\u0412**",
-                "useMarkdown": "yes",
-                "primaryTextColor": "#ffffff",
-                "alignment": ""
-            },
-            "parentId": "bpzdtn32ozqvlwcx",
-            "position": 0,
-            "handlers": {
-                "ss-click": "$goToPage_about"
-            },
-            "visible": true
-        },
-        "khiipqg3tiwf4gp4": {
-            "id": "khiipqg3tiwf4gp4",
-            "type": "column",
-            "content": {
-                "width": "1.6",
-                "contentHAlign": "end",
-                "contentVAlign": "center",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "q5o1nywexcf50o0b",
-            "position": 4,
-            "handlers": {},
-            "visible": true
-        },
-        "y2gfypqftm6rwcst": {
-            "id": "y2gfypqftm6rwcst",
-            "type": "horizontalstack",
-            "content": {
-                "contentHAlign": "center"
-            },
-            "parentId": "khiipqg3tiwf4gp4",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "2sh85lftrw0595x6": {
-            "id": "2sh85lftrw0595x6",
-            "type": "button",
-            "content": {
-                "text": "\u0412\u0445\u043e\u0434",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#ffffff",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "y2gfypqftm6rwcst",
-            "position": 0,
-            "handlers": {
-                "ss-click": "$goToPage_login"
-            },
-            "visible": "user.not_logged"
-        },
-        "y83inpy1t36go8ed": {
-            "id": "y83inpy1t36go8ed",
-            "type": "button",
-            "content": {
-                "text": "\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#ffffff",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "y2gfypqftm6rwcst",
-            "position": 1,
-            "handlers": {
-                "ss-click": "$goToPage_registration"
-            },
-            "visible": "user.not_logged"
-        },
-        "kfvii1fpf8x77emd": {
-            "id": "kfvii1fpf8x77emd",
-            "type": "button",
-            "content": {
-                "text": "\u0412\u044b\u0445\u043e\u0434",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#ffffff",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "y2gfypqftm6rwcst",
-            "position": 2,
-            "handlers": {
-                "ss-click": "quit_fun"
-            },
-            "visible": "user.logged"
-        },
-        "ebs2pr0wpapg7niy": {
-            "id": "ebs2pr0wpapg7niy",
-            "type": "column",
-            "content": {
-                "title": "",
-                "width": ".5",
-                "contentVAlign": "center",
-                "contentHAlign": "center",
-                "contentPadding": "0px"
-            },
-            "parentId": "q5o1nywexcf50o0b",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "n4e2wr8i5ng8qudf": {
-            "id": "n4e2wr8i5ng8qudf",
-            "type": "image",
-            "content": {
-                "src": "static/rounded_helmet.png",
-                "caption": "",
-                "maxWidth": "60",
-                "maxHeight": "60"
-            },
-            "parentId": "ebs2pr0wpapg7niy",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "t83ej9uqmkz2rfaq": {
-            "id": "t83ej9uqmkz2rfaq",
-            "type": "column",
-            "content": {
-                "title": "",
-                "width": "0.7",
-                "contentHAlign": "center",
-                "contentVAlign": "center"
-            },
-            "parentId": "q5o1nywexcf50o0b",
-            "position": 3,
-            "handlers": {},
-            "visible": true
-        },
-        "qc0gr9lddayjseck": {
-            "id": "qc0gr9lddayjseck",
-            "type": "horizontalstack",
-            "content": {
-                "contentHAlign": "center"
-            },
-            "parentId": "t83ej9uqmkz2rfaq",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "8k9l9uxfzqkyvv7e": {
-            "id": "8k9l9uxfzqkyvv7e",
-            "type": "text",
-            "content": {
-                "text": "En",
-                "alignment": "center",
-                "primaryTextColor": "#ffffff"
-            },
-            "parentId": "qc0gr9lddayjseck",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "mvdweuc7zo861zob": {
-            "id": "mvdweuc7zo861zob",
-            "type": "text",
-            "content": {
-                "text": "Ru",
-                "alignment": "center",
-                "primaryTextColor": "#ffffff"
-            },
-            "parentId": "qc0gr9lddayjseck",
-            "position": 1,
             "handlers": {},
             "visible": true
         },
@@ -6318,6 +5931,414 @@
             "position": 2,
             "handlers": {
                 "ss-click": "switch_to_rus"
+            },
+            "visible": true
+        },
+        "uzb8e0xiangwsg10": {
+            "id": "uzb8e0xiangwsg10",
+            "type": "section",
+            "content": {
+                "title": "",
+                "accentColor": "#000000",
+                "containerBackgroundColor": "#152e61",
+                "contentHAlign": "center",
+                "containerShadow": "5px 5px 5px -4px #000000"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "7s8qksof5i0ugh04": {
+            "id": "7s8qksof5i0ugh04",
+            "type": "columns",
+            "content": {},
+            "parentId": "uzb8e0xiangwsg10",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "4pgvs98jtqbqr93o": {
+            "id": "4pgvs98jtqbqr93o",
+            "type": "column",
+            "content": {
+                "width": "3.6",
+                "contentHAlign": "center",
+                "contentVAlign": "center"
+            },
+            "parentId": "7s8qksof5i0ugh04",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "swd6ttw5h7x43o5g": {
+            "id": "swd6ttw5h7x43o5g",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "parentId": "4pgvs98jtqbqr93o",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "98p7u1i80usw7xd0": {
+            "id": "98p7u1i80usw7xd0",
+            "type": "button",
+            "content": {
+                "text": "@{dic.about_us[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#ffffff",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "swd6ttw5h7x43o5g",
+            "position": 0,
+            "handlers": {
+                "ss-click": "$goToPage_about"
+            },
+            "visible": true
+        },
+        "vznqf66redb91i71": {
+            "id": "vznqf66redb91i71",
+            "type": "button",
+            "content": {
+                "text": "@{dic.projects[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#ffffff",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "swd6ttw5h7x43o5g",
+            "position": 1,
+            "handlers": {
+                "ss-click": "$goToPage_projects"
+            },
+            "visible": true
+        },
+        "xsydxsmgpkpmk4nd": {
+            "id": "xsydxsmgpkpmk4nd",
+            "type": "button",
+            "content": {
+                "text": "@{dic.engineers[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#ffffff",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "swd6ttw5h7x43o5g",
+            "position": 2,
+            "handlers": {
+                "ss-click": "$goToPage_engineers"
+            },
+            "visible": true
+        },
+        "ffpyjc05kpumetbk": {
+            "id": "ffpyjc05kpumetbk",
+            "type": "button",
+            "content": {
+                "text": "@{dic.vacancy[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#ffffff",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "swd6ttw5h7x43o5g",
+            "position": 3,
+            "handlers": {
+                "ss-click": "$goToPage_vacancy"
+            },
+            "visible": true
+        },
+        "30uha9tcjzw2juyh": {
+            "id": "30uha9tcjzw2juyh",
+            "type": "column",
+            "content": {
+                "width": "1.3",
+                "contentHAlign": "start",
+                "contentVAlign": "center"
+            },
+            "parentId": "7s8qksof5i0ugh04",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "ufwe7m5gih5cg9v7": {
+            "id": "ufwe7m5gih5cg9v7",
+            "type": "text",
+            "content": {
+                "text": "# **@{dic.community[lang]}**",
+                "useMarkdown": "yes",
+                "primaryTextColor": "#ffffff",
+                "alignment": "left"
+            },
+            "parentId": "30uha9tcjzw2juyh",
+            "position": 0,
+            "handlers": {
+                "ss-click": "$goToPage_about"
+            },
+            "visible": true
+        },
+        "h44cfmkl3w67xorq": {
+            "id": "h44cfmkl3w67xorq",
+            "type": "column",
+            "content": {
+                "width": "1.6",
+                "contentHAlign": "end",
+                "contentVAlign": "center",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "7s8qksof5i0ugh04",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "krq2s22kym7bq0i8": {
+            "id": "krq2s22kym7bq0i8",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "parentId": "h44cfmkl3w67xorq",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "1duh0p3p5wdoasn7": {
+            "id": "1duh0p3p5wdoasn7",
+            "type": "button",
+            "content": {
+                "text": "@{dic.log_in[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#ffffff",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "krq2s22kym7bq0i8",
+            "position": 0,
+            "handlers": {
+                "ss-click": "$goToPage_login"
+            },
+            "visible": "user.not_logged"
+        },
+        "prh04ii5ogzyvbfv": {
+            "id": "prh04ii5ogzyvbfv",
+            "type": "button",
+            "content": {
+                "text": "@{dic.reg[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#ffffff",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "krq2s22kym7bq0i8",
+            "position": 1,
+            "handlers": {
+                "ss-click": "$goToPage_registration"
+            },
+            "visible": "user.not_logged"
+        },
+        "wj4ct68jj796nsdc": {
+            "id": "wj4ct68jj796nsdc",
+            "type": "button",
+            "content": {
+                "text": "@{dic.quit[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#ffffff",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "krq2s22kym7bq0i8",
+            "position": 2,
+            "handlers": {
+                "ss-click": "quit_fun"
+            },
+            "visible": "user.logged"
+        },
+        "aaoi86ux45gawz0y": {
+            "id": "aaoi86ux45gawz0y",
+            "type": "column",
+            "content": {
+                "title": "",
+                "width": ".5",
+                "contentVAlign": "center",
+                "contentHAlign": "center",
+                "contentPadding": "0px"
+            },
+            "parentId": "7s8qksof5i0ugh04",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "0835aqz65c96jgr6": {
+            "id": "0835aqz65c96jgr6",
+            "type": "image",
+            "content": {
+                "src": "static/rounded_helmet.png",
+                "caption": "",
+                "maxWidth": "60",
+                "maxHeight": "60"
+            },
+            "parentId": "aaoi86ux45gawz0y",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "3blffn0viinf3be7": {
+            "id": "3blffn0viinf3be7",
+            "type": "column",
+            "content": {
+                "title": "",
+                "width": "0.7",
+                "contentHAlign": "center",
+                "contentVAlign": "center"
+            },
+            "parentId": "7s8qksof5i0ugh04",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "ev5uv66hy5nuhzw6": {
+            "id": "ev5uv66hy5nuhzw6",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center",
+                "contentPadding": "7px 0px 0px 0px"
+            },
+            "parentId": "3blffn0viinf3be7",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "zzma8v3imex9ky5v": {
+            "id": "zzma8v3imex9ky5v",
+            "type": "image",
+            "content": {
+                "src": "static/flag_en.png",
+                "caption": "",
+                "maxWidth": "20"
+            },
+            "parentId": "ev5uv66hy5nuhzw6",
+            "position": 0,
+            "handlers": {
+                "ss-click": "switch_to_eng"
+            },
+            "visible": true
+        },
+        "quc4u0l04snrtr0d": {
+            "id": "quc4u0l04snrtr0d",
+            "type": "image",
+            "content": {
+                "src": "static/flag_ua.png",
+                "caption": "",
+                "maxWidth": "20"
+            },
+            "parentId": "ev5uv66hy5nuhzw6",
+            "position": 1,
+            "handlers": {
+                "ss-click": "switch_to_ukr"
+            },
+            "visible": true
+        },
+        "nlb0qgpitkpslczc": {
+            "id": "nlb0qgpitkpslczc",
+            "type": "image",
+            "content": {
+                "src": "static/flag_ru.png",
+                "caption": "",
+                "maxWidth": "20",
+                "maxHeight": "-1"
+            },
+            "parentId": "ev5uv66hy5nuhzw6",
+            "position": 2,
+            "handlers": {
+                "ss-click": "switch_to_rus"
+            },
+            "visible": true
+        },
+        "bbtj5mr3tzxjk2sh": {
+            "id": "bbtj5mr3tzxjk2sh",
+            "type": "section",
+            "content": {
+                "title": "",
+                "accentColor": "#000000",
+                "containerBackgroundColor": "#152e61",
+                "containerShadow": "5px 5px 7px -4px #000000",
+                "primaryTextColor": "#fa0000"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "24ww1m4ss7ezm1x7": {
+            "id": "24ww1m4ss7ezm1x7",
+            "type": "columns",
+            "content": {},
+            "parentId": "bbtj5mr3tzxjk2sh",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "k35alfl3fbgp1g41": {
+            "id": "k35alfl3fbgp1g41",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentHAlign": "center",
+                "contentVAlign": "center"
+            },
+            "parentId": "24ww1m4ss7ezm1x7",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "my0qh57dmdp010e9": {
+            "id": "my0qh57dmdp010e9",
+            "type": "button",
+            "content": {
+                "text": "@{dic.subscribe[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#fcfcfc",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "k35alfl3fbgp1g41",
+            "position": 0,
+            "handlers": {
+                "ss-click": "$goToPage_subscribe"
+            },
+            "visible": true
+        },
+        "1wfsin5tujr4pemi": {
+            "id": "1wfsin5tujr4pemi",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "24ww1m4ss7ezm1x7",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "687ag2y96km7m0lg": {
+            "id": "687ag2y96km7m0lg",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentHAlign": "center",
+                "contentVAlign": "center"
+            },
+            "parentId": "24ww1m4ss7ezm1x7",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "oh0g174yusx4rppk": {
+            "id": "oh0g174yusx4rppk",
+            "type": "button",
+            "content": {
+                "text": "@{dic.contact_us[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#fcfcfc",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "687ag2y96km7m0lg",
+            "position": 0,
+            "handlers": {
+                "ss-click": "$goToPage_contact_us"
             },
             "visible": true
         }
