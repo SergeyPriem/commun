@@ -13,6 +13,10 @@ from models import User
 print("Hello world!")
 
 
+def open_streamsync_website(state):
+    state.open_url("https://streamsync.cloud")
+
+
 def _get_default_user_data(message):
     return {
         "first_name": None,
@@ -28,7 +32,6 @@ def _get_default_user_data(message):
 
 
 def _get_user_data(state):
-
     try:
         with db_session:
             current_user = User.get(login=state["user"]["login"])
@@ -59,7 +62,6 @@ def _get_user_data(state):
 
 
 def log_user(state):
-
     state["user"] = _get_user_data(state)
 
     if state["user"]["logged"]:
@@ -277,11 +279,14 @@ def quit_fun(state):
 
     state["message"] = None
 
+
 def switch_to_rus(state):
     state["lang"] = "R"
 
+
 def switch_to_eng(state):
     state["lang"] = "E"
+
 
 def switch_to_ukr(state):
     state["lang"] = "U"

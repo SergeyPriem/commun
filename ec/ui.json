@@ -6209,7 +6209,8 @@
             "content": {
                 "src": "static/flag_en.png",
                 "caption": "",
-                "maxWidth": "20"
+                "maxWidth": "20",
+                "maxHeight": "20"
             },
             "parentId": "ev5uv66hy5nuhzw6",
             "position": 0,
@@ -6224,28 +6225,13 @@
             "content": {
                 "src": "static/flag_ua.png",
                 "caption": "",
-                "maxWidth": "20"
+                "maxWidth": "20",
+                "maxHeight": "20"
             },
             "parentId": "ev5uv66hy5nuhzw6",
             "position": 1,
             "handlers": {
                 "ss-click": "switch_to_ukr"
-            },
-            "visible": true
-        },
-        "nlb0qgpitkpslczc": {
-            "id": "nlb0qgpitkpslczc",
-            "type": "image",
-            "content": {
-                "src": "static/flag_ru.png",
-                "caption": "",
-                "maxWidth": "20",
-                "maxHeight": "-1"
-            },
-            "parentId": "ev5uv66hy5nuhzw6",
-            "position": 2,
-            "handlers": {
-                "ss-click": "switch_to_rus"
             },
             "visible": true
         },
@@ -6340,6 +6326,30 @@
             "handlers": {
                 "ss-click": "$goToPage_contact_us"
             },
+            "visible": true
+        },
+        "jow0425onsgnya6v": {
+            "id": "jow0425onsgnya6v",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "parentId": "1wfsin5tujr4pemi",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "img6hexkjmddby6d": {
+            "id": "img6hexkjmddby6d",
+            "type": "image",
+            "parentId": "ev5uv66hy5nuhzw6",
+            "content": {
+                "src": "static/flag_ru.png",
+                "caption": "",
+                "maxWidth": "20"
+            },
+            "handlers": {},
+            "position": 2,
             "visible": true
         }
     }
