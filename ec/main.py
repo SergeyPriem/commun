@@ -5,8 +5,10 @@ import time
 import bcrypt
 import streamsync as ss
 from pony.orm import *
-from utilities import valid_email, _send_email, random_code_alphanumeric, err_handler, hash_password, dic
-from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy
+from utilities import valid_email, _send_email, random_code_alphanumeric, err_handler, hash_password
+from dic import dic
+from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
+    specialities_R, specialities_U, specialities_E
 from models import User
 
 # Shows in the log when the app starts
@@ -35,7 +37,6 @@ def _get_user_data(state):
     try:
         with db_session:
             current_user = User.get(login=state["user"]["login"])
-            print("line 34")
     except Exception as e:
         state["message"] = err_handler(e, "_get_user_data")
         return _get_default_user_data(None)
@@ -282,20 +283,23 @@ def quit_fun(state):
 
 def switch_to_rus(state):
     state["lang"] = "R"
+    state["specs"] = specialities_R
 
 
 def switch_to_eng(state):
     state["lang"] = "E"
+    state["specs"] = specialities_E
 
 
 def switch_to_ukr(state):
     state["lang"] = "U"
+    state["specs"] = specialities_U
 
 
 initial_state = ss.init_state({
 
     "message": None,
-    "lang": "R",
+    "lang": "E",
     "dic": dic,
 
     "reg": init_reg,
@@ -304,7 +308,7 @@ initial_state = ss.init_state({
     "projects": init_projects,
     "engineers": init_engineers,
     "vacancy": init_vacancy,
-    "specs": specialities
+    "specs": specialities_E
 })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?8")
+initial_state.import_stylesheet("theme", "/static/custom.css?18")

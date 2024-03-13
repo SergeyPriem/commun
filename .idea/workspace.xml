@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="three_lang">
+      <change afterPath="$PROJECT_DIR$/ec/dic.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/Dockerfile" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/assets/main_df.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/assets/story.txt" afterDir="false" />
@@ -14,6 +15,10 @@
       <change afterPath="$PROJECT_DIR$/hello/static/favicon.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/static/pigeon1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/database" beforeDir="false" afterPath="$PROJECT_DIR$/ec/database" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/init_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/init_states.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/static/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/ec/static/custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/ec/ui.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/utilities.py" afterDir="false" />
     </list>
@@ -65,7 +70,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -114,7 +119,9 @@
       <workItem from="1710127965504" duration="15196000" />
       <workItem from="1710164233494" duration="2941000" />
       <workItem from="1710215995037" duration="2727000" />
-      <workItem from="1710245129473" duration="510000" />
+      <workItem from="1710245129473" duration="1141000" />
+      <workItem from="1710303737215" duration="17376000" />
+      <workItem from="1710331597839" duration="1020000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <option name="closed" value="true" />
@@ -372,7 +379,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710220564933</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="three_lang">
+      <option name="closed" value="true" />
+      <created>1710254873143</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1710254873143</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
