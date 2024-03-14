@@ -350,3 +350,75 @@ dic = {
     }
 }
 
+error_messages = {
+    "first_name": {
+        "E": "Enter the name longer than two characters",
+        "U": "Введіть ім'я довше двох символів",
+        "R": "Введите имя длиннее двух символов"
+    },
+    "first_name_2": {
+        "E": "Enter the name",
+        "U": "Введіть ім'я",
+        "R": "Введите имя"
+    },
+    "short_mail": {
+        "E": "Enter the correct email",
+        "U": "Введіть коректний email",
+        "R": "Введите корректный email"
+    },
+    "wrong_phone": {
+        "E": "Enter the correct phone number",
+        "U": "Введіть коректний номер телефону",
+        "R": "Введите корректный номер телефона"
+    },
+    "empty_phone": {
+        "E": "Enter the phone number",
+        "U": "Введіть номер телефону",
+        "R": "Введите номер телефона"
+    },
+    "short_login": {
+        "E": "Enter the login not less than 3 characters",
+        "U": "Введіть логін не менше 3 символів",
+        "R": "Введите логин не менее 3 символов"
+    },
+    "empty_login": {
+        "E": "Enter the login",
+        "U": "Введіть логин",
+        "R": "Введите логин"
+    },
+    "empty_password": {
+        "E": "Enter the password",
+        "U": "Введіть пароль",
+        "R": "Введите пароль"
+    },
+    "different_passwords": {
+        "E": "Passwords do not match",
+        "U": "Паролі не співпадають",
+        "R": "Пароли не совпадают"
+    },
+    "wrong_experience": {
+        "E": "Enter correct work experience",
+        "U": "Введіть коректний досвід роботи",
+        "R": "Введите корректный опыт работы"
+    },
+    "empty_speciality": {
+        "E": "Choose a specialty from the list",
+        "U": "Виберіть спеціальність із списку",
+        "R": "Выберите специальность из списка"
+    },
+    "empty_experience": {
+        "E": "Enter your experience",
+        "U": "Введіть досвід роботи",
+        "R": "Введите опыт работы"
+    },
+    "short_description": {
+        "E": "Enter more details in your skills description",
+        "U": "Введіть опис навичок більш детально",
+        "R": "Введите описание навыков более детально"
+    },
+    "empty_description": {
+        "E": "Enter a description of your skills",
+        "U": "Введіть опис ваших навичок",
+        "R": "Введите описание навыков"
+    }
+}

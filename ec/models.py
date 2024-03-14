@@ -1,51 +1,44 @@
 # -*- coding: utf-8 -*-
 
-from datetime import datetime
-from pony.orm import *
+from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import MetaData, create_engine
+from sqlalchemy.ext.declarative import declarative_base
 
-db = Database()
+metadata_obj = MetaData()
 
-
-class User(db.Entity):
-    id = PrimaryKey(int, auto=True)
-    first_name = Required(str, 50)
-    last_name = Optional(str, 50)
-    login = Required(str, 100, unique=True)
-    email = Required(str, 100)
-    phone = Required(str, 15)
-    role = Required(str, 20)
-    h_pass = Required(str, 60)
-    description = Optional(str, 1000)
-    url = Optional(str, 100)
-    record = Optional('Record')
-    date_time = Required(datetime)
-    experience = Optional(int, size=8)
-    major = Optional(str, 200)
-    company = Optional(str, 100)
+engine = create_engine("sqlite:///db.sqlite3")
+Base = declarative_base()
 
 
-class Project(db.Entity):
-    id = PrimaryKey(int, auto=True)
-    name = Optional(str, 250)
-    description = Optional(str, 1000)
-    files_link = Required(str, 255)
-    price = Optional(str, 1000)
-    note = Optional(str, 500)
-    designer = Optional(int, size=32)
-    record = Optional('Record')
-    date_time = Required(datetime)
+class User(Base):
+    __tablename__ = 'User'
+
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String(50), nullable=False)
+    last_name = Column(String(50))
+    login = Column(String(100), unique=True, nullable=False)
+    email = Column(String(100), nullable=False)
+    phone = Column(String(15), nullable=False)
+    role = Column(String(20), nullable=False)
+    h_pass = Column(String(60), nullable=False)
+    description = Column(String(1000))
+    url = Column(String(100))
+    record = Column(Integer)
+    date_time = Column(DateTime, nullable=False)
+    experience = Column(Integer)
+    major = Column(String(200))
+    company = Column(String(100))
+    lang = Column(String(2), nullable=False)
 
 
-class Record(db.Entity):
-    id = PrimaryKey(int, auto=True)
-    project = Required(Project)
-    user = Required(User)
-    client_report = Optional(str, 1000)
-    performer_report = Optional(str, 1000)
-    executed_part = Optional(str, 1000)
-    date_time = Optional(str)
+class VisitLog(Base):
+    __tablename__ = 'VisitLog'
+
+    id = Column(Integer, primary_key=True)
+    user_login = Column(String(100), nullable=False)
+    date_time_in = Column(DateTime, nullable=False)
+    date_time_out = Column(DateTime)
+    lang = Column(String(2), nullable=False)
 
 
-db.bind(provider='sqlite', filename='database', create_db=True, timeout=5.0)
-
-db.generate_mapping(create_tables=True)
+metadata_obj.create_all(engine)

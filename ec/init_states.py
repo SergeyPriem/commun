@@ -18,7 +18,8 @@ init_user = {
     "message": None,
     "engineer": 0,
     "client": 0,
-    "installer": 0
+    "installer": 0,
+    "lang": "E"
 }
 
 init_reg = {
