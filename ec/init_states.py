@@ -69,7 +69,7 @@ specialities_E = {
         "ins": "Instrumentation",
         "low_cur": "Telecom, F&G",
         "plot_plan": "Plot Plan",
-        "piping_linear": "Piping",
+        "piping_linear": "Piping-linear",
         "piping_area": "Piping",
         "hvac": "HVAC",
         "wss": "Water Supply",
@@ -83,7 +83,7 @@ specialities_U = {
     "ins": "КВПіА",
     "low_cur": "Зв'язок, пож.безпека",
     "plot_plan": "Генплан",
-    "piping_linear": "Трубопроводи",
+    "piping_linear": "Магістральні Трубопроводи",
     "piping_area": "Монтаж технолог. обладнання",
     "hvac": "ОВіК",
     "wss": "Водопостачання і Водовідведення",
@@ -97,7 +97,7 @@ specialities_R = {
     "ins": "КИПиА",
     "low_cur": "Связь, пож.безопасность",
     "plot_plan": "Генплан",
-    "piping_linear": "Трубопроводы",
+    "piping_linear": "Магистральные Трубопроводы",
     "piping_area": "Монтаж технолог. оборудования",
     "hvac": "ОВиК",
     "wss": "Водоснабжение и Водоотведение",
@@ -105,14 +105,3 @@ specialities_R = {
     "civil": "Строительная часть"
 }
 
-electrical = {
-    "el": "Electrical",
-    "ins": "Instrumentation",
-    "low_cur": "Telecom",
-    "plot_plan": "Plot Plan",
-    "piping_linear": "Piping - linear",
-    "piping_area": "Piping",
-    "hvac": "HVAC",
-    "wss": "Water Supply",
-    "term": "Heat Engineering"
-}

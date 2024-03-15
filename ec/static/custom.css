@@ -1,6 +1,7 @@
 .but_as_link {
   font-size: 16px !important;
   font-weight: bold !important;
+  border: none !important;
 }
 
 .but_as_link:hover {

@@ -424,7 +424,7 @@ def _get_engineers(state, spec):
     with Session(bind=engine) as session:
         try:
             stuff = session.query(User).filter(User.major.contains(spec)).all()
-            state[spec] = {str(i+1): {
+            state[spec] = {stuff[i].login: {
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
                 "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
@@ -452,6 +452,21 @@ def prepare_piping_linear(state):
     _get_engineers(state, "piping_linear")
 
 
+def prepare_piping_area(state):
+    _get_engineers(state, "piping_area")
+
+
+def prepare_hvac(state):
+    _get_engineers(state, "hvac")
+
+
+def prepare_wss(state):
+    _get_engineers(state, "wss")
+
+
+def connect_w_engineer(state, context):
+    state["selected_engineers"] += [context["itemId"]]
+    state["selected_engineers"] = list(set(state["selected_engineers"]))
 
 
 initial_state = ss.init_state(
@@ -478,7 +493,8 @@ initial_state = ss.init_state(
         "wss": None,
         "term": None,
         "civil": None,
-        }
-    )
+        "selected_engineers": [],
+    }
+)
 
-initial_state.import_stylesheet("theme", "/static/custom.css?21")
+initial_state.import_stylesheet("theme", "/static/custom.css?22")
