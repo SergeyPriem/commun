@@ -419,60 +419,12 @@ def switch_to_ukr(state):
     state["lang"] = "U"
     state["specs"] = specialities_U
 
-def prepare_el(state):
-    state["electrics"] = {
-        "1": {
-            "name": "Sergey",
-            "surname": "Priemskiy",
-            "age": 45,
-            "experience": 20,
-            "lang": "----------------------------------------------------------------------"
-        },
-        "2": {
-            "name": "Сергей",
-            "surname": "Приемский",
-            "age": 45,
-            "experience": 20,
-            "lang": ""
-        },
-        "3": {
-            "name": "Сергей",
-            "surname": "Приемский",
-            "age": 45,
-            "experience": 20,
-            "lang": ""
-        },
-        "4": {
-            "name": "Сергей",
-            "surname": "Приемский",
-            "age": 45,
-            "experience": 20,
-            "lang": ""
-        },
-        "5": {
-            "name": "Сергей",
-            "surname": "Приемский",
-            "age": 45,
-            "experience": 20,
-            "lang": ""
-        },
-        "6": {
-            "name": "Сергій",
-            "surname": "Приємський asldjf asd; ;alkdsj a;dlskf  as;ldkfja",
-            "age": 45,
-            "experience": 20,
-            "lang": "----------------------------------------------------------------------"
-        }
-    }
 
-
-def prepare_ins(state):
-
+def _get_engineers(state, spec):
     with Session(bind=engine) as session:
         try:
-            stuff = session.query(User).filter(User.major.contains("ins")).all()
-
-            state["ins"] = {str(i+1): {
+            stuff = session.query(User).filter(User.major.contains(spec)).all()
+            state[spec] = {str(i+1): {
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
                 "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
@@ -482,15 +434,22 @@ def prepare_ins(state):
         except SQLAlchemyError as e:
             print(f"An error occurred: {e}")
 
-    # state["ins"] = {
-    #     "1": {
-    #         "name": "Alexey",
-    #         "surname": "Serdiuk",
-    #         "age": 45,
-    #         "experience": 20,
-    #         "lang": "----------------------------------------------------------------------"
-    #     }
-    # }
+def prepare_el(state):
+    _get_engineers(state, "el")
+
+
+def prepare_ins(state):
+    _get_engineers(state, "ins")
+
+def prepare_plot_plan(state):
+    _get_engineers(state, "plot_plan")
+
+def prepare_low_cur(state):
+    _get_engineers(state, "low_cur")
+
+
+def prepare_piping_linear(state):
+    _get_engineers(state, "piping_linear")
 
 
 
@@ -509,9 +468,9 @@ initial_state = ss.init_state(
         "vacancy": init_vacancy,
         "specs": specialities_E,
 
-        "electrics": None,
+        "el": None,
         "ins": None,
-        "telecom": None,
+        "low_cur": None,
         "plot_plan": None,
         "piping_linear": None,
         "piping_area": None,

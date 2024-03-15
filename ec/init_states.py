@@ -53,7 +53,7 @@ init_projects = init_engineers = init_vacancy = dict(warning=1, content=0)
 specialities = {
         "el": "Electrical Part",
         "ins": "Instrumentation",
-        "telecom": "Telecom",
+        "low_cur": "Telecom",
         "plot_plan": "Plot Plan",
         "piping_linear": "Piping - linear",
         "piping_area": "Piping",
@@ -64,37 +64,55 @@ specialities = {
 
 
 specialities_E = {
-        "el": "Electrical Part",
+        "ar": "Architecture",
+        "el": "Electrical",
         "ins": "Instrumentation",
-        "telecom": "Telecom",
+        "low_cur": "Telecom, F&G",
         "plot_plan": "Plot Plan",
-        "piping_linear": "Piping - linear",
+        "piping_linear": "Piping",
         "piping_area": "Piping",
         "hvac": "HVAC",
         "wss": "Water Supply",
-        "term": "Heat Engineering"
+        "term": "Heat Engineering",
+        "civil": "Civil Part"
     }
 
 specialities_U = {
-    "el": "Електропостачання",
+    "ar": "Архітектура",
+    "el": "Електрика",
     "ins": "КВПіА",
-    "telecom": "Зв'язок",
+    "low_cur": "Зв'язок, пож.безпека",
     "plot_plan": "Генплан",
-    "piping_linear": "Лінійна частина трубопроводів",
+    "piping_linear": "Трубопроводи",
     "piping_area": "Монтаж технолог. обладнання",
     "hvac": "ОВіК",
     "wss": "Водопостачання і Водовідведення",
-    "term": "Теплопостачання"
+    "term": "Теплопостачання",
+    "civil": "Будівельна частина"
 }
 
 specialities_R = {
-    "el": "Электроснабжение",
+    "ar": "Архитектура",
+    "el": "Электрика",
     "ins": "КИПиА",
-    "telecom": "Связь",
+    "low_cur": "Связь, пож.безопасность",
     "plot_plan": "Генплан",
-    "piping_linear": "Линейная часть трубопроводов",
+    "piping_linear": "Трубопроводы",
     "piping_area": "Монтаж технолог. оборудования",
     "hvac": "ОВиК",
     "wss": "Водоснабжение и Водоотведение",
-    "term": "Теплоснабжение"
+    "term": "Теплоснабжение",
+    "civil": "Строительная часть"
+}
+
+electrical = {
+    "el": "Electrical",
+    "ins": "Instrumentation",
+    "low_cur": "Telecom",
+    "plot_plan": "Plot Plan",
+    "piping_linear": "Piping - linear",
+    "piping_area": "Piping",
+    "hvac": "HVAC",
+    "wss": "Water Supply",
+    "term": "Heat Engineering"
 }
