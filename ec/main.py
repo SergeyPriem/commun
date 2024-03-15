@@ -4,7 +4,8 @@ import time
 
 import bcrypt
 import streamsync as ss
-
+from sqlalchemy.orm import Session
+from sqlalchemy.exc import IntegrityError
 from models import engine, User, VisitLog
 from utilities import valid_email, _send_email, random_code_alphanumeric, err_handler, hash_password
 from dic import dic
@@ -199,12 +200,8 @@ def log_user(state):
 #         return 500
 
 
-from sqlalchemy.orm import Session
-from sqlalchemy.exc import IntegrityError
-
-
 def _add_user_to_db(state):
-    if state["user"]["engineer"]:
+    if state["user"]["major"]:
         major = ", ".join(state["user"]["major"])
     else:
         major = "-"
@@ -244,19 +241,18 @@ def validate_email_by_code(state):
 
         state["reg"]["code_message"] = "+ Код подтвержден"
 
-        state["reg"]["code_section"] = 0
-        state["user"]["client"] = 0
-        state["user"]["engineer"] = 0
-        state["user"]["installer"] = 0
-        state["reg"]['code_error'] = 0
-        state["reg"]['code_ok'] = 1
-        state["reg"]['db_message'] = 1
-
         if _add_user_to_db(state) == 200:
             state["reg"]['form'] = 0
             state["reg"]['data_ok'] = 0
             time.sleep(2)
             state.set_page("login")
+
+        state["reg"]["code_section"] = 0
+
+        state["reg"]['code_error'] = 0
+        state["reg"]['code_ok'] = 1
+        state["reg"]['db_message'] = 1
+
     else:
         state["reg"]['code_error'] = 1
         state["reg"]['code_ok'] = 0
@@ -267,7 +263,7 @@ def validate_email_by_code(state):
 def send_confirmation_code(state):
     state['reg']['code_sent'] = random_code_alphanumeric(6)
 
-    print(f"Code sent: {state['reg']['code_sent']}")
+    # print(f"Code sent: {state['reg']['code_sent']}")
 
     reply = _send_email(state)
     if reply['status'] == 200:
@@ -325,7 +321,6 @@ def validate_reg_data(state):
             troubles.append(e_m["empty_description"])
 
     if len(troubles) > 0:
-        # troubles_text = ", ".join(troubles)
 
         troubles_text = [t[state["lang"]] for t in troubles]
 
@@ -424,20 +419,107 @@ def switch_to_ukr(state):
     state["lang"] = "U"
     state["specs"] = specialities_U
 
+def prepare_el(state):
+    state["electrics"] = {
+        "1": {
+            "name": "Sergey",
+            "surname": "Priemskiy",
+            "age": 45,
+            "experience": 20,
+            "lang": "----------------------------------------------------------------------"
+        },
+        "2": {
+            "name": "Сергей",
+            "surname": "Приемский",
+            "age": 45,
+            "experience": 20,
+            "lang": ""
+        },
+        "3": {
+            "name": "Сергей",
+            "surname": "Приемский",
+            "age": 45,
+            "experience": 20,
+            "lang": ""
+        },
+        "4": {
+            "name": "Сергей",
+            "surname": "Приемский",
+            "age": 45,
+            "experience": 20,
+            "lang": ""
+        },
+        "5": {
+            "name": "Сергей",
+            "surname": "Приемский",
+            "age": 45,
+            "experience": 20,
+            "lang": ""
+        },
+        "6": {
+            "name": "Сергій",
+            "surname": "Приємський asldjf asd; ;alkdsj a;dlskf  as;ldkfja",
+            "age": 45,
+            "experience": 20,
+            "lang": "----------------------------------------------------------------------"
+        }
+    }
 
-initial_state = ss.init_state({
 
-    "message": None,
-    "lang": "E",
-    "dic": dic,
+def prepare_ins(state):
 
-    "reg": init_reg,
-    "login": init_login,
-    "user": init_user,
-    "projects": init_projects,
-    "engineers": init_engineers,
-    "vacancy": init_vacancy,
-    "specs": specialities_E
-})
+    with Session(bind=engine) as session:
+        try:
+            stuff = session.query(User).filter(User.major.contains("ins")).all()
 
-initial_state.import_stylesheet("theme", "/static/custom.css?18")
+            state["ins"] = {str(i+1): {
+                "name": stuff[i].first_name,
+                "description": stuff[i].description,
+                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                "experience": stuff[i].experience,
+            } for i in range(len(stuff))}
+
+        except SQLAlchemyError as e:
+            print(f"An error occurred: {e}")
+
+    # state["ins"] = {
+    #     "1": {
+    #         "name": "Alexey",
+    #         "surname": "Serdiuk",
+    #         "age": 45,
+    #         "experience": 20,
+    #         "lang": "----------------------------------------------------------------------"
+    #     }
+    # }
+
+
+
+
+initial_state = ss.init_state(
+    {
+        "message": None,
+        "lang": "E",
+        "dic": dic,
+
+        "reg": init_reg,
+        "login": init_login,
+        "user": init_user,
+        "projects": init_projects,
+        "engineers": init_engineers,
+        "vacancy": init_vacancy,
+        "specs": specialities_E,
+
+        "electrics": None,
+        "ins": None,
+        "telecom": None,
+        "plot_plan": None,
+        "piping_linear": None,
+        "piping_area": None,
+        "hvac": None,
+        "wss": None,
+        "term": None,
+        "civil": None,
+        }
+    )
+
+initial_state.import_stylesheet("theme", "/static/custom.css?21")

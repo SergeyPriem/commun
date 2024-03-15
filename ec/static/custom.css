@@ -30,3 +30,7 @@ textarea {
 .lang_switch {
   cursor: pointer!important;
 }
+
+.custom_div {
+  width: 80% !important;
+}

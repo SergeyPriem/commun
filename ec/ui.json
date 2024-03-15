@@ -260,7 +260,7 @@
             "id": "54zlhjwow7rlel19",
             "type": "column",
             "content": {
-                "width": "0.2"
+                "width": "0.1"
             },
             "parentId": "n417wdhzrso3qiju",
             "position": 1,
@@ -271,7 +271,7 @@
             "id": "nyf9i590wiioymjr",
             "type": "column",
             "content": {
-                "width": "1"
+                "width": ".8"
             },
             "parentId": "n417wdhzrso3qiju",
             "position": 2,
@@ -286,7 +286,7 @@
                 "caption": ""
             },
             "parentId": "nyf9i590wiioymjr",
-            "position": 0,
+            "position": 1,
             "handlers": {},
             "visible": true
         },
@@ -1529,7 +1529,7 @@
             "id": "ildob7s3srcnx7x2",
             "type": "section",
             "content": {
-                "title": "\u0412\u0430\u043c \u043d\u0430 \u043f\u043e\u0447\u0442\u0443 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d \u043a\u043e\u0434 \u0430\u043a\u0442\u0438\u0432\u0430\u0446\u0438\u0438, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0435\u0433\u043e \u0432 \u043e\u043a\u043d\u0435 \u043d\u0438\u0436\u0435",
+                "title": "",
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
@@ -1646,7 +1646,7 @@
                 "label": ""
             },
             "parentId": "0r8d8t2s0owm3s8i",
-            "position": 0,
+            "position": 1,
             "handlers": {},
             "binding": {
                 "eventType": "ss-change",
@@ -1674,7 +1674,7 @@
                 "contentHAlign": "center"
             },
             "parentId": "0r8d8t2s0owm3s8i",
-            "position": 1,
+            "position": 2,
             "handlers": {},
             "visible": true
         },
@@ -1682,7 +1682,7 @@
             "id": "vhich18yowdparb0",
             "type": "section",
             "content": {
-                "title": "\u041f\u0440\u0435\u0434\u0443\u043f\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0435 - \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 \u043a\u043e\u0434",
+                "title": "",
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
@@ -1697,13 +1697,13 @@
             "id": "4swdmof9r6gqsh3r",
             "type": "text",
             "content": {
-                "text": "## **\u041a\u043e\u0434 \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439, \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0432\u0432\u0435\u0441\u0442\u0438 \u0435\u0449\u0435 \u0440\u0430\u0437**",
-                "useMarkdown": "yes"
+                "text": "## **@{dic.wrong_code[lang]}**",
+                "useMarkdown": "yes",
+                "primaryTextColor": "#4dfffc"
             },
             "parentId": "vhich18yowdparb0",
             "position": 0,
-            "handlers": {},
-            "visible": true
+            "handlers": {}
         },
         "ce8bqtzlnjvua2kz": {
             "id": "ce8bqtzlnjvua2kz",
@@ -1731,7 +1731,7 @@
             "id": "5p12yyyfir98ejka",
             "type": "message",
             "content": {
-                "message": "- \u041f\u041e\u041b\u042c\u0417\u041e\u0412\u0410\u0422\u0415\u041b\u042c \u041d\u0415 \u041d\u0410\u0419\u0414\u0415\u041d \u0412 \u0411\u0410\u0417\u0415 \u0414\u0410\u041d\u041d\u042b\u0425"
+                "message": "- @{dic.user_not_found[lang]}"
             },
             "parentId": "lg1dg4rk9qkvx4gf",
             "position": 0,
@@ -1742,7 +1742,7 @@
             "id": "eyrmhdvu10w0a0ek",
             "type": "message",
             "content": {
-                "message": "\u041d\u0415\u041f\u0420\u0410\u0412\u0418\u041b\u042c\u041d\u041e \u0412\u0412\u0415\u0414\u0415\u041d \u041b\u041e\u0413\u0418\u041d \u0418\u041b\u0418 \u041f\u0410\u0420\u041e\u041b\u042c"
+                "message": "- @{dic.wrong_reg_data{lang}}"
             },
             "parentId": "lg1dg4rk9qkvx4gf",
             "position": 1,
@@ -2139,33 +2139,38 @@
             "id": "vb5nhsgvoxnsvyps",
             "type": "tab",
             "content": {
-                "name": "\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u0442\u0435\u0445\u043d\u0438\u043a\u0430",
+                "name": "@{specs.el}",
                 "contentHAlign": "center"
             },
             "parentId": "zvisv559euzigeyk",
-            "position": 0,
-            "handlers": {},
+            "position": 2,
+            "handlers": {
+                "click": "prepare_el"
+            },
             "visible": true
         },
         "b55985jjv0eur91i": {
             "id": "b55985jjv0eur91i",
             "type": "tab",
             "content": {
-                "name": "\u041a\u0418\u041f\u0438\u0410"
+                "name": "@{specs.ins}",
+                "contentHAlign": "center"
             },
             "parentId": "zvisv559euzigeyk",
-            "position": 1,
-            "handlers": {},
+            "position": 3,
+            "handlers": {
+                "click": "prepare_ins"
+            },
             "visible": true
         },
         "s600e6bu2r5vneu8": {
             "id": "s600e6bu2r5vneu8",
             "type": "tab",
             "content": {
-                "name": "\u0413\u0435\u043d\u043f\u043b\u0430\u043d"
+                "name": "@{specs.plot_plan}"
             },
             "parentId": "zvisv559euzigeyk",
-            "position": 2,
+            "position": 1,
             "handlers": {},
             "visible": true
         },
@@ -2173,10 +2178,10 @@
             "id": "y9ktrxo5h3ryl30f",
             "type": "tab",
             "content": {
-                "name": "\u0421\u043b\u0430\u0431\u043e\u0442\u043e\u0447\u043d\u044b\u0435 \u0441\u0438\u0441\u0442\u0435\u043c\u044b"
+                "name": "@{specs.telecom}"
             },
             "parentId": "zvisv559euzigeyk",
-            "position": 3,
+            "position": 4,
             "handlers": {},
             "visible": true
         },
@@ -2184,10 +2189,10 @@
             "id": "le5u7h9f8kmgbxo4",
             "type": "tab",
             "content": {
-                "name": "\u041b\u0438\u043d\u0435\u0439\u043d\u0430\u044f \u0447\u0430\u0441\u0442\u044c"
+                "name": "@{specs.piping_linear}"
             },
             "parentId": "zvisv559euzigeyk",
-            "position": 4,
+            "position": 5,
             "handlers": {},
             "visible": true
         },
@@ -2195,10 +2200,10 @@
             "id": "xq54hrs8tfftulw7",
             "type": "tab",
             "content": {
-                "name": "\u041e\u0412\u0438\u041a"
+                "name": "@{specs.hvac}"
             },
             "parentId": "zvisv559euzigeyk",
-            "position": 5,
+            "position": 6,
             "handlers": {},
             "visible": true
         },
@@ -2206,10 +2211,10 @@
             "id": "z8dwccyqq8riwmwr",
             "type": "tab",
             "content": {
-                "name": "\u0422\u0435\u043f\u043b\u043e\u0441\u043d\u0430\u0431\u0436\u0435\u043d\u0438\u0435"
+                "name": "@{specs.term}"
             },
             "parentId": "zvisv559euzigeyk",
-            "position": 6,
+            "position": 7,
             "handlers": {},
             "visible": true
         },
@@ -2217,10 +2222,10 @@
             "id": "w1p7wlsfh0l7nudn",
             "type": "tab",
             "content": {
-                "name": "\u0412\u043e\u0434\u043e\u0441\u043d\u0430\u0431\u0436\u0435\u043d\u0438\u0435 \u0438 \u043a\u0430\u043d\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f"
+                "name": "@{specs.wss}"
             },
             "parentId": "zvisv559euzigeyk",
-            "position": 7,
+            "position": 8,
             "handlers": {},
             "visible": true
         },
@@ -2228,10 +2233,10 @@
             "id": "t4kq3jkhzxd46xvw",
             "type": "tab",
             "content": {
-                "name": "\u0421\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u0447\u0430\u0441\u0442\u044c"
+                "name": "@{specs.civil}"
             },
             "parentId": "zvisv559euzigeyk",
-            "position": 8,
+            "position": 9,
             "handlers": {},
             "visible": true
         },
@@ -2239,10 +2244,10 @@
             "id": "c8wm5du03hbtbukf",
             "type": "tab",
             "content": {
-                "name": "\u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430"
+                "name": "@{specs.ar}"
             },
             "parentId": "zvisv559euzigeyk",
-            "position": 9,
+            "position": 0,
             "handlers": {},
             "visible": true
         },
@@ -6870,6 +6875,171 @@
             },
             "parentId": "yd1cbs2g353dhyp4",
             "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "3uqgqf7kflihdsii": {
+            "id": "3uqgqf7kflihdsii",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center",
+                "contentPadding": "15px"
+            },
+            "parentId": "nyf9i590wiioymjr",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "vxbmx3cyxd0gyxk6": {
+            "id": "vxbmx3cyxd0gyxk6",
+            "type": "repeater",
+            "content": {
+                "repeaterObject": "@{electrics}",
+                "keyVariable": "itemId",
+                "valueVariable": "item"
+            },
+            "parentId": "vb5nhsgvoxnsvyps",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "g1c3hju6sempmcx8": {
+            "id": "g1c3hju6sempmcx8",
+            "type": "section",
+            "content": {
+                "title": "@{item.name} \ud83e\udd20",
+                "containerBackgroundColor": "#152e61",
+                "contentHAlign": "start",
+                "separatorColor": "#75b892",
+                "cssClasses": "custom_div"
+            },
+            "parentId": "vxbmx3cyxd0gyxk6",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "hp4xddksbedcwb9t": {
+            "id": "hp4xddksbedcwb9t",
+            "type": "text",
+            "content": {
+                "text": "@{item.surname}"
+            },
+            "parentId": "g1c3hju6sempmcx8",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "vws5qvay58ksp3gc": {
+            "id": "vws5qvay58ksp3gc",
+            "type": "text",
+            "content": {
+                "text": "Experience: @{item.experience}"
+            },
+            "parentId": "g1c3hju6sempmcx8",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "k9hj32gw8tkmp4zf": {
+            "id": "k9hj32gw8tkmp4zf",
+            "type": "separator",
+            "content": {},
+            "parentId": "g1c3hju6sempmcx8",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "a38yucotwmvnmm3d": {
+            "id": "a38yucotwmvnmm3d",
+            "type": "text",
+            "content": {
+                "text": "@{item.lang}"
+            },
+            "parentId": "g1c3hju6sempmcx8",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "y4xafd6cq4x72pmp": {
+            "id": "y4xafd6cq4x72pmp",
+            "type": "text",
+            "content": {
+                "text": "## @{dic.act_code_sent[lang]}",
+                "useMarkdown": "yes",
+                "alignment": "center"
+            },
+            "parentId": "0r8d8t2s0owm3s8i",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "7am54jl0zq4gc9gr": {
+            "id": "7am54jl0zq4gc9gr",
+            "type": "repeater",
+            "content": {
+                "repeaterObject": "@{ins}",
+                "keyVariable": "itemId",
+                "valueVariable": "item"
+            },
+            "parentId": "b55985jjv0eur91i",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "eax3zkh0d18ebx9k": {
+            "id": "eax3zkh0d18ebx9k",
+            "type": "section",
+            "content": {
+                "title": "@{item.name} \ud83e\udd20",
+                "containerBackgroundColor": "#152e61",
+                "contentHAlign": "start",
+                "separatorColor": "#75b892",
+                "cssClasses": "custom_div"
+            },
+            "parentId": "7am54jl0zq4gc9gr",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "234pt8me1hvp58tj": {
+            "id": "234pt8me1hvp58tj",
+            "type": "text",
+            "content": {
+                "text": "@{item.description}"
+            },
+            "parentId": "eax3zkh0d18ebx9k",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "07l90mymc9zacmsl": {
+            "id": "07l90mymc9zacmsl",
+            "type": "text",
+            "content": {
+                "text": "Experience: @{item.experience} y."
+            },
+            "parentId": "eax3zkh0d18ebx9k",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "p8ex6e9j07221lky": {
+            "id": "p8ex6e9j07221lky",
+            "type": "separator",
+            "content": {},
+            "parentId": "eax3zkh0d18ebx9k",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "bcwflp7j6xu6a38a": {
+            "id": "bcwflp7j6xu6a38a",
+            "type": "text",
+            "content": {
+                "text": "with us from: @{item.with_us_from}"
+            },
+            "parentId": "eax3zkh0d18ebx9k",
+            "position": 2,
             "handlers": {},
             "visible": true
         }
