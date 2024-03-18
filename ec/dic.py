@@ -396,7 +396,100 @@ dic = {
         "E": "At the moment there are no Vacancies. Subscribe to news to find out about new Vacancies",
         "U": "На даний момент Вакансій немає. Підпишіться на новини, щоб дізнатися про нові Вакансії",
         "R": "В настояещее время Вакансий нет. Подпишитесь на новости, чтоб узнать о новых Вакансиях"
-    }
+    },
+
+    "add_proj": {
+        "E": "Add a project",
+        "U": "Додайте проект",
+        "R": "Добавьте проект"
+    },
+
+    "proj_name": {
+        "E": "Project Name",
+        "U": "Назва проекту",
+        "R": "Название проекта"
+    },
+
+    "proj_descr": {
+        "E": "Project Description",
+        "U": "Опис проекту",
+        "R": "Описание проекта"
+    },
+    "required_specialities": {
+        "E": "Required Specialities",
+        "U": "Необхідні спеціальності",
+        "R": "Необходимые специальности"
+    },
+
+    "proj_comments": {
+        "E": "Comments",
+        "U": "Коментарі",
+        "R": "Комментарии"
+    },
+
+    "but_add_proj": {
+        "E": "Add Project",
+        "U": "Додати проект",
+        "R": "Добавить проект"
+    },
+
+    "client_pers_page": {
+        "E": "Client's Personal Page",
+        "U": "Особиста сторінка Замовника",
+        "R": "Личная страница Заказчика"
+    },
+    "actual_proj": {
+        "E": "Actual Projects",
+        "U": "Актуальні проекти",
+        "R": "Актуальные проекты"
+    },
+    "finished_proj": {
+        "E": "Finished Projects",
+        "U": "Завершені проекти",
+        "R": "Завершенные проекты"
+    },
+    "new_engineers": {
+        "E": "New Engineers at the site",
+        "U": "Нові Інженери на сайті",
+        "R": "Новые Инженеры на сайте"
+    },
+
+    "eng_pers_page": {
+        "E": "Engineer's Personal Page",
+        "U": "Особиста сторінка Інженера",
+        "R": "Личная страница Инженера"
+    },
+    "new_proj_at_site": {
+        "E": "New Projects at the site",
+        "U": "Нові проекти на сайті",
+        "R": "Новые проекты на сайте"
+    },
+    "viewed_proj": {
+        "E": "Viewed Projects",
+        "U": "Переглянуті проекти",
+        "R": "Просмотренные проекты"
+    },
+
+    "trusted_eng": {
+        "E": "Trusted Engineers",
+        "U": "Довірені Інженери",
+        "R": "Доверенные Инженеры"
+    },
+    "viewed_eng": {
+        "E": "Viewed Engineers",
+        "U": "Переглянуті Інженери",
+        "R": "Просмотренные Инженеры"
+    },
+    "add_to_trusted_eng": {
+        "E": "Add to Trusted Engineers",
+        "U": "Додати до Довірених Інженерів",
+        "R": "Добавить в Доверенные Инженеры"
+    },
+    "add_proj_tab": {
+        "E": "Add Project",
+        "U": "Додати проект",
+        "R": "Добавить проект"
+    },
 }
 
 error_messages = {
@@ -470,4 +563,5 @@ error_messages = {
         "U": "Введіть опис ваших навичок",
         "R": "Введите описание навыков"
     }
+
 }

@@ -105,3 +105,11 @@ specialities_R = {
     "civil": "Строительная часть"
 }
 
+init_new_project = {
+    "name": None,
+    "description": None,
+    "comments": None,
+    "required_specialists": None,
+    "assigned_engineers": None
+}
+

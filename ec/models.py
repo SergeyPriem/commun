@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, Text
 from sqlalchemy import MetaData, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -39,6 +39,17 @@ class VisitLog(Base):
     date_time_in = Column(DateTime, nullable=False)
     date_time_out = Column(DateTime)
     lang = Column(String(2), nullable=False)
+
+
+class Projects(Base):
+    __tablename__ = 'projects'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(50))
+    description = Column(Text)
+    comments = Column(Text)
+    required_specialists = Column(Text)
+    assigned_engineers = Column(Text)
 
 
 metadata_obj.create_all(engine)

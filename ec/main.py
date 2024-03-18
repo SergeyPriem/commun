@@ -6,12 +6,12 @@ import bcrypt
 import streamsync as ss
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
-from models import engine, User, VisitLog
+from models import engine, User, VisitLog, Projects
 from utilities import valid_email, _send_email, random_code_alphanumeric, err_handler, hash_password
 from dic import dic
 from dic import error_messages as e_m
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
-    specialities_R, specialities_U, specialities_E
+    specialities_R, specialities_U, specialities_E, init_new_project
 
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -469,6 +469,43 @@ def connect_w_engineer(state, context):
     state["selected_engineers"] = list(set(state["selected_engineers"]))
 
 
+def create_project(state):
+    # Assuming you have the same 'Projects' class and 'Base' as in your previous code
+
+    with Session(bind=engine) as session:
+        try:
+            new_project = Projects(
+                id=1,
+                name='Project 1',
+                description='This is project 1',
+                comments='No comments',
+                required_specialists='Engineer1, Engineer2',
+                assigned_engineers='Engineer1'
+            )
+            session.add(new_project)
+            session.commit()
+        except SQLAlchemyError as e:
+            print(f"An error occurred: {e}")
+
+
+
+
+
+def get_new_engineers(state):
+    with Session(bind=engine) as session:
+        try:
+            stuff = session.query(User).filter(User.date_time > datetime.datetime.now() - datetime.timedelta(days=30)).all()
+            state["new_engineers"] = {stuff[i].login: {
+                "name": stuff[i].first_name,
+                "description": stuff[i].description,
+                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                "experience": stuff[i].experience,
+            } for i in range(len(stuff))}
+
+        except SQLAlchemyError as e:
+            print(f"An error occurred: {e}")
+
+
 initial_state = ss.init_state(
     {
         "message": None,
@@ -482,6 +519,7 @@ initial_state = ss.init_state(
         "engineers": init_engineers,
         "vacancy": init_vacancy,
         "specs": specialities_E,
+        "new_project": init_new_project,
 
         "el": None,
         "ins": None,
@@ -494,6 +532,9 @@ initial_state = ss.init_state(
         "term": None,
         "civil": None,
         "selected_engineers": [],
+        "new_engineers": None,
+        "trusted_engineers": None,
+        "viewed_engineers": None,
     }
 )
 

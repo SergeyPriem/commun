@@ -17,8 +17,9 @@
       <change beforePath="$PROJECT_DIR$/ec/dic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/dic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/init_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/init_states.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/static/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/ec/static/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/ec/ui.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello/ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/hello/ui.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +126,10 @@
       <workItem from="1710331597839" duration="2752000" />
       <workItem from="1710389772893" duration="10965000" />
       <workItem from="1710408164672" duration="17599000" />
-      <workItem from="1710476144303" duration="26643000" />
+      <workItem from="1710476144303" duration="26961000" />
+      <workItem from="1710568684205" duration="625000" />
+      <workItem from="1710733912163" duration="620000" />
+      <workItem from="1710762319658" duration="7509000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <option name="closed" value="true" />
@@ -423,7 +427,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710499101393</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="repeater">
+      <option name="closed" value="true" />
+      <created>1710510567515</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1710510567515</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
