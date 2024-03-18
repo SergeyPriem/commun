@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="repeater">
+    <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="create_new_project">
       <change afterPath="$PROJECT_DIR$/hello/Dockerfile" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/assets/main_df.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/assets/story.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/requirements.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/static/README.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/hello/static/pigeon1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/database" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ec/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/dic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/dic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/init_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/init_states.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/ec/ui.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hello/ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/hello/ui.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +123,7 @@
       <workItem from="1710476144303" duration="26961000" />
       <workItem from="1710568684205" duration="625000" />
       <workItem from="1710733912163" duration="620000" />
-      <workItem from="1710762319658" duration="7509000" />
+      <workItem from="1710762319658" duration="7653000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <option name="closed" value="true" />
@@ -435,7 +429,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710510567515</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="create_new_project">
+      <option name="closed" value="true" />
+      <created>1710771193464</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1710771193464</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -450,7 +452,8 @@
     <MESSAGE value="three_lang" />
     <MESSAGE value="new ORM" />
     <MESSAGE value="repeater" />
-    <option name="LAST_COMMIT_MESSAGE" value="repeater" />
+    <MESSAGE value="create_new_project" />
+    <option name="LAST_COMMIT_MESSAGE" value="create_new_project" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ec$tempo.coverage" NAME="tempo Coverage Results" MODIFIED="1709975276097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ec" />
