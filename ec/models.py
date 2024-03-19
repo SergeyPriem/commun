@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from sqlalchemy import Column, Integer, String, DateTime, Text
-from sqlalchemy import MetaData, create_engine
+from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
-metadata_obj = MetaData()
 
 engine = create_engine("sqlite:///db.sqlite3")
 Base = declarative_base()
@@ -42,14 +41,15 @@ class VisitLog(Base):
 
 
 class Projects(Base):
-    __tablename__ = 'projects'
+    __tablename__ = 'Projects'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(50))
-    description = Column(Text)
-    comments = Column(Text)
-    required_specialists = Column(Text)
-    assigned_engineers = Column(Text)
+    owner = Column(String(100))
+    description = Column(String(1000))
+    comments = Column(String(200))
+    required_specialists = Column(String(200))
+    assigned_engineers = Column(String(200))
 
 
-metadata_obj.create_all(engine)
+Base.metadata.create_all(engine)

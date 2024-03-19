@@ -15,6 +15,7 @@ init_user = {
     "company": None,
     "logged": 0,
     "not_logged": 1,
+    "url": None,
     "message": None,
     "engineer": 0,
     "client": 0,
@@ -105,7 +106,7 @@ specialities_R = {
     "civil": "Строительная часть"
 }
 
-init_new_project = {
+init_new_project = { # new_project
     "name": None,
     "description": None,
     "comments": None,

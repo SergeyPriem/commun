@@ -1326,190 +1326,6 @@
             },
             "visible": true
         },
-        "yq5la42w3n0py2u5": {
-            "id": "yq5la42w3n0py2u5",
-            "type": "section",
-            "content": {
-                "title": "",
-                "accentColor": "#000000",
-                "containerBackgroundColor": "#152e61",
-                "containerShadow": "5px 5px 7px -4px #000000"
-            },
-            "parentId": "k97az8z9rei13cpb",
-            "position": 2,
-            "handlers": {},
-            "visible": true
-        },
-        "0ulnmm083ubol62t": {
-            "id": "0ulnmm083ubol62t",
-            "type": "columns",
-            "content": {},
-            "parentId": "yq5la42w3n0py2u5",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "s5cm04u5rt9hszua": {
-            "id": "s5cm04u5rt9hszua",
-            "type": "column",
-            "content": {
-                "width": "1",
-                "contentHAlign": "center",
-                "contentVAlign": "center"
-            },
-            "parentId": "0ulnmm083ubol62t",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "b3z7apz30ia3orah": {
-            "id": "b3z7apz30ia3orah",
-            "type": "button",
-            "content": {
-                "text": "\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u043d\u043e\u0432\u043e\u0441\u0442\u0438",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#fcfcfc",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "s5cm04u5rt9hszua",
-            "position": 0,
-            "handlers": {
-                "ss-click": "$goToPage_subscribe"
-            },
-            "visible": true
-        },
-        "w5o2wuqmvilp6p6d": {
-            "id": "w5o2wuqmvilp6p6d",
-            "type": "column",
-            "content": {
-                "width": "1"
-            },
-            "parentId": "0ulnmm083ubol62t",
-            "position": 1,
-            "handlers": {},
-            "visible": true
-        },
-        "ewltl59a0oa3qx3e": {
-            "id": "ewltl59a0oa3qx3e",
-            "type": "column",
-            "content": {
-                "width": "1",
-                "contentHAlign": "center",
-                "contentVAlign": "center"
-            },
-            "parentId": "0ulnmm083ubol62t",
-            "position": 2,
-            "handlers": {},
-            "visible": true
-        },
-        "kk5mldx4rokh77gu": {
-            "id": "kk5mldx4rokh77gu",
-            "type": "button",
-            "content": {
-                "text": "\u0421\u0432\u044f\u0437\u0430\u0442\u044c\u0441\u044f \u0441 \u043d\u0430\u043c\u0438",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#fcfcfc",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "ewltl59a0oa3qx3e",
-            "position": 0,
-            "handlers": {
-                "ss-click": "$goToPage_contact_us"
-            },
-            "visible": true
-        },
-        "q4z90c0of4lmqtbk": {
-            "id": "q4z90c0of4lmqtbk",
-            "type": "section",
-            "content": {
-                "title": "",
-                "accentColor": "#000000",
-                "containerBackgroundColor": "#152e61",
-                "containerShadow": "5px 5px 7px -4px #000000"
-            },
-            "parentId": "91ok2m5jyso0goaw",
-            "position": 2,
-            "handlers": {},
-            "visible": true
-        },
-        "1zoqc70xil0tyerd": {
-            "id": "1zoqc70xil0tyerd",
-            "type": "columns",
-            "content": {},
-            "parentId": "q4z90c0of4lmqtbk",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "c90w4ktr4m15vdb4": {
-            "id": "c90w4ktr4m15vdb4",
-            "type": "column",
-            "content": {
-                "width": "1",
-                "contentHAlign": "center",
-                "contentVAlign": "center"
-            },
-            "parentId": "1zoqc70xil0tyerd",
-            "position": 0,
-            "handlers": {},
-            "visible": true
-        },
-        "xb3gkfjj8c76ncbd": {
-            "id": "xb3gkfjj8c76ncbd",
-            "type": "button",
-            "content": {
-                "text": "\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u043d\u043e\u0432\u043e\u0441\u0442\u0438",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#fcfcfc",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "c90w4ktr4m15vdb4",
-            "position": 0,
-            "handlers": {
-                "ss-click": "$goToPage_subscribe"
-            },
-            "visible": true
-        },
-        "deefxw0lqg7b1s8c": {
-            "id": "deefxw0lqg7b1s8c",
-            "type": "column",
-            "content": {
-                "width": "1"
-            },
-            "parentId": "1zoqc70xil0tyerd",
-            "position": 1,
-            "handlers": {},
-            "visible": true
-        },
-        "v7jbcxzy6oi65fz6": {
-            "id": "v7jbcxzy6oi65fz6",
-            "type": "column",
-            "content": {
-                "width": "1",
-                "contentHAlign": "center",
-                "contentVAlign": "center"
-            },
-            "parentId": "1zoqc70xil0tyerd",
-            "position": 2,
-            "handlers": {},
-            "visible": true
-        },
-        "1lgdqx9nww6bxiup": {
-            "id": "1lgdqx9nww6bxiup",
-            "type": "button",
-            "content": {
-                "text": "\u0421\u0432\u044f\u0437\u0430\u0442\u044c\u0441\u044f \u0441 \u043d\u0430\u043c\u0438",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#fcfcfc",
-                "cssClasses": "but_as_link"
-            },
-            "parentId": "v7jbcxzy6oi65fz6",
-            "position": 0,
-            "handlers": {
-                "ss-click": "$goToPage_contact_us"
-            },
-            "visible": true
-        },
         "jdiemekzc10nn7xn": {
             "id": "jdiemekzc10nn7xn",
             "type": "textinput",
@@ -1621,7 +1437,7 @@
             "id": "0r8d8t2s0owm3s8i",
             "type": "column",
             "content": {
-                "width": "1"
+                "width": ".7"
             },
             "parentId": "ojjnr1791rbdmmra",
             "position": 1,
@@ -2369,7 +2185,7 @@
                 "rows": "5"
             },
             "parentId": "4v9qxg0rxbvhy77u",
-            "position": 1,
+            "position": 0,
             "handlers": {},
             "binding": {
                 "eventType": "ss-change",
@@ -2384,7 +2200,7 @@
                 "contentHAlign": "center"
             },
             "parentId": "4v9qxg0rxbvhy77u",
-            "position": 2,
+            "position": 1,
             "handlers": {},
             "visible": true
         },
@@ -2798,7 +2614,7 @@
                 "rows": "5"
             },
             "parentId": "1zq1ycf1ug9w98bn",
-            "position": 0,
+            "position": 1,
             "handlers": {},
             "binding": {
                 "eventType": "ss-change",
@@ -2813,7 +2629,7 @@
                 "contentHAlign": "center"
             },
             "parentId": "1zq1ycf1ug9w98bn",
-            "position": 1,
+            "position": 2,
             "handlers": {},
             "visible": true
         },
@@ -3184,7 +3000,7 @@
                 "rows": "5"
             },
             "parentId": "rtaq4eszk4sxeblk",
-            "position": 0,
+            "position": 1,
             "handlers": {},
             "binding": {
                 "eventType": "ss-change",
@@ -3199,7 +3015,7 @@
                 "contentHAlign": "center"
             },
             "parentId": "rtaq4eszk4sxeblk",
-            "position": 1,
+            "position": 2,
             "handlers": {},
             "visible": true
         },
@@ -3239,28 +3055,6 @@
             "parentId": "8cz4nl8cxceb8kyt",
             "position": 2,
             "handlers": {},
-            "visible": true
-        },
-        "xjxlquuf0t3435ii": {
-            "id": "xjxlquuf0t3435ii",
-            "type": "multiselectinput",
-            "content": {
-                "label": "@{dic.speciality[lang]}",
-                "options": "@{specs}",
-                "primaryTextColor": "#fcfcfc",
-                "chipTextColor": "#1d4087",
-                "placeholder": "@{dic.spec_placeholder[lang]}",
-                "containerBackgroundColor": "#1d4087",
-                "accentColor": "#dbeef6",
-                "secondaryTextColor": "#79c4d2"
-            },
-            "parentId": "4v9qxg0rxbvhy77u",
-            "position": 0,
-            "handlers": {},
-            "binding": {
-                "eventType": "ss-options-change",
-                "stateRef": "user.major"
-            },
             "visible": true
         },
         "y4himuiozxw67nf6": {
@@ -7481,7 +7275,7 @@
             "parentId": "root",
             "position": 9,
             "handlers": {},
-            "visible": true
+            "visible": "user.logged"
         },
         "7gerdgebpdw0rm35": {
             "id": "7gerdgebpdw0rm35",
@@ -8686,7 +8480,7 @@
                 "name": "@{dic.actual_proj[lang]}"
             },
             "parentId": "n9gg8liqxltm0srr",
-            "position": 1,
+            "position": 2,
             "handlers": {},
             "visible": true
         },
@@ -8697,7 +8491,7 @@
                 "name": "@{dic.finished_proj[lang]}"
             },
             "parentId": "n9gg8liqxltm0srr",
-            "position": 2,
+            "position": 3,
             "handlers": {},
             "visible": true
         },
@@ -8711,7 +8505,8 @@
             "parentId": "n9gg8liqxltm0srr",
             "position": 0,
             "handlers": {
-                "click": "get_new_engineers"
+                "click": "get_new_engineers",
+                "mousemove": "get_new_engineers"
             },
             "visible": true
         },
@@ -9309,7 +9104,7 @@
                 "name": "@{dic.trusted_eng[lang]}"
             },
             "parentId": "n9gg8liqxltm0srr",
-            "position": 3,
+            "position": 4,
             "handlers": {},
             "visible": true
         },
@@ -9320,7 +9115,7 @@
                 "name": "@{dic.viewed_eng[lang]}"
             },
             "parentId": "n9gg8liqxltm0srr",
-            "position": 4,
+            "position": 5,
             "handlers": {},
             "visible": true
         },
@@ -9534,10 +9329,298 @@
                 "name": "@{dic.add_proj_tab[lang]}"
             },
             "parentId": "n9gg8liqxltm0srr",
-            "position": 5,
+            "position": 6,
             "handlers": {
                 "click": "$goToPage_add_project"
             },
+            "visible": true
+        },
+        "79o1uk393zbbn3ou": {
+            "id": "79o1uk393zbbn3ou",
+            "type": "textinput",
+            "content": {
+                "label": "Web",
+                "placeholder": "@{dic.let_us_know[lang]}"
+            },
+            "parentId": "1zq1ycf1ug9w98bn",
+            "position": 0,
+            "handlers": {},
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.u"
+            },
+            "visible": true
+        },
+        "xjxlquuf0t3435ii": {
+            "id": "xjxlquuf0t3435ii",
+            "type": "multiselectinput",
+            "content": {
+                "label": "@{dic.speciality[lang]}",
+                "options": "@{specs}",
+                "primaryTextColor": "#fcfcfc",
+                "chipTextColor": "#1d4087",
+                "placeholder": "@{dic.spec_placeholder[lang]}",
+                "containerBackgroundColor": "#1d4087",
+                "accentColor": "#dbeef6",
+                "secondaryTextColor": "#79c4d2"
+            },
+            "parentId": "w3xtvr7k6t3idenf",
+            "position": 4,
+            "handlers": {},
+            "binding": {
+                "eventType": "ss-options-change",
+                "stateRef": "user.major"
+            },
+            "visible": true
+        },
+        "sx8dmvhrvkuu9v8s": {
+            "id": "sx8dmvhrvkuu9v8s",
+            "type": "textinput",
+            "content": {
+                "label": "Web"
+            },
+            "parentId": "zk5to1li20i7hj5i",
+            "position": 4,
+            "handlers": {},
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.url"
+            },
+            "visible": true
+        },
+        "ay5h2s1i3hajqykf": {
+            "id": "ay5h2s1i3hajqykf",
+            "type": "textinput",
+            "content": {
+                "label": "Web",
+                "placeholder": "@{dic.let_us_know[lang]}"
+            },
+            "parentId": "rtaq4eszk4sxeblk",
+            "position": 0,
+            "handlers": {},
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user.url"
+            },
+            "visible": true
+        },
+        "3nj8rmjgwoqy8ebs": {
+            "id": "3nj8rmjgwoqy8ebs",
+            "type": "section",
+            "content": {
+                "title": "",
+                "accentColor": "#000000",
+                "containerBackgroundColor": "#152e61",
+                "containerShadow": "5px 5px 7px -4px #000000",
+                "primaryTextColor": "#fa0000"
+            },
+            "parentId": "91ok2m5jyso0goaw",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "cj05j3qyo56p7wr1": {
+            "id": "cj05j3qyo56p7wr1",
+            "type": "columns",
+            "content": {},
+            "parentId": "3nj8rmjgwoqy8ebs",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "epehx7bw9ddvh9fk": {
+            "id": "epehx7bw9ddvh9fk",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentHAlign": "center",
+                "contentVAlign": "center"
+            },
+            "parentId": "cj05j3qyo56p7wr1",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "kddsnbb4rpi0lw09": {
+            "id": "kddsnbb4rpi0lw09",
+            "type": "button",
+            "content": {
+                "text": "@{dic.subscribe[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#fcfcfc",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "epehx7bw9ddvh9fk",
+            "position": 0,
+            "handlers": {
+                "ss-click": "$goToPage_subscribe"
+            },
+            "visible": true
+        },
+        "tevckw9n507wwgu2": {
+            "id": "tevckw9n507wwgu2",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "cj05j3qyo56p7wr1",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "1l94yrcxb0eg7ud1": {
+            "id": "1l94yrcxb0eg7ud1",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "parentId": "tevckw9n507wwgu2",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "7nkmdxhvj9hryhju": {
+            "id": "7nkmdxhvj9hryhju",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentHAlign": "center",
+                "contentVAlign": "center"
+            },
+            "parentId": "cj05j3qyo56p7wr1",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "n6n5pfy2zuoomhxy": {
+            "id": "n6n5pfy2zuoomhxy",
+            "type": "button",
+            "content": {
+                "text": "@{dic.contact_us[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#fcfcfc",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "7nkmdxhvj9hryhju",
+            "position": 0,
+            "handlers": {
+                "ss-click": "$goToPage_contact_us"
+            },
+            "visible": true
+        },
+        "rs272moqw5b3kwui": {
+            "id": "rs272moqw5b3kwui",
+            "type": "section",
+            "content": {
+                "title": "",
+                "accentColor": "#000000",
+                "containerBackgroundColor": "#152e61",
+                "containerShadow": "5px 5px 7px -4px #000000",
+                "primaryTextColor": "#fa0000"
+            },
+            "parentId": "k97az8z9rei13cpb",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "z4nmr7sj1mi03bqw": {
+            "id": "z4nmr7sj1mi03bqw",
+            "type": "columns",
+            "content": {},
+            "parentId": "rs272moqw5b3kwui",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "qezwg7lp4a1cwnm0": {
+            "id": "qezwg7lp4a1cwnm0",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentHAlign": "center",
+                "contentVAlign": "center"
+            },
+            "parentId": "z4nmr7sj1mi03bqw",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "ax0kknuqdqexq0za": {
+            "id": "ax0kknuqdqexq0za",
+            "type": "button",
+            "content": {
+                "text": "@{dic.subscribe[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#fcfcfc",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "qezwg7lp4a1cwnm0",
+            "position": 0,
+            "handlers": {
+                "ss-click": "$goToPage_subscribe"
+            },
+            "visible": true
+        },
+        "755r7bzu4humy7ft": {
+            "id": "755r7bzu4humy7ft",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "z4nmr7sj1mi03bqw",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "mjpgx4b85q59c5bm": {
+            "id": "mjpgx4b85q59c5bm",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "parentId": "755r7bzu4humy7ft",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "u39du8fezm9toq7i": {
+            "id": "u39du8fezm9toq7i",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentHAlign": "center",
+                "contentVAlign": "center"
+            },
+            "parentId": "z4nmr7sj1mi03bqw",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "rlpwv3g9n4c6le5n": {
+            "id": "rlpwv3g9n4c6le5n",
+            "type": "button",
+            "content": {
+                "text": "@{dic.contact_us[lang]}",
+                "buttonColor": "#152e61",
+                "buttonTextColor": "#fcfcfc",
+                "cssClasses": "but_as_link"
+            },
+            "parentId": "u39du8fezm9toq7i",
+            "position": 0,
+            "handlers": {
+                "ss-click": "$goToPage_contact_us"
+            },
+            "visible": true
+        },
+        "lzkxbzepijtz69va": {
+            "id": "lzkxbzepijtz69va",
+            "type": "tab",
+            "content": {
+                "name": "@{dic.new_installers[lang]}"
+            },
+            "parentId": "n9gg8liqxltm0srr",
+            "position": 1,
+            "handlers": {},
             "visible": true
         }
     }

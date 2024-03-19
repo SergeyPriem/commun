@@ -34,45 +34,6 @@ def _get_default_user_data(message_dict):
     }
 
 
-# def _get_user_data(state):
-#     with db_session:
-#         try:
-#             current_user = User.get(login=state["user"]["login"])
-#         except Exception as e:
-#             state["message"] = err_handler(e, "_get_user_data")
-#             return _get_default_user_data(None)
-#
-#         if current_user:
-#             if bcrypt.checkpw(str(state["user"]["password"]).encode("utf-8"), current_user.h_pass.encode("utf-8")):
-#
-#                 state["user"]["first_name"] = current_user.first_name
-#                 state["user"]["last_name"] = current_user.last_name
-#                 state["user"]["email"] = current_user.email
-#                 state["user"]["phone"] = current_user.phone
-#                 state["user"]["role"] = current_user.role
-#                 state["user"]["login"] = state["user"]["login"]
-#                 state["user"]["password"] = None
-#                 state["user"]["password2"] = None
-#                 state["user"]["logged"] = 1
-#                 state["user"]["not_logged"] = 0
-#                 state["user"]["lang"] = current_user.lang
-#                 state["message"] = None
-#
-#                 try:
-#                     VisitLog(
-#                         user_login=state["user"]["login"],
-#                         date_time_in=datetime.datetime.now(),
-#                         lang=state["lang"]
-#                     )
-#                 except Exception as e:
-#                     state["message"] = err_handler(e, "_get_user_data")
-#             else:
-#                 state[
-#                     "message"] = "- Wrong login or password * Невірний логін або пароль * Неправильный логин или пароль"
-#         else:
-#             state["message"] = "- User not found * Користувач не знайдений * Пользователь не найден"
-
-
 def _get_user_data(state):
     session = Session(bind=engine)
     try:
@@ -113,9 +74,9 @@ def _get_user_data(state):
             finally:
                 session.close()
         else:
-            state["message"] = "- Wrong login or password * Невірний логін або пароль * Неправильный логин или пароль"
+            state["message"] = "- " + dic["wrong_password"][state["lang"]]
     else:
-        state["message"] = "- User not found * Користувач не знайдений * Пользователь не найден"
+        state["message"] = "- " + dic["user_not_found"][state["lang"]]
 
 
 def log_user(state):
@@ -126,7 +87,7 @@ def log_user(state):
         state["lang"] = state["user"]["lang"]
 
         if state["user"]["role"] == 'client':
-            state.set_page('engineers')
+            state.set_page('client_page')
             state["engineers"]["content"] = 1
             state["engineers"]["warning"] = 0
             state["projects"]["content"] = 0
@@ -135,7 +96,7 @@ def log_user(state):
             state["vacancy"]["warning"] = 1
 
         if state["user"]["role"] == 'engineer':
-            state.set_page('projects')
+            state.set_page('engineer_page')
             state["engineers"]["content"] = 0
             state["engineers"]["warning"] = 1
             state["projects"]["content"] = 1
@@ -161,45 +122,6 @@ def log_user(state):
         state["vacancy"]["warning"] = 1
 
 
-# def _add_user_to_db(state):
-#     if state["user"]["engineer"]:
-#         major = ", ".join(state["user"]["major"])
-#     else:
-#         major = "-"
-#
-#     try:
-#         with db_session:
-#             User(
-#                 first_name=state["user"]["first_name"],
-#                 last_name=state["user"]["last_name"] or "-",
-#                 email=state["user"]["email"],
-#                 phone=state["user"]["phone"],
-#                 login=state["user"]["login"],
-#                 role=state["user"]["role"],
-#                 h_pass=hash_password(state["user"]["password"]),
-#                 description=state["user"]["description"] or "-",
-#                 url='-',
-#                 date_time=datetime.datetime.now(),
-#                 experience=int(state["user"]["experience"] or 0),
-#                 major=major,
-#                 company=state["user"]["company"] or "-",
-#                 lang=state["lang"]
-#             )
-#
-#             RegLog(
-#                 user_login=state["user"]["login"],
-#                 date_time_reg=datetime.datetime.now()
-#             )
-#
-#         state["reg"]["db_message_text"] = '+ Вы добавлены в базу данных'
-#
-#         return 200
-#
-#     except TransactionIntegrityError:
-#         state["reg"]["db_message_text"] = f'- Пользователь с таким логином уже есть в базе данных. Измените логин'
-#         return 500
-
-
 def _add_user_to_db(state):
     if state["user"]["major"]:
         major = ", ".join(state["user"]["major"])
@@ -209,28 +131,28 @@ def _add_user_to_db(state):
     try:
         with Session(engine) as session:
             new_user = User(
-                first_name=state["user"]["first_name"],
-                last_name=state["user"]["last_name"] or "-",
-                email=state["user"]["email"],
-                phone=state["user"]["phone"],
-                login=state["user"]["login"],
-                role=state["user"]["role"],
-                h_pass=hash_password(state["user"]["password"]),
-                description=state["user"]["description"] or "-",
-                url='-',
+                first_name=state["user"]["first_name"].strip(),
+                last_name=state["user"]["last_name"].strip() or "-",
+                email=state["user"]["email"].strip(),
+                phone=state["user"]["phone"].strip(),
+                login=state["user"]["login"].strip(),
+                role=state["user"]["role"].strip(),
+                h_pass=hash_password(state["user"]["password"].strip()),
+                description=(state["user"]["description"] or "-").strip(),
+                url=state["user"]["url"].strip() or "-",
                 date_time=datetime.datetime.now(),
                 experience=int(state["user"]["experience"] or 0),
                 major=major,
-                company=state["user"]["company"] or "-",
+                company=(state["user"]["company"] or "-").strip(),
                 lang=state["lang"]
             )
             session.add(new_user)
             session.commit()
 
-        state["reg"]["db_message_text"] = '+ Вы добавлены в базу данных'
+        state["reg"]["db_message_text"] = dic["user_added"][state["lang"]]
         return 200
     except IntegrityError:
-        state["reg"]["db_message_text"] = f'- Пользователь с таким логином уже есть в базе данных. Измените логин'
+        state["reg"]["db_message_text"] = dic["user_exists"][state["lang"]]
         return 500
     finally:
         session.close()
@@ -239,7 +161,7 @@ def _add_user_to_db(state):
 def validate_email_by_code(state):
     if state['reg']['code_sent'] == state['reg']['code_entered']:
 
-        state["reg"]["code_message"] = "+ Код подтвержден"
+        state["reg"]["code_message"] = "+ " + dic["code_confirmed"][state["lang"]]
 
         if _add_user_to_db(state) == 200:
             state["reg"]['form'] = 0
@@ -257,13 +179,11 @@ def validate_email_by_code(state):
         state["reg"]['code_error'] = 1
         state["reg"]['code_ok'] = 0
         state["reg"]["code_section"] = 1
-        state["reg"]["code_message"] = "- Код ошибочный. Попробуйте еще раз"
+        state["reg"]["code_message"] = "- " + dic["wrong_code"][state["lang"]]
 
 
 def send_confirmation_code(state):
     state['reg']['code_sent'] = random_code_alphanumeric(6)
-
-    # print(f"Code sent: {state['reg']['code_sent']}")
 
     reply = _send_email(state)
     if reply['status'] == 200:
@@ -275,54 +195,67 @@ def send_confirmation_code(state):
 def validate_reg_data(state):
     """Check registration data and change states"""
     troubles = []
-
+    lang = state["lang"]
     if state["user"]['first_name']:
         if len(state["user"]['first_name']) <= 1:
             troubles.append(e_m["first_name"])
+            # state.add_notification(type="warning", title="Warning!", message=e_m["first_name"][lang])
+
     else:
         troubles.append(e_m["first_name_2"])
+        # state.add_notification(type="warning", title="Warning!", message=e_m["first_name_2"][lang])
 
     if not valid_email(state["user"]['email']):
         troubles.append(e_m["short_mail"])
+        # state.add_notification(type="warning", title="Warning!", message=e_m["short_mail"][lang])
 
     if state["user"]['phone']:
         if len(state["user"]['phone']) < 10:
             troubles.append(e_m["wrong_phone"])
+            # state.add_notification(type="warning", title="Warning!", message=e_m["wrong_phone"][lang])
     else:
         troubles.append(e_m["empty_phone"])
-
+        # state.add_notification(type="warning", title="Warning!", message=e_m["empty_phone"][lang])
     if state["user"]['login']:
         if len(state["user"]['login']) < 3:
             troubles.append(e_m["short_login"])
+            # state.add_notification(type="warning", title="Warning!", message=e_m["short_login"][lang])
     else:
         troubles.append(e_m["empty_login"])
-
+        # state.add_notification(type="warning", title="Warning!", message=e_m["empty_login"][lang])
     if state["user"]['password'] is None:
         troubles.append(e_m["empty_password"])
+        # state.add_notification(type="warning", title="Warning!", message=e_m["empty_password"][lang])
 
     if state["user"]['password'] != state["user"]['password2']:
         troubles.append(e_m["different_passwords"])
+        # state.add_notification(type="warning", title="Warning!", message=e_m["different_passwords"][lang])
 
     if state["user"]['engineer']:
         if not state["user"]['major']:
             troubles.append(e_m["empty_speciality"])
+            # state.add_notification(type="warning", title="Warning!", message=e_m["empty_speciality"][lang])
 
     if not state["user"]['client']:
         if state["user"]['experience']:
             if state["user"]['experience'] < 1 or state["user"]['experience'] > 80:
                 troubles.append(e_m["wrong_experience"])
+                # state.add_notification(type="warning", title="Warning!", message=e_m["wrong_experience"][lang])
         else:
             troubles.append(e_m["empty_experience"])
+            # state.add_notification(type="warning", title="Warning!", message=e_m["empty_experience"][lang])
 
         if state["user"]['description']:
             if len(state["user"]['description']) < 10:
                 troubles.append(e_m["short_description"])
+                # state.add_notification(type="warning", title="Warning!", message=e_m["short_description"][lang])
         else:
             troubles.append(e_m["empty_description"])
+            # state.add_notification(type="warning", title="Warning!", message=e_m["empty_description"][lang])
 
     if len(troubles) > 0:
 
-        troubles_text = [t[state["lang"]] for t in troubles]
+        troubles_text = [t[lang] for t in troubles]
 
         state["reg"]["data_error"] = 1
         state["reg"]["data_error_message"] = ", ".join(troubles_text)
@@ -381,9 +314,9 @@ def _log_out_user(state):
                 # Commit the changes
                 session.commit()
             else:
-                print("User not found")
+                state.add_notification("User not found")
         except SQLAlchemyError as e:
-            print(f"An error occurred: {e}")
+            state.add_notification(f"An error occurred: {e}")
 
 
 def quit_fun(state):
@@ -432,7 +365,8 @@ def _get_engineers(state, spec):
             } for i in range(len(stuff))}
 
         except SQLAlchemyError as e:
-            print(f"An error occurred: {e}")
+            state.add_notification(f"An error occurred: {e}")
+
 
 def prepare_el(state):
     _get_engineers(state, "el")
@@ -441,8 +375,10 @@ def prepare_el(state):
 def prepare_ins(state):
     _get_engineers(state, "ins")
 
+
 def prepare_plot_plan(state):
     _get_engineers(state, "plot_plan")
+
 
 def prepare_low_cur(state):
     _get_engineers(state, "low_cur")
@@ -471,30 +407,38 @@ def connect_w_engineer(state, context):
 
 def create_project(state):
     # Assuming you have the same 'Projects' class and 'Base' as in your previous code
-
-    with Session(bind=engine) as session:
-        try:
-            new_project = Projects(
-                id=1,
-                name='Project 1',
-                description='This is project 1',
-                comments='No comments',
-                required_specialists='Engineer1, Engineer2',
-                assigned_engineers='Engineer1'
-            )
-            session.add(new_project)
-            session.commit()
-        except SQLAlchemyError as e:
-            print(f"An error occurred: {e}")
-
-
-
+    state_name = state["new_project"]["name"] or False
+    state_description = state["new_project"]["description"] or False
+    state_comments = state["new_project"]["comments"] or False
+    state_required_specialists = state["new_project"]["required_specialists"]
+    state_required_specialists = ", ".join(state_required_specialists) if state_required_specialists else "-"
+    state_assigned_engineers = "-"
+    if all([state_name, state_description, state_comments, state_required_specialists]):
+        with Session(bind=engine) as session:
+            try:
+                new_project = Projects(
+                    name=state_name.strip(),
+                    owner=state["user"]["login"],
+                    description=state_description.strip(),
+                    comments=state_comments.strip(),
+                    required_specialists=state_required_specialists,
+                    assigned_engineers=state_assigned_engineers
+                )
+                session.add(new_project)
+                session.commit()
+            except SQLAlchemyError as e:
+                state.add_notification(f"An error occurred: {e}")
+    else:
+        state.add_notification("warning", "Warning!", "Some fields are empty.")
 
 
 def get_new_engineers(state):
     with Session(bind=engine) as session:
         try:
-            stuff = session.query(User).filter(User.date_time > datetime.datetime.now() - datetime.timedelta(days=30)).all()
+            stuff = session.query(User).filter(
+                User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
+                User.role == "engineer"
+            ).all()
             state["new_engineers"] = {stuff[i].login: {
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
@@ -503,7 +447,7 @@ def get_new_engineers(state):
             } for i in range(len(stuff))}
 
         except SQLAlchemyError as e:
-            print(f"An error occurred: {e}")
+            state.add_notification(f"An error occurred: {e}")
 
 
 initial_state = ss.init_state(
@@ -538,4 +482,4 @@ initial_state = ss.init_state(
     }
 )
 
-initial_state.import_stylesheet("theme", "/static/custom.css?22")
+initial_state.import_stylesheet("theme", "/static/custom.css?40")

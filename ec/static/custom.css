@@ -35,3 +35,12 @@ textarea {
 .custom_div {
   width: 80% !important;
 }
+
+.custom_footer {
+    position: fixed !important;
+    left: 17.5% !important;
+    bottom: 0 !important;
+    width: 65% !important;
+
+}
+
