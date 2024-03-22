@@ -432,6 +432,70 @@ def create_project(state):
         state.add_notification("warning", "Warning!", "Some fields are empty.")
 
 
+def _get_admin_data(state):
+    with Session(bind=engine) as session:
+        try:
+            stuff = session.query(User).filter(User.role == "admin").all()
+            state["admin"] = {stuff[i].login: {
+                "name": stuff[i].first_name,
+                "description": stuff[i].description,
+                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                "experience": stuff[i].experience,
+            } for i in range(len(stuff))}
+
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
+def log_admin(state):
+    with Session(bind=engine) as session:
+        try:
+            current_user = session.query(User).filter(
+                User.login == state["user"]["login"],
+                User.role == "admin"
+            ).first()
+
+        except SQLAlchemyError as e:
+            state.add_notification(err_handler(e, "log_admin"))
+            return
+
+        if current_user:
+            if bcrypt.checkpw(str(state["user"]["password"]).encode("utf-8"), current_user.h_pass.encode("utf-8")):
+
+                state["user"]["first_name"] = current_user.first_name
+                state["user"]["last_name"] = current_user.last_name
+                state["user"]["email"] = current_user.email
+                state["user"]["phone"] = current_user.phone
+                state["user"]["role"] = current_user.role
+                state["user"]["password"] = None
+                state["user"]["password2"] = None
+                state["user"]["logged"] = 1
+                state["user"]["not_logged"] = 0
+                state["user"]["lang"] = current_user.lang
+                state["message"] = None
+
+                try:
+                    visit_log = VisitLog(
+                        user_login=state["user"]["login"],
+                        date_time_in=datetime.datetime.now(),
+                        lang=state["lang"]
+                    )
+                    session.add(visit_log)
+                    session.commit()
+
+                except SQLAlchemyError as e:
+                    state["message"] = err_handler(e, "_get_user_data")
+
+                finally:
+                    session.close()
+
+                admin_panel_section(state)
+            else:
+                state.add_notification("warning", "Warning!", dic["wrong_password"]["E"])
+        else:
+            state.add_notification("warning", "Warning!", dic["user_not_found"]["E"])
+
+
 def get_new_engineers(state):
     with Session(bind=engine) as session:
         try:
@@ -448,6 +512,43 @@ def get_new_engineers(state):
 
         except SQLAlchemyError as e:
             state.add_notification(f"An error occurred: {e}")
+
+
+def admin_reg_section(state):
+    state["admin"] = {key: 0 for key in state["admin"]}
+    state["admin"]["reg_sect"] = 1
+
+
+
+def admin_code_section(state):
+    state["admin"] = {key: 0 for key in state["admin"]}
+    state["admin"]["code_sect"] = 1
+
+
+
+def admin_log_section(state):
+    state["admin"] = {key: 0 for key in state["admin"]}
+    state["admin"]["log_sect"] = 1
+
+
+def admin_panel_section(state):
+    state["admin"] = {key: 0 for key in state["admin"]}
+    state["admin"]["panel_sect"] = 1
+
+
+def validate_admin_data(state):
+    ...
+    admin_code_section(state)
+
+
+def validate_admin_code(state):
+    ...
+    admin_log_section(state)
+
+
+def validate_admin_login(state):
+    ...
+    admin_panel_section(state)
 
 
 initial_state = ss.init_state(
@@ -479,6 +580,13 @@ initial_state = ss.init_state(
         "new_engineers": None,
         "trusted_engineers": None,
         "viewed_engineers": None,
+
+        "admin": {
+            "reg_sect": 0,
+            "code_sect": 0,
+            "log_sect": 0,
+            "panel_sect": 0
+        }
     }
 )
 
