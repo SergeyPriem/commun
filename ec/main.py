@@ -1,22 +1,216 @@
 # -*- coding: utf-8 -*-
-import datetime
 import time
 
-import bcrypt
+import pandas as pd
 import streamsync as ss
-from sqlalchemy.orm import Session
-from sqlalchemy.exc import IntegrityError
-from models import engine, User, VisitLog, Projects
-from utilities import valid_email, _send_email, random_code_alphanumeric, err_handler, hash_password
-from dic import dic
+
 from dic import error_messages as e_m
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
     specialities_R, specialities_U, specialities_E, init_new_project
+from utilities import valid_email, _send_email, random_code_alphanumeric
 
-from sqlalchemy.exc import SQLAlchemyError
+import datetime
+import bcrypt
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
+from sqlalchemy.orm import Session
+from dic import dic
+from models import engine, User, VisitLog, Projects
+from utilities import hash_password, err_handler
+from sqlalchemy import create_engine, inspect
 
-# Shows in the log when the app starts
-print("Hello world!")
+print(f"You are using the main.py file from {datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')}")
+
+
+def get_table_as_dataframe(state):
+    df = pd.read_sql_table(state["db_table_name"], engine)
+
+    if "h_pass" in df.columns:
+        df = df.drop(columns=["h_pass"])
+
+        # df['your_column'] = pd.to_datetime(df['your_column'], unit='s')
+
+        df["date_time"] = pd.to_datetime(df["date_time"], unit='ms')
+        df["date_time"] = df["date_time"].dt.strftime('%Y-%m-%d %H:%M:%S')
+    else:
+        df["date_time_in"] = pd.to_datetime(df["date_time_in"], unit='ms')
+        df["date_time_in"] = df["date_time_in"].dt.strftime('%Y-%m-%d %H:%M:%S')
+        df["date_time_out"] = pd.to_datetime(df["date_time_out"], unit='ms')
+        df["date_time_out"] = df["date_time_out"].dt.strftime('%Y-%m-%d %H:%M:%S')
+
+    state["db_table"] = df
+
+
+def get_table_names():
+    with Session(bind=engine) as session:
+        inspector = inspect(session)
+        table_names = inspector.get_table_names()
+        return {table: table for table in table_names}
+
+
+def _add_user_to_db(state):
+    if state["user"]["major"]:
+        major = ", ".join(state["user"]["major"])
+    else:
+        major = "-"
+
+    try:
+        with Session(engine) as session:
+            new_user = User(
+                first_name=state["user"]["first_name"].strip(),
+                last_name=state["user"]["last_name"].strip() or "-",
+                email=state["user"]["email"].strip(),
+                phone=state["user"]["phone"].strip(),
+                login=state["user"]["login"].strip(),
+                role=state["user"]["role"],
+                h_pass=hash_password(state["user"]["password"].strip()),
+                description=(state["user"]["description"] or "-").strip(),
+                url=(state["user"]["url"] or "-").strip(),
+                date_time=datetime.datetime.now(),
+                experience=int(state["user"]["experience"] or 0),
+                major=major,
+                company=(state["user"]["company"] or "-").strip(),
+                lang=state["lang"]
+            )
+            session.add(new_user)
+            session.commit()
+
+        state["reg"]["db_message_text"] = dic["user_added"][state["lang"]]
+        return 200
+    except IntegrityError:
+        state["reg"]["db_message_text"] = dic["user_exists"][state["lang"]]
+        return 500
+    finally:
+        session.close()
+
+
+def _log_out_user(state):
+    with Session(bind=engine) as session:
+        try:
+            visit = session.query(
+                VisitLog).filter(VisitLog.user_login == state["user"]["login"]
+                                 ).order_by(VisitLog.id.desc()).first()
+            if visit:
+                visit.date_time_out = datetime.datetime.now()
+                # Commit the changes
+                session.commit()
+            else:
+                state.add_notification("User not found")
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
+def create_project(state):
+    # Assuming you have the same 'Projects' class and 'Base' as in your previous code
+    state_name = state["new_project"]["name"] or False
+    state_description = state["new_project"]["description"] or False
+    state_comments = state["new_project"]["comments"] or False
+    state_required_specialists = state["new_project"]["required_specialists"]
+    state_required_specialists = ", ".join(state_required_specialists) if state_required_specialists else "-"
+    state_assigned_engineers = "-"
+    if all([state_name, state_description, state_comments, state_required_specialists]):
+        with Session(bind=engine) as session:
+            try:
+                new_project = Projects(
+                    name=state_name.strip(),
+                    owner=state["user"]["login"],
+                    description=state_description.strip(),
+                    comments=state_comments.strip(),
+                    required_specialists=state_required_specialists,
+                    assigned_engineers=state_assigned_engineers
+                )
+                session.add(new_project)
+                session.commit()
+            except SQLAlchemyError as e:
+                state.add_notification(f"An error occurred: {e}")
+    else:
+        state.add_notification("warning", "Warning!", "Some fields are empty.")
+
+
+def _get_admin_data(state):
+    with Session(bind=engine) as session:
+        try:
+            stuff = session.query(User).filter(User.role == "admin").all()
+            state["admin"] = {stuff[i].login: {
+                "name": stuff[i].first_name,
+                "description": stuff[i].description,
+                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                "experience": stuff[i].experience,
+            } for i in range(len(stuff))}
+
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
+def fill_user_data(state, user):
+    state["user"]["first_name"] = user.first_name
+    state["user"]["last_name"] = user.last_name
+    state["user"]["email"] = user.email
+    state["user"]["phone"] = user.phone
+    state["user"]["role"] = user.role
+
+
+def log_admin(state):
+    with Session(bind=engine) as session:
+        try:
+            current_user = session.query(User).filter(
+                User.login == state["user"]["login"],
+                User.role == "admin"
+            ).first()
+
+        except SQLAlchemyError as e:
+            state.add_notification(err_handler(e, "log_admin"))
+            return
+
+        if current_user:
+            if bcrypt.checkpw(str(state["user"]["password"]).encode("utf-8"), current_user.h_pass.encode("utf-8")):
+
+                fill_user_data(state, current_user)
+
+                state["user"]["password"] = None
+                state["user"]["password2"] = None
+                state["user"]["logged"] = 1
+                state["user"]["not_logged"] = 0
+                state["user"]["lang"] = current_user.lang
+                state["message"] = None
+
+                try:
+                    visit_log = VisitLog(
+                        user_login=state["user"]["login"],
+                        date_time_in=datetime.datetime.now(),
+                        lang=state["lang"]
+                    )
+                    session.add(visit_log)
+                    session.commit()
+
+                except SQLAlchemyError as e:
+                    state["message"] = err_handler(e, "_get_user_data")
+
+                finally:
+                    session.close()
+
+                admin_panel_section(state)
+            else:
+                state.add_notification("warning", "Warning!", "Wrong password...")
+        else:
+            state.add_notification("warning", "Warning!", "Admin not found...")
+
+
+def get_new_engineers(state):
+    with Session(bind=engine) as session:
+        try:
+            stuff = session.query(User).filter(
+                User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
+                User.role == "engineer"
+            ).all()
+            state["new_engineers"] = {stuff[i].login: {
+                "name": stuff[i].first_name,
+                "description": stuff[i].description,
+                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                "experience": stuff[i].experience,
+            } for i in range(len(stuff))}
+
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
 
 
 def _get_default_user_data(message_dict):
@@ -46,11 +240,8 @@ def _get_user_data(state):
     if current_user:
         if bcrypt.checkpw(str(state["user"]["password"]).encode("utf-8"), current_user.h_pass.encode("utf-8")):
 
-            state["user"]["first_name"] = current_user.first_name
-            state["user"]["last_name"] = current_user.last_name
-            state["user"]["email"] = current_user.email
-            state["user"]["phone"] = current_user.phone
-            state["user"]["role"] = current_user.role
+            fill_user_data(state, current_user)
+
             state["user"]["login"] = state["user"]["login"]
             state["user"]["password"] = None
             state["user"]["password2"] = None
@@ -82,6 +273,12 @@ def _get_user_data(state):
 def log_user(state):
     _get_user_data(state)
 
+    if state["user"]["role"] not in ("client", "engineer", "installer"):
+        state.add_notification("warning", "Warning!", "Wrong role, if you are admin, use special page...")
+
+        quit_fun(state)
+        state.set_page("about")
+
     if state["user"]["logged"]:
 
         state["lang"] = state["user"]["lang"]
@@ -112,6 +309,8 @@ def log_user(state):
             state["projects"]["warning"] = 0
             state["vacancy"]["content"] = 1
             state["vacancy"]["warning"] = 0
+
+
     else:
         state.set_page('wrong_login')
         state["engineers"]["content"] = 0
@@ -120,42 +319,6 @@ def log_user(state):
         state["projects"]["warning"] = 1
         state["vacancy"]["content"] = 0
         state["vacancy"]["warning"] = 1
-
-
-def _add_user_to_db(state):
-    if state["user"]["major"]:
-        major = ", ".join(state["user"]["major"])
-    else:
-        major = "-"
-
-    try:
-        with Session(engine) as session:
-            new_user = User(
-                first_name=state["user"]["first_name"].strip(),
-                last_name=state["user"]["last_name"].strip() or "-",
-                email=state["user"]["email"].strip(),
-                phone=state["user"]["phone"].strip(),
-                login=state["user"]["login"].strip(),
-                role=state["user"]["role"],
-                h_pass=hash_password(state["user"]["password"].strip()),
-                description=(state["user"]["description"] or "-").strip(),
-                url=state["user"]["url"].strip() or "-",
-                date_time=datetime.datetime.now(),
-                experience=int(state["user"]["experience"] or 0),
-                major=major,
-                company=(state["user"]["company"] or "-").strip(),
-                lang=state["lang"]
-            )
-            session.add(new_user)
-            session.commit()
-
-        state["reg"]["db_message_text"] = dic["user_added"][state["lang"]]
-        return 200
-    except IntegrityError:
-        state["reg"]["db_message_text"] = dic["user_exists"][state["lang"]]
-        return 500
-    finally:
-        session.close()
 
 
 def validate_email_by_code(state):
@@ -192,7 +355,7 @@ def send_confirmation_code(state):
         state["reg"]["code_section"] = 0
 
 
-def basic_validation(state):
+def _basic_data_validation(state):
     troubles = []
 
     if state["user"]['first_name']:
@@ -229,7 +392,7 @@ def validate_reg_data(state):
     """Check registration data and change states"""
     lang = state["lang"]
 
-    troubles = basic_validation(state)
+    troubles = _basic_data_validation(state)
 
     if state["user"]['engineer']:
         if not state["user"]['major']:
@@ -297,22 +460,6 @@ def show_installer_form(state):
     state["reg"]["data_error"] = 0
     state["reg"]["code_ok"] = 0
     state["reg"]["data_ok"] = 0
-
-
-def _log_out_user(state):
-    with Session(bind=engine) as session:
-        try:
-            visit = session.query(
-                VisitLog).filter(VisitLog.user_login == state["user"]["login"]
-                                 ).order_by(VisitLog.id.desc()).first()
-            if visit:
-                visit.date_time_out = datetime.datetime.now()
-                # Commit the changes
-                session.commit()
-            else:
-                state.add_notification("User not found")
-        except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
 
 
 def quit_fun(state):
@@ -401,116 +548,8 @@ def connect_w_engineer(state, context):
     state["selected_engineers"] = list(set(state["selected_engineers"]))
 
 
-def create_project(state):
-    # Assuming you have the same 'Projects' class and 'Base' as in your previous code
-    state_name = state["new_project"]["name"] or False
-    state_description = state["new_project"]["description"] or False
-    state_comments = state["new_project"]["comments"] or False
-    state_required_specialists = state["new_project"]["required_specialists"]
-    state_required_specialists = ", ".join(state_required_specialists) if state_required_specialists else "-"
-    state_assigned_engineers = "-"
-    if all([state_name, state_description, state_comments, state_required_specialists]):
-        with Session(bind=engine) as session:
-            try:
-                new_project = Projects(
-                    name=state_name.strip(),
-                    owner=state["user"]["login"],
-                    description=state_description.strip(),
-                    comments=state_comments.strip(),
-                    required_specialists=state_required_specialists,
-                    assigned_engineers=state_assigned_engineers
-                )
-                session.add(new_project)
-                session.commit()
-            except SQLAlchemyError as e:
-                state.add_notification(f"An error occurred: {e}")
-    else:
-        state.add_notification("warning", "Warning!", "Some fields are empty.")
-
-
-def _get_admin_data(state):
-    with Session(bind=engine) as session:
-        try:
-            stuff = session.query(User).filter(User.role == "admin").all()
-            state["admin"] = {stuff[i].login: {
-                "name": stuff[i].first_name,
-                "description": stuff[i].description,
-                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
-                "experience": stuff[i].experience,
-            } for i in range(len(stuff))}
-
-        except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
-
-
-def log_admin(state):
-    with Session(bind=engine) as session:
-        try:
-            current_user = session.query(User).filter(
-                User.login == state["user"]["login"],
-                User.role == "admin"
-            ).first()
-
-        except SQLAlchemyError as e:
-            state.add_notification(err_handler(e, "log_admin"))
-            return
-
-        if current_user:
-            if bcrypt.checkpw(str(state["user"]["password"]).encode("utf-8"), current_user.h_pass.encode("utf-8")):
-
-                state["user"]["first_name"] = current_user.first_name
-                state["user"]["last_name"] = current_user.last_name
-                state["user"]["email"] = current_user.email
-                state["user"]["phone"] = current_user.phone
-                state["user"]["role"] = current_user.role
-                state["user"]["password"] = None
-                state["user"]["password2"] = None
-                state["user"]["logged"] = 1
-                state["user"]["not_logged"] = 0
-                state["user"]["lang"] = current_user.lang
-                state["message"] = None
-
-                try:
-                    visit_log = VisitLog(
-                        user_login=state["user"]["login"],
-                        date_time_in=datetime.datetime.now(),
-                        lang=state["lang"]
-                    )
-                    session.add(visit_log)
-                    session.commit()
-
-                except SQLAlchemyError as e:
-                    state["message"] = err_handler(e, "_get_user_data")
-
-                finally:
-                    session.close()
-
-                admin_panel_section(state)
-            else:
-                state.add_notification("warning", "Warning!", dic["wrong_password"]["E"])
-        else:
-            state.add_notification("warning", "Warning!", dic["user_not_found"]["E"])
-
-
-def get_new_engineers(state):
-    with Session(bind=engine) as session:
-        try:
-            stuff = session.query(User).filter(
-                User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
-                User.role == "engineer"
-            ).all()
-            state["new_engineers"] = {stuff[i].login: {
-                "name": stuff[i].first_name,
-                "description": stuff[i].description,
-                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
-                "experience": stuff[i].experience,
-            } for i in range(len(stuff))}
-
-        except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
-
-
 def admin_reg_section(state):
+    state["user"]["role"] = "admin"
     state["admin"]["reg_sect"] = 1
     state["admin"]["code_sect"] = 0
     state["admin"]["log_sect"] = 0
@@ -540,7 +579,7 @@ def admin_panel_section(state):
 
 def validate_admin_data(state):
     lang = state["lang"]
-    troubles = basic_validation(state)
+    troubles = _basic_data_validation(state)
 
     if len(troubles) > 0:
         troubles_text = [t[lang] for t in troubles]
@@ -552,12 +591,14 @@ def validate_admin_data(state):
 
 
 def validate_admin_code(state):
-    ...
-    admin_log_section(state)
+    if state['reg']['code_sent'] == state['reg']['code_entered']:
+        _add_user_to_db(state)
+        admin_log_section(state)
 
 
 def validate_admin_login(state):
     ...
+    get_table_as_dataframe(state)
     admin_panel_section(state)
 
 
@@ -566,6 +607,9 @@ initial_state = ss.init_state(
         "message": None,
         "lang": "E",
         "dic": dic,
+
+        "db_table": None,
+        "db_table_name": None,
 
         "reg": init_reg,
         "login": init_login,
@@ -600,4 +644,4 @@ initial_state = ss.init_state(
     }
 )
 
-initial_state.import_stylesheet("theme", "/static/custom.css?40")
+initial_state.import_stylesheet("theme", "/static/custom.css?41")
