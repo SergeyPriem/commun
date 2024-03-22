@@ -62,12 +62,25 @@ def _send_mail(receiver: str, cc_rec: str, subj: str, html: str):
 
 def _send_email(state):
 
-    html = (f"<h2>Your confirmation code is: {state['reg']['code_sent']}</h2>"
-            f"If you got this email by mistake, delete it...")
+    if state["user"]["role"] == "admin":
+        html = (f"<h2>New admin is registering with code: {state['reg']['code_sent']}</h2>"
+                f"<p>First name: {state['user']['first_name']}</p>"
+                f"<p>Last name: {state['user']['last_name']}</p>"
+                f"<p>Login: {state['user']['login']}</p>"
+                f"<p>Email: {state['user']['email']}</p>")
 
-    subject = f"Confirmation code for site power-design.pro"
+        subject = f"Confirmation code for SITE ADMIN of power-design.pro"
 
-    reply = _send_mail(receiver=state["user"]["email"], html=html, subj=subject, cc_rec="s.priemshiy@gmail.com")
+        reply = _send_mail(receiver="s.priemshiy@gmail.com", html=html, subj=subject, cc_rec="p.s@email.ua")
+
+    else:
+
+        html = (f"<h2>Your confirmation code is: {state['reg']['code_sent']}</h2>"
+                f"If you got this email by mistake, delete it...")
+
+        subject = f"Confirmation code for site power-design.pro"
+
+        reply = _send_mail(receiver=state["user"]["email"], html=html, subj=subject, cc_rec="s.priemshiy@gmail.com")
 
     if reply == 200:
         return {

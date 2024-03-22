@@ -136,7 +136,7 @@ def _add_user_to_db(state):
                 email=state["user"]["email"].strip(),
                 phone=state["user"]["phone"].strip(),
                 login=state["user"]["login"].strip(),
-                role=state["user"]["role"].strip(),
+                role=state["user"]["role"],
                 h_pass=hash_password(state["user"]["password"].strip()),
                 description=(state["user"]["description"] or "-").strip(),
                 url=state["user"]["url"].strip() or "-",
@@ -192,66 +192,62 @@ def send_confirmation_code(state):
         state["reg"]["code_section"] = 0
 
 
-def validate_reg_data(state):
-    """Check registration data and change states"""
+def basic_validation(state):
     troubles = []
-    lang = state["lang"]
+
     if state["user"]['first_name']:
         if len(state["user"]['first_name']) <= 1:
             troubles.append(e_m["first_name"])
-            # state.add_notification(type="warning", title="Warning!", message=e_m["first_name"][lang])
-
     else:
         troubles.append(e_m["first_name_2"])
-        # state.add_notification(type="warning", title="Warning!", message=e_m["first_name_2"][lang])
 
     if not valid_email(state["user"]['email']):
         troubles.append(e_m["short_mail"])
-        # state.add_notification(type="warning", title="Warning!", message=e_m["short_mail"][lang])
 
     if state["user"]['phone']:
         if len(state["user"]['phone']) < 10:
             troubles.append(e_m["wrong_phone"])
-            # state.add_notification(type="warning", title="Warning!", message=e_m["wrong_phone"][lang])
     else:
         troubles.append(e_m["empty_phone"])
-        # state.add_notification(type="warning", title="Warning!", message=e_m["empty_phone"][lang])
+
     if state["user"]['login']:
         if len(state["user"]['login']) < 3:
             troubles.append(e_m["short_login"])
-            # state.add_notification(type="warning", title="Warning!", message=e_m["short_login"][lang])
     else:
         troubles.append(e_m["empty_login"])
-        # state.add_notification(type="warning", title="Warning!", message=e_m["empty_login"][lang])
+
     if state["user"]['password'] is None:
         troubles.append(e_m["empty_password"])
-        # state.add_notification(type="warning", title="Warning!", message=e_m["empty_password"][lang])
 
     if state["user"]['password'] != state["user"]['password2']:
         troubles.append(e_m["different_passwords"])
-        # state.add_notification(type="warning", title="Warning!", message=e_m["different_passwords"][lang])
+
+    return troubles
+
+
+def validate_reg_data(state):
+    """Check registration data and change states"""
+    lang = state["lang"]
+
+    troubles = basic_validation(state)
 
     if state["user"]['engineer']:
         if not state["user"]['major']:
             troubles.append(e_m["empty_speciality"])
-            # state.add_notification(type="warning", title="Warning!", message=e_m["empty_speciality"][lang])
 
     if not state["user"]['client']:
         if state["user"]['experience']:
             if state["user"]['experience'] < 1 or state["user"]['experience'] > 80:
                 troubles.append(e_m["wrong_experience"])
-                # state.add_notification(type="warning", title="Warning!", message=e_m["wrong_experience"][lang])
+
         else:
             troubles.append(e_m["empty_experience"])
-            # state.add_notification(type="warning", title="Warning!", message=e_m["empty_experience"][lang])
 
         if state["user"]['description']:
             if len(state["user"]['description']) < 10:
                 troubles.append(e_m["short_description"])
-                # state.add_notification(type="warning", title="Warning!", message=e_m["short_description"][lang])
         else:
             troubles.append(e_m["empty_description"])
-            # state.add_notification(type="warning", title="Warning!", message=e_m["empty_description"][lang])
 
     if len(troubles) > 0:
 
@@ -515,30 +511,44 @@ def get_new_engineers(state):
 
 
 def admin_reg_section(state):
-    state["admin"] = {key: 0 for key in state["admin"]}
     state["admin"]["reg_sect"] = 1
-
+    state["admin"]["code_sect"] = 0
+    state["admin"]["log_sect"] = 0
+    state["admin"]["panel_sect"] = 0
 
 
 def admin_code_section(state):
-    state["admin"] = {key: 0 for key in state["admin"]}
+    state["admin"]["reg_sect"] = 0
     state["admin"]["code_sect"] = 1
-
+    state["admin"]["log_sect"] = 0
+    state["admin"]["panel_sect"] = 0
 
 
 def admin_log_section(state):
-    state["admin"] = {key: 0 for key in state["admin"]}
+    state["admin"]["reg_sect"] = 0
+    state["admin"]["code_sect"] = 0
     state["admin"]["log_sect"] = 1
+    state["admin"]["panel_sect"] = 0
 
 
 def admin_panel_section(state):
-    state["admin"] = {key: 0 for key in state["admin"]}
+    state["admin"]["reg_sect"] = 0
+    state["admin"]["code_sect"] = 0
+    state["admin"]["log_sect"] = 0
     state["admin"]["panel_sect"] = 1
 
 
 def validate_admin_data(state):
-    ...
-    admin_code_section(state)
+    lang = state["lang"]
+    troubles = basic_validation(state)
+
+    if len(troubles) > 0:
+        troubles_text = [t[lang] for t in troubles]
+        state.add_notification("warning", "Warning!", ", ".join(troubles_text))
+
+    else:
+        send_confirmation_code(state)
+        admin_code_section(state)
 
 
 def validate_admin_code(state):

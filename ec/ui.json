@@ -9936,7 +9936,7 @@
             "parentId": "954f7lzjmvtxxtop",
             "position": 0,
             "handlers": {
-                "ss-click": "$goToPage_login"
+                "ss-click": "admin_log_section"
             },
             "visible": "user.not_logged"
         },
@@ -10320,24 +10320,6 @@
             "binding": {
                 "eventType": "ss-change",
                 "stateRef": "user.password2"
-            },
-            "visible": true
-        },
-        "bb18npi6zsumu1wi": {
-            "id": "bb18npi6zsumu1wi",
-            "type": "numberinput",
-            "content": {
-                "label": "@{dic.experience[lang]}*",
-                "minValue": "1",
-                "maxValue": "80",
-                "valueStep": "0.5"
-            },
-            "parentId": "k6fxxksjg5dhl23o",
-            "position": 3,
-            "handlers": {},
-            "binding": {
-                "eventType": "ss-number-change",
-                "stateRef": "user.experience"
             },
             "visible": true
         },
