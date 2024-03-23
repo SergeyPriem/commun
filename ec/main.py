@@ -94,9 +94,9 @@ def _log_out_user(state):
                 # Commit the changes
                 session.commit()
             else:
-                state.add_notification("User not found")
+                state.add_notification("warning", "Warning!", "User not found")
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning", "Warning!", f"An error occurred: {e}")
 
 
 def create_project(state):
@@ -121,7 +121,7 @@ def create_project(state):
                 session.add(new_project)
                 session.commit()
             except SQLAlchemyError as e:
-                state.add_notification(f"An error occurred: {e}")
+                state.add_notification("warning", "Warning!", f"An error occurred: {e}")
     else:
         state.add_notification("warning", "Warning!", "Some fields are empty.")
 
