@@ -87,9 +87,9 @@ def _log_out_user(state):
                 # Commit the changes
                 session.commit()
             else:
-                state.add_notification("User not found")
+                state.add_notification("warning", "Warning!", "User not found")
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning", "Warning!", f"An error occurred: {e}")
 
 
 def get_actual_own_projects(state):
