@@ -16,7 +16,7 @@ from sqlalchemy.orm import Session
 from dic import dic
 from models import engine, User, VisitLog, Projects
 from utilities import hash_password, err_handler
-from sqlalchemy import create_engine, inspect
+from sqlalchemy import create_engine, inspect, select
 
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')}")
 
@@ -40,14 +40,7 @@ def get_table_as_dataframe(state):
     state["db_table"] = df
 
 
-def get_table_names():
-    with Session(bind=engine) as session:
-        inspector = inspect(session)
-        table_names = inspector.get_table_names()
-        return {table: table for table in table_names}
-
-
-def _add_user_to_db(state):
+def _create_new_user(state):
     if state["user"]["major"]:
         major = ", ".join(state["user"]["major"])
     else:
@@ -99,8 +92,35 @@ def _log_out_user(state):
             state.add_notification(f"An error occurred: {e}")
 
 
+def get_actual_own_projects(state):
+    with Session(bind=engine) as session:
+        try:
+            stmt = select(User).where(User.login == state["user"]["login"])
+            result = session.execute(stmt)
+            current_user = result.scalars().first()
+
+            stmt = select(Projects).where(
+                Projects.owner == current_user.id,
+                Projects.status == "current"
+            )
+            result = session.execute(stmt)
+            cur_projects = result.scalars().all()
+
+            state["current_own_projects"] = {str(cur_projects[i].id): {
+                "name": cur_projects[i].name,
+                "description": cur_projects[i].description,
+                "status": cur_projects[i].status,
+                "comments": cur_projects[i].comments,
+                "required_specialists": cur_projects[i].required_specialists,
+                "assigned_engineers": cur_projects[i].assigned_engineers,
+                "created": cur_projects[i].created.strftime('%d-%m-%Y')
+            } for i in range(len(cur_projects))}
+
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
 def create_project(state):
-    # Assuming you have the same 'Projects' class and 'Base' as in your previous code
     state_name = state["new_project"]["name"] or False
     state_description = state["new_project"]["description"] or False
     state_comments = state["new_project"]["comments"] or False
@@ -110,20 +130,34 @@ def create_project(state):
     if all([state_name, state_description, state_comments, state_required_specialists]):
         with Session(bind=engine) as session:
             try:
+                # current_user = session.query(User).filter(User.login == state["user"]["login"]).first()
+                stmt = select(User).where(User.login == state["user"]["login"])
+                result = session.execute(stmt)
+                current_user = result.scalars().first()
                 new_project = Projects(
                     name=state_name.strip(),
-                    owner=state["user"]["login"],
+                    owner=current_user.id,
                     description=state_description.strip(),
+                    status="current",  # "finished", "cancelled", "suspended"
                     comments=state_comments.strip(),
+                    created=datetime.datetime.now(),
                     required_specialists=state_required_specialists,
                     assigned_engineers=state_assigned_engineers
                 )
                 session.add(new_project)
                 session.commit()
+                state["add_project"]["show_message"] = 1
+                state["add_project"]["show_section"] = 0
             except SQLAlchemyError as e:
-                state.add_notification(f"An error occurred: {e}")
+                state.add_notification("warning", "Warning!", f"An error occurred: {e}")
     else:
         state.add_notification("warning", "Warning!", "Some fields are empty.")
+
+    if state["add_project"]["show_message"]:
+        time.sleep(2)
+        state["add_project"]["show_message"] = 0
+        state["add_project"]["show_section"] = 1
+        state.set_page("client_page")
 
 
 def _get_admin_data(state):
@@ -196,21 +230,50 @@ def log_admin(state):
 
 
 def get_new_engineers(state):
-    with Session(bind=engine) as session:
-        try:
-            stuff = session.query(User).filter(
-                User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
-                User.role == "engineer"
-            ).all()
-            state["new_engineers"] = {stuff[i].login: {
-                "name": stuff[i].first_name,
-                "description": stuff[i].description,
-                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
-                "experience": stuff[i].experience,
-            } for i in range(len(stuff))}
+    if state["user"]["logged"]:
+        if state["new_engineers"] is not None:
+            return
 
-        except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+        with Session(bind=engine) as session:
+            try:
+                stuff = session.query(User).filter(
+                    User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
+                    User.role == "engineer"
+                ).all()
+                state["new_engineers"] = {stuff[i].login: {
+                    "name": stuff[i].first_name,
+                    "description": stuff[i].description,
+                    "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                    "experience": stuff[i].experience,
+                } for i in range(len(stuff))}
+
+            except SQLAlchemyError as e:
+                state.add_notification(f"An error occurred: {e}")
+    else:
+        state.add_notification("warning", "Warning!", "You are not logged in...")
+
+
+def get_new_installers(state):
+    if state["user"]["logged"]:
+        if state["new_installers"] is not None:
+            return
+        with Session(bind=engine) as session:
+            try:
+                stuff = session.query(User).filter(
+                    User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
+                    User.role == "installer"
+                ).all()
+                state["new_installers"] = {stuff[i].login: {
+                    "name": stuff[i].first_name,
+                    "description": stuff[i].description,
+                    "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                    "experience": stuff[i].experience,
+                } for i in range(len(stuff))}
+
+            except SQLAlchemyError as e:
+                state.add_notification(f"An error occurred: {e}")
+    else:
+        state.add_notification("warning", "Warning!", "You are not logged in...")
 
 
 def _get_default_user_data(message_dict):
@@ -310,6 +373,14 @@ def log_user(state):
             state["vacancy"]["content"] = 1
             state["vacancy"]["warning"] = 0
 
+        if state["user"]["role"] == 'admin':
+            state.set_page('projects')
+            state["engineers"]["content"] = 1
+            state["engineers"]["warning"] = 0
+            state["projects"]["content"] = 1
+            state["projects"]["warning"] = 0
+            state["vacancy"]["content"] = 1
+            state["vacancy"]["warning"] = 0
 
     else:
         state.set_page('wrong_login')
@@ -326,7 +397,7 @@ def validate_email_by_code(state):
 
         state["reg"]["code_message"] = "+ " + dic["code_confirmed"][state["lang"]]
 
-        if _add_user_to_db(state) == 200:
+        if _create_new_user(state) == 200:
             state["reg"]['form'] = 0
             state["reg"]['data_ok'] = 0
             time.sleep(2)
@@ -592,7 +663,7 @@ def validate_admin_data(state):
 
 def validate_admin_code(state):
     if state['reg']['code_sent'] == state['reg']['code_entered']:
-        _add_user_to_db(state)
+        _create_new_user(state)
         admin_log_section(state)
 
 
@@ -632,6 +703,7 @@ initial_state = ss.init_state(
         "civil": None,
         "selected_engineers": [],
         "new_engineers": None,
+        "new_installers": None,
         "trusted_engineers": None,
         "viewed_engineers": None,
 
@@ -640,7 +712,22 @@ initial_state = ss.init_state(
             "code_sect": 0,
             "log_sect": 0,
             "panel_sect": 0
-        }
+        },
+
+        "add_project": {
+            "show_section": 1,
+            "show_message": 0,
+        },
+
+        "current_own_projects": {
+            "name": None,
+            "description": None,
+            "status": None,
+            "comments": None,
+            "required_specialists": None,
+            "assigned_engineers": None,
+            "created": None
+        },
     }
 )
 

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-
+from sqlalchemy.orm import relationship
 
 engine = create_engine("sqlite:///db.sqlite3")
 Base = declarative_base()
@@ -29,6 +29,24 @@ class User(Base):
     company = Column(String(100))
     lang = Column(String(2), nullable=False)
 
+    # Relationship to access the projects owned by a user
+    projects = relationship("Projects", backref="user")
+
+
+class Projects(Base):
+    __tablename__ = 'Projects'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(50))
+    owner = Column(Integer, ForeignKey('User.id'))  # owner is now a foreign key
+    description = Column(String(1000))
+    status = Column(String(10))
+    comments = Column(String(200))
+    created = Column(DateTime, nullable=False)
+    status_changed = Column(DateTime)
+    required_specialists = Column(String(200))
+    assigned_engineers = Column(String(200))
+
 
 class VisitLog(Base):
     __tablename__ = 'VisitLog'
@@ -38,18 +56,6 @@ class VisitLog(Base):
     date_time_in = Column(DateTime, nullable=False)
     date_time_out = Column(DateTime)
     lang = Column(String(2), nullable=False)
-
-
-class Projects(Base):
-    __tablename__ = 'Projects'
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String(50))
-    owner = Column(String(100))
-    description = Column(String(1000))
-    comments = Column(String(200))
-    required_specialists = Column(String(200))
-    assigned_engineers = Column(String(200))
 
 
 Base.metadata.create_all(engine)
