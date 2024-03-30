@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="after_recover" />
+    <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="after_recover">
+      <change afterPath="$PROJECT_DIR$/ec/static/users/s.pryiemshyi-removebg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ec/static/users/s.pryiemshyi-small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ec/static/users/s.pryiemshyi.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/dic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/dic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/static/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/ec/static/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/static/flag_en.png" beforeDir="false" afterPath="$PROJECT_DIR$/ec/static/flag_en.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/static/flag_ru.png" beforeDir="false" afterPath="$PROJECT_DIR$/ec/static/flag_ru.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/static/flag_ua.png" beforeDir="false" afterPath="$PROJECT_DIR$/ec/static/flag_ua.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec/ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/ec/ui.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +33,7 @@
   <component name="Git.Settings">
     <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="SOFT" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -139,6 +152,13 @@
       <workItem from="1711088093139" duration="1280000" />
       <workItem from="1711089709801" duration="651000" />
       <workItem from="1711094736238" duration="15178000" />
+      <workItem from="1711428250817" duration="417000" />
+      <workItem from="1711428680690" duration="8078000" />
+      <workItem from="1711512443848" duration="9204000" />
+      <workItem from="1711597499820" duration="1870000" />
+      <workItem from="1711617029096" duration="11442000" />
+      <workItem from="1711684914104" duration="1196000" />
+      <workItem from="1711784031504" duration="4645000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <option name="closed" value="true" />
@@ -484,7 +504,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711096291907</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="after_recover">
+      <option name="closed" value="true" />
+      <created>1711428134901</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1711428134901</updated>
+    </task>
+    <task id="LOCAL-00045" summary="after_recover">
+      <option name="closed" value="true" />
+      <created>1711428163855</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1711428163855</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -19,7 +19,7 @@ from utilities import hash_password, err_handler
 from sqlalchemy import create_engine, inspect, select
 
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')}")
-
+print("Builder is available at: http://127.0.0.1:3006")
 
 def get_table_as_dataframe(state):
     df = pd.read_sql_table(state["db_table_name"], engine)
@@ -93,6 +93,9 @@ def _log_out_user(state):
 
 
 def get_actual_own_projects(state):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", "You are not logged in...")
+        return
     with Session(bind=engine) as session:
         try:
             stmt = select(User).where(User.login == state["user"]["login"])
@@ -115,6 +118,130 @@ def get_actual_own_projects(state):
                 "assigned_engineers": cur_projects[i].assigned_engineers,
                 "created": cur_projects[i].created.strftime('%d-%m-%Y')
             } for i in range(len(cur_projects))}
+
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
+def get_finished_own_projects(state):
+    ...
+
+
+def get_cancelled_own_projects(state):
+    ...
+
+
+def get_suspended_own_projects(state):
+    ...
+
+
+def get_new_current_projects(state):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", "You are not logged in...")
+        return
+    with Session(bind=engine) as session:
+        try:
+            stmt = (
+                select(Projects, User)
+                .where(
+                    Projects.status == "current",
+                    Projects.created > (datetime.datetime.now() - datetime.timedelta(days=30))
+                )
+                .join(User, User.id == Projects.owner)
+            )
+            result = session.execute(stmt)
+            cur_projects = result.scalars().all()
+
+            if cur_projects:
+
+                state["new_current_projects"] = {
+                    str(project.id): {
+                        "name": project.name,
+                        "owner": project.user.login,
+                        "description": project.description,
+                        "status": project.status,
+                        "comments": project.comments,
+                        "required_specialists": project.required_specialists,
+                        "assigned_engineers": project.assigned_engineers,
+                        "created": project.created.strftime('%d-%m-%Y'),
+
+                    } for project in cur_projects
+                }
+                state["new_current_projects_view"] = {
+                    "content": True,
+                    "message": False
+                }
+            else:
+                state["new_current_projects_view"] = {
+                    "content": False,
+                    "message": dic['no_current_proj'][state["lang"]]
+                }
+
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
+def get_all_current_projects(state):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", "You are not logged in...")
+        return
+    with Session(bind=engine) as session:
+        try:
+            stmt = (
+                select(Projects, User).where(Projects.status == "current").join(User, User.id == Projects.owner)
+            )
+            result = session.execute(stmt)
+            cur_projects = result.scalars().all()
+
+            if cur_projects:
+                state["all_current_projects"] = {
+                    str(project.id): {
+                        "name": project.name,
+                        "owner": project.user.login,
+                        "description": project.description,
+                        "status": project.status,
+                        "comments": project.comments,
+                        "required_specialists": project.required_specialists,
+                        "assigned_engineers": project.assigned_engineers,
+                        "created": project.created.strftime('%d-%m-%Y'),
+                    } for project in cur_projects
+                }
+                state["all_current_projects_message"] = False
+            else:
+                state["all_current_projects_message"] = dic['no_new_proj'][state["lang"]]
+
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
+def get_all_finished_projects(state):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", "You are not logged in...")
+        return
+    with Session(bind=engine) as session:
+        try:
+            stmt = (
+                select(Projects, User).where(Projects.status == "finished").join(User, User.id == Projects.owner)
+            )
+            result = session.execute(stmt)
+            fin_projects = result.scalars().all()
+
+            if fin_projects:
+                state["all_finished_projects"] = {
+                    str(project.id): {
+                        "name": project.name,
+                        "owner": project.user.login,
+                        "description": project.description,
+                        "status": project.status,
+                        "comments": project.comments,
+                        "required_specialists": project.required_specialists,
+                        "assigned_engineers": project.assigned_engineers,
+                        "created": project.created.strftime('%d-%m-%Y'),
+                    } for project in fin_projects
+                }
+                state["all_finished_projects_message"] = False
+            else:
+                state["all_finished_projects_message"] = dic['no_finished_proj'][state["lang"]]
 
         except SQLAlchemyError as e:
             state.add_notification(f"An error occurred: {e}")
@@ -336,7 +463,7 @@ def _get_user_data(state):
 def log_user(state):
     _get_user_data(state)
 
-    if state["user"]["role"] not in ("client", "engineer", "installer"):
+    if state["user"]["role"] == 'admin':
         state.add_notification("warning", "Warning!", "Wrong role, if you are admin, use special page...")
 
         quit_fun(state)
@@ -728,7 +855,15 @@ initial_state = ss.init_state(
             "assigned_engineers": None,
             "created": None
         },
+
+        "new_current_projects": None,
+        "all_current_projects": None,
+        "all_finished_projects": None,
+
+        "new_current_projects_message": None,
+        "all_current_projects_message": None,
+        "all_finished_projects_message": None
     }
 )
 
-initial_state.import_stylesheet("theme", "/static/custom.css?41")
+initial_state.import_stylesheet("theme", "/static/custom.css?42")
