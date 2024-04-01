@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="after_recover">
+      <change afterPath="$PROJECT_DIR$/ec/static/backhand-index-pointing-down.webp" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ec/static/users/s.pryiemshyi-removebg.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ec/static/users/s.pryiemshyi-small.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ec/static/users/s.pryiemshyi.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/dic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/dic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/static/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/ec/static/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/static/flag_en.png" beforeDir="false" afterPath="$PROJECT_DIR$/ec/static/flag_en.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/static/flag_ru.png" beforeDir="false" afterPath="$PROJECT_DIR$/ec/static/flag_ru.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/static/flag_ua.png" beforeDir="false" afterPath="$PROJECT_DIR$/ec/static/flag_ua.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ec/ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/ec/ui.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +154,9 @@
       <workItem from="1711597499820" duration="1870000" />
       <workItem from="1711617029096" duration="11442000" />
       <workItem from="1711684914104" duration="1196000" />
-      <workItem from="1711784031504" duration="4645000" />
+      <workItem from="1711784031504" duration="4728000" />
+      <workItem from="1711864808193" duration="1915000" />
+      <workItem from="1711943901522" duration="5197000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <option name="closed" value="true" />
@@ -520,7 +518,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711428163855</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="after_recover">
+      <option name="closed" value="true" />
+      <created>1711806893542</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1711806893542</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
