@@ -465,7 +465,7 @@ def log_user(state):
     _get_user_data(state)
 
     if state["user"]["role"] == 'admin':
-        state.add_notification("warning", "Warning!", "Wrong role, if you are admin, use special page...")
+        state.add_notification("warning", "Warning!", "Wrong role...")
 
         quit_fun(state)
         state.set_page("about")

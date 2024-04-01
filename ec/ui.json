@@ -2210,14 +2210,13 @@
             "id": "ntz9zkxjy5kozt18",
             "type": "message",
             "content": {
-                "message": "@{dic.projects_warning[lang]}",
+                "message": "@{dic.vacancy_warning[lang]}",
                 "cssClasses": "textarea"
             },
             "isCodeManaged": false,
-            "position": 2,
-            "parentId": "u58nuzt98hnjh39p",
-            "handlers": {},
-            "visible": "vacancy.warning"
+            "position": 0,
+            "parentId": "qz1iu3b0sbtuh6fz",
+            "handlers": {}
         },
         "lyaa94t8u62zfoem": {
             "id": "lyaa94t8u62zfoem",
@@ -13017,7 +13016,7 @@
             "position": 3,
             "parentId": "u58nuzt98hnjh39p",
             "handlers": {},
-            "visible": true
+            "visible": "user.logged"
         },
         "c8fmkc02mj79bqks": {
             "id": "c8fmkc02mj79bqks",
@@ -13627,6 +13626,52 @@
             "isCodeManaged": false,
             "position": 2,
             "parentId": "34hf4nrsrtpvn1pm",
+            "handlers": {},
+            "visible": true
+        },
+        "thfccnop95p4s8zq": {
+            "id": "thfccnop95p4s8zq",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "u58nuzt98hnjh39p",
+            "handlers": {},
+            "visible": "vacancy.warning"
+        },
+        "m74ij3hg5cap59a2": {
+            "id": "m74ij3hg5cap59a2",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "thfccnop95p4s8zq",
+            "handlers": {},
+            "visible": true
+        },
+        "qz1iu3b0sbtuh6fz": {
+            "id": "qz1iu3b0sbtuh6fz",
+            "type": "column",
+            "content": {
+                "width": "1.5"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "thfccnop95p4s8zq",
+            "handlers": {},
+            "visible": true
+        },
+        "2anevgw0dmlo11nn": {
+            "id": "2anevgw0dmlo11nn",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "thfccnop95p4s8zq",
             "handlers": {},
             "visible": true
         }
