@@ -19,7 +19,6 @@ from utilities import hash_password, err_handler
 from sqlalchemy import create_engine, inspect, select
 
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')}")
-print("Builder is available at: http://127.0.0.1:3006")
 
 
 def get_table_as_dataframe(state):
