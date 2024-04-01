@@ -5,7 +5,16 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
-engine = create_engine("sqlite:///db.sqlite3")
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Загрузка переменных из .env файла
+
+# api_key = os.getenv('API_KEY')  # Получение значения переменной
+db_url = os.getenv('DB_URL')
+
+# engine = create_engine("sqlite:///db.sqlite3")
+engine = create_engine(db_url)
 Base = declarative_base()
 
 
