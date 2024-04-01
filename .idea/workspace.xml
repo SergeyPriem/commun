@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="after_recover">
-      <change afterPath="$PROJECT_DIR$/ec/static/backhand-index-pointing-down.webp" afterDir="false" />
+    <list default="true" id="58400273-d895-4689-8db5-44a417c9ec77" name="Changes" comment="dockerfile_added">
+      <change afterPath="$PROJECT_DIR$/ec/.env" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ec/static/users/s.pryiemshyi-removebg.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ec/static/users/s.pryiemshyi-small.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ec/static/users/s.pryiemshyi.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ec.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ec.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/dic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ec/dic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec/ui.json" beforeDir="false" afterPath="$PROJECT_DIR$/ec/ui.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,13 +72,14 @@
     &quot;database.data.extractors.current.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/РАБОТА/TESTS/ec/ec/requirements.txt&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -156,23 +156,8 @@
       <workItem from="1711684914104" duration="1196000" />
       <workItem from="1711784031504" duration="4728000" />
       <workItem from="1711864808193" duration="1915000" />
-      <workItem from="1711943901522" duration="5197000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1709301599760</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1709301599760</updated>
-    </task>
-    <task id="LOCAL-00002" summary="padding adjustment">
-      <option name="closed" value="true" />
-      <created>1709303991024</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1709303991024</updated>
+      <workItem from="1711943901522" duration="8939000" />
+      <workItem from="1711974342028" duration="3049000" />
     </task>
     <task id="LOCAL-00003" summary="registration">
       <option name="closed" value="true" />
@@ -526,11 +511,54 @@
       <option name="project" value="LOCAL" />
       <updated>1711806893542</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="pre_deploy">
+      <option name="closed" value="true" />
+      <created>1711966634856</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1711966634856</updated>
+    </task>
+    <task id="LOCAL-00048" summary="pre_deploy">
+      <option name="closed" value="true" />
+      <created>1711973111291</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1711973111291</updated>
+    </task>
+    <task id="LOCAL-00049" summary="deleted_old_models">
+      <option name="closed" value="true" />
+      <created>1711974387450</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1711974387451</updated>
+    </task>
+    <task id="LOCAL-00050" summary="deleted_identifier.sqlite">
+      <option name="closed" value="true" />
+      <created>1711974444745</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1711974444745</updated>
+    </task>
+    <task id="LOCAL-00051" summary="dockerfile_added">
+      <option name="closed" value="true" />
+      <created>1711978363713</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1711978363713</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="RECENT_FILTERS">
@@ -558,7 +586,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="main/master" />
                       </list>
                     </value>
                   </entry>
@@ -583,7 +611,11 @@
     <MESSAGE value="create_new_project_adjustment" />
     <MESSAGE value="create_control_panel" />
     <MESSAGE value="after_recover" />
-    <option name="LAST_COMMIT_MESSAGE" value="after_recover" />
+    <MESSAGE value="pre_deploy" />
+    <MESSAGE value="deleted_old_models" />
+    <MESSAGE value="deleted_identifier.sqlite" />
+    <MESSAGE value="dockerfile_added" />
+    <option name="LAST_COMMIT_MESSAGE" value="dockerfile_added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ec$tempo.coverage" NAME="tempo Coverage Results" MODIFIED="1709975276097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ec" />
