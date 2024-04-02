@@ -12,5 +12,5 @@ ENV PATH="/app/venv/bin:$PATH"
 WORKDIR /app
 
 ENTRYPOINT [ "streamsync", "run" ]
-EXPOSE 3006
-CMD [ ".",  "--port", "3006", "--host", "0.0.0.0" ]
+EXPOSE 5000
+CMD [ ".",  "--port", "5000", "--host", "0.0.0.0" ]
