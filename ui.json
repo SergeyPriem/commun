@@ -11834,7 +11834,7 @@
             "id": "bqzw00bcupt4anuc",
             "type": "column",
             "content": {
-                "width": "1.4",
+                "width": "1.6",
                 "contentHAlign": "start",
                 "contentVAlign": "center"
             },
@@ -11977,7 +11977,7 @@
             "type": "column",
             "content": {
                 "title": "",
-                "width": "0.75",
+                "width": "0.3",
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
