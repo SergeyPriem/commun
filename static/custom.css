@@ -1,5 +1,5 @@
 .but_as_link {
-  font-size: 16px !important;
+  font-size: 15px !important;
   font-weight: bold !important;
   border: none !important;
 }
@@ -29,7 +29,7 @@ textarea {
 }
 
 .custom_pointer {
-  cursor: pointer!important;
+  cursor: pointer !important;
 }
 
 .custom_div {
