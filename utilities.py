@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import os
 import re
 import string
 import random
@@ -10,6 +10,9 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def valid_email(email):
     """
@@ -37,7 +40,7 @@ def _send_mail(receiver: str, cc_rec: str, subj: str, html: str):
     msg['To'] = receiver
     msg['Cc'] = cc_rec
 
-    password = "Exdiibt3#Python" #!!!
+    password = os.getenv('EMAIL_SECRET')
 
     # Record the MIME types of both parts - text/plain and text/html.
     part2 = MIMEText(html, 'html')

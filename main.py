@@ -1,22 +1,21 @@
 # -*- coding: utf-8 -*-
+import datetime
 import time
 
+import bcrypt
 import pandas as pd
 import streamsync as ss
+from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
+from sqlalchemy.orm import Session
 
+from dic import dic
 from dic import error_messages as e_m
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
     specialities_R, specialities_U, specialities_E, init_new_project
-from utilities import valid_email, _send_email, random_code_alphanumeric
-
-import datetime
-import bcrypt
-from sqlalchemy.exc import IntegrityError, SQLAlchemyError
-from sqlalchemy.orm import Session
-from dic import dic
 from models import engine, User, VisitLog, Projects
 from utilities import hash_password, err_handler
-from sqlalchemy import create_engine, inspect, select
+from utilities import valid_email, _send_email, random_code_alphanumeric
 
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')}")
 
