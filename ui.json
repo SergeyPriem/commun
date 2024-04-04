@@ -8246,7 +8246,7 @@
             "content": {
                 "src": "static/flag_en.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
@@ -8264,7 +8264,7 @@
             "content": {
                 "src": "static/flag_ua.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
@@ -8282,7 +8282,7 @@
             "content": {
                 "src": "static/flag_ru.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "cssClasses": "custom_pointer",
                 "maxHeight": ""
             },
@@ -9939,6 +9939,7 @@
                 "contentHAlign": "center",
                 "containerShadow": "5px 5px 5px -4px #000000"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "u58nuzt98hnjh39p",
             "handlers": {},
@@ -9948,6 +9949,7 @@
             "id": "y4xui4rc8pubem4u",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "xvcp0arnjx81g0vw",
             "handlers": {},
@@ -9961,6 +9963,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "y4xui4rc8pubem4u",
             "handlers": {},
@@ -9972,6 +9975,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "mao59voqhdszea8o",
             "handlers": {},
@@ -9986,6 +9990,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "grwc6vndr1mz7uuj",
             "handlers": {
@@ -10002,6 +10007,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "grwc6vndr1mz7uuj",
             "handlers": {
@@ -10018,6 +10024,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "grwc6vndr1mz7uuj",
             "handlers": {
@@ -10034,6 +10041,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "grwc6vndr1mz7uuj",
             "handlers": {
@@ -10049,6 +10057,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "y4xui4rc8pubem4u",
             "handlers": {},
@@ -10064,6 +10073,7 @@
                 "alignment": "center",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "uezppi2bexnwhd9i",
             "handlers": {
@@ -10080,6 +10090,7 @@
                 "contentVAlign": "center",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 4,
             "parentId": "y4xui4rc8pubem4u",
             "handlers": {},
@@ -10091,6 +10102,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "0tc4h95glnkbvwvy",
             "handlers": {},
@@ -10105,6 +10117,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "p1kyjgebla8lcyq8",
             "handlers": {
@@ -10121,6 +10134,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "p1kyjgebla8lcyq8",
             "handlers": {
@@ -10137,6 +10151,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "p1kyjgebla8lcyq8",
             "handlers": {
@@ -10154,6 +10169,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "y4xui4rc8pubem4u",
             "handlers": {},
@@ -10169,6 +10185,7 @@
                 "maxHeight": "60",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "fr13hj58wftmlmdw",
             "handlers": {},
@@ -10183,6 +10200,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "y4xui4rc8pubem4u",
             "handlers": {},
@@ -10195,6 +10213,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "3px 0px 0px 0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "p6woneuqks9ts45v",
             "handlers": {},
@@ -10206,10 +10225,11 @@
             "content": {
                 "src": "static/flag_en.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "grlx0prpr3djklx1",
             "handlers": {
@@ -10223,10 +10243,11 @@
             "content": {
                 "src": "static/flag_ua.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "grlx0prpr3djklx1",
             "handlers": {
@@ -10240,10 +10261,11 @@
             "content": {
                 "src": "static/flag_ru.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "cssClasses": "custom_pointer",
                 "maxHeight": ""
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "grlx0prpr3djklx1",
             "handlers": {
@@ -10261,6 +10283,7 @@
                 "contentHAlign": "center",
                 "containerShadow": "5px 5px 5px -4px #000000"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
@@ -10270,6 +10293,7 @@
             "id": "fa71hi5v8jetnzsc",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "twg4w5c77ig7mrsg",
             "handlers": {},
@@ -10283,6 +10307,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "fa71hi5v8jetnzsc",
             "handlers": {},
@@ -10294,6 +10319,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "4idi27cdokd1ehxx",
             "handlers": {},
@@ -10308,6 +10334,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "yhk9mnomer2f9los",
             "handlers": {
@@ -10324,6 +10351,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "yhk9mnomer2f9los",
             "handlers": {
@@ -10340,6 +10368,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "yhk9mnomer2f9los",
             "handlers": {
@@ -10356,6 +10385,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "yhk9mnomer2f9los",
             "handlers": {
@@ -10371,6 +10401,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "fa71hi5v8jetnzsc",
             "handlers": {},
@@ -10386,6 +10417,7 @@
                 "alignment": "center",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "ms33v9mek52q86mx",
             "handlers": {
@@ -10402,6 +10434,7 @@
                 "contentVAlign": "center",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 4,
             "parentId": "fa71hi5v8jetnzsc",
             "handlers": {},
@@ -10413,6 +10446,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "idklm4evbxmfouep",
             "handlers": {},
@@ -10427,6 +10461,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "yuyaee9g5tgiqvc7",
             "handlers": {
@@ -10443,6 +10478,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "yuyaee9g5tgiqvc7",
             "handlers": {
@@ -10459,6 +10495,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "yuyaee9g5tgiqvc7",
             "handlers": {
@@ -10476,6 +10513,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "fa71hi5v8jetnzsc",
             "handlers": {},
@@ -10491,6 +10529,7 @@
                 "maxHeight": "60",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "bu621qs3fm5jr4i4",
             "handlers": {},
@@ -10505,6 +10544,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "fa71hi5v8jetnzsc",
             "handlers": {},
@@ -10517,6 +10557,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "3px 0px 0px 0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "o0piswwlirf2ubdd",
             "handlers": {},
@@ -10528,10 +10569,11 @@
             "content": {
                 "src": "static/flag_en.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "sqj2tpu64x7qv83i",
             "handlers": {
@@ -10545,10 +10587,11 @@
             "content": {
                 "src": "static/flag_ua.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "sqj2tpu64x7qv83i",
             "handlers": {
@@ -10562,10 +10605,11 @@
             "content": {
                 "src": "static/flag_ru.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "cssClasses": "custom_pointer",
                 "maxHeight": ""
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "sqj2tpu64x7qv83i",
             "handlers": {
@@ -10922,6 +10966,7 @@
                 "contentHAlign": "center",
                 "containerShadow": "5px 5px 5px -4px #000000"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "e7rhayvymnj50ly4",
             "handlers": {},
@@ -10931,6 +10976,7 @@
             "id": "zgcyc7c6bnynabwn",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "4ax5a2dtebmhrbl8",
             "handlers": {},
@@ -10944,6 +10990,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "zgcyc7c6bnynabwn",
             "handlers": {},
@@ -10955,6 +11002,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "loypsejjpkvcasy9",
             "handlers": {},
@@ -10969,6 +11017,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "0rycn3trgdgq5hcz",
             "handlers": {
@@ -10985,6 +11034,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "0rycn3trgdgq5hcz",
             "handlers": {
@@ -11001,6 +11051,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "0rycn3trgdgq5hcz",
             "handlers": {
@@ -11017,6 +11068,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "0rycn3trgdgq5hcz",
             "handlers": {
@@ -11032,6 +11084,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "zgcyc7c6bnynabwn",
             "handlers": {},
@@ -11047,6 +11100,7 @@
                 "alignment": "center",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "vbtcewl98w9c4ds5",
             "handlers": {
@@ -11063,6 +11117,7 @@
                 "contentVAlign": "center",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 4,
             "parentId": "zgcyc7c6bnynabwn",
             "handlers": {},
@@ -11074,6 +11129,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "oueebx20acixdedl",
             "handlers": {},
@@ -11088,6 +11144,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "iqgv7lu72x8tzifw",
             "handlers": {
@@ -11104,6 +11161,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "iqgv7lu72x8tzifw",
             "handlers": {
@@ -11120,6 +11178,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "iqgv7lu72x8tzifw",
             "handlers": {
@@ -11137,6 +11196,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "zgcyc7c6bnynabwn",
             "handlers": {},
@@ -11152,6 +11212,7 @@
                 "maxHeight": "60",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "006snrmc8l5gda0l",
             "handlers": {},
@@ -11166,6 +11227,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "zgcyc7c6bnynabwn",
             "handlers": {},
@@ -11178,6 +11240,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "3px 0px 0px 0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "s2kpw5hwxknpvk5k",
             "handlers": {},
@@ -11189,10 +11252,11 @@
             "content": {
                 "src": "static/flag_en.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "w390006he2l627w0",
             "handlers": {
@@ -11206,10 +11270,11 @@
             "content": {
                 "src": "static/flag_ua.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "w390006he2l627w0",
             "handlers": {
@@ -11223,10 +11288,11 @@
             "content": {
                 "src": "static/flag_ru.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "cssClasses": "custom_pointer",
                 "maxHeight": ""
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "w390006he2l627w0",
             "handlers": {
@@ -11244,6 +11310,7 @@
                 "contentHAlign": "center",
                 "containerShadow": "5px 5px 5px -4px #000000"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "91ok2m5jyso0goaw",
             "handlers": {},
@@ -11253,6 +11320,7 @@
             "id": "u3v5tek8zv1hwfgj",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "a7jcjxodq576axhy",
             "handlers": {},
@@ -11266,6 +11334,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "u3v5tek8zv1hwfgj",
             "handlers": {},
@@ -11277,6 +11346,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "xzsq2urpbtqy20bk",
             "handlers": {},
@@ -11291,6 +11361,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "znoydkcn5zloxhue",
             "handlers": {
@@ -11307,6 +11378,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "znoydkcn5zloxhue",
             "handlers": {
@@ -11323,6 +11395,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "znoydkcn5zloxhue",
             "handlers": {
@@ -11339,6 +11412,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "znoydkcn5zloxhue",
             "handlers": {
@@ -11354,6 +11428,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "u3v5tek8zv1hwfgj",
             "handlers": {},
@@ -11369,6 +11444,7 @@
                 "alignment": "center",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "htkek1t2k9bajecf",
             "handlers": {
@@ -11385,6 +11461,7 @@
                 "contentVAlign": "center",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 4,
             "parentId": "u3v5tek8zv1hwfgj",
             "handlers": {},
@@ -11396,6 +11473,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "8ua1andf0xt9xc2j",
             "handlers": {},
@@ -11410,6 +11488,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "5kd37r4wocr89wso",
             "handlers": {
@@ -11426,6 +11505,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "5kd37r4wocr89wso",
             "handlers": {
@@ -11442,6 +11522,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "5kd37r4wocr89wso",
             "handlers": {
@@ -11459,6 +11540,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "u3v5tek8zv1hwfgj",
             "handlers": {},
@@ -11474,6 +11556,7 @@
                 "maxHeight": "60",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "ed7vtpaie2h8w3qe",
             "handlers": {},
@@ -11488,6 +11571,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "u3v5tek8zv1hwfgj",
             "handlers": {},
@@ -11500,6 +11584,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "3px 0px 0px 0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "7e0d5z70kqcg4am0",
             "handlers": {},
@@ -11511,10 +11596,11 @@
             "content": {
                 "src": "static/flag_en.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "i5m33iunj8bysgav",
             "handlers": {
@@ -11528,10 +11614,11 @@
             "content": {
                 "src": "static/flag_ua.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "i5m33iunj8bysgav",
             "handlers": {
@@ -11545,10 +11632,11 @@
             "content": {
                 "src": "static/flag_ru.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "cssClasses": "custom_pointer",
                 "maxHeight": ""
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "i5m33iunj8bysgav",
             "handlers": {
@@ -11566,6 +11654,7 @@
                 "contentHAlign": "center",
                 "containerShadow": "5px 5px 5px -4px #000000"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "k97az8z9rei13cpb",
             "handlers": {},
@@ -11575,6 +11664,7 @@
             "id": "czfav62z97bhu966",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "imc5699q6uy8s37j",
             "handlers": {},
@@ -11588,6 +11678,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "czfav62z97bhu966",
             "handlers": {},
@@ -11599,6 +11690,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "7qvtdh0b002zvcgn",
             "handlers": {},
@@ -11613,6 +11705,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "f5fsgbzossgw39fo",
             "handlers": {
@@ -11629,6 +11722,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "f5fsgbzossgw39fo",
             "handlers": {
@@ -11645,6 +11739,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "f5fsgbzossgw39fo",
             "handlers": {
@@ -11661,6 +11756,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "f5fsgbzossgw39fo",
             "handlers": {
@@ -11676,6 +11772,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "czfav62z97bhu966",
             "handlers": {},
@@ -11691,6 +11788,7 @@
                 "alignment": "center",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "jgxpcn5s2u1l44z9",
             "handlers": {
@@ -11707,6 +11805,7 @@
                 "contentVAlign": "center",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 4,
             "parentId": "czfav62z97bhu966",
             "handlers": {},
@@ -11718,6 +11817,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "c1rysnv0oodrrt8n",
             "handlers": {},
@@ -11732,6 +11832,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "ygivcai16xer5oqc",
             "handlers": {
@@ -11748,6 +11849,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "ygivcai16xer5oqc",
             "handlers": {
@@ -11764,6 +11866,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "ygivcai16xer5oqc",
             "handlers": {
@@ -11781,6 +11884,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "czfav62z97bhu966",
             "handlers": {},
@@ -11796,6 +11900,7 @@
                 "maxHeight": "60",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "epztvzugtfj8si28",
             "handlers": {},
@@ -11810,6 +11915,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "czfav62z97bhu966",
             "handlers": {},
@@ -11822,6 +11928,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "3px 0px 0px 0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "4cctjfepjwr0mlk7",
             "handlers": {},
@@ -11833,10 +11940,11 @@
             "content": {
                 "src": "static/flag_en.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "n9wfyt3zju2k8b03",
             "handlers": {
@@ -11850,10 +11958,11 @@
             "content": {
                 "src": "static/flag_ua.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "n9wfyt3zju2k8b03",
             "handlers": {
@@ -11867,10 +11976,11 @@
             "content": {
                 "src": "static/flag_ru.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "cssClasses": "custom_pointer",
                 "maxHeight": ""
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "n9wfyt3zju2k8b03",
             "handlers": {
@@ -11888,6 +11998,7 @@
                 "contentHAlign": "center",
                 "containerShadow": "5px 5px 5px -4px #000000"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
@@ -11897,6 +12008,7 @@
             "id": "xa55q2t22zdhch9x",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "n2xrxptcqu4gt6c7",
             "handlers": {},
@@ -11910,6 +12022,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "xa55q2t22zdhch9x",
             "handlers": {},
@@ -11921,6 +12034,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "uqo486ushnemldol",
             "handlers": {},
@@ -11935,6 +12049,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "cbdu8xjnw9bcebpk",
             "handlers": {
@@ -11951,6 +12066,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "cbdu8xjnw9bcebpk",
             "handlers": {
@@ -11967,6 +12083,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "cbdu8xjnw9bcebpk",
             "handlers": {
@@ -11983,6 +12100,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "cbdu8xjnw9bcebpk",
             "handlers": {
@@ -11998,6 +12116,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "xa55q2t22zdhch9x",
             "handlers": {},
@@ -12013,6 +12132,7 @@
                 "alignment": "center",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "nt24u5mjckx3gtle",
             "handlers": {
@@ -12029,6 +12149,7 @@
                 "contentVAlign": "center",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 4,
             "parentId": "xa55q2t22zdhch9x",
             "handlers": {},
@@ -12040,6 +12161,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "7lsmdq8sgzck0qle",
             "handlers": {},
@@ -12054,6 +12176,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "ts6thmbkd6gbnqec",
             "handlers": {
@@ -12070,6 +12193,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "ts6thmbkd6gbnqec",
             "handlers": {
@@ -12086,6 +12210,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "ts6thmbkd6gbnqec",
             "handlers": {
@@ -12103,6 +12228,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "xa55q2t22zdhch9x",
             "handlers": {},
@@ -12118,6 +12244,7 @@
                 "maxHeight": "60",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "1x469mxbofhnhs4b",
             "handlers": {},
@@ -12132,6 +12259,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "xa55q2t22zdhch9x",
             "handlers": {},
@@ -12144,6 +12272,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "3px 0px 0px 0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "u3a9qrfon3g7oah8",
             "handlers": {},
@@ -12155,10 +12284,11 @@
             "content": {
                 "src": "static/flag_en.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "t1t4vtlopse9qmn7",
             "handlers": {
@@ -12172,10 +12302,11 @@
             "content": {
                 "src": "static/flag_ua.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "t1t4vtlopse9qmn7",
             "handlers": {
@@ -12189,10 +12320,11 @@
             "content": {
                 "src": "static/flag_ru.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "cssClasses": "custom_pointer",
                 "maxHeight": ""
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "t1t4vtlopse9qmn7",
             "handlers": {
@@ -12210,6 +12342,7 @@
                 "contentHAlign": "center",
                 "containerShadow": "5px 5px 5px -4px #000000"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "lg1dg4rk9qkvx4gf",
             "handlers": {},
@@ -12219,6 +12352,7 @@
             "id": "8sb9kca5pyzeeqg7",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "j5rbniw941eprxf3",
             "handlers": {},
@@ -12232,6 +12366,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "8sb9kca5pyzeeqg7",
             "handlers": {},
@@ -12243,6 +12378,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "9046xou9c66dvcvz",
             "handlers": {},
@@ -12257,6 +12393,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "wt4ab6m3wkb2tjsn",
             "handlers": {
@@ -12273,6 +12410,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "wt4ab6m3wkb2tjsn",
             "handlers": {
@@ -12289,6 +12427,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "wt4ab6m3wkb2tjsn",
             "handlers": {
@@ -12305,6 +12444,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "wt4ab6m3wkb2tjsn",
             "handlers": {
@@ -12320,6 +12460,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "8sb9kca5pyzeeqg7",
             "handlers": {},
@@ -12335,6 +12476,7 @@
                 "alignment": "center",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "sfjq7n0dwyredm9k",
             "handlers": {
@@ -12351,6 +12493,7 @@
                 "contentVAlign": "center",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 4,
             "parentId": "8sb9kca5pyzeeqg7",
             "handlers": {},
@@ -12362,6 +12505,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "ta8qy0nrg27n0i6p",
             "handlers": {},
@@ -12376,6 +12520,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "c6bspjwmpc0sns08",
             "handlers": {
@@ -12392,6 +12537,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "c6bspjwmpc0sns08",
             "handlers": {
@@ -12408,6 +12554,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "c6bspjwmpc0sns08",
             "handlers": {
@@ -12425,6 +12572,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "8sb9kca5pyzeeqg7",
             "handlers": {},
@@ -12440,6 +12588,7 @@
                 "maxHeight": "60",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "8rm6junghbymkfqf",
             "handlers": {},
@@ -12454,6 +12603,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "8sb9kca5pyzeeqg7",
             "handlers": {},
@@ -12466,6 +12616,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "3px 0px 0px 0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "jby9zrwsiv1v98k3",
             "handlers": {},
@@ -12477,10 +12628,11 @@
             "content": {
                 "src": "static/flag_en.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "j2sw17c3bwy5lfiy",
             "handlers": {
@@ -12494,10 +12646,11 @@
             "content": {
                 "src": "static/flag_ua.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "j2sw17c3bwy5lfiy",
             "handlers": {
@@ -12511,10 +12664,11 @@
             "content": {
                 "src": "static/flag_ru.png",
                 "caption": "",
-                "maxWidth": "15",
+                "maxWidth": "18",
                 "cssClasses": "custom_pointer",
                 "maxHeight": ""
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "j2sw17c3bwy5lfiy",
             "handlers": {
@@ -12532,6 +12686,7 @@
                 "contentHAlign": "center",
                 "containerShadow": "5px 5px 5px -4px #000000"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "37z3sjkv4o9f8vhe",
             "handlers": {},
@@ -12541,6 +12696,7 @@
             "id": "az4gkqukd9xb2rsv",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "9ewcs4njuix5qewe",
             "handlers": {},
@@ -12554,6 +12710,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "az4gkqukd9xb2rsv",
             "handlers": {},
@@ -12565,6 +12722,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "9cub0rkhj3wmauei",
             "handlers": {},
@@ -12579,6 +12737,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "celj6ctyuqvm48ge",
             "handlers": {
@@ -12595,6 +12754,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "celj6ctyuqvm48ge",
             "handlers": {
@@ -12611,6 +12771,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "celj6ctyuqvm48ge",
             "handlers": {
@@ -12627,6 +12788,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "celj6ctyuqvm48ge",
             "handlers": {
@@ -12642,6 +12804,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "az4gkqukd9xb2rsv",
             "handlers": {},
@@ -12657,6 +12820,7 @@
                 "alignment": "center",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "kzy1l2sq43xwjvqk",
             "handlers": {
@@ -12673,6 +12837,7 @@
                 "contentVAlign": "center",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 4,
             "parentId": "az4gkqukd9xb2rsv",
             "handlers": {},
@@ -12684,6 +12849,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "nf4yfv7t9m13jgyw",
             "handlers": {},
@@ -12698,6 +12864,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "moskt24t2b7ctegv",
             "handlers": {
@@ -12714,6 +12881,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "moskt24t2b7ctegv",
             "handlers": {
@@ -12730,6 +12898,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "moskt24t2b7ctegv",
             "handlers": {
@@ -12747,6 +12916,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "az4gkqukd9xb2rsv",
             "handlers": {},
@@ -12762,6 +12932,7 @@
                 "maxHeight": "60",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "ybwtxbftsq3i9hog",
             "handlers": {},
@@ -12776,6 +12947,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "az4gkqukd9xb2rsv",
             "handlers": {},
@@ -12788,6 +12960,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "3px 0px 0px 0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "2d9o51p2p7r9ctve",
             "handlers": {},
@@ -12803,6 +12976,7 @@
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "ymz2qbqqnnd8llyq",
             "handlers": {
@@ -12820,6 +12994,7 @@
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "ymz2qbqqnnd8llyq",
             "handlers": {
@@ -12837,6 +13012,7 @@
                 "cssClasses": "custom_pointer",
                 "maxHeight": ""
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "ymz2qbqqnnd8llyq",
             "handlers": {
@@ -12854,6 +13030,7 @@
                 "contentHAlign": "center",
                 "containerShadow": "5px 5px 5px -4px #000000"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
@@ -12863,6 +13040,7 @@
             "id": "utmbsfurp86402k4",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "8676a92eyriba7o6",
             "handlers": {},
@@ -12876,6 +13054,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "utmbsfurp86402k4",
             "handlers": {},
@@ -12887,6 +13066,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "38wyzk6auh8sspk6",
             "handlers": {},
@@ -12901,6 +13081,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "tqksieg9s6yd6g5j",
             "handlers": {
@@ -12917,6 +13098,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "tqksieg9s6yd6g5j",
             "handlers": {
@@ -12933,6 +13115,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "tqksieg9s6yd6g5j",
             "handlers": {
@@ -12949,6 +13132,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "tqksieg9s6yd6g5j",
             "handlers": {
@@ -12964,6 +13148,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "utmbsfurp86402k4",
             "handlers": {},
@@ -12979,6 +13164,7 @@
                 "alignment": "center",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "4liugrc4w21746mt",
             "handlers": {
@@ -12995,6 +13181,7 @@
                 "contentVAlign": "center",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 4,
             "parentId": "utmbsfurp86402k4",
             "handlers": {},
@@ -13006,6 +13193,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "a7cfd9gkw5d1o1c3",
             "handlers": {},
@@ -13020,6 +13208,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "cxlc7tibk67vvmkd",
             "handlers": {
@@ -13036,6 +13225,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "cxlc7tibk67vvmkd",
             "handlers": {
@@ -13052,6 +13242,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "cxlc7tibk67vvmkd",
             "handlers": {
@@ -13069,6 +13260,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "utmbsfurp86402k4",
             "handlers": {},
@@ -13084,6 +13276,7 @@
                 "maxHeight": "60",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "gbcxj10cvn4hnlfo",
             "handlers": {},
@@ -13098,6 +13291,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "utmbsfurp86402k4",
             "handlers": {},
@@ -13110,6 +13304,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "3px 0px 0px 0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "w0a3afg7evolyvb6",
             "handlers": {},
@@ -13125,6 +13320,7 @@
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "p81haafltl2rp5q3",
             "handlers": {
@@ -13142,6 +13338,7 @@
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "p81haafltl2rp5q3",
             "handlers": {
@@ -13159,6 +13356,7 @@
                 "cssClasses": "custom_pointer",
                 "maxHeight": ""
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "p81haafltl2rp5q3",
             "handlers": {
@@ -13176,6 +13374,7 @@
                 "contentHAlign": "center",
                 "containerShadow": "5px 5px 5px -4px #000000"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
@@ -13185,6 +13384,7 @@
             "id": "a9mkkvozvquz61ir",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "5sfdvtf0gtdz4ft8",
             "handlers": {},
@@ -13198,6 +13398,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "a9mkkvozvquz61ir",
             "handlers": {},
@@ -13209,6 +13410,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "yulrlnfuiyajlx8a",
             "handlers": {},
@@ -13223,6 +13425,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "sqrqid94ku7tmlta",
             "handlers": {
@@ -13239,6 +13442,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "sqrqid94ku7tmlta",
             "handlers": {
@@ -13255,6 +13459,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "sqrqid94ku7tmlta",
             "handlers": {
@@ -13271,6 +13476,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "sqrqid94ku7tmlta",
             "handlers": {
@@ -13286,6 +13492,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "a9mkkvozvquz61ir",
             "handlers": {},
@@ -13301,6 +13508,7 @@
                 "alignment": "center",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "uyz802xc0tz6x06c",
             "handlers": {
@@ -13317,6 +13525,7 @@
                 "contentVAlign": "center",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 4,
             "parentId": "a9mkkvozvquz61ir",
             "handlers": {},
@@ -13328,6 +13537,7 @@
             "content": {
                 "contentHAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "geq5jr7wgt3h6x1p",
             "handlers": {},
@@ -13342,6 +13552,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "5trovcgi69pj7m13",
             "handlers": {
@@ -13358,6 +13569,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "5trovcgi69pj7m13",
             "handlers": {
@@ -13374,6 +13586,7 @@
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "5trovcgi69pj7m13",
             "handlers": {
@@ -13391,6 +13604,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "a9mkkvozvquz61ir",
             "handlers": {},
@@ -13406,6 +13620,7 @@
                 "maxHeight": "60",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "2nyuxee0l1ei9epk",
             "handlers": {},
@@ -13420,6 +13635,7 @@
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "a9mkkvozvquz61ir",
             "handlers": {},
@@ -13432,6 +13648,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "3px 0px 0px 0px"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "daxltv4iey46tuui",
             "handlers": {},
@@ -13447,6 +13664,7 @@
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "6eqm9ewjt486o9w7",
             "handlers": {
@@ -13464,6 +13682,7 @@
                 "maxHeight": "-1",
                 "cssClasses": "custom_pointer"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "6eqm9ewjt486o9w7",
             "handlers": {
@@ -13481,6 +13700,7 @@
                 "cssClasses": "custom_pointer",
                 "maxHeight": ""
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "6eqm9ewjt486o9w7",
             "handlers": {
