@@ -13723,7 +13723,6 @@
             "position": 1,
             "parentId": "vwuczbuyrx17fzpj",
             "handlers": {
-                "ss-click": "$goToPage_invite_to_project",
                 "click": "set_selected_engineer"
             },
             "visible": true

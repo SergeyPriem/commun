@@ -217,7 +217,6 @@ def get_all_current_projects(state):
                         "created": project.created.strftime('%d-%m-%Y'),
                     } for project in cur_projects
                 }
-                print(state["all_current_projects"])
                 state["all_current_projects_message"] = False
             else:
                 state["all_current_projects_message"] = dic['no_new_proj'][state["lang"]]
@@ -823,6 +822,7 @@ def close_project(state, context):
 
 def set_selected_engineer(state, context):
     state["selected_eng_for_proj"] = context["itemId"]
+    state.set_page("invite_to_project")
 
 
 def admin_log_section(state):
