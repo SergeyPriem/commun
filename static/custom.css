@@ -20,12 +20,17 @@ input {
 
 input:focus {
     outline: none !important;  /*Удалить стандартную обводку браузера*/
-    border: 1px solid #090909 !important;  /*Добавить свою обводку*/
+    border: 1px solid #29cd00 !important;  /*Добавить свою обводку*/
 }
 
 
 textarea {
   border-radius: 4px !important;
+}
+
+textarea:focus {
+    outline: none !important;  /*Удалить стандартную обводку браузера*/
+    border: 1px solid #29cd00 !important;  /*Добавить свою обводку*/
 }
 
 .custom_pointer {

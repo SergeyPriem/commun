@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 from dic import dic
 from dic import error_messages as e_m
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
-    specialities_R, specialities_U, specialities_E, init_new_project
+    init_new_project
 from models import engine, User, VisitLog, Projects
 from utilities import hash_password, err_handler
 from utilities import valid_email, _send_email, random_code_alphanumeric
@@ -22,7 +22,11 @@ print(f"You are using the main.py file from {datetime.datetime.now().strftime('%
 
 def get_table_as_dataframe(state):
     df = pd.read_sql_table(state["db_table_name"], engine)
-
+    if state["db_table_name"] == "Projects":
+        df["created"] = pd.to_datetime(df["created"], unit='ms')
+        df["created"] = df["created"].dt.strftime('%Y-%m-%d %H:%M:%S')
+        state["db_table"] = df
+        return
     if "h_pass" in df.columns:
         df = df.drop(columns=["h_pass"])
 
@@ -193,6 +197,7 @@ def get_all_current_projects(state):
             cur_projects = result.scalars().all()
 
             if cur_projects:
+
                 state["all_current_projects"] = {
                     str(project.id): {
                         "name": project.name,
@@ -205,6 +210,7 @@ def get_all_current_projects(state):
                         "created": project.created.strftime('%d-%m-%Y'),
                     } for project in cur_projects
                 }
+                print(state["all_current_projects"])
                 state["all_current_projects_message"] = False
             else:
                 state["all_current_projects_message"] = dic['no_new_proj'][state["lang"]]
@@ -239,6 +245,7 @@ def get_all_finished_projects(state):
                     } for project in fin_projects
                 }
                 state["all_finished_projects_message"] = False
+
             else:
                 state["all_finished_projects_message"] = dic['no_finished_proj'][state["lang"]]
 
@@ -367,7 +374,7 @@ def get_new_engineers(state):
                     User.role == "engineer"
                 ).all()
                 state["new_engineers"] = {stuff[i].login: {
-                    "name": stuff[i].first_name,
+                    "name": stuff[i].login,
                     "description": stuff[i].description,
                     "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
                     "experience": stuff[i].experience,
@@ -390,7 +397,7 @@ def get_new_installers(state):
                     User.role == "installer"
                 ).all()
                 state["new_installers"] = {stuff[i].login: {
-                    "name": stuff[i].first_name,
+                    "name": stuff[i].login,
                     "description": stuff[i].description,
                     "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
                     "experience": stuff[i].experience,
@@ -680,17 +687,14 @@ def quit_fun(state):
 
 def switch_to_rus(state):
     state["lang"] = "R"
-    state["specs"] = specialities_R
 
 
 def switch_to_eng(state):
     state["lang"] = "E"
-    state["specs"] = specialities_E
 
 
 def switch_to_ukr(state):
     state["lang"] = "U"
-    state["specs"] = specialities_U
 
 
 def _get_engineers(state, spec):
@@ -740,6 +744,36 @@ def prepare_wss(state):
     _get_engineers(state, "wss")
 
 
+def get_all_engineers(state):
+    with Session(bind=engine) as session:
+        try:
+            stuff = session.query(User).filter(User.role == "engineer").all()
+            state["all_engineers"] = {stuff[i].login: {
+                "name": stuff[i].first_name,
+                "description": stuff[i].description,
+                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                "experience": stuff[i].experience,
+            } for i in range(len(stuff))}
+
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
+def get_all_installers(state):
+    with Session(bind=engine) as session:
+        try:
+            stuff = session.query(User).filter(User.role == "installer").all()
+            state["all_installers"] = {stuff[i].login: {
+                "name": stuff[i].first_name,
+                "description": stuff[i].description,
+                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                "experience": stuff[i].experience,
+            } for i in range(len(stuff))}
+
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
 def connect_w_engineer(state, context):
     state["selected_engineers"] += [context["itemId"]]
     state["selected_engineers"] = list(set(state["selected_engineers"]))
@@ -758,6 +792,18 @@ def admin_code_section(state):
     state["admin"]["code_sect"] = 1
     state["admin"]["log_sect"] = 0
     state["admin"]["panel_sect"] = 0
+
+
+def close_project(state, context):
+    state.add_notification("info", "Context!", context["itemId"])
+    # with Session(bind=engine) as session:
+    #     try:
+    #         project = session.query(Projects).filter(Projects.id == context["itemId"]).first()
+    #         project.status = "finished"
+    #         session.commit()
+    #
+    #     except SQLAlchemyError as e:
+    #         state.add_notification(f"An error occurred: {e}")
 
 
 def admin_log_section(state):
@@ -814,7 +860,7 @@ initial_state = ss.init_state(
         "projects": init_projects,
         "engineers": init_engineers,
         "vacancy": init_vacancy,
-        "specs": specialities_E,
+        "specs": specialities,
         "new_project": init_new_project,
 
         "el": None,
@@ -858,13 +904,17 @@ initial_state = ss.init_state(
         "new_current_projects": None,
         "all_current_projects": None,
         "all_finished_projects": None,
+        "all_engineers": None,
+        "all_installers": None,
 
         "new_current_projects_message": None,
         "all_current_projects_message": None,
-        "all_finished_projects_message": None
+        "all_finished_projects_message": None,
+        "all_engineers_message": None,
+        "all_installers_message": None,
     }
 )
 
-initial_state.import_stylesheet("theme", "/static/custom.css?45")
+initial_state.import_stylesheet("theme", "/static/custom.css?50")
 
 print("Code executed successfully!")

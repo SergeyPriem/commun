@@ -51,60 +51,21 @@ init_login = {
 
 init_projects = init_engineers = init_vacancy = dict(warning=1, content=0)
 
+
 specialities = {
-        "el": "Electrical Part",
-        "ins": "Instrumentation",
-        "low_cur": "Telecom",
-        "plot_plan": "Plot Plan",
-        "piping_linear": "Piping - linear",
-        "piping_area": "Piping",
-        "hvac": "HVAC",
-        "wss": "Water Supply",
-        "term": "Heat Engineering"
-    }
-
-
-specialities_E = {
-        "ar": "Architecture",
-        "el": "Electrical",
-        "ins": "Instrumentation",
-        "low_cur": "Telecom, F&G",
-        "plot_plan": "Plot Plan",
-        "piping_linear": "Piping-linear",
-        "piping_area": "Piping",
-        "hvac": "HVAC",
-        "wss": "Water Supply",
-        "term": "Heat Engineering",
-        "civil": "Civil Part"
-    }
-
-specialities_U = {
-    "ar": "Архітектура",
-    "el": "Електрика",
-    "ins": "КВПіА",
-    "low_cur": "Зв'язок, пож.безпека",
-    "plot_plan": "Генплан",
-    "piping_linear": "Магістральні Трубопроводи",
-    "piping_area": "Монтаж технолог. обладнання",
-    "hvac": "ОВіК",
-    "wss": "Водопостачання і Водовідведення",
-    "term": "Теплопостачання",
-    "civil": "Будівельна частина"
+    "ar": {"E": "Architecture", "U": "Архітектура", "R": "Архитектура"},
+    "el": {"E": "Electrical", "U": "Електрика", "R": "Электрика"},
+    "ins": {"E": "Instrumentation", "U": "КВПіА", "R": "КИПиА"},
+    "low_cur": {"E": "Telecom, F&G", "U": "Зв'язок, пож.безпека", "R": "Связь, пож.безопасность"},
+    "plot_plan": {"E": "Plot Plan", "U": "Генплан", "R": "Генплан"},
+    "piping_linear": {"E": "Piping-linear", "U": "Магістральні Трубопроводи", "R": "Магистральные Трубопроводы"},
+    "piping_area": {"E": "Piping", "U": "Монтаж технолог. обладнання", "R": "Монтаж технолог. оборудования"},
+    "hvac": {"E": "HVAC", "U": "ОВіК", "R": "ОВиК"},
+    "wss": {"E": "Water Supply", "U": "Водопостачання і Водовідведення", "R": "Водоснабжение и Водоотведение"},
+    "term": {"E": "Heat Engineering", "U": "Теплопостачання", "R": "Теплоснабжение"},
+    "civil": {"E": "Civil Part", "U": "Будівельна частина", "R": "Строительная часть"}
 }
 
-specialities_R = {
-    "ar": "Архитектура",
-    "el": "Электрика",
-    "ins": "КИПиА",
-    "low_cur": "Связь, пож.безопасность",
-    "plot_plan": "Генплан",
-    "piping_linear": "Магистральные Трубопроводы",
-    "piping_area": "Монтаж технолог. оборудования",
-    "hvac": "ОВиК",
-    "wss": "Водоснабжение и Водоотведение",
-    "term": "Теплоснабжение",
-    "civil": "Строительная часть"
-}
 
 init_new_project = { # new_project
     "name": None,
