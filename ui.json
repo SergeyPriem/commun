@@ -1187,7 +1187,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 6,
+            "position": 5,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "reg.data_ok"
@@ -1353,7 +1353,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 9,
+            "position": 7,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "email_confirmation.wrong_code"
@@ -1378,7 +1378,7 @@
                 "message": "- @{reg.data_error_message}"
             },
             "isCodeManaged": false,
-            "position": 8,
+            "position": 6,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "reg.data_error"
@@ -1387,13 +1387,12 @@
             "id": "33ffnndfyfvv6z2b",
             "type": "message",
             "content": {
-                "message": "@{reg.db_message_text}"
+                "message": "+ @{reg.db_message_text}"
             },
             "isCodeManaged": false,
-            "position": 3,
-            "parentId": "1cnhl56hpeydnmbz",
-            "handlers": {},
-            "visible": "reg.code_ok"
+            "position": 0,
+            "parentId": "5158lpx8fidzhuvg",
+            "handlers": {}
         },
         "5p12yyyfir98ejka": {
             "id": "5p12yyyfir98ejka",
@@ -2245,7 +2244,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 3,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "user.client"
@@ -2642,7 +2641,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 5,
+            "position": 4,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "user.installer"
@@ -3024,10 +3023,9 @@
                 "message": "@{reg.code_message}"
             },
             "isCodeManaged": false,
-            "position": 7,
-            "parentId": "1cnhl56hpeydnmbz",
-            "handlers": {},
-            "visible": "reg.code_message"
+            "position": 0,
+            "parentId": "ipqf3e214eza8ov6",
+            "handlers": {}
         },
         "ncory13aujjaq7ky": {
             "id": "ncory13aujjaq7ky",
@@ -16896,6 +16894,90 @@
             "position": 0,
             "parentId": "8ybog2e9wd84uv0y",
             "handlers": {},
+            "visible": true
+        },
+        "2ag8gkudh8fy9zrj": {
+            "id": "2ag8gkudh8fy9zrj",
+            "type": "columns",
+            "parentId": "1cnhl56hpeydnmbz",
+            "content": {},
+            "handlers": {},
+            "position": 8,
+            "visible": "reg.code_message"
+        },
+        "yqdtnfe918m53amt": {
+            "id": "yqdtnfe918m53amt",
+            "type": "column",
+            "parentId": "2ag8gkudh8fy9zrj",
+            "content": {
+                "width": "1"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "ipqf3e214eza8ov6": {
+            "id": "ipqf3e214eza8ov6",
+            "type": "column",
+            "parentId": "2ag8gkudh8fy9zrj",
+            "content": {
+                "width": "1"
+            },
+            "handlers": {},
+            "position": 1,
+            "visible": true
+        },
+        "3ni8awouk113us4m": {
+            "id": "3ni8awouk113us4m",
+            "type": "column",
+            "parentId": "2ag8gkudh8fy9zrj",
+            "content": {
+                "width": "1"
+            },
+            "handlers": {},
+            "position": 2,
+            "visible": true
+        },
+        "o1bf4egbqh5k3u33": {
+            "id": "o1bf4egbqh5k3u33",
+            "type": "columns",
+            "parentId": "1cnhl56hpeydnmbz",
+            "content": {},
+            "handlers": {},
+            "position": 9,
+            "visible": "reg.code_ok"
+        },
+        "4zshmeifpw61n3ty": {
+            "id": "4zshmeifpw61n3ty",
+            "type": "column",
+            "parentId": "o1bf4egbqh5k3u33",
+            "content": {
+                "width": "1"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "5158lpx8fidzhuvg": {
+            "id": "5158lpx8fidzhuvg",
+            "type": "column",
+            "parentId": "o1bf4egbqh5k3u33",
+            "content": {
+                "width": "1"
+            },
+            "handlers": {},
+            "position": 1,
+            "visible": true
+        },
+        "7nddk0vhmp4223hc": {
+            "id": "7nddk0vhmp4223hc",
+            "type": "column",
+            "parentId": "o1bf4egbqh5k3u33",
+            "content": {
+                "width": "1"
+            },
+            "handlers": {},
+            "position": 2,
             "visible": true
         }
     }
