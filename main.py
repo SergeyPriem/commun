@@ -381,7 +381,8 @@ def get_new_engineers(state):
                     User.role == "engineer"
                 ).all()
                 state["new_engineers"] = {stuff[i].login: {
-                    "name": stuff[i].login,
+                    "login": stuff[i].login,
+                    "name": stuff[i].first_name,
                     "description": stuff[i].description,
                     "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
                     "experience": stuff[i].experience,
@@ -404,7 +405,8 @@ def get_new_installers(state):
                     User.role == "installer"
                 ).all()
                 state["new_installers"] = {stuff[i].login: {
-                    "name": stuff[i].login,
+                    "login": stuff[i].login,
+                    "name": stuff[i].first_name,
                     "description": stuff[i].description,
                     "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
                     "experience": stuff[i].experience,
@@ -712,6 +714,7 @@ def _get_engineers(state, spec):
         try:
             stuff = session.query(User).filter(User.major.contains(spec)).all()
             state[spec] = {stuff[i].login: {
+                "login": stuff[i].login,
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
                 "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
@@ -759,6 +762,7 @@ def get_all_engineers(state):
         try:
             stuff = session.query(User).filter(User.role == "engineer").all()
             state["all_engineers"] = {stuff[i].login: {
+                "login": stuff[i].login,
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
                 "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
@@ -774,6 +778,7 @@ def get_all_installers(state):
         try:
             stuff = session.query(User).filter(User.role == "installer").all()
             state["all_installers"] = {stuff[i].login: {
+                "login": stuff[i].login,
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
                 "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
@@ -814,6 +819,10 @@ def close_project(state, context):
     #
     #     except SQLAlchemyError as e:
     #         state.add_notification(f"An error occurred: {e}")
+
+
+def set_selected_engineer(state, context):
+    state["selected_eng_for_proj"] = context["itemId"]
 
 
 def admin_log_section(state):
@@ -924,6 +933,7 @@ initial_state = ss.init_state(
         "all_installers_message": None,
         "current_own_projects_dict": None,
         "selected_proj_to_add_eng": None,
+        "selected_eng_for_proj": None,
     }
 )
 

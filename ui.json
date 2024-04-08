@@ -5167,7 +5167,7 @@
             "id": "in5y4a5ju1pw240n",
             "type": "text",
             "content": {
-                "text": "# **@{dic.client_pers_page[lang]}: @{user.login}**",
+                "text": "# **@{dic.client_pers_page[lang]}: _@{user.login}_**",
                 "useMarkdown": "yes",
                 "alignment": "center"
             },
@@ -13590,7 +13590,7 @@
             "id": "jfh1j7voupotlqd0",
             "type": "section",
             "content": {
-                "title": "@{item.name} ",
+                "title": "@{item.login} ",
                 "containerBackgroundColor": "#152e61",
                 "contentHAlign": "start",
                 "separatorColor": "#75b892",
@@ -13723,7 +13723,8 @@
             "position": 1,
             "parentId": "vwuczbuyrx17fzpj",
             "handlers": {
-                "ss-click": "$goToPage_invite_to_project"
+                "ss-click": "$goToPage_invite_to_project",
+                "click": "set_selected_engineer"
             },
             "visible": true
         },
@@ -13842,7 +13843,7 @@
             "id": "374v595189kxhf7g",
             "type": "section",
             "content": {
-                "title": "@{item.name} ",
+                "title": "@{item.login} ",
                 "containerBackgroundColor": "#152e61",
                 "contentHAlign": "center",
                 "separatorColor": "#75b892",
@@ -14078,7 +14079,7 @@
             "id": "fh3bzss6eib47w6u",
             "type": "section",
             "content": {
-                "title": "@{item.name} ",
+                "title": "@{item.login} ",
                 "containerBackgroundColor": "#152e61",
                 "contentHAlign": "start",
                 "separatorColor": "#75b892",
@@ -14314,7 +14315,7 @@
             "id": "4uzrkm1ngr8421t4",
             "type": "section",
             "content": {
-                "title": "@{item.name} ",
+                "title": "@{item.login} ",
                 "containerBackgroundColor": "#152e61",
                 "contentHAlign": "center",
                 "separatorColor": "#75b892",
@@ -14588,7 +14589,7 @@
             "id": "dlf0g4hwq1eh4hb6",
             "type": "text",
             "content": {
-                "text": "# **@{dic.sel_proj[lang]}**",
+                "text": "# **@{dic.invite_eng[lang]} _@{selected_eng_for_proj}_ @{dic.to_the_proj[lang]}**",
                 "useMarkdown": "yes",
                 "alignment": "center"
             },
@@ -14621,33 +14622,6 @@
             "position": 2,
             "parentId": "9k46l94d6k9etqym",
             "handlers": {},
-            "visible": true
-        },
-        "d3o10irnqyopsuuf": {
-            "id": "d3o10irnqyopsuuf",
-            "type": "horizontalstack",
-            "content": {
-                "contentHAlign": "center"
-            },
-            "isCodeManaged": false,
-            "position": 2,
-            "parentId": "bmm0tuz61rms2fjl",
-            "handlers": {},
-            "visible": true
-        },
-        "7a519pupgb3rh3rm": {
-            "id": "7a519pupgb3rh3rm",
-            "type": "button",
-            "content": {
-                "text": "@{dic.go_back[lang]}",
-                "icon": "arrow-go-back-line"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "d3o10irnqyopsuuf",
-            "handlers": {
-                "ss-click": "$goToPage_client_page"
-            },
             "visible": true
         },
         "nrclkt9pl3m7qftt": {
@@ -14688,7 +14662,7 @@
             "id": "0olsr7iv2zjxy3q5",
             "type": "column",
             "content": {
-                "width": "1",
+                "width": "2",
                 "title": ""
             },
             "isCodeManaged": false,
@@ -14704,13 +14678,14 @@
                 "label": "@{dic.sel_proj[lang]}",
                 "options": "@{current_own_projects_dict}",
                 "placeholder": "Select the Project",
-                "accentColor": "#000000",
-                "selectedColor": "#000000",
-                "secondaryTextColor": "#5db1ac"
+                "accentColor": "#1cba53",
+                "selectedColor": "#5ac7e2",
+                "secondaryTextColor": "#5db1ac",
+                "chipTextColor": "#ffffff"
             },
             "isCodeManaged": false,
             "position": 0,
-            "parentId": "0olsr7iv2zjxy3q5",
+            "parentId": "r00aazwr8ihj2ou8",
             "handlers": {},
             "visible": true,
             "binding": {
@@ -15437,6 +15412,66 @@
             "position": 2,
             "parentId": "o1bf4egbqh5k3u33",
             "handlers": {},
+            "visible": true
+        },
+        "czg6fsm9t6sf1ypz": {
+            "id": "czg6fsm9t6sf1ypz",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "bmm0tuz61rms2fjl",
+            "handlers": {},
+            "visible": true
+        },
+        "du2vjdfs0dec8coi": {
+            "id": "du2vjdfs0dec8coi",
+            "type": "horizontalstack",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "bmm0tuz61rms2fjl",
+            "handlers": {},
+            "visible": true
+        },
+        "7a519pupgb3rh3rm": {
+            "id": "7a519pupgb3rh3rm",
+            "type": "button",
+            "content": {
+                "text": "@{dic.go_back[lang]}",
+                "icon": "arrow-go-back-line"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "czg6fsm9t6sf1ypz",
+            "handlers": {
+                "ss-click": "$goToPage_client_page"
+            },
+            "visible": true
+        },
+        "8bdbfvch85j8584y": {
+            "id": "8bdbfvch85j8584y",
+            "type": "button",
+            "content": {
+                "text": "@{dic.invite[lang]}"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "r00aazwr8ihj2ou8",
+            "handlers": {},
+            "visible": true
+        },
+        "r00aazwr8ihj2ou8": {
+            "id": "r00aazwr8ihj2ou8",
+            "type": "horizontalstack",
+            "parentId": "0olsr7iv2zjxy3q5",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "handlers": {},
+            "position": 0,
             "visible": true
         }
     }
