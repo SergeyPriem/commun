@@ -60,7 +60,8 @@ specialities = {
         "piping_area": "Piping",
         "hvac": "HVAC",
         "wss": "Water Supply",
-        "term": "Heat Engineering"
+        "term": "Heat Engineering",
+        "civil": "Civil Part"
     }
 
 

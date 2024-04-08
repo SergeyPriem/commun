@@ -1938,7 +1938,7 @@
                 "name": "@{specs.civil}"
             },
             "isCodeManaged": false,
-            "position": 9,
+            "position": 10,
             "parentId": "zvisv559euzigeyk",
             "handlers": {},
             "visible": true
@@ -3869,7 +3869,7 @@
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 10,
+            "position": 9,
             "parentId": "zvisv559euzigeyk",
             "handlers": {
                 "click": "prepare_el"

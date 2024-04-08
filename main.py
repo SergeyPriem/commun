@@ -126,6 +126,7 @@ def get_actual_own_projects(state):
             state.add_notification(f"An error occurred: {e}")
 
 
+
 def get_finished_own_projects(state):
     ...
 
