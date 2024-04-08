@@ -693,7 +693,7 @@ dic = {
     },
 
     "sel_proj": {
-        "E": "Select Project",
+        "E": "Select the Project",
         "U": "Виберіть Проект",
         "R": "Выберите Проект"
     },

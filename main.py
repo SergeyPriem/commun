@@ -126,6 +126,12 @@ def get_actual_own_projects(state):
             state.add_notification(f"An error occurred: {e}")
 
 
+def get_actual_own_projects_dict(state):
+    get_actual_own_projects(state)
+    state["current_own_projects_dict"] = {
+        str(key): value["name"]
+        for key, value in state["current_own_projects"].items()}
+
 
 def get_finished_own_projects(state):
     ...
@@ -916,6 +922,8 @@ initial_state = ss.init_state(
         "all_finished_projects_message": None,
         "all_engineers_message": None,
         "all_installers_message": None,
+        "current_own_projects_dict": None,
+        "selected_proj_to_add_eng": None,
     }
 )
 
