@@ -1827,7 +1827,7 @@
             "id": "vb5nhsgvoxnsvyps",
             "type": "tab",
             "content": {
-                "name": "@{specs.el[lang]}",
+                "name": "@{specs.el}",
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
@@ -1842,7 +1842,7 @@
             "id": "b55985jjv0eur91i",
             "type": "tab",
             "content": {
-                "name": "@{specs.ins[lang]}",
+                "name": "@{specs.ins}",
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
@@ -1857,7 +1857,7 @@
             "id": "s600e6bu2r5vneu8",
             "type": "tab",
             "content": {
-                "name": "@{specs.plot_plan[lang]}",
+                "name": "@{specs.plot_plan}",
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
@@ -1872,7 +1872,7 @@
             "id": "y9ktrxo5h3ryl30f",
             "type": "tab",
             "content": {
-                "name": "@{specs.low_cur[lang]}",
+                "name": "@{specs.low_cur}",
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
@@ -1887,7 +1887,7 @@
             "id": "le5u7h9f8kmgbxo4",
             "type": "tab",
             "content": {
-                "name": "@{specs.piping_linear[lang]}"
+                "name": "@{specs.piping_linear}"
             },
             "isCodeManaged": false,
             "position": 5,
@@ -1899,7 +1899,7 @@
             "id": "xq54hrs8tfftulw7",
             "type": "tab",
             "content": {
-                "name": "@{specs.hvac[lang]}"
+                "name": "@{specs.hvac}"
             },
             "isCodeManaged": false,
             "position": 6,
@@ -1911,7 +1911,7 @@
             "id": "z8dwccyqq8riwmwr",
             "type": "tab",
             "content": {
-                "name": "@{specs.term[lang]}"
+                "name": "@{specs.term}"
             },
             "isCodeManaged": false,
             "position": 7,
@@ -1923,7 +1923,7 @@
             "id": "w1p7wlsfh0l7nudn",
             "type": "tab",
             "content": {
-                "name": "@{specs.wss[lang]}"
+                "name": "@{specs.wss}"
             },
             "isCodeManaged": false,
             "position": 8,
@@ -1935,7 +1935,7 @@
             "id": "t4kq3jkhzxd46xvw",
             "type": "tab",
             "content": {
-                "name": "@{specs.civil[lang]}"
+                "name": "@{specs.civil}"
             },
             "isCodeManaged": false,
             "position": 9,
@@ -1947,7 +1947,7 @@
             "id": "c8wm5du03hbtbukf",
             "type": "tab",
             "content": {
-                "name": "@{specs.ar[lang]}"
+                "name": "@{specs.ar}"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -3865,7 +3865,7 @@
             "id": "sxh506yikgt0kgbb",
             "type": "tab",
             "content": {
-                "name": "@{specs.piping_area[lang]}",
+                "name": "@{specs.piping_area}",
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
@@ -16899,85 +16899,93 @@
         "2ag8gkudh8fy9zrj": {
             "id": "2ag8gkudh8fy9zrj",
             "type": "columns",
-            "parentId": "1cnhl56hpeydnmbz",
             "content": {},
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 8,
+            "parentId": "1cnhl56hpeydnmbz",
+            "handlers": {},
             "visible": "reg.code_message"
         },
         "yqdtnfe918m53amt": {
             "id": "yqdtnfe918m53amt",
             "type": "column",
-            "parentId": "2ag8gkudh8fy9zrj",
             "content": {
                 "width": "1"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "2ag8gkudh8fy9zrj",
+            "handlers": {},
             "visible": true
         },
         "ipqf3e214eza8ov6": {
             "id": "ipqf3e214eza8ov6",
             "type": "column",
-            "parentId": "2ag8gkudh8fy9zrj",
             "content": {
                 "width": "1"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 1,
+            "parentId": "2ag8gkudh8fy9zrj",
+            "handlers": {},
             "visible": true
         },
         "3ni8awouk113us4m": {
             "id": "3ni8awouk113us4m",
             "type": "column",
-            "parentId": "2ag8gkudh8fy9zrj",
             "content": {
                 "width": "1"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 2,
+            "parentId": "2ag8gkudh8fy9zrj",
+            "handlers": {},
             "visible": true
         },
         "o1bf4egbqh5k3u33": {
             "id": "o1bf4egbqh5k3u33",
             "type": "columns",
-            "parentId": "1cnhl56hpeydnmbz",
             "content": {},
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 9,
+            "parentId": "1cnhl56hpeydnmbz",
+            "handlers": {},
             "visible": "reg.code_ok"
         },
         "4zshmeifpw61n3ty": {
             "id": "4zshmeifpw61n3ty",
             "type": "column",
-            "parentId": "o1bf4egbqh5k3u33",
             "content": {
                 "width": "1"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "o1bf4egbqh5k3u33",
+            "handlers": {},
             "visible": true
         },
         "5158lpx8fidzhuvg": {
             "id": "5158lpx8fidzhuvg",
             "type": "column",
-            "parentId": "o1bf4egbqh5k3u33",
             "content": {
                 "width": "1"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 1,
+            "parentId": "o1bf4egbqh5k3u33",
+            "handlers": {},
             "visible": true
         },
         "7nddk0vhmp4223hc": {
             "id": "7nddk0vhmp4223hc",
             "type": "column",
-            "parentId": "o1bf4egbqh5k3u33",
             "content": {
                 "width": "1"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 2,
+            "parentId": "o1bf4egbqh5k3u33",
+            "handlers": {},
             "visible": true
         }
     }
