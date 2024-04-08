@@ -55,7 +55,7 @@ def _create_new_user(state):
                 first_name=state["user"]["first_name"].strip(),
                 last_name=state["user"]["last_name"].strip() or "-",
                 email=state["user"]["email"].strip(),
-                phone=state["user"]["phone"].strip(),
+                phone=state["user"]["phone"].replace(" ", "").replace("-", "").strip(),
                 login=state["user"]["login"].strip(),
                 role=state["user"]["role"],
                 h_pass=hash_password(state["user"]["password"].strip()),
