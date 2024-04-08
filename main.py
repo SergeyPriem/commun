@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 from dic import dic
 from dic import error_messages as e_m
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
-    init_new_project
+    specialities_R, specialities_U, specialities_E, init_new_project
 from models import engine, User, VisitLog, Projects
 from utilities import hash_password, err_handler
 from utilities import valid_email, _send_email, random_code_alphanumeric
@@ -53,7 +53,7 @@ def _create_new_user(state):
         with Session(engine) as session:
             new_user = User(
                 first_name=state["user"]["first_name"].strip(),
-                last_name=(state["user"]["last_name"] or "-").strip(),
+                last_name=state["user"]["last_name"].strip() or "-",
                 email=state["user"]["email"].strip(),
                 phone=state["user"]["phone"].strip(),
                 login=state["user"]["login"].strip(),
@@ -687,14 +687,17 @@ def quit_fun(state):
 
 def switch_to_rus(state):
     state["lang"] = "R"
+    state["specs"] = specialities_R
 
 
 def switch_to_eng(state):
     state["lang"] = "E"
+    state["specs"] = specialities_E
 
 
 def switch_to_ukr(state):
     state["lang"] = "U"
+    state["specs"] = specialities_U
 
 
 def _get_engineers(state, spec):
@@ -860,7 +863,7 @@ initial_state = ss.init_state(
         "projects": init_projects,
         "engineers": init_engineers,
         "vacancy": init_vacancy,
-        "specs": specialities,
+        "specs": specialities_E,
         "new_project": init_new_project,
 
         "el": None,

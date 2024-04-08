@@ -5653,14 +5653,14 @@
             "type": "multiselectinput",
             "content": {
                 "label": "@{dic.speciality[lang]}",
-                "options": "@{specs}",
                 "primaryTextColor": "#fcfcfc",
                 "chipTextColor": "#1d4087",
                 "placeholder": "@{dic.spec_placeholder[lang]}",
                 "containerBackgroundColor": "#1d4087",
                 "accentColor": "#dbeef6",
                 "secondaryTextColor": "#79c4d2",
-                "cssClasses": ""
+                "cssClasses": "",
+                "options": "@{specs}"
             },
             "isCodeManaged": false,
             "position": 4,
