@@ -377,7 +377,7 @@ def get_new_engineers(state):
         with Session(bind=engine) as session:
             try:
                 stuff = session.query(User).filter(
-                    datetime.datetime.now() > (User.date_time + datetime.timedelta(days=30)),
+                    User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
                     User.role == "engineer"
                 ).all()
                 state["new_engineers"] = {stuff[i].login: {
@@ -573,6 +573,7 @@ def _validate_phone_number(input_string):
     if pattern.match(input_string):
         return True
     return False
+
 
 def _basic_data_validation(state):
     troubles = []
