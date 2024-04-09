@@ -60,7 +60,7 @@ dic = {
     },
 
     "mission_3": {
-        "E": "If you do not find the Engineer you need on the website, contact us, we will try to help you find the "
+        "E": "If you didn't find the Engineer you need on the website, contact us, we will try to help you find the "
              "right Specialist.",
         "U": "Якщо Ви не знайшли потрібного Інженера на сайті, зв'яжіться з нами, ми постараємость допомогти з пошуком "
              "потрібного Спеціаліста. Якщо Ви Інженер і не знайшли потрібної категорії для своєї спеціалізації, "

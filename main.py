@@ -832,6 +832,7 @@ def close_project(state, context):
 
 
 def set_selected_engineer(state, context):
+    print(f"context['itemId']={context["itemId"]} at {datetime.datetime.now()}")
     state["selected_eng_for_proj"] = context["itemId"]
     print(state["selected_eng_for_proj"])
     state.set_page("invite_to_project")
