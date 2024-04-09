@@ -304,7 +304,7 @@ def _get_admin_data(state):
     with Session(bind=engine) as session:
         try:
             stuff = session.query(User).filter(User.role == "admin").all()
-            state["admin"] = {stuff[i].login: {
+            state["admin"] = {str(stuff[i].login): {
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
                 "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
@@ -719,7 +719,7 @@ def _get_engineers(state, spec):
     with Session(bind=engine) as session:
         try:
             stuff = session.query(User).filter(User.major.contains(spec)).all()
-            state[spec] = {stuff[i].login: {
+            state[spec] = {str(stuff[i].login): {
                 "login": stuff[i].login,
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
@@ -771,7 +771,7 @@ def get_all_engineers(state):
     with Session(bind=engine) as session:
         try:
             stuff = session.query(User).filter(User.role == "engineer").all()
-            state["all_engineers"] = {stuff[i].login: {
+            state["all_engineers"] = {str(stuff[i].login): {
                 "login": stuff[i].login,
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
@@ -787,7 +787,7 @@ def get_all_installers(state):
     with Session(bind=engine) as session:
         try:
             stuff = session.query(User).filter(User.role == "installer").all()
-            state["all_installers"] = {stuff[i].login: {
+            state["all_installers"] = {str(stuff[i].login): {
                 "login": stuff[i].login,
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
