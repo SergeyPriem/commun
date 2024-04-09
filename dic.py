@@ -735,9 +735,9 @@ error_messages = {
         "R": "Введите корректный email"
     },
     "wrong_phone": {
-        "E": "Enter the correct phone number",
-        "U": "Введіть коректний номер телефону",
-        "R": "Введите корректный номер телефона"
+        "E": "Enter the correct phone number. It should start with + and contain 12 digits",
+        "U": "Введіть коректний номер телефону. Він повинен починатися з + і містити 12 цифр",
+        "R": "Введите корректный номер телефона. Он должен начинаться с + и содержать 12 цифр"
     },
     "empty_phone": {
         "E": "Enter the phone number",

@@ -52,6 +52,7 @@ init_login = {
 init_projects = init_engineers = init_vacancy = dict(warning=1, content=0)
 
 specialities = {
+        "ar": "Architecture",
         "el": "Electrical Part",
         "ins": "Instrumentation",
         "low_cur": "Telecom",

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime
+import re
 import time
 
 import bcrypt
@@ -376,7 +377,7 @@ def get_new_engineers(state):
         with Session(bind=engine) as session:
             try:
                 stuff = session.query(User).filter(
-                    User.date_time < (datetime.datetime.now() - datetime.timedelta(days=30)),
+                    datetime.datetime.now() > (User.date_time + datetime.timedelta(days=30)),
                     User.role == "engineer"
                 ).all()
                 state["new_engineers"] = {stuff[i].login: {
@@ -567,6 +568,12 @@ def send_confirmation_code(state):
         state["reg"]["code_section"] = 0
 
 
+def _validate_phone_number(input_string):
+    pattern = re.compile(r'^\+\d{12}$')
+    if pattern.match(input_string):
+        return True
+    return False
+
 def _basic_data_validation(state):
     troubles = []
 
@@ -580,7 +587,8 @@ def _basic_data_validation(state):
         troubles.append(e_m["short_mail"])
 
     if state["user"]['phone']:
-        if len(state["user"]['phone']) < 10:
+        state["user"]['phone'] = state["user"]['phone'].replace(" ", "").replace("-", "").strip()
+        if not _validate_phone_number(state["user"]['phone']):
             troubles.append(e_m["wrong_phone"])
     else:
         troubles.append(e_m["empty_phone"])
@@ -756,6 +764,10 @@ def prepare_wss(state):
     _get_engineers(state, "wss")
 
 
+def prepare_ar(state):
+    _get_engineers(state, "ar")
+
+
 def get_all_engineers(state):
     with Session(bind=engine) as session:
         try:
@@ -883,6 +895,7 @@ initial_state = ss.init_state(
         "specs": specialities_E,
         "new_project": init_new_project,
 
+        "ar": None,  # "Architecture",
         "el": None,
         "ins": None,
         "low_cur": None,
