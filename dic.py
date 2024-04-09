@@ -717,7 +717,6 @@ dic = {
     },
 
 }
-
 error_messages = {
     "first_name": {
         "E": "Enter the name longer than two characters",

@@ -115,4 +115,3 @@ init_new_project = { # new_project
     "required_specialists": None,
     "assigned_engineers": None
 }
-

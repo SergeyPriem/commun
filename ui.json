@@ -4877,7 +4877,7 @@
                 "contentPadding": "15px"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 3,
             "parentId": "vxlllsxzrojevr8c",
             "handlers": {},
             "visible": true
@@ -12531,7 +12531,7 @@
                 "buttonTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 4,
             "parentId": "vxlllsxzrojevr8c",
             "handlers": {},
             "visible": true
@@ -15525,6 +15525,15 @@
             "position": 2,
             "parentId": "3fgi7mhwbxk1lfvd",
             "handlers": {},
+            "visible": true
+        },
+        "bwew8wa3r065tw15": {
+            "id": "bwew8wa3r065tw15",
+            "type": "separator",
+            "parentId": "vxlllsxzrojevr8c",
+            "content": {},
+            "handlers": {},
+            "position": 2,
             "visible": true
         }
     }

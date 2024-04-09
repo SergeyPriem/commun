@@ -696,8 +696,6 @@ def quit_fun(state):
     state["engineers"] = init_engineers
     state["vacancy"] = init_vacancy
     state["specs"] = specialities
-
-    # state["message"] = None
     state.set_page('about')
 
 
