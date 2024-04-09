@@ -54,7 +54,7 @@ def _create_new_user(state):
         with Session(engine) as session:
             new_user = User(
                 first_name=state["user"]["first_name"].strip(),
-                last_name=state["user"]["last_name"].strip() or "-",
+                last_name=(state["user"]["last_name"] or "-").strip(),
                 email=state["user"]["email"].strip(),
                 phone=state["user"]["phone"].replace(" ", "").replace("-", "").strip(),
                 login=state["user"]["login"].strip(),
