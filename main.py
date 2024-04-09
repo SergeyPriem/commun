@@ -380,7 +380,7 @@ def get_new_engineers(state):
                     User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
                     User.role == "engineer"
                 ).all()
-                state["new_engineers"] = {stuff[i].login: {
+                state["new_engineers"] = {str(stuff[i].login): {
                     "login": stuff[i].login,
                     "name": stuff[i].first_name,
                     "description": stuff[i].description,
@@ -404,7 +404,7 @@ def get_new_installers(state):
                     User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
                     User.role == "installer"
                 ).all()
-                state["new_installers"] = {stuff[i].login: {
+                state["new_installers"] = {str(stuff[i].login): {
                     "login": stuff[i].login,
                     "name": stuff[i].first_name,
                     "description": stuff[i].description,
