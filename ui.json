@@ -13723,7 +13723,7 @@
             "position": 1,
             "parentId": "vwuczbuyrx17fzpj",
             "handlers": {
-                "click": "set_selected_engineer"
+                "ss-click": "set_selected_engineer"
             },
             "visible": true
         },
@@ -15465,12 +15465,13 @@
         "r00aazwr8ihj2ou8": {
             "id": "r00aazwr8ihj2ou8",
             "type": "horizontalstack",
-            "parentId": "0olsr7iv2zjxy3q5",
             "content": {
                 "contentHAlign": "center"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "0olsr7iv2zjxy3q5",
+            "handlers": {},
             "visible": true
         }
     }

@@ -376,7 +376,7 @@ def get_new_engineers(state):
         with Session(bind=engine) as session:
             try:
                 stuff = session.query(User).filter(
-                    User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
+                    User.date_time < (datetime.datetime.now() - datetime.timedelta(days=30)),
                     User.role == "engineer"
                 ).all()
                 state["new_engineers"] = {stuff[i].login: {
@@ -822,6 +822,7 @@ def close_project(state, context):
 
 def set_selected_engineer(state, context):
     state["selected_eng_for_proj"] = context["itemId"]
+    print(state["selected_eng_for_proj"])
     state.set_page("invite_to_project")
 
 
