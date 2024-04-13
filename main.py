@@ -12,6 +12,7 @@ from sqlalchemy.orm import Session
 
 from dic import dic
 from dic import error_messages as e_m
+from fw import ss_dic
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
     specialities_R, specialities_U, specialities_E, init_new_project
 from models import engine, User, VisitLog, Projects
@@ -947,6 +948,7 @@ initial_state = ss.init_state(
         "current_own_projects_dict": None,
         "selected_proj_to_add_eng": None,
         "selected_eng_for_proj": None,
+        "fd": ss_dic,
     }
 )
 
