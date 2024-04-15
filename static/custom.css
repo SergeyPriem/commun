@@ -49,3 +49,12 @@ textarea:focus {
 
 }
 
+.support_button {
+  background-color: #29cd00 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 25px !important;
+  font-weight: bold !important;
+}
+

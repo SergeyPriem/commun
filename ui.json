@@ -8568,20 +8568,6 @@
             "handlers": {},
             "visible": true
         },
-        "08rpc5vsizlyt47i": {
-            "id": "08rpc5vsizlyt47i",
-            "type": "button",
-            "content": {
-                "text": "@{dic.support_button[lang]}",
-                "buttonColor": "#ffd500",
-                "buttonTextColor": "#0a26f5"
-            },
-            "isCodeManaged": false,
-            "position": 6,
-            "parentId": "6awi48g6he8cn8ru",
-            "handlers": {},
-            "visible": true
-        },
         "xf1ogya3l3wrakxm": {
             "id": "xf1ogya3l3wrakxm",
             "type": "image",
@@ -16231,6 +16217,43 @@
             "isCodeManaged": false,
             "position": 32,
             "parentId": "h4q3upm974hvp383",
+            "handlers": {},
+            "visible": true
+        },
+        "fql7iof4z9zb2ohb": {
+            "id": "fql7iof4z9zb2ohb",
+            "type": "link",
+            "content": {
+                "url": "https://send.monobank.ua/jar/4wvTmQBUWU",
+                "target": "_blank",
+                "text": "SUPPORT",
+                "rel": "",
+                "primaryTextColor": "#ffde0a",
+                "cssClasses": "support_button"
+            },
+            "isCodeManaged": false,
+            "position": 7,
+            "parentId": "6awi48g6he8cn8ru",
+            "handlers": {},
+            "visible": true
+        },
+        "6blnv24s3n6fos1e": {
+            "id": "6blnv24s3n6fos1e",
+            "type": "horizontalstack",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 6,
+            "parentId": "6awi48g6he8cn8ru",
+            "handlers": {},
+            "visible": true
+        },
+        "hn0asjm1z4qk0sqz": {
+            "id": "hn0asjm1z4qk0sqz",
+            "type": "horizontalstack",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 8,
+            "parentId": "6awi48g6he8cn8ru",
             "handlers": {},
             "visible": true
         }
