@@ -200,10 +200,12 @@ ss_dic = {
              "досить універсальним. Для мене це зручний і ефективний інструмент для створення звичайних "
              "(скажімо, CRUD-орієнтованих) сайтів. Його принципи та особливості дизайну зробили його доступним "
              "і корисним за межами цільової аудиторії.",
+
         "E": "Despite Streamsync being designed for creating data-driven applications, making it ideal for "
              "data processing professionals, I find it quite universal. For me, it’s a fantastic tool "
              "for building ordinary (say, CRUD-oriented) websites. Its design principles and features have "
              "made it accessible and useful beyond its target audience.",
+
         "R": "Несмотря на то, что Streamsync предназначен для создания приложений, ориентированных на данные, "
              "что делает его идеальным для специалистов по обработке данных и т. д., я считаю его достаточно "
              "универсальным. Для меня это удобный и эффективный инструмент для создания обычных "
@@ -222,6 +224,7 @@ ss_dic = {
              "продуктивності, **Streamsync**, безумовно, варто вивчити. Це допомогло мені створювати додатки, "
              "які є не тільки функціональними, але й візуально привабливими, зберігаючи при цьому процес "
              "розробки **простим і приємним**.",
+
         "E": "For those seeking a full-stack web development framework that prioritizes simplicity and productivity, "
              "**Streamsync** is definitely worth exploring. It has helped me create applications that are not only "
              "functional but visually appealing, all while keeping the development process **simple and enjoyable**.",
