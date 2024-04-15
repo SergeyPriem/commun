@@ -716,6 +716,12 @@ dic = {
         "R": "Пригласить"
     },
 
+    "support": {
+        "E": "SUPPORT",
+        "U": "ПІДТРИМАТИ",
+        "R": "ПОДДЕРЖАТЬ"
+    }
+
 }
 error_messages = {
     "first_name": {
@@ -787,6 +793,6 @@ error_messages = {
         "E": "Enter a description of your skills",
         "U": "Введіть опис ваших навичок",
         "R": "Введите описание навыков"
-    },
+    }
 
 }

@@ -16226,9 +16226,9 @@
             "content": {
                 "url": "https://send.monobank.ua/jar/4wvTmQBUWU",
                 "target": "_blank",
-                "text": "SUPPORT",
+                "text": "@{dic.support[lang]}",
                 "rel": "",
-                "primaryTextColor": "#ffde0a",
+                "primaryTextColor": "#1d4087",
                 "cssClasses": "support_button"
             },
             "isCodeManaged": false,
