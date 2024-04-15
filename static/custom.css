@@ -56,5 +56,6 @@ textarea:focus {
   border-radius: 4px !important;
   font-size: 25px !important;
   font-weight: bold !important;
+  padding: 10px !important;
 }
 

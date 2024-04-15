@@ -952,6 +952,6 @@ initial_state = ss.init_state(
     }
 )
 
-initial_state.import_stylesheet("theme", "/static/custom.css?52")
+initial_state.import_stylesheet("theme", "/static/custom.css?53")
 
 print("Code executed successfully!")
