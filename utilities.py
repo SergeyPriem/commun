@@ -33,8 +33,7 @@ def valid_email(email):
     return bool(re.fullmatch(regex, email))
 
 
-
-def _send_mail(receiver: str, cc_rec: str, subj: str, html: str):
+def _send_mail(receiver: str, cc_rec: str, subj: str, html: str) -> None | str | int:
     # Create message container - the correct MIME type is multipart/alternative.
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subj
@@ -60,13 +59,14 @@ def _send_mail(receiver: str, cc_rec: str, subj: str, html: str):
         s.sendmail(msg['From'], [receiver, cc_rec], msg.as_string())
         return 200
     except Exception as e:
+        s.quit()
         return err_handler(e)
+
     finally:
         s.quit()
 
 
 def _send_email(state):
-
     if state["user"]["role"] == "admin":
         html = (f"<h2>New admin is registering with code: {state['reg']['code_sent']}</h2>"
                 f"<p>First name: {state['user']['first_name']}</p>"
@@ -127,7 +127,5 @@ def timing(f):
             "{:s} function took {:.3f} ms".format(f.__name__, (time2 - time1) * 1000.0)
         )
         return ret
+
     return wrap
-
-
-

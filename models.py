@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+import datetime
 
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Enum
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -14,7 +15,7 @@ load_dotenv()  # Загрузка переменных из .env файла
 db_url = os.getenv('DB_URL')
 
 # engine = create_engine("sqlite:///db.sqlite3")
-engine = create_engine(db_url, pool_size=5, max_overflow=20,pool_recycle=3600)
+engine = create_engine(db_url, pool_size=5, max_overflow=20, pool_recycle=3600)
 Base = declarative_base()
 
 
@@ -40,6 +41,7 @@ class User(Base):
 
     # Relationship to access the projects owned by a user
     projects = relationship("Projects", backref="user")
+    invitations = relationship("Invitation", back_populates="user")
 
 
 class Projects(Base):
@@ -55,6 +57,31 @@ class Projects(Base):
     status_changed = Column(DateTime)
     required_specialists = Column(String(200))
     assigned_engineers = Column(String(200))
+    invitations = relationship("Invitation", back_populates="project")
+
+class Invitation(Base):
+    __tablename__ = 'invitation'
+
+    id = Column(Integer, primary_key=True)
+    project_id = Column(Integer, ForeignKey('Projects.id'), nullable=False)  # Assuming the project table is named 'project'
+    user_id = Column(Integer, ForeignKey('User.id'), nullable=False)  # Assuming the user table is named 'user'
+    initiated_by = Column(Enum('e', 'c'))  # e for engineer, 1 for client
+    status = Column(Enum('0', '1'))
+    added_dt = Column(DateTime, nullable=False)
+
+    # Relationships
+    project = relationship('Projects', back_populates='invitations')
+    user = relationship('User', back_populates='invitations')
+
+
+class Subscription(Base):
+    __tablename__ = 'Subscription'
+
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String(50), nullable=True)
+    last_name = Column(String(50), nullable=True)
+    email = Column(String(100), nullable=False)
+
 
 
 class VisitLog(Base):

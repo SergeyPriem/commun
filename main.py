@@ -15,8 +15,8 @@ from dic import error_messages as e_m
 from fw import ss_dic
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
     specialities_R, specialities_U, specialities_E, init_new_project
-from models import engine, User, VisitLog, Projects
-from utilities import hash_password, err_handler
+from models import engine, User, VisitLog, Projects, Invitation, Subscription
+from utilities import hash_password, err_handler, _send_mail
 from utilities import valid_email, _send_email, random_code_alphanumeric
 
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')}")
@@ -133,6 +133,74 @@ def get_actual_own_projects_dict(state):
     state["current_own_projects_dict"] = {
         str(key): value["name"]
         for key, value in state["current_own_projects"].items()}
+
+
+def add_invitation_by_client(state):
+    with Session(bind=engine) as session:
+        try:
+            user = session.query(User).filter(User.login == state["selected_eng_for_proj"]).first()
+            project = session.query(Projects).filter(Projects.id == state['selected_proj_to_add_eng']).first()
+            # Create a new Invitation object
+            new_invitation = Invitation(
+                project_id=state['selected_proj_to_add_eng'],
+                user_id=user.id,
+                initiated_by='c',
+                status='1',
+                added_dt=datetime.datetime.now()  # Use the current date and time
+            )
+
+            # Add the new Invitation object to the session
+            session.add(new_invitation)
+
+            # Commit the session to save the changes to the database
+            session.commit()
+            reply = _send_mail(user.email,
+                               "s.priemshiy@gmail.com",
+                               "You have been invited to a project",
+                               f"You have been invited to the project: {project.name}.\nCheck your account.")
+            if reply == 200:
+                state.add_notification("info", "Info!", f"Invitation to user {user.login} sent successfully")
+                state["selected_proj_to_add_eng"] = None
+                state["selected_eng_for_proj"] = None
+                state.set_page("client_page")
+            else:
+                state.add_notification("warning", "Warning!", "Invitation was not sent...")
+        except Exception as e:
+            session.rollback()
+            state.add_notification("warning", "Warning!", f"An error occurred: {e}")
+
+
+def offer_service(state):
+    with Session(bind=engine) as session:
+        try:
+            user = session.query(User).filter(User.login == state["user"]["login"]).first()
+            project = session.query(Projects).filter(Projects.id == state['selected_proj_to_add_eng']).first()
+            # Create a new Invitation object
+            new_invitation = Invitation(
+                project_id=state['selected_proj_to_add_eng'],
+                user_id=user.id,
+                initiated_by='c',
+                status='1',
+                added_dt=datetime.datetime.now()  # Use the current date and time
+            )
+
+            # Add the new Invitation object to the session
+            session.add(new_invitation)
+
+            # Commit the session to save the changes to the database
+            session.commit()
+            owner_email = session.query(User.email).filter(User.id == project.owner).first()
+            reply = _send_mail(owner_email,
+                               's.priemshiy@gmail.com',
+                               f"You have got a cooperation proposal from engineer {user.login}",
+                               f"You have got a cooperation proposal from engineer {user.login}"
+                               f"for the project {project.name}")
+            if reply == 200:
+                state.add_notification(f"Your proposal to attend project {project.name} is sent to the Project Owner")
+
+        except Exception as e:
+            session.rollback()
+            state.add_notification("warning", "Warning!", f"An error occurred: {e}")
 
 
 def get_finished_own_projects(state):
@@ -877,6 +945,52 @@ def validate_admin_login(state):
     admin_panel_section(state)
 
 
+def add_to_subscription(state):
+    if not valid_email(state["subscription"]["email"]):
+        state.add_notification('error', 'Error', "Wrong e-mail. Try again")
+        return
+
+    with Session(engine) as session:
+        result = session.query(Subscription.email).filter(Subscription.email == state["subscription"]["email"]).first()
+        if result:
+            state.add_notification('warning', 'Warning', "You are already subscribed")
+            return
+        try:
+            subscriber = Subscription(
+                first_name=state["subscription"]["first_name"] or None,
+                last_name=state["subscription"]["last_name"] or None,
+                email=state["subscription"]["email"]
+            )
+            session.add(subscriber)
+            session.commit()
+            state.add_notification('info', 'Info', "You are subscribed")
+            state["subscription"]["first_name"] = None
+            state["subscription"]["last_name"] = None
+            state["subscription"]["email"] = None
+            state.set_page("about")
+        except Exception as e:
+            state.add_notification('warning', 'Warning', err_handler(e, 'add_to_subscription'))
+
+
+def delete_subscription(state):
+    with Session(engine) as session:
+        try:
+            unsubscribed = session.query(Subscription).filter(Subscription.email == state["subscription"]["email"])
+
+            if not unsubscribed:
+                state.add_notification("warning", "Warning!", "You are not subscribed")
+                return
+
+            unsubscribed.delete()
+            session.commit()
+            state.add_notification('info', 'Info', "You are unsubscribed")
+            state["subscription"]["email"] = None
+            state.set_page("about")
+        except Exception as e:
+            state.add_notification('warning', 'Warning', err_handler(e, 'delete_subscription'))
+
+
+
 initial_state = ss.init_state(
     {
         "message": None,
@@ -948,7 +1062,14 @@ initial_state = ss.init_state(
         "current_own_projects_dict": None,
         "selected_proj_to_add_eng": None,
         "selected_eng_for_proj": None,
+        "user_invitation_status": None,
         "fd": ss_dic,
+
+        "subscription": {
+            "first_name": None,
+            "last_name": None,
+            "email": None,
+        }
     }
 )
 

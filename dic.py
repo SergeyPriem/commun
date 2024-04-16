@@ -258,9 +258,9 @@ dic = {
     },
 
     "subscribe": {
-        "E": "Subscribe",
-        "U": "Підписатися на новини",
-        "R": "Подписаться на новости"
+        "E": "Subscription",
+        "U": "Підписка",
+        "R": "Подписка"
     },
 
     "subscribe_header": {
@@ -645,9 +645,15 @@ dic = {
     },
 
     "my_proj": {
-        "E": "My Projects",
-        "U": "Мої Проекти",
-        "R": "Мои Проекты"
+        "E": "My Current Projects",
+        "U": "Мої Поточні Проекти",
+        "R": "Мои Текущие Проекты"
+    },
+
+    "my_invitations": {
+        "E": "My Invitations",
+        "U": "Мої запрошення",
+        "R": "Мои приглашения"
     },
 
     "support_us": {
@@ -720,7 +726,32 @@ dic = {
         "E": "SUPPORT",
         "U": "ПІДТРИМАТИ",
         "R": "ПОДДЕРЖАТЬ"
-    }
+    },
+
+    "offer_own_service": {
+        "E": "Offer own service",
+        "U": "Запропонувати свої послуги",
+        "R": "Предложить свои услуги"
+    },
+
+    "ask_question": {
+        "E": "Ask a question",
+        "U": "Задати питання",
+        "R": "Задать вопрос"
+    },
+
+    "unsubscribe": {
+        "E": "If you want to unsubscribe, enter your e-mail and click 'Unsubscribe'",
+        "U": "Якщо ви хочете відписатися, введіть Ваш e-mail і натисніть 'Відписатися'",
+        "R": "Если Вы хотите отписаться от новостей, введите Ваш e-mail и нажмите 'Отписаться'"
+    },
+
+    "unsubscribe_but": {
+        "E": "Unsubscribe",
+        "U": "Відписатися",
+        "R": "Отписаться",
+    },
+
 
 }
 error_messages = {
