@@ -459,7 +459,11 @@
             "position": 0,
             "parentId": "6ygb728katsjr9tg",
             "handlers": {},
-            "visible": true
+            "visible": true,
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user_message.first_name"
+            }
         },
         "7apxoj18pzrmaqmf": {
             "id": "7apxoj18pzrmaqmf",
@@ -517,7 +521,11 @@
             "position": 1,
             "parentId": "6ygb728katsjr9tg",
             "handlers": {},
-            "visible": true
+            "visible": true,
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user_message.last_name"
+            }
         },
         "p7z6c0dng82lf7wy": {
             "id": "p7z6c0dng82lf7wy",
@@ -529,7 +537,11 @@
             "position": 2,
             "parentId": "6ygb728katsjr9tg",
             "handlers": {},
-            "visible": true
+            "visible": true,
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user_message.email"
+            }
         },
         "hjft52s0zh5lldo2": {
             "id": "hjft52s0zh5lldo2",
@@ -542,7 +554,11 @@
             "position": 3,
             "parentId": "6ygb728katsjr9tg",
             "handlers": {},
-            "visible": true
+            "visible": true,
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "user_message.message"
+            }
         },
         "1nxrqri07s45kb28": {
             "id": "1nxrqri07s45kb28",
@@ -568,7 +584,9 @@
             "isCodeManaged": false,
             "position": 0,
             "parentId": "1nxrqri07s45kb28",
-            "handlers": {},
+            "handlers": {
+                "ss-click": "add_user_message"
+            },
             "visible": true
         },
         "1cnhl56hpeydnmbz": {
@@ -6009,7 +6027,7 @@
                 "label": "Table for Preview",
                 "placeholder": "Select the Table",
                 "accentColor": "#c62f2f",
-                "options": "{\n  \"User\": \"User\",\n  \"VisitLog\": \"VisitLog\",\n  \"Projects\": \"Projects\"\n}"
+                "options": "{\n  \"User\": \"User\",\n  \"VisitLog\": \"VisitLog\",\n  \"Projects\": \"Projects\",\n  \"Invitation\": \"Invitation\",\n  \"Subscription\": \"Subscription\"\n}"
             },
             "isCodeManaged": false,
             "position": 0,

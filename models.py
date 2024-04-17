@@ -59,15 +59,17 @@ class Projects(Base):
     assigned_engineers = Column(String(200))
     invitations = relationship("Invitation", back_populates="project")
 
+
 class Invitation(Base):
-    __tablename__ = 'invitation'
+    __tablename__ = 'Invitation'
 
     id = Column(Integer, primary_key=True)
-    project_id = Column(Integer, ForeignKey('Projects.id'), nullable=False)  # Assuming the project table is named 'project'
+    project_id = Column(Integer, ForeignKey('Projects.id'),
+                        nullable=False)  # Assuming the project table is named 'project'
     user_id = Column(Integer, ForeignKey('User.id'), nullable=False)  # Assuming the user table is named 'user'
     initiated_by = Column(Enum('e', 'c'))  # e for engineer, 1 for client
     status = Column(Enum('0', '1'))
-    added_dt = Column(DateTime, nullable=False)
+    date_time = Column(DateTime, nullable=False)
 
     # Relationships
     project = relationship('Projects', back_populates='invitations')
@@ -81,7 +83,17 @@ class Subscription(Base):
     first_name = Column(String(50), nullable=True)
     last_name = Column(String(50), nullable=True)
     email = Column(String(100), nullable=False)
+    date_time = Column(DateTime, nullable=False)
 
+class Messages(Base):
+    __tablename__ = 'Messages'
+
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String(50), nullable=True)
+    last_name = Column(String(50), nullable=True)
+    email = Column(String(100), nullable=False)
+    message = Column(String(1000), nullable=False)
+    date_time = Column(DateTime, nullable=False)
 
 
 class VisitLog(Base):

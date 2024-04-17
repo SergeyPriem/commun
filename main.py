@@ -15,7 +15,7 @@ from dic import error_messages as e_m
 from fw import ss_dic
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
     specialities_R, specialities_U, specialities_E, init_new_project
-from models import engine, User, VisitLog, Projects, Invitation, Subscription
+from models import engine, User, VisitLog, Projects, Invitation, Subscription, Messages
 from utilities import hash_password, err_handler, _send_mail
 from utilities import valid_email, _send_email, random_code_alphanumeric
 
@@ -27,6 +27,11 @@ def get_table_as_dataframe(state):
     if state["db_table_name"] == "Projects":
         df["created"] = pd.to_datetime(df["created"], unit='ms')
         df["created"] = df["created"].dt.strftime('%Y-%m-%d %H:%M:%S')
+        state["db_table"] = df
+        return
+    if state["db_table_name"] in ("Invitation", "Subscription"):
+        df["date_time"] = pd.to_datetime(df["date_time"], unit='ms')
+        df["date_time"] = df["date_time"].dt.strftime('%Y-%m-%d %H:%M:%S')
         state["db_table"] = df
         return
     if "h_pass" in df.columns:
@@ -638,7 +643,7 @@ def send_confirmation_code(state):
 
 
 def _validate_phone_number(input_string):
-    pattern = re.compile(r'^\+\d{12}$')
+    pattern = re.compile(r'^\+\d{11,12}$')
     if pattern.match(input_string):
         return True
     return False
@@ -990,6 +995,74 @@ def delete_subscription(state):
             state.add_notification('warning', 'Warning', err_handler(e, 'delete_subscription'))
 
 
+def add_user_message(state):
+    if not valid_email(state["user_message"]["email"]):
+        state.add_notification('error', 'Error', "Wrong e-mail. Try again")
+        return
+
+    if len(state["user_message"]["message"]) < 10:
+        state.add_notification('error', 'Error', "Message is too short. Try again")
+        return
+
+    if len(state["user_message"]["first_name"]) < 1:
+        state.add_notification('error', 'Error', "First name is too short. Try again")
+        return
+
+    if len(state["user_message"]["last_name"]) < 1:
+        state.add_notification('error', 'Error', "Last name is too short. Try again")
+        return
+
+    if len(state["user_message"]["message"]) > 1000:
+        state.add_notification('error', 'Error', "Message is too long. Try again")
+        return
+
+    with Session(engine) as session:
+        try:
+            message = Messages(
+                first_name=state["user_message"]["first_name"],
+                last_name=state["user_message"]["last_name"],
+                email=state["user_message"]["email"],
+                message=state["user_message"]["message"],
+                date_time=datetime.datetime.now()
+            )
+            session.add(message)
+            session.commit()
+
+            reply = _send_mail("info@power-design.pro",
+                               "s.priemshiy@gmail.com",
+                               "New Message from Site Visitor",
+                                f"""
+                                <html>
+                                    <body>
+                                        <h1>Hello!</h1>
+                                        <p>
+                                            You have got a message from site visitor {state["user_message"]["first_name"]} 
+                                            {state["user_message"]["last_name"]} ({state["user_message"]["email"]})
+                                            with the following content:
+                                        </p>
+                                        <h2>
+                                            {state["user_message"]["message"]}
+                                        </h2>
+                                        <p>
+                                            by {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}
+                                        </p>
+                                    </body>
+                                </html>""")
+            if reply == 200:
+                state.add_notification("info", "Info!", f"Thank you for your message. "
+                                                        f"The administration will be notified")
+                state.set_page("about")
+            else:
+                state.add_notification("warning", "Warning!", "Invitation was not sent...")
+
+            state["user_message"]["first_name"] = None
+            state["user_message"]["last_name"] = None
+            state["user_message"]["email"] = None
+            state["user_message"]["message"] = None
+            state.set_page("about")
+        except Exception as e:
+            state.add_notification('warning', 'Warning', err_handler(e, 'add_user_message'))
+
 
 initial_state = ss.init_state(
     {
@@ -1068,10 +1141,16 @@ initial_state = ss.init_state(
         "subscription": {
             "first_name": None,
             "last_name": None,
+            "email": None
+        },
+
+        "user_message": {
+            "first_name": None,
+            "last_name": None,
             "email": None,
+            "message": None
         }
-    }
-)
+    })
 
 initial_state.import_stylesheet("theme", "/static/custom.css?53")
 
