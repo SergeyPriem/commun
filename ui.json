@@ -15572,21 +15572,23 @@
             "content": {
                 "url": "https://send.monobank.ua/jar/4wvTmQBUWU",
                 "target": "_blank",
-                "text": "@{dic.support[lang]}",
+                "text": "\u20b4",
                 "rel": "",
                 "primaryTextColor": "#1d4087",
                 "cssClasses": "support_button"
             },
             "isCodeManaged": false,
-            "position": 7,
-            "parentId": "6awi48g6he8cn8ru",
+            "position": 0,
+            "parentId": "6blnv24s3n6fos1e",
             "handlers": {},
             "visible": true
         },
         "6blnv24s3n6fos1e": {
             "id": "6blnv24s3n6fos1e",
             "type": "horizontalstack",
-            "content": {},
+            "content": {
+                "contentHAlign": "center"
+            },
             "isCodeManaged": false,
             "position": 6,
             "parentId": "6awi48g6he8cn8ru",
@@ -15598,7 +15600,7 @@
             "type": "horizontalstack",
             "content": {},
             "isCodeManaged": false,
-            "position": 8,
+            "position": 7,
             "parentId": "6awi48g6he8cn8ru",
             "handlers": {},
             "visible": true
@@ -16361,6 +16363,173 @@
             "handlers": {
                 "ss-click": "delete_subscription"
             },
+            "visible": true
+        },
+        "9cerjjxgqcnrx6gt": {
+            "id": "9cerjjxgqcnrx6gt",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "yncc454drpo8n2pl",
+            "handlers": {},
+            "visible": true
+        },
+        "e9j9bl5jeokshgne": {
+            "id": "e9j9bl5jeokshgne",
+            "type": "column",
+            "content": {
+                "width": "0.2",
+                "contentPadding": "0px 0px 0px 0px"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "9cerjjxgqcnrx6gt",
+            "handlers": {},
+            "visible": true
+        },
+        "krb324z9w5i636qb": {
+            "id": "krb324z9w5i636qb",
+            "type": "column",
+            "content": {
+                "width": "8"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "9cerjjxgqcnrx6gt",
+            "handlers": {},
+            "visible": true
+        },
+        "b4xtl8duife32rr7": {
+            "id": "b4xtl8duife32rr7",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center",
+                "contentPadding": "15px"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "jlt90p5l6h5l92rf",
+            "handlers": {},
+            "visible": true
+        },
+        "685glyo4booicocp": {
+            "id": "685glyo4booicocp",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "krb324z9w5i636qb",
+            "handlers": {},
+            "visible": true
+        },
+        "dswify4th6shegia": {
+            "id": "dswify4th6shegia",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "685glyo4booicocp",
+            "handlers": {},
+            "visible": true
+        },
+        "jlt90p5l6h5l92rf": {
+            "id": "jlt90p5l6h5l92rf",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "685glyo4booicocp",
+            "handlers": {},
+            "visible": true
+        },
+        "mzw5kehffxnetdak": {
+            "id": "mzw5kehffxnetdak",
+            "type": "textinput",
+            "content": {
+                "label": "@{dic.conf_code[lang]}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "b4xtl8duife32rr7",
+            "handlers": {},
+            "visible": true,
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "subscription.first_name"
+            }
+        },
+        "x1z431k1ifhy5c51": {
+            "id": "x1z431k1ifhy5c51",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "685glyo4booicocp",
+            "handlers": {},
+            "visible": true
+        },
+        "gccyu3f0xluysxka": {
+            "id": "gccyu3f0xluysxka",
+            "type": "column",
+            "content": {
+                "width": "0.2",
+                "contentPadding": "0px 0px 0px 0px"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "9cerjjxgqcnrx6gt",
+            "handlers": {},
+            "visible": true
+        },
+        "0zuhft390nqi2d25": {
+            "id": "0zuhft390nqi2d25",
+            "type": "button",
+            "content": {
+                "text": "@{dic.to_confirm[lang]}"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "b4xtl8duife32rr7",
+            "handlers": {},
+            "visible": true
+        },
+        "myu2kdeahok7qo4d": {
+            "id": "myu2kdeahok7qo4d",
+            "type": "link",
+            "content": {
+                "url": "https://send.monobank.ua/jar/9D7H5Y1i99",
+                "target": "_blank",
+                "text": "$",
+                "rel": "",
+                "primaryTextColor": "#1d4087",
+                "cssClasses": "support_button"
+            },
+            "position": 1,
+            "parentId": "6blnv24s3n6fos1e",
+            "handlers": {},
+            "visible": true
+        },
+        "bver5l6bb6qfxgtp": {
+            "id": "bver5l6bb6qfxgtp",
+            "type": "link",
+            "content": {
+                "url": "https://send.monobank.ua/jar/e8Ca6udaE",
+                "target": "_blank",
+                "text": "\u20ac",
+                "rel": "",
+                "primaryTextColor": "#1d4087",
+                "cssClasses": "support_button"
+            },
+            "position": 2,
+            "parentId": "6blnv24s3n6fos1e",
+            "handlers": {},
             "visible": true
         }
     }

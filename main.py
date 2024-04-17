@@ -964,7 +964,8 @@ def add_to_subscription(state):
             subscriber = Subscription(
                 first_name=state["subscription"]["first_name"] or None,
                 last_name=state["subscription"]["last_name"] or None,
-                email=state["subscription"]["email"]
+                email=state["subscription"]["email"],
+                date_time=datetime.datetime.now()
             )
             session.add(subscriber)
             session.commit()
@@ -1143,6 +1144,9 @@ initial_state = ss.init_state(
             "last_name": None,
             "email": None
         },
+
+        "unsubscribe_code": None,
+        "got_unsubscribe_code": None,
 
         "user_message": {
             "first_name": None,
