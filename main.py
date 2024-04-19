@@ -23,7 +23,6 @@ print(f"You are using the main.py file from {datetime.datetime.now().strftime('%
 
 
 def get_table_as_dataframe(state):
-
     if state["db_table_name"] == "Invitation":
         df = get_all_invitations_df(state)
         try:
@@ -703,6 +702,8 @@ def _basic_data_validation(state):
         troubles.append(e_m["empty_phone"])
 
     if state["user"]['login']:
+        if state["user"]['login'].isdigit():
+            troubles.append(e_m["only_digits"])
         if len(state["user"]['login']) < 3:
             troubles.append(e_m["short_login"])
     else:
@@ -744,7 +745,6 @@ def validate_reg_data(state):
     if len(troubles) > 0:
 
         troubles_text = [t[lang] for t in troubles]
-
         state["reg"]["data_error"] = 1
         state["reg"]["data_error_message"] = ", ".join(troubles_text)
     else:
@@ -752,7 +752,6 @@ def validate_reg_data(state):
         state["reg"]["data_error_message"] = None
         state["reg"]["data_ok"] = 1
         state["reg"]["form"] = 0
-
         state["user"]["client"] = 0
         state["user"]["engineer"] = 0
         state["user"]["installer"] = 0
@@ -765,7 +764,6 @@ def show_client_form(state):
     state["user"]["engineer"] = 0
     state["user"]["installer"] = 0
     state["user"]["role"] = "client"
-
     state["reg"]["data_error"] = 0
     state["reg"]["code_ok"] = 0
     state["reg"]["data_ok"] = 0
@@ -1013,6 +1011,43 @@ def add_to_subscription(state):
             state.add_notification('warning', 'Warning', err_handler(e, 'add_to_subscription'))
 
 
+def get_my_invitations_dict(state):
+    if not state['user']['login']:
+        state.add_notification("warning", "Warning!", "You are not logged in...")
+        return
+    with Session(bind=engine) as session:
+        try:
+            # Query all invitations for the given user along with the project owner's login
+            user_id = session.query(User.id).filter(User.login == state['user']['login']).first()[0]
+            invitations = session.query(Invitation, User.login).join(
+                Projects, Projects.id == Invitation.project_id).join(
+                User, User.id == Projects.owner).filter(Invitation.user_id == user_id).all()
+
+            if not invitations:
+                state.add_notification("info", "Info", "You have no invitations")
+                return
+
+            # Initialize an empty dictionary
+            invitations_info = {}
+
+            # Iterate over each invitation
+            for invitation, proj_owner_login in invitations:
+                # Add the invitation info to the dictionary
+                invitations_info[str(invitation.id)] = {
+                    "project": invitation.project.name,
+                    "proj_owner": proj_owner_login,
+                    "description": invitation.project.description,
+                    'comments': invitation.project.comments,
+                    "status": invitation.project.status,
+                    "created": invitation.project.created.strftime('%d-%m-%Y'),
+                }
+            state['my_invitations'] = invitations_info
+        except SQLAlchemyError as e:
+            # Log the error and return a user-friendly message
+            print(f"An error occurred: {e}")
+            state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
+
+
 def delete_subscription(state):
     with Session(engine) as session:
         try:
@@ -1184,6 +1219,7 @@ initial_state = ss.init_state(
         "got_unsubscribe_code": None,
         "show_hidden_eng": True,
         "show_hidden_ins": True,
+        "my_invitations": None,
 
         "user_message": {
             "first_name": None,
