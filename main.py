@@ -23,17 +23,30 @@ print(f"You are using the main.py file from {datetime.datetime.now().strftime('%
 
 
 def get_table_as_dataframe(state):
+
+    if state["db_table_name"] == "Invitation":
+        df = get_all_invitations_df(state)
+        try:
+            df["date_time"] = pd.to_datetime(df["date_time"], unit='ms')
+            df["date_time"] = df["date_time"].dt.strftime('%Y-%m-%d %H:%M:%S')
+        except KeyError:
+            state.add_notification("warning", "Warning!", "Wrong key...")
+        state["db_table"] = df
+        return
+
     df = pd.read_sql_table(state["db_table_name"], engine)
     if state["db_table_name"] == "Projects":
         df["created"] = pd.to_datetime(df["created"], unit='ms')
         df["created"] = df["created"].dt.strftime('%Y-%m-%d %H:%M:%S')
         state["db_table"] = df
         return
-    if state["db_table_name"] in ("Invitation", "Subscription"):
+
+    if state["db_table_name"] == "Subscription":
         df["date_time"] = pd.to_datetime(df["date_time"], unit='ms')
         df["date_time"] = df["date_time"].dt.strftime('%Y-%m-%d %H:%M:%S')
         state["db_table"] = df
         return
+
     if "h_pass" in df.columns:
         df = df.drop(columns=["h_pass"])
 
@@ -206,6 +219,27 @@ def offer_service(state):
         except Exception as e:
             session.rollback()
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
+
+
+def get_all_invitations_df(state):
+    with Session(bind=engine) as session:
+        try:
+            stmt = select(Invitation, Projects, User).join(Projects, Projects.id == Invitation.project_id).join(
+                User, User.id == Invitation.user_id)
+            result = session.execute(stmt)
+            invitations = result.scalars().all()
+            df = pd.DataFrame([{
+                "id": str(invitation.id),
+                "project": invitation.project.name,
+                "user": invitation.user.login,
+                "initiated_by": invitation.initiated_by,
+                "status": invitation.status,
+                "date_time": invitation.date_time
+            } for invitation in invitations])
+            return df
+        except SQLAlchemyError as e:
+            state.add_notification("warning", "Warning!", f"An error occurred: {e}")
+            return pd.DataFrame()
 
 
 def get_finished_own_projects(state):
@@ -947,7 +981,6 @@ def validate_admin_code(state):
 
 
 def validate_admin_login(state):
-    ...
     get_table_as_dataframe(state)
     admin_panel_section(state)
 
@@ -1034,7 +1067,7 @@ def add_user_message(state):
             reply = _send_mail("info@power-design.pro",
                                "s.priemshiy@gmail.com",
                                "New Message from Site Visitor",
-                                f"""
+                               f"""
                                 <html>
                                     <body>
                                         <h1>Hello!</h1>
