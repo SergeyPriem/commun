@@ -151,7 +151,7 @@ def add_invitation_by_client(state):
                 user_id=user.id,
                 initiated_by='c',
                 status='1',
-                added_dt=datetime.datetime.now()  # Use the current date and time
+                date_time=datetime.datetime.now()  # Use the current date and time
             )
 
             # Add the new Invitation object to the session
@@ -186,7 +186,7 @@ def offer_service(state):
                 user_id=user.id,
                 initiated_by='c',
                 status='1',
-                added_dt=datetime.datetime.now()  # Use the current date and time
+                date_time=datetime.datetime.now()  # Use the current date and time
             )
 
             # Add the new Invitation object to the session
@@ -906,8 +906,10 @@ def close_project(state, context):
 
 
 def set_selected_engineer(state, context):
-    print(f"context['itemId']={str(context["itemId"])} at {datetime.datetime.now()}")
+    get_actual_own_projects_dict(state)
     state["selected_eng_for_proj"] = str(context["itemId"])
+
+    time.sleep(0.5)
     state.set_page("invite_to_project")
 
 
@@ -1147,6 +1149,8 @@ initial_state = ss.init_state(
 
         "unsubscribe_code": None,
         "got_unsubscribe_code": None,
+        "show_hidden_eng": True,
+        "show_hidden_ins": True,
 
         "user_message": {
             "first_name": None,
