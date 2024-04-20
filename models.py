@@ -67,10 +67,11 @@ class Invitation(Base):
     project_id = Column(Integer, ForeignKey('Projects.id'),
                         nullable=False)  # Assuming the project table is named 'project'
     user_id = Column(Integer, ForeignKey('User.id'), nullable=False)  # Assuming the user table is named 'user'
-    initiated_by = Column(Enum('e', 'c'))  # e for engineer, 1 for client
-    status = Column(Enum('0', '1'))
+    initiated_by = Column(Enum('engineer', 'client', 'installer'))
+    status = Column(String(200)) # 0 for "Pending > ", 1 for "Accepted > ", 2 for "Declined > ", 3 "Waiting for response > ", 4 for "Cancelled > "
     date_time = Column(DateTime, nullable=False)
-
+    last_action_dt = Column(DateTime, nullable=False)
+    last_action_by = Column(Enum('engineer', 'client', 'installer'))
     # Relationships
     project = relationship('Projects', back_populates='invitations')
     user = relationship('User', back_populates='invitations')

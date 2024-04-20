@@ -161,9 +161,12 @@ def add_invitation_by_client(state):
             new_invitation = Invitation(
                 project_id=state['selected_proj_to_add_eng'],
                 user_id=user.id,
-                initiated_by='c',
-                status='1',
-                date_time=datetime.datetime.now()  # Use the current date and time
+                initiated_by='client',
+                status='\nPending',
+                date_time=datetime.datetime.now(),
+                last_action_dt=datetime.datetime.now(),
+                last_action_by='client'
+                # Use the current date and time
             )
 
             # Add the new Invitation object to the session
@@ -1017,9 +1020,9 @@ def get_my_invitations_dict(state):
         return
     with Session(bind=engine) as session:
         try:
-            # Query all invitations for the given user along with the project owner's login
+            # Query all invitations for the given user along with the project owner's login and email
             user_id = session.query(User.id).filter(User.login == state['user']['login']).first()[0]
-            invitations = session.query(Invitation, User.login).join(
+            invitations = session.query(Invitation, User.login, User.email).join(
                 Projects, Projects.id == Invitation.project_id).join(
                 User, User.id == Projects.owner).filter(Invitation.user_id == user_id).all()
 
@@ -1031,17 +1034,113 @@ def get_my_invitations_dict(state):
             invitations_info = {}
 
             # Iterate over each invitation
-            for invitation, proj_owner_login in invitations:
+            for invitation, proj_owner_login, proj_owner_email in invitations:
                 # Add the invitation info to the dictionary
                 invitations_info[str(invitation.id)] = {
                     "project": invitation.project.name,
                     "proj_owner": proj_owner_login,
+                    "proj_owner_email": proj_owner_email,  # add the project owner's email
                     "description": invitation.project.description,
                     'comments': invitation.project.comments,
-                    "status": invitation.project.status,
-                    "created": invitation.project.created.strftime('%d-%m-%Y'),
+                    "initiated_by": invitation.initiated_by,
+                    "last_action_by": (invitation.last_action_by).capitalize() if invitation.last_action_by else None,
+                    "last_action_dt": invitation.last_action_dt.strftime('%Y-%m-%d %H:%M'),
+                    'date_time': invitation.date_time.strftime('%Y-%m-%d %H:%M'),  # format the date and time
+                    "status": invitation.status,
+                    "created": invitation.project.created.strftime('%Y-%m-%d'),
+                    "message": None
                 }
             state['my_invitations'] = invitations_info
+        except SQLAlchemyError as e:
+            # Log the error and return a user-friendly message
+            print(f"An error occurred: {e}")
+            state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
+
+
+def accept_invitation(state, context):
+    if not state['user']['login']:
+        state.add_notification("warning", "Warning!", "You are not logged in...")
+        return
+    with Session(bind=engine) as session:
+        try:
+            # Get the invitation to accept
+            invitation = session.query(Invitation).filter(Invitation.id == context['itemId']).first()
+
+            # Update the invitation status to 'accepted'
+            if invitation.status.endswith('Accepted'):
+                state.add_notification("warning", "Warning!", "You have already accepted this invitation")
+                return
+            invitation.status += '\nAccepted'
+
+            # Update the last action by and last action date-time
+            invitation.last_action_by = state['user']['role']
+            invitation.last_action_dt = datetime.datetime.now()
+
+            # Commit the changes to the database
+            session.commit()
+
+            # Notify the user that the invitation was accepted
+            state.add_notification("info", "Info", "The invitation was accepted successfully")
+            get_my_invitations_dict(state)
+        except SQLAlchemyError as e:
+            # Log the error and return a user-friendly message
+            print(f"An error occurred: {e}")
+            state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
+
+
+def wait_invitation(state, context):
+    if not state['user']['login']:
+        state.add_notification("warning", "Warning!", "You are not logged in...")
+        return
+    with Session(bind=engine) as session:
+        try:
+            # Get the invitation to wait
+            invitation = session.query(Invitation).filter(Invitation.id == context['itemId']).first()
+
+            # Update the invitation status to 'waiting'
+
+            invitation.status += f"\n{state['user']['login']}: {context}"
+
+            # Update the last action by and last action date-time
+            invitation.last_action_by = state['user']['role']
+            invitation.last_action_dt = datetime.datetime.now()
+
+            # Commit the changes to the database
+            session.commit()
+
+            # Notify the user that the invitation was accepted
+            state.add_notification("info", "Info", "The request was sent successfully")
+            get_my_invitations_dict(state)
+        except SQLAlchemyError as e:
+            # Log the error and return a user-friendly message
+            print(f"An error occurred: {e}")
+            state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
+
+def decline_invitation(state, context):
+    if not state['user']['login']:
+        state.add_notification("warning", "Warning!", "You are not logged in...")
+        return
+    with Session(bind=engine) as session:
+        try:
+            # Get the invitation to decline
+            invitation = session.query(Invitation).filter(Invitation.id == context['itemId']).first()
+
+            # Update the invitation status to 'declined'
+            if invitation.status.endswith('Declined'):
+                state.add_notification("warning", "Warning!", "You have already declined this invitation")
+                return
+            invitation.status += '\nDeclined'
+
+            # Update the last action by and last action date-time
+            invitation.last_action_by = state['user']['role']
+            invitation.last_action_dt = datetime.datetime.now()
+
+            # Commit the changes to the database
+            session.commit()
+
+            # Notify the user that the invitation was declined
+            state.add_notification("info", "Info", "The invitation was declined successfully")
+            get_my_invitations_dict(state)
         except SQLAlchemyError as e:
             # Log the error and return a user-friendly message
             print(f"An error occurred: {e}")
