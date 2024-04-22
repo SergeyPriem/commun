@@ -1048,7 +1048,7 @@ def get_my_invitations_dict(state):
                     'date_time': invitation.date_time.strftime('%Y-%m-%d %H:%M'),  # format the date and time
                     "status": invitation.status,
                     "created": invitation.project.created.strftime('%Y-%m-%d'),
-                    "message": None
+                    "message": "555"
                 }
             state['my_invitations'] = invitations_info
         except SQLAlchemyError as e:
@@ -1088,18 +1088,22 @@ def accept_invitation(state, context):
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
-def wait_invitation(state, context):
-    if not state['user']['login']:
-        state.add_notification("warning", "Warning!", "You are not logged in...")
-        return
+def request_for_invitation(state, context):
+    state['current_invitation'] = context['item']
+    state['current_invitation_id'] = context['itemId']
+    state.set_page("request_to_client")
+
+
+def send_request(state):
     with Session(bind=engine) as session:
         try:
             # Get the invitation to wait
-            invitation = session.query(Invitation).filter(Invitation.id == context['itemId']).first()
+            invitation = session.query(Invitation).filter(Invitation.id == state['current_invitation_id']).first()
 
             # Update the invitation status to 'waiting'
 
-            invitation.status += f"\n{state['user']['login']}: {context}"
+            invitation.status += (f"\n{state['user']['login']}: {state['current_invitation_message']}: "
+                                  f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}")
 
             # Update the last action by and last action date-time
             invitation.last_action_by = state['user']['role']
@@ -1111,10 +1115,23 @@ def wait_invitation(state, context):
             # Notify the user that the invitation was accepted
             state.add_notification("info", "Info", "The request was sent successfully")
             get_my_invitations_dict(state)
+            state.set_page("engineer_page")
+            state['current_invitation'] = None
+            state['current_invitation_id'] = None
+            state['current_invitation_message'] = None
+            state.add_notification("info", "Info", "The request was sent successfully")
         except SQLAlchemyError as e:
             # Log the error and return a user-friendly message
             print(f"An error occurred: {e}")
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
+
+
+def return_eng_clean_states(state):
+    state.set_page("engineer_page")
+    state["current_invitation"] = None
+    state["current_invitation_id"] = None
+    state["current_invitation_message"] = None
+
 
 def decline_invitation(state, context):
     if not state['user']['login']:
@@ -1325,7 +1342,11 @@ initial_state = ss.init_state(
             "last_name": None,
             "email": None,
             "message": None
-        }
+        },
+
+        "current_invitation_id": None,
+        "current_invitation": None,
+        "current_invitation_message": None
     })
 
 initial_state.import_stylesheet("theme", "/static/custom.css?53")

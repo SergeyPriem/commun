@@ -495,6 +495,12 @@ dic = {
         "R": "Отправить сообщение"
     },
 
+    "return_back": {
+        "E": "Return Back",
+        "U": "Повернутися назад",
+        "R": "Вернуться назад"
+    },
+
     "no_vacancies": {
         "E": "At the moment there are no Vacancies. Subscribe to news to find out about new Vacancies",
         "U": "На даний момент Вакансій немає. Підпишіться на новини, щоб дізнатися про нові Вакансії",
