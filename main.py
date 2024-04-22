@@ -1107,6 +1107,20 @@ def send_request(state):
             invitation.status += (f"\n{state['user']['login']} ({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): "
                                   f"{state['current_invitation_message']}")
 
+            final_status = invitation.status + (
+                f"\n{state['user']['login']} ({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): "
+                f"{state['current_invitation_message']}")
+
+            if len(final_status) > 16000:
+                state.add_notification("warning",
+                                       "Warning!",
+                                       "Your messages history is too long. Please, proceed with email communication "
+                                       "or ask the admin to clean your previous history by e-mail: "
+                                       "info@power-design.pro")
+                return
+            else:
+                invitation.status = final_status
+
             # Update the last action by and last action date-time
             invitation.last_action_by = state['user']['role']
             invitation.last_action_dt = datetime.datetime.now()
