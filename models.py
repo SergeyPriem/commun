@@ -68,7 +68,7 @@ class Invitation(Base):
     user_id = Column(Integer, ForeignKey('User.id'), nullable=False)  # Assuming the user table is named 'user'
     initiated_by = Column(Enum('engineer', 'client', 'installer'))
     status = Column(String(
-        200))  # 0 for "Pending > ", 1 for "Accepted > ", 2 for "Declined > ", 3 "Waiting for response > ",
+        16000))  # 0 for "Pending > ", 1 for "Accepted > ", 2 for "Declined > ", 3 "Waiting for response > ",
     # 4 for "Cancelled > "
     date_time = Column(DateTime, nullable=False)
     last_action_dt = Column(DateTime, nullable=False)
