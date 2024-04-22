@@ -1102,10 +1102,6 @@ def send_request(state):
             # Get the invitation to wait
             invitation = session.query(Invitation).filter(Invitation.id == state['current_invitation_id']).first()
 
-            # Update the invitation status to 'waiting'
-
-            invitation.status += (f"\n{state['user']['login']} ({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): "
-                                  f"{state['current_invitation_message']}")
 
             final_status = invitation.status + (
                 f"\n{state['user']['login']} ({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): "
