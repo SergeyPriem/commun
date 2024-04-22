@@ -19,7 +19,7 @@ from models import engine, User, VisitLog, Projects, Invitation, Subscription, M
 from utilities import hash_password, err_handler, _send_mail
 from utilities import valid_email, _send_email, random_code_alphanumeric
 
-print(f"You are using the main.py file from {datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')}")
+print(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 
 def get_table_as_dataframe(state):
@@ -138,7 +138,7 @@ def get_actual_own_projects(state):
                 "comments": cur_projects[i].comments,
                 "required_specialists": cur_projects[i].required_specialists,
                 "assigned_engineers": cur_projects[i].assigned_engineers,
-                "created": cur_projects[i].created.strftime('%d-%m-%Y')
+                "created": cur_projects[i].created.strftime('%Y-%m-%d')
             } for i in range(len(cur_projects))}
 
         except SQLAlchemyError as e:
@@ -162,7 +162,7 @@ def add_invitation_by_client(state):
                 project_id=state['selected_proj_to_add_eng'],
                 user_id=user.id,
                 initiated_by='client',
-                status='\nPending',
+                status=f"\n{state['user']['login']} ({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): Pending",
                 date_time=datetime.datetime.now(),
                 last_action_dt=datetime.datetime.now(),
                 last_action_by='client'
@@ -284,7 +284,7 @@ def get_new_current_projects(state):
                         "comments": project.comments,
                         "required_specialists": project.required_specialists,
                         "assigned_engineers": project.assigned_engineers,
-                        "created": project.created.strftime('%d-%m-%Y'),
+                        "created": project.created.strftime('%Y-%m-%d'),
 
                     } for project in cur_projects
                 }
@@ -325,7 +325,7 @@ def get_all_current_projects(state):
                         "comments": project.comments,
                         "required_specialists": project.required_specialists,
                         "assigned_engineers": project.assigned_engineers,
-                        "created": project.created.strftime('%d-%m-%Y'),
+                        "created": project.created.strftime('%Y-%m-%d'),
                     } for project in cur_projects
                 }
                 state["all_current_projects_message"] = False
@@ -358,7 +358,7 @@ def get_all_finished_projects(state):
                         "comments": project.comments,
                         "required_specialists": project.required_specialists,
                         "assigned_engineers": project.assigned_engineers,
-                        "created": project.created.strftime('%d-%m-%Y'),
+                        "created": project.created.strftime('%Y-%m-%d'),
                     } for project in fin_projects
                 }
                 state["all_finished_projects_message"] = False
@@ -417,7 +417,7 @@ def _get_admin_data(state):
             state["admin"] = {str(stuff[i].login): {
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
-                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                "with_us_from": stuff[i].date_time.strftime('%Y-%m-%d'),
                 "experience": stuff[i].experience,
             } for i in range(len(stuff))}
 
@@ -494,7 +494,7 @@ def get_new_engineers(state):
                     "login": stuff[i].login,
                     "name": stuff[i].first_name,
                     "description": stuff[i].description,
-                    "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                    "with_us_from": stuff[i].date_time.strftime('%Y-%m-%d'),
                     "experience": stuff[i].experience,
                 } for i in range(len(stuff))}
 
@@ -518,7 +518,7 @@ def get_new_installers(state):
                     "login": stuff[i].login,
                     "name": stuff[i].first_name,
                     "description": stuff[i].description,
-                    "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                    "with_us_from": stuff[i].date_time.strftime('%Y-%m-%d'),
                     "experience": stuff[i].experience,
                 } for i in range(len(stuff))}
 
@@ -608,6 +608,7 @@ def log_user(state):
             state["vacancy"]["warning"] = 1
 
         if state["user"]["role"] == 'engineer':
+            get_my_invitations_dict(state)
             state.set_page('engineer_page')
             state["engineers"]["content"] = 0
             state["engineers"]["warning"] = 1
@@ -832,7 +833,7 @@ def _get_engineers(state, spec):
                 "login": stuff[i].login,
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
-                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                "with_us_from": stuff[i].date_time.strftime('%Y-%m-%d'),
                 "experience": stuff[i].experience,
             } for i in range(len(stuff))}
 
@@ -884,7 +885,7 @@ def get_all_engineers(state):
                 "login": stuff[i].login,
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
-                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                "with_us_from": stuff[i].date_time.strftime('%Y-%m-%d'),
                 "experience": stuff[i].experience,
             } for i in range(len(stuff))}
 
@@ -900,7 +901,7 @@ def get_all_installers(state):
                 "login": stuff[i].login,
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
-                "with_us_from": stuff[i].date_time.strftime('%d-%m-%Y'),
+                "with_us_from": stuff[i].date_time.strftime('%Y-%m-%d'),
                 "experience": stuff[i].experience,
             } for i in range(len(stuff))}
 
@@ -1070,7 +1071,7 @@ def accept_invitation(state, context):
             if invitation.status.endswith('Accepted'):
                 state.add_notification("warning", "Warning!", "You have already accepted this invitation")
                 return
-            invitation.status += '\nAccepted'
+            invitation.status += f"\n{state['user']['login']} ({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): Accepted"
 
             # Update the last action by and last action date-time
             invitation.last_action_by = state['user']['role']
@@ -1127,10 +1128,10 @@ def send_request(state):
 
 
 def return_eng_clean_states(state):
-    state.set_page("engineer_page")
     state["current_invitation"] = None
     state["current_invitation_id"] = None
     state["current_invitation_message"] = None
+    state.set_page("engineer_page")
 
 
 def decline_invitation(state, context):
@@ -1146,7 +1147,7 @@ def decline_invitation(state, context):
             if invitation.status.endswith('Declined'):
                 state.add_notification("warning", "Warning!", "You have already declined this invitation")
                 return
-            invitation.status += '\nDeclined'
+            invitation.status += f"\n{state['user']['login']} ({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): Accepted"
 
             # Update the last action by and last action date-time
             invitation.last_action_by = state['user']['role']
@@ -1349,6 +1350,6 @@ initial_state = ss.init_state(
         "current_invitation_message": None
     })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?53")
+initial_state.import_stylesheet("theme", "/static/custom.css?55")
 
 print("Code executed successfully!")

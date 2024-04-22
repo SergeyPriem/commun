@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
-import datetime
 
+import os
+
+from dotenv import load_dotenv
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Enum
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-
-from dotenv import load_dotenv
-import os
 
 load_dotenv()  # Загрузка переменных из .env файла
 
@@ -68,7 +67,9 @@ class Invitation(Base):
                         nullable=False)  # Assuming the project table is named 'project'
     user_id = Column(Integer, ForeignKey('User.id'), nullable=False)  # Assuming the user table is named 'user'
     initiated_by = Column(Enum('engineer', 'client', 'installer'))
-    status = Column(String(200)) # 0 for "Pending > ", 1 for "Accepted > ", 2 for "Declined > ", 3 "Waiting for response > ", 4 for "Cancelled > "
+    status = Column(String(
+        200))  # 0 for "Pending > ", 1 for "Accepted > ", 2 for "Declined > ", 3 "Waiting for response > ",
+    # 4 for "Cancelled > "
     date_time = Column(DateTime, nullable=False)
     last_action_dt = Column(DateTime, nullable=False)
     last_action_by = Column(Enum('engineer', 'client', 'installer'))
@@ -85,6 +86,7 @@ class Subscription(Base):
     last_name = Column(String(50), nullable=True)
     email = Column(String(100), nullable=False)
     date_time = Column(DateTime, nullable=False)
+
 
 class Messages(Base):
     __tablename__ = 'Messages'
