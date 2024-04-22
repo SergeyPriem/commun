@@ -1071,7 +1071,8 @@ def accept_invitation(state, context):
             if invitation.status.endswith('Accepted'):
                 state.add_notification("warning", "Warning!", "You have already accepted this invitation")
                 return
-            invitation.status += f"\n{state['user']['login']} ({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): Accepted"
+            invitation.status += (f"\n{state['user']['login']} "
+                                  f"({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): Accepted")
 
             # Update the last action by and last action date-time
             invitation.last_action_by = state['user']['role']
@@ -1147,7 +1148,8 @@ def decline_invitation(state, context):
             if invitation.status.endswith('Declined'):
                 state.add_notification("warning", "Warning!", "You have already declined this invitation")
                 return
-            invitation.status += f"\n{state['user']['login']} ({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): Accepted"
+            invitation.status += (f"\n{state['user']['login']} "
+                                  f"({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): Declined")
 
             # Update the last action by and last action date-time
             invitation.last_action_by = state['user']['role']
