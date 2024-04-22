@@ -1103,8 +1103,8 @@ def send_request(state):
 
             # Update the invitation status to 'waiting'
 
-            invitation.status += (f"\n{state['user']['login']}: {state['current_invitation_message']}: "
-                                  f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}")
+            invitation.status += (f"\n{state['user']['login']} ({datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}): "
+                                  f"{state['current_invitation_message']}")
 
             # Update the last action by and last action date-time
             invitation.last_action_by = state['user']['role']
