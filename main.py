@@ -427,8 +427,8 @@ def send_request(state):
     _send_request(state)
 
 
-def decline_invitation(state):
-    _decline_invitation(state)
+def decline_invitation(state, context):
+    _decline_invitation(state, context)
 
 
 def delete_subscription(state):
