@@ -16,7 +16,7 @@ from fw import ss_dic
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
     specialities_R, specialities_U, specialities_E, init_new_project
 from models import engine, User, VisitLog, Projects, Invitation, Subscription, Messages
-from utilities import hash_password, err_handler, _send_mail
+from utilities import hash_password, err_handler, _send_mail, timing
 from utilities import valid_email, _send_email, random_code_alphanumeric
 
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -143,7 +143,6 @@ def get_actual_own_projects(state):
 
         except SQLAlchemyError as e:
             state.add_notification(f"An error occurred: {e}")
-
 
 def get_actual_own_projects_dict(state):
     get_actual_own_projects(state)
@@ -274,7 +273,7 @@ def get_new_current_projects(state):
             cur_projects = result.scalars().all()
 
             if cur_projects:
-
+                state['new_proj_quantity'] = len(cur_projects) or 0
                 state["new_current_projects"] = {
                     str(project.id): {
                         "name": project.name,
@@ -315,7 +314,7 @@ def get_all_current_projects(state):
             cur_projects = result.scalars().all()
 
             if cur_projects:
-
+                state["actual_proj_quantity"] = len(cur_projects) or 0
                 state["all_current_projects"] = {
                     str(project.id): {
                         "name": project.name,
@@ -588,61 +587,37 @@ def _get_user_data(state):
 def log_user(state):
     _get_user_data(state)
 
-    if state["user"]["role"] == 'admin':
-        state.add_notification("warning", "Warning!", "Wrong role...")
+    role_pages = {
+        'client': 'client_page',
+        'engineer': 'engineer_page',
+        'installer': 'projects',
+        'admin': 'projects'
+    }
 
-        quit_fun(state)
-        state.set_page("about")
+    content_states = {
+        'client': (1, 0, 0, 1),
+        'engineer': (0, 1, 1, 0),
+        'installer': (1, 0, 1, 0),
+        'admin': (1, 0, 1, 0)
+    }
 
     if state["user"]["logged"]:
-
-        state["lang"] = state["user"]["lang"]
-
-        if state["user"]["role"] == 'client':
-            state.set_page('client_page')
-            state["engineers"]["content"] = 1
-            state["engineers"]["warning"] = 0
-            state["projects"]["content"] = 0
-            state["projects"]["warning"] = 1
-            state["vacancy"]["content"] = 0
-            state["vacancy"]["warning"] = 1
-
-        if state["user"]["role"] == 'engineer':
-            get_my_invitations_dict(state)
-            state.set_page('engineer_page')
-            state["engineers"]["content"] = 0
-            state["engineers"]["warning"] = 1
-            state["projects"]["content"] = 1
-            state["projects"]["warning"] = 0
-            state["vacancy"]["content"] = 1
-            state["vacancy"]["warning"] = 0
-
-        if state["user"]["role"] == 'installer':
-            state.set_page('projects')
-            state["engineers"]["content"] = 1
-            state["engineers"]["warning"] = 0
-            state["projects"]["content"] = 1
-            state["projects"]["warning"] = 0
-            state["vacancy"]["content"] = 1
-            state["vacancy"]["warning"] = 0
-
-        if state["user"]["role"] == 'admin':
-            state.set_page('projects')
-            state["engineers"]["content"] = 1
-            state["engineers"]["warning"] = 0
-            state["projects"]["content"] = 1
-            state["projects"]["warning"] = 0
-            state["vacancy"]["content"] = 1
-            state["vacancy"]["warning"] = 0
-
+        role = state["user"]["role"]
+        if role == 'admin':
+            state.add_notification("warning", "Warning!", "Wrong role...")
+            quit_fun(state)
+            state.set_page("about")
+        else:
+            state["lang"] = state["user"]["lang"]
+            state.set_page(role_pages[role])
+            state["engineers"]["content"], state["engineers"]["warning"], state["projects"]["content"], \
+                state["projects"]["warning"] = content_states[role]
+            if role == 'engineer':
+                get_my_invitations_dict(state)
     else:
         state.set_page('wrong_login')
-        state["engineers"]["content"] = 0
-        state["engineers"]["warning"] = 1
-        state["projects"]["content"] = 0
-        state["projects"]["warning"] = 1
-        state["vacancy"]["content"] = 0
-        state["vacancy"]["warning"] = 1
+        state["engineers"]["content"] = state["engineers"]["warning"] = state["projects"]["content"] = \
+            state["projects"]["warning"] = 0
 
 
 def validate_email_by_code(state):
@@ -1016,6 +991,9 @@ def add_to_subscription(state):
 
 
 def get_my_invitations_dict(state):
+
+    time1 = time.time()
+    time.sleep(0.5)
     if not state['user']['login']:
         state.add_notification("warning", "Warning!", "You are not logged in...")
         return
@@ -1052,6 +1030,9 @@ def get_my_invitations_dict(state):
                     "message": "555"
                 }
             state['my_invitations'] = invitations_info
+            state['invitations_quantity'] = len(invitations_info) or 0
+            time2 = time.time()
+            print(f"function took {(time2 - time1) * 1000.0} ms")
         except SQLAlchemyError as e:
             # Log the error and return a user-friendly message
             print(f"An error occurred: {e}")
@@ -1117,15 +1098,11 @@ def send_request(state):
             else:
                 invitation.status = final_status
 
-            # Update the last action by and last action date-time
             invitation.last_action_by = state['user']['role']
             invitation.last_action_dt = datetime.datetime.now()
 
-            # Commit the changes to the database
             session.commit()
 
-            # Notify the user that the invitation was accepted
-            state.add_notification("info", "Info", "The request was sent successfully")
             get_my_invitations_dict(state)
             state.set_page("engineer_page")
             state['current_invitation'] = None
@@ -1359,7 +1336,10 @@ initial_state = ss.init_state(
 
         "current_invitation_id": None,
         "current_invitation": None,
-        "current_invitation_message": None
+        "current_invitation_message": None,
+        "invitations_quantity": None,
+        "new_proj_quantity": None,
+        'actual_proj_quantity': None,
     })
 
 initial_state.import_stylesheet("theme", "/static/custom.css?55")

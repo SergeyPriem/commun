@@ -4588,7 +4588,8 @@
             "position": 11,
             "parentId": "root",
             "handlers": {
-                "ss-page-open": "get_my_invitations_dict"
+                "ss-page-open": "get_new_current_projects",
+                "load": "get_all_current_projects"
             },
             "visible": true
         },
@@ -4713,11 +4714,11 @@
             "id": "o2zztkv4af8gurb1",
             "type": "tab",
             "content": {
-                "name": "@{dic.actual_proj[lang]}",
+                "name": "@{dic.actual_proj[lang]}(@{actual_proj_quantity})",
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 1,
             "parentId": "8somozz7rjbs2ord",
             "handlers": {
                 "click": "get_all_current_projects"
@@ -4732,7 +4733,7 @@
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 4,
             "parentId": "8somozz7rjbs2ord",
             "handlers": {
                 "click": "get_all_finished_projects"
@@ -4743,11 +4744,11 @@
             "id": "of4niwxblwgvv6lp",
             "type": "tab",
             "content": {
-                "name": "@{dic.new_proj_at_site[lang]}",
+                "name": "@{dic.new_proj_at_site[lang]}(@{new_proj_quantity})",
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 0,
             "parentId": "8somozz7rjbs2ord",
             "handlers": {
                 "click": "get_new_current_projects"
@@ -4874,7 +4875,7 @@
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 3,
             "parentId": "8somozz7rjbs2ord",
             "handlers": {},
             "visible": true
@@ -16094,14 +16095,14 @@
             "id": "jebu3eb9hc30noko",
             "type": "tab",
             "content": {
-                "name": "@{dic.my_invitations[lang]}",
+                "name": "@{dic.my_invitations[lang]} (@{invitations_quantity})",
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 0,
+            "position": 2,
             "parentId": "8somozz7rjbs2ord",
             "handlers": {
-                "click": "get_my_invitations_dict"
+                "focus": "get_my_invitations_dict"
             },
             "visible": true
         },
