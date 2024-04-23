@@ -2972,8 +2972,8 @@
                 "primaryTextColor": "#f6eeee"
             },
             "isCodeManaged": false,
-            "position": 2,
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 0,
+            "parentId": "oi3h4bs1lpdv4int",
             "handlers": {},
             "visible": true
         },
@@ -6395,7 +6395,7 @@
             },
             "isCodeManaged": false,
             "position": 0,
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "parentId": "cgwx3jokeya4p9wp",
             "handlers": {},
             "visible": true
         },
@@ -17618,6 +17618,52 @@
             "position": 0,
             "parentId": "1sjfzrp84rwjjpzj",
             "handlers": {},
+            "visible": true
+        },
+        "sz0yrwbz6osv58bn": {
+            "id": "sz0yrwbz6osv58bn",
+            "type": "columns",
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "content": {},
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "cgwx3jokeya4p9wp": {
+            "id": "cgwx3jokeya4p9wp",
+            "type": "column",
+            "parentId": "sz0yrwbz6osv58bn",
+            "content": {
+                "width": "1",
+                "isCollapsible": "no",
+                "separatorColor": "#1d4087",
+                "isSticky": "yes"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "zm3lzacgv0ahymqf": {
+            "id": "zm3lzacgv0ahymqf",
+            "type": "columns",
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "content": {},
+            "handlers": {},
+            "position": 2,
+            "visible": true
+        },
+        "oi3h4bs1lpdv4int": {
+            "id": "oi3h4bs1lpdv4int",
+            "type": "column",
+            "parentId": "zm3lzacgv0ahymqf",
+            "content": {
+                "width": "1",
+                "isCollapsible": "no",
+                "separatorColor": "#1d4087",
+                "isSticky": "yes"
+            },
+            "handlers": {},
+            "position": 0,
             "visible": true
         }
     }
