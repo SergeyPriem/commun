@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import datetime
-import re
 import time
 
 import streamsync as ss
@@ -16,7 +15,7 @@ from dic import error_messages as e_m
 from fw import ss_dic
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
     specialities_R, specialities_U, specialities_E, init_new_project
-from utilities import valid_email, _send_email, random_code_alphanumeric
+from utilities import _send_email, _random_code_alphanumeric, _basic_data_validation
 
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
@@ -144,7 +143,7 @@ def validate_email_by_code(state):
 
 
 def send_confirmation_code(state):
-    state['reg']['code_sent'] = random_code_alphanumeric(6)
+    state['reg']['code_sent'] = _random_code_alphanumeric(6)
 
     reply = _send_email(state)
     if reply['status'] == 200:
@@ -153,47 +152,10 @@ def send_confirmation_code(state):
         state["reg"]["code_section"] = 0
 
 
-def _validate_phone_number(input_string):
-    pattern = re.compile(r'^\+\d{11,12}$')
-    if pattern.match(input_string):
-        return True
-    return False
 
 
-def _basic_data_validation(state):
-    troubles = []
 
-    if state["user"]['first_name']:
-        if len(state["user"]['first_name']) <= 1:
-            troubles.append(e_m["first_name"])
-    else:
-        troubles.append(e_m["first_name_2"])
 
-    if not valid_email(state["user"]['email']):
-        troubles.append(e_m["short_mail"])
-
-    if state["user"]['phone']:
-        state["user"]['phone'] = state["user"]['phone'].replace(" ", "").replace("-", "").strip()
-        if not _validate_phone_number(state["user"]['phone']):
-            troubles.append(e_m["wrong_phone"])
-    else:
-        troubles.append(e_m["empty_phone"])
-
-    if state["user"]['login']:
-        if state["user"]['login'].isdigit():
-            troubles.append(e_m["only_digits"])
-        if len(state["user"]['login']) < 3:
-            troubles.append(e_m["short_login"])
-    else:
-        troubles.append(e_m["empty_login"])
-
-    if state["user"]['password'] is None:
-        troubles.append(e_m["empty_password"])
-
-    if state["user"]['password'] != state["user"]['password2']:
-        troubles.append(e_m["different_passwords"])
-
-    return troubles
 
 
 def validate_reg_data(state):

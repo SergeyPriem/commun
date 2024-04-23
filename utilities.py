@@ -6,7 +6,7 @@ import random
 import bcrypt
 import time
 import smtplib
-
+from dic import error_messages as e_m
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def valid_email(email):
+def _valid_email(email):
     """
     Validates an email address using a regular expression.
 
@@ -60,7 +60,7 @@ def _send_mail(receiver: str, cc_rec: str, subj: str, html: str) -> None | str |
         return 200
     except Exception as e:
         s.quit()
-        return err_handler(e)
+        return _err_handler(e)
 
     finally:
         s.quit()
@@ -99,12 +99,12 @@ def _send_email(state):
         }
 
 
-def random_code_alphanumeric(length):
+def _random_code_alphanumeric(length):
     characters = string.ascii_letters + string.digits
     return ''.join(random.choice(characters) for _ in range(length))
 
 
-def err_handler(e: Exception, func=None) -> str:
+def _err_handler(e: Exception, func=None) -> str:
     """
     :param e: Exception
     :param func: Name of function where exception occurred
@@ -113,7 +113,7 @@ def err_handler(e: Exception, func=None) -> str:
     return f"{e.__traceback__.tb_frame.f_globals['__name__']} -> {func} -> {type(e).__name__}{getattr(e, 'args', None)}"
 
 
-def hash_password(password: str) -> str:
+def _hash_password(password: str) -> str:
     hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
     return hashed.decode()
 
@@ -129,3 +129,46 @@ def timing(f):
         return ret
 
     return wrap
+
+
+def _validate_phone_number(input_string):
+    pattern = re.compile(r'^\+\d{11,12}$')
+    if pattern.match(input_string):
+        return True
+    return False
+
+
+def _basic_data_validation(state):
+    troubles = []
+
+    if state["user"]['first_name']:
+        if len(state["user"]['first_name']) <= 1:
+            troubles.append(e_m["first_name"])
+    else:
+        troubles.append(e_m["first_name_2"])
+
+    if not _valid_email(state["user"]['email']):
+        troubles.append(e_m["short_mail"])
+
+    if state["user"]['phone']:
+        state["user"]['phone'] = state["user"]['phone'].replace(" ", "").replace("-", "").strip()
+        if not _validate_phone_number(state["user"]['phone']):
+            troubles.append(e_m["wrong_phone"])
+    else:
+        troubles.append(e_m["empty_phone"])
+
+    if state["user"]['login']:
+        if state["user"]['login'].isdigit():
+            troubles.append(e_m["only_digits"])
+        if len(state["user"]['login']) < 3:
+            troubles.append(e_m["short_login"])
+    else:
+        troubles.append(e_m["empty_login"])
+
+    if state["user"]['password'] is None:
+        troubles.append(e_m["empty_password"])
+
+    if state["user"]['password'] != state["user"]['password2']:
+        troubles.append(e_m["different_passwords"])
+
+    return troubles

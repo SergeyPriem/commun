@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 
 from dic import dic
 from models import *
-from utilities import hash_password, err_handler, valid_email, _send_mail
+from utilities import _hash_password, _err_handler, _valid_email, _send_mail
 
 
 def _create_new_user(state):
@@ -27,7 +27,7 @@ def _create_new_user(state):
                 phone=state["user"]["phone"].replace(" ", "").replace("-", "").strip(),
                 login=state["user"]["login"].strip(),
                 role=state["user"]["role"],
-                h_pass=hash_password(state["user"]["password"].strip()),
+                h_pass=_hash_password(state["user"]["password"].strip()),
                 description=(state["user"]["description"] or "-").strip(),
                 url=(state["user"]["url"] or "-").strip(),
                 date_time=datetime.datetime.now(),
@@ -116,7 +116,7 @@ def _log_admin(state):
             ).first()
 
         except SQLAlchemyError as e:
-            state.add_notification(err_handler(e, "log_admin"))
+            state.add_notification(_err_handler(e, "log_admin"))
             return
 
         if current_user:
@@ -141,7 +141,7 @@ def _log_admin(state):
                     session.commit()
 
                 except SQLAlchemyError as e:
-                    state["message"] = err_handler(e, "_get_user_data")
+                    state["message"] = _err_handler(e, "_get_user_data")
 
                 finally:
                     session.close()
@@ -231,7 +231,7 @@ def _get_user_data(state):
             current_user = session.query(User).filter(User.login == state["user"]["login"]).first()
 
         except SQLAlchemyError as e:
-            state["message"] = err_handler(e, "_get_user_data")
+            state["message"] = _err_handler(e, "_get_user_data")
             return _get_default_user_data(None)
 
         if current_user:
@@ -257,7 +257,7 @@ def _get_user_data(state):
                     session.commit()
 
                 except SQLAlchemyError as e:
-                    state["message"] = err_handler(e, "_get_user_data")
+                    state["message"] = _err_handler(e, "_get_user_data")
 
             else:
                 state["message"] = "- " + dic["wrong_password"][state["lang"]]
@@ -409,7 +409,7 @@ def _get_actual_own_projects(state):  # ui
 
 
 def _add_user_message(state):
-    if not valid_email(state["user_message"]["email"]):
+    if not _valid_email(state["user_message"]["email"]):
         state.add_notification('error', 'Error', "Wrong e-mail. Try again")
         return
 
@@ -474,7 +474,7 @@ def _add_user_message(state):
             state["user_message"]["message"] = None
             state.set_page("about")
         except Exception as e:
-            state.add_notification('warning', 'Warning', err_handler(e, 'add_user_message'))
+            state.add_notification('warning', 'Warning', _err_handler(e, 'add_user_message'))
 
 
 def _delete_subscription(state):
@@ -492,7 +492,7 @@ def _delete_subscription(state):
             state["subscription"]["email"] = None
             state.set_page("about")
         except Exception as e:
-            state.add_notification('warning', 'Warning', err_handler(e, 'delete_subscription'))
+            state.add_notification('warning', 'Warning', _err_handler(e, 'delete_subscription'))
 
 
 def _get_new_current_projects(state):
@@ -780,7 +780,7 @@ def _send_request(state):
 
 
 def _add_to_subscription(state):
-    if not valid_email(state["subscription"]["email"]):
+    if not _valid_email(state["subscription"]["email"]):
         state.add_notification('error', 'Error', "Wrong e-mail. Try again")
         return
 
@@ -804,7 +804,7 @@ def _add_to_subscription(state):
             state["subscription"]["email"] = None
             state.set_page("about")
         except Exception as e:
-            state.add_notification('warning', 'Warning', err_handler(e, 'add_to_subscription'))
+            state.add_notification('warning', 'Warning', _err_handler(e, 'add_to_subscription'))
 
 
 def _offer_service(state):
