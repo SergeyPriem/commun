@@ -110,6 +110,7 @@ def admin_panel_section(state):
 def _log_admin(state):
     with Session(bind=engine) as session:
         try:
+            # noinspection PyTypeChecker
             current_user = session.query(User).filter(
                 User.login == state["user"]["login"],
                 User.role == "admin"

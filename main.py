@@ -29,7 +29,7 @@ def get_actual_own_projects(state):
 
 
 def get_actual_own_projects_dict(state):
-    get_actual_own_projects(state)
+    _get_actual_own_projects(state)
     state["current_own_projects_dict"] = {
         str(key): value["name"]
         for key, value in state["current_own_projects"].items()}
@@ -113,6 +113,9 @@ def log_user(state):
                 state["projects"]["warning"] = content_states[role]
             if role == 'engineer':
                 _prepare_eng_page(state)
+            if role in ('engineer', 'installer'):
+                state["vacancy"]["content"] = 1
+                state["vacancy"]["warning"] = 0
     else:
         state.set_page('wrong_login')
         state["engineers"]["content"] = state["engineers"]["warning"] = state["projects"]["content"] = \
@@ -150,12 +153,6 @@ def send_confirmation_code(state):
         state["reg"]["code_section"] = 1
     else:
         state["reg"]["code_section"] = 0
-
-
-
-
-
-
 
 
 def validate_reg_data(state):
@@ -393,22 +390,49 @@ def decline_invitation(state, context):
     _decline_invitation(state, context)
 
 
+def show_code_window(state):
+    state["subscription"]["code_window"] = 1
+
+
+def compare_unsubscription_codes(state):
+    if state["unsubscribe_code"] == state["subscription"]["code_sent"]:
+        state["got_unsubscribe_code"] = 1
+    else:
+        state["got_unsubscribe_code"] = 0
+
 def delete_subscription(state):
+
     _delete_subscription(state)
+
+
+def show_unsubscribe_window(state):
+    state["unsubscribe"]["section"] = 1
+    state["subscribe"]["section"] = 0
+
+
+def show_subscribe_window(state):
+    state["unsubscribe"]["section"] = 0
+    state["subscribe"]["section"] = 1
 
 
 def add_user_message(state):
     _add_user_message(state)
 
 
+# The following event handler reads the product_id route var,
+# then assigns its value to the "product" state element.
+def handle_hash_change(state, payload):
+    route_vars = payload.get("route_vars")
+    if route_vars:
+        state.add_notification('info', 'Route vars', route_vars['country'])
+        state['country'] = route_vars['country']
+
+
 initial_state = ss.init_state(
     {
-        "message": None,
+
         "lang": "E",
         "dic": dic,
-
-        "db_table": None,
-        "db_table_name": None,
 
         "reg": init_reg,
         "login": init_login,
@@ -419,87 +443,96 @@ initial_state = ss.init_state(
         "specs": specialities_E,
         "new_project": init_new_project,
 
-        "ar": None,  # "Architecture",
-        "el": None,
-        "ins": None,
-        "low_cur": None,
-        "plot_plan": None,
-        "piping_linear": None,
-        "piping_area": None,
-        "hvac": None,
-        "wss": None,
-        "term": None,
-        "civil": None,
-        "selected_engineers": [],
-        "new_engineers": None,
-        "new_installers": None,
-        "trusted_engineers": None,
-        "viewed_engineers": None,
-
-        "admin": {
-            "reg_sect": 0,
-            "code_sect": 0,
-            "log_sect": 0,
-            "panel_sect": 0
-        },
-
         "add_project": {
             "show_section": 1,
             "show_message": 0,
         },
 
-        "current_own_projects": {
-            "name": None,
-            "description": None,
-            "status": None,
-            "comments": None,
-            "required_specialists": None,
-            "assigned_engineers": None,
-            "created": None
-        },
-
-        "new_current_projects": None,
-        "all_current_projects": None,
-        "all_finished_projects": None,
-        "all_engineers": None,
-        "all_installers": None,
-
-        "new_current_projects_message": None,
-        "all_current_projects_message": None,
-        "all_finished_projects_message": None,
-        "all_engineers_message": None,
-        "all_installers_message": None,
-        "current_own_projects_dict": None,
-        "selected_proj_to_add_eng": None,
-        "selected_eng_for_proj": None,
-        "user_invitation_status": None,
-        "fd": ss_dic,
-
-        "subscription": {
-            "first_name": None,
-            "last_name": None,
-            "email": None
-        },
-
-        "unsubscribe_code": None,
-        "got_unsubscribe_code": None,
-        "show_hidden_eng": True,
-        "show_hidden_ins": True,
-        "my_invitations": None,
-
-        "user_message": {
+        "subscribe": {
+            "section": 1,
             "first_name": None,
             "last_name": None,
             "email": None,
-            "message": None
+            "code_window": 0,
+            'code_sent': None,
+
         },
 
-        "current_invitation_id": None,
-        "current_invitation": None,
-        "current_invitation_message": None,
-        "invitations_quantity": None,
-        "new_proj_quantity": None,
-        'actual_proj_quantity': None,
+        "unsubscribe":  {
+            'section': 0,
+            'email': None,
+            "code_sent": None,
+            "code_entered": None,
+            "code_window": 0,
+        },
+
+        "show_hidden_eng": True,
+        "show_hidden_ins": True,
+
+        "admin": {
+           "reg_sect": 0,
+           "code_sect": 0,
+           "log_sect": 0,
+           "panel_sect": 0
+        },
+
+        # "my_invitations": None,
+        # "user_message": {
+        #    "first_name": None,
+        #    "last_name": None,
+        #    "email": None,
+        #    "message": None
+        # },
+        # "unsubscribe_code": None,
+        # "got_unsubscribe_code": None,
+        # "current_invitation_id": None,
+        # "current_invitation": None,
+        # "current_invitation_message": None,
+        # "invitations_quantity": None,
+        # "new_proj_quantity": None,
+        # 'actual_proj_quantity': None,
+        # "current_own_projects": {
+        #    "name": None,
+        #    "description": None,
+        #    "status": None,
+        #    "comments": None,
+        #    "required_specialists": None,
+        #    "assigned_engineers": None,
+        #    "created": None
+        # },
+        # "new_current_projects": None,
+        # "all_current_projects": None,
+        # "all_finished_projects": None,
+        # "all_engineers": None,
+        # "all_installers": None,
+        #
+        # "new_current_projects_message": None,
+        # "all_current_projects_message": None,
+        # "all_finished_projects_message": None,
+        # "all_engineers_message": None,
+        # "all_installers_message": None,
+        # "current_own_projects_dict": None,
+        # "selected_proj_to_add_eng": None,
+        # "selected_eng_for_proj": None,
+        # "user_invitation_status": None,
+        # "fd": ss_dic,
+        # "ar": None,  # "Architecture",
+        # "el": None,
+        # "ins": None,
+        # "low_cur": None,
+        # "plot_plan": None,
+        # "piping_linear": None,
+        # "piping_area": None,
+        # "hvac": None,
+        # "wss": None,
+        # "term": None,
+        # "civil": None,
+        # "selected_engineers": [],
+        # "new_engineers": None,
+        # "new_installers": None,
+        # "trusted_engineers": None,
+        # "viewed_engineers": None,
+
     })
 
 initial_state.import_stylesheet("theme", "/static/custom.css?55")
