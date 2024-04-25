@@ -430,10 +430,8 @@ def handle_hash_change(state, payload):
 
 initial_state = ss.init_state(
     {
-
         "lang": "E",
         "dic": dic,
-
         "reg": init_reg,
         "login": init_login,
         "user": init_user,
@@ -455,7 +453,6 @@ initial_state = ss.init_state(
             "email": None,
             "code_window": 0,
             'code_sent': None,
-
         },
 
         "unsubscribe":  {
