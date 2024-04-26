@@ -463,8 +463,8 @@ initial_state = ss.init_state(
             "code_window": 0,
         },
 
-        "show_hidden_eng": True,
-        "show_hidden_ins": True,
+        "show_hidden_eng": False,
+        "show_hidden_ins": False,
 
         "admin": {
            "reg_sect": 0,

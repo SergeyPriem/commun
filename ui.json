@@ -4646,7 +4646,7 @@
             "id": "kf99zh5enbw9wuga",
             "type": "text",
             "content": {
-                "text": "# **@{dic.eng_pers_page[lang]}: _@{user.login}_ from @{country}**",
+                "text": "# **@{dic.eng_pers_page[lang]}: _@{user.login}_**",
                 "useMarkdown": "yes",
                 "alignment": "center"
             },
