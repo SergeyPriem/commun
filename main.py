@@ -113,7 +113,7 @@ def log_user(state):
 
     if state["user"]["logged"]:
         print(f"{PCol.OKCYAN}User {state['user']['login']} with role {state['user']['role']} "
-              f"is logged in {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!")
+              f"is logged in {datetime.datetime.now()}!")
         role = state["user"]["role"]
         if role == 'admin':
             state.add_notification("warning", "Warning!", "Wrong role...")
