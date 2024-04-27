@@ -39,8 +39,8 @@ def add_invitation_by_client(state):
     _add_invitation_by_client(state)
 
 
-def offer_service(state):
-    _offer_service(state)
+def offer_service(state, context):
+    _offer_service(state, context)
 
 
 def get_finished_own_projects(state):

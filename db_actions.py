@@ -808,18 +808,31 @@ def _add_to_subscription(state):
             state.add_notification('warning', 'Warning', _err_handler(e, 'add_to_subscription'))
 
 
-def _offer_service(state):
+def _offer_service(state, context):
     with Session(bind=engine) as session:
         try:
             user = session.query(User).filter(User.login == state["user"]["login"]).first()
-            project = session.query(Projects).filter(Projects.id == state['selected_proj_to_add_eng']).first()
+            project = session.query(Projects).filter(Projects.id == context['itemId']).first()
+
+            # Check if an invitation already exists for this user and project
+            existing_invitation = session.query(Invitation).filter(
+                Invitation.user_id == user.id,
+                Invitation.project_id == project.id
+            ).first()
+
+            if existing_invitation:
+                state.add_notification('warning', dic['warning'][state['lang']], dic['connected'][state['lang']])
+                return
+
             # Create a new Invitation object
             new_invitation = Invitation(
-                project_id=state['selected_proj_to_add_eng'],
+                project_id=project.id,
                 user_id=user.id,
-                initiated_by='c',
-                status='1',
-                date_time=datetime.datetime.now()  # Use the current date and time
+                initiated_by='engineer',
+                status='\nPending',
+                date_time=datetime.datetime.now(),
+                last_action_dt=datetime.datetime.now(),
+                last_action_by='engineer'
             )
 
             # Add the new Invitation object to the session
@@ -827,14 +840,29 @@ def _offer_service(state):
 
             # Commit the session to save the changes to the database
             session.commit()
-            owner_email = session.query(User.email).filter(User.id == project.owner).first()
+            owner_email = session.query(User.email).filter(User.id == project.owner).first()[0]
+
+            html_content = (
+                f"<p>You have got a cooperation proposal from engineer {user.login} for the project {project.name}. "
+                f"Check your account.</p><hr>"
+                f"<p>Ви отримали пропозицію співпраці від інженера {user.login} для проекту {project.name}. "
+                f"Перевірте свій аккаунт.</p><hr>"
+                f"<p>Вы получили предложение о сотрудничестве от инженера {user.login} для проекта {project.name}. "
+                f"Проверьте свой аккаунт.</p>"
+            )
+
+            subject = (f"Cooperation proposal from engineer {user.login} for the project {project.name} |\n "
+                       f"Пропозиція співпраці від інженера {user.login} для проекту {project.name} |\n "
+                       f"Предложение о сотрудничестве от инженера {user.login} для проекта {project.name}.\n")
+
             reply = _send_mail(owner_email,
                                's.priemshiy@gmail.com',
-                               f"You have got a cooperation proposal from engineer {user.login}",
-                               f"You have got a cooperation proposal from engineer {user.login}"
-                               f"for the project {project.name}")
+                               subject,
+                               html_content)
             if reply == 200:
-                state.add_notification(f"Your proposal to attend project {project.name} is sent to the Project Owner")
+                state.add_notification(
+                    'info', 'Info',
+                    f"{dic['proposal_sent_1'][state['lang']]} {project.name} {dic['proposal_sent_2'][state['lang']]}")
 
         except Exception as e:
             session.rollback()

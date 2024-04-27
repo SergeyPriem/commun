@@ -1,5 +1,28 @@
 # -*- coding: utf-8 -*-
 dic = {
+    "proposal_sent_1": {
+        "E": f"Your proposal to attend project",
+        "U": f"Ваша пропозиція взяти участь у проекті",
+        "R": f"Ваше предложение принять участие в проекте"
+    },
+
+    "proposal_sent_2": {
+        "E": f"is sent to the Project Owner",
+        "U": f"відправлена Власнику Проекту",
+        "R": f"отправлено Владельцу Проекта"
+    },
+
+    'warning': {
+        "E": "Warning",
+        "U": "Попередження",
+        "R": "Предупреждение"
+    },
+
+    'connected': {
+        "E": "You are already linked to this Project",
+        "U": "Ви вже підключені до цього Проекту",
+        "R": "Вы уже подключены к этому Проекту"
+    },
 
     "clarification": {
         "E": "If you want to clarify something, fill out the form below\nand press the 'Ask a question' button",

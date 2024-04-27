@@ -6903,7 +6903,7 @@
             "position": 0,
             "parentId": "rgl3gq7fwqwn31kh",
             "handlers": {
-                "ss-click": "connect_w_engineer"
+                "ss-click": "offer_service"
             },
             "visible": true
         },
@@ -7182,7 +7182,7 @@
             "position": 0,
             "parentId": "4qmm7fpd4ukz4i7y",
             "handlers": {
-                "ss-click": "connect_w_engineer"
+                "ss-click": "offer_service"
             },
             "visible": true
         },
