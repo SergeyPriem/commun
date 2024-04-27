@@ -20,6 +20,17 @@ from utilities import _send_email, _random_code_alphanumeric, _basic_data_valida
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 
+class PCol:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 def get_table_as_dataframe(state):
     _get_table_as_dataframe(state)
 
@@ -101,7 +112,7 @@ def log_user(state):
     }
 
     if state["user"]["logged"]:
-        print(f"User {state['user']['login']} with role {state['user']['role']} "
+        print(f"{PCol.OKCYAN}User {state['user']['login']} with role {state['user']['role']} "
               f"is logged in {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!")
         role = state["user"]["role"]
         if role == 'admin':
