@@ -101,6 +101,8 @@ def log_user(state):
     }
 
     if state["user"]["logged"]:
+        print(f"User {state['user']['login']} with role {state['user']['role']} "
+              f"is logged in {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!")
         role = state["user"]["role"]
         if role == 'admin':
             state.add_notification("warning", "Warning!", "Wrong role...")
@@ -400,8 +402,8 @@ def compare_unsubscription_codes(state):
     else:
         state["got_unsubscribe_code"] = 0
 
-def delete_subscription(state):
 
+def delete_subscription(state):
     _delete_subscription(state)
 
 
@@ -419,8 +421,6 @@ def add_user_message(state):
     _add_user_message(state)
 
 
-# The following event handler reads the product_id route var,
-# then assigns its value to the "product" state element.
 def handle_hash_change(state, payload):
     route_vars = payload.get("route_vars")
     if route_vars:
@@ -455,7 +455,7 @@ initial_state = ss.init_state(
             'code_sent': None,
         },
 
-        "unsubscribe":  {
+        "unsubscribe": {
             'section': 0,
             'email': None,
             "code_sent": None,
@@ -467,10 +467,10 @@ initial_state = ss.init_state(
         "show_hidden_ins": False,
 
         "admin": {
-           "reg_sect": 0,
-           "code_sect": 0,
-           "log_sect": 0,
-           "panel_sect": 0
+            "reg_sect": 0,
+            "code_sect": 0,
+            "log_sect": 0,
+            "panel_sect": 0
         },
 
         # "my_invitations": None,
