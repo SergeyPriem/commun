@@ -14742,7 +14742,7 @@
             "type": "horizontalstack",
             "content": {
                 "contentHAlign": "center",
-                "contentPadding": "35px 15px 15px 15px"
+                "contentPadding": "35px"
             },
             "isCodeManaged": false,
             "position": 0,
