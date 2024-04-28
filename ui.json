@@ -5337,7 +5337,7 @@
             "type": "column",
             "content": {
                 "width": "1.3",
-                "contentHAlign": "start",
+                "contentHAlign": "center",
                 "contentVAlign": "center"
             },
             "isCodeManaged": false,
@@ -5353,7 +5353,7 @@
                 "text": "# **@{dic.community[lang]}**",
                 "useMarkdown": "yes",
                 "primaryTextColor": "#ffffff",
-                "alignment": "left"
+                "alignment": "center"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -14742,7 +14742,7 @@
             "type": "horizontalstack",
             "content": {
                 "contentHAlign": "center",
-                "contentPadding": "15px"
+                "contentPadding": "35px 15px 15px 15px"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -18025,6 +18025,19 @@
             "handlers": {
                 "ss-click": "show_subscribe_window"
             },
+            "visible": true
+        },
+        "q47lk8045m6ak376": {
+            "id": "q47lk8045m6ak376",
+            "type": "image",
+            "parentId": "6eoert9q48ln595q",
+            "content": {
+                "src": "static/ss_logo.png",
+                "caption": "",
+                "maxHeight": "50"
+            },
+            "handlers": {},
+            "position": 0,
             "visible": true
         }
     }
