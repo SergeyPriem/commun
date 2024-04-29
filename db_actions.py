@@ -912,6 +912,7 @@ def _get_table_as_dataframe(state):
 def _request_cv(state, context):
     if not state['user']['login']:
         state.add_notification('warning', "Warning", dic["not_logged_in"][state['lang']])
+        return
     with Session(bind=engine) as session:
         try:
             user_login = context["itemId"]
@@ -938,12 +939,12 @@ def _request_cv(state, context):
                                "Request fro CV from Client | Запит резюме від Замовника | Запрос резюме от Заказчика",
                                html_content)
             if reply == 200:
-                state.add_notification("info", "Info!", f"Invitation to user {user.login} sent successfully")
+                state.add_notification("info", "Info!", f"{dic['req_of_cv'][state['lang']]}{user.login}")
                 state["selected_proj_to_add_eng"] = None
                 state["selected_eng_for_proj"] = None
                 state.set_page("client_page")
             else:
-                state.add_notification("warning", "Warning!", "Invitation was not sent...")
+                state.add_notification("warning", "Warning!", dic["request_not_sent"][state["lang"]])
         except Exception as e:
 
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
