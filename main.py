@@ -205,7 +205,6 @@ def validate_reg_data(state):
         state["user"]["client"] = 0
         state["user"]["engineer"] = 0
         state["user"]["installer"] = 0
-
         send_confirmation_code(state)
 
 
