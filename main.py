@@ -9,7 +9,7 @@ from db_actions import _create_new_user, _log_admin, _get_new_engineers, _get_ne
     _add_user_message, _delete_subscription, _get_new_current_projects, \
     _get_all_current_projects, _get_all_finished_projects, _create_project, _add_invitation_by_client, _get_engineers, \
     _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, _offer_service, \
-    _get_table_as_dataframe
+    _get_table_as_dataframe, _request_cv
 from dic import dic
 from dic import error_messages as e_m
 from fw import ss_dic
@@ -313,6 +313,10 @@ def get_all_engineers(state):
 
 def get_all_installers(state):
     _get_all_installers(state)
+
+
+def request_cv(state, context):
+    _request_cv(state, context)
 
 
 def connect_w_engineer(state, context):

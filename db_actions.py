@@ -176,7 +176,7 @@ def _get_new_engineers(state):
             except SQLAlchemyError as e:
                 state.add_notification(f"An error occurred: {e}")
     else:
-        state.add_notification("warning", "Warning!", "You are not logged in...")
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
 
 
 def _get_new_installers(state):
@@ -200,7 +200,7 @@ def _get_new_installers(state):
             except SQLAlchemyError as e:
                 state.add_notification(f"An error occurred: {e}")
     else:
-        state.add_notification("warning", "Warning!", "You are not logged in...")
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
 
 
 def _get_default_user_data(message_dict):
@@ -270,7 +270,7 @@ def _get_my_invitations_dict(state):
     time1 = time.time()
 
     if not state['user']['login']:
-        state.add_notification("warning", "Warning!", "You are not logged in...")
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
@@ -316,7 +316,7 @@ def _get_my_invitations_dict(state):
 
 def _accept_invitation(state, context):
     if not state['user']['login']:
-        state.add_notification("warning", "Warning!", "You are not logged in...")
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
@@ -348,7 +348,7 @@ def _accept_invitation(state, context):
 
 def _decline_invitation(state, context):
     if not state['user']['login']:
-        state.add_notification("warning", "Warning!", "You are not logged in...")
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
@@ -380,7 +380,7 @@ def _decline_invitation(state, context):
 
 def _get_actual_own_projects(state):  # ui
     if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", "You are not logged in...")
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
@@ -498,7 +498,7 @@ def _delete_subscription(state):
 
 def _get_new_current_projects(state):
     if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", "You are not logged in...")
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
@@ -544,7 +544,7 @@ def _get_new_current_projects(state):
 
 def _get_all_current_projects(state):
     if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", "You are not logged in...")
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
@@ -578,7 +578,7 @@ def _get_all_current_projects(state):
 
 def _get_all_finished_projects(state):
     if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", "You are not logged in...")
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
@@ -907,3 +907,43 @@ def _get_table_as_dataframe(state):
         df["date_time_out"] = df["date_time_out"].dt.strftime('%Y-%m-%d %H:%M:%S')
 
     state["db_table"] = df
+
+
+def _request_cv(state, context):
+    if not state['user']['login']:
+        state.add_notification('warning', "Warning", dic["not_logged_in"][state['lang']])
+    with Session(bind=engine) as session:
+        try:
+            user_login = context["itemId"]
+            user = session.query(User).filter(User.login == user_login).first()
+
+            client_login = state['user']['login']
+            client = session.query(User).filter(User.login == client_login).first()
+
+            message_en = f"Client <strong>{client_login}</strong> asks You to provide the CV by e-mail: {client.email}"
+            message_uk = f"Клієнт <strong>{client_login}</strong> просить Вас надати резюме на e-mail: {client.email}"
+            message_ru = f"Клиент <strong>{client_login}</strong> просит Вас предоставить резюме на e-mail: {client.email}"
+
+            html_content = (
+                f"<br><br>"
+                f"<p>{message_en}</p><hr>"
+                f"<p>{message_uk}</p><hr>"
+                f"<p>{message_ru}</p>"
+                f"<br><br>"
+                f"<p>Best Regards, Administration</p>"
+            )
+
+            reply = _send_mail(user.email,
+                               "s.priemshiy@gmail.com",
+                               "Request fro CV from Client | Запит резюме від Замовника | Запрос резюме от Заказчика",
+                               html_content)
+            if reply == 200:
+                state.add_notification("info", "Info!", f"Invitation to user {user.login} sent successfully")
+                state["selected_proj_to_add_eng"] = None
+                state["selected_eng_for_proj"] = None
+                state.set_page("client_page")
+            else:
+                state.add_notification("warning", "Warning!", "Invitation was not sent...")
+        except Exception as e:
+
+            state.add_notification("warning", "Warning!", f"An error occurred: {e}")
