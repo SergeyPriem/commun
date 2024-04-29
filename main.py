@@ -113,7 +113,7 @@ def log_user(state):
 
     if state["user"]["logged"]:
         print(f"{PCol.OKCYAN}User {state['user']['login']} with role {state['user']['role']} "
-              f"is logged in {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!")
+              f"is logged in {datetime.datetime.now()}!")
         role = state["user"]["role"]
         if role == 'admin':
             state.add_notification("warning", "Warning!", "Wrong role...")
@@ -483,6 +483,7 @@ initial_state = ss.init_state(
             "log_sect": 0,
             "panel_sect": 0
         },
+        "fd": ss_dic,
 
         # "my_invitations": None,
         # "user_message": {
@@ -523,7 +524,6 @@ initial_state = ss.init_state(
         # "selected_proj_to_add_eng": None,
         # "selected_eng_for_proj": None,
         # "user_invitation_status": None,
-        # "fd": ss_dic,
         # "ar": None,  # "Architecture",
         # "el": None,
         # "ins": None,
