@@ -921,7 +921,7 @@ def _request_cv(state, context):
             client_login = state['user']['login']
             client = session.query(User).filter(User.login == client_login).first()
 
-            message_en = f"Client <strong>{client_login}</strong> asks You to provide the CV by his e-mail: {client.email}"
+            message_en = f"Client <strong>{client_login}</strong> asks You to provide the CV to his e-mail: {client.email}"
             message_uk = f"Замовник <strong>{client_login}</strong> просить Вас надати резюме на його e-mail: {client.email}"
             message_ru = f"Заказчик <strong>{client_login}</strong> просит Вас предоставить резюме на его e-mail: {client.email}"
 
@@ -936,7 +936,7 @@ def _request_cv(state, context):
 
             reply = _send_mail(user.email,
                                "s.priemshiy@gmail.com",
-                               "Request fro CV from Client | Запит резюме від Замовника | Запрос резюме от Заказчика",
+                               "Request for CV from Client | Запит резюме від Замовника | Запрос резюме от Заказчика",
                                html_content)
             if reply == 200:
                 state.add_notification("info", "Info!", f"{dic['req_of_cv'][state['lang']]}{user.login}")
