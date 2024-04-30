@@ -921,9 +921,9 @@ def _request_cv(state, context):
             client_login = state['user']['login']
             client = session.query(User).filter(User.login == client_login).first()
 
-            message_en = f"Client <strong>{client_login}</strong> asks You to provide the CV by e-mail: {client.email}"
-            message_uk = f"Клієнт <strong>{client_login}</strong> просить Вас надати резюме на e-mail: {client.email}"
-            message_ru = f"Клиент <strong>{client_login}</strong> просит Вас предоставить резюме на e-mail: {client.email}"
+            message_en = f"Client <strong>{client_login}</strong> asks You to provide the CV by his e-mail: {client.email}"
+            message_uk = f"Замовник <strong>{client_login}</strong> просить Вас надати резюме на його e-mail: {client.email}"
+            message_ru = f"Заказчик <strong>{client_login}</strong> просит Вас предоставить резюме на его e-mail: {client.email}"
 
             html_content = (
                 f"<br><br>"
