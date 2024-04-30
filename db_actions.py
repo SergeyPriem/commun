@@ -926,11 +926,11 @@ def _request_cv(state, context):
             message_ru = f"Заказчик <strong>{client_login}</strong> просит Вас предоставить резюме на его e-mail: {client.email}"
 
             html_content = (
-                f"<br><br>"
+                f"<br>"
                 f"<p>{message_en}</p><hr>"
                 f"<p>{message_uk}</p><hr>"
                 f"<p>{message_ru}</p>"
-                f"<br><br>"
+                f"<br>"
                 f"<p>Best Regards, Administration</p>"
             )
 
