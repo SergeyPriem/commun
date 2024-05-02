@@ -936,7 +936,7 @@ def _request_cv(state, context):
 
             reply = _send_mail(user.email,
                                "s.priemshiy@gmail.com",
-                               "Request for CV from Client | Запит резюме від Замовника | Запрос резюме от Заказчика",
+                               "Request forQ CV from Client | Запит резюме від Замовника | Запрос резюме от Заказчика",
                                html_content)
             if reply == 200:
                 state.add_notification("info", "Info!", f"{dic['req_of_cv'][state['lang']]}{user.login}")

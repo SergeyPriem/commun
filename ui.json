@@ -18026,6 +18026,20 @@
                 "ss-click": "show_subscribe_window"
             },
             "visible": true
+        },
+        "zeit1wzh0vjb9s54": {
+            "id": "zeit1wzh0vjb9s54",
+            "type": "image",
+            "content": {
+                "src": "static/ss_logo.jpg",
+                "caption": "",
+                "maxHeight": "75"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "6eoert9q48ln595q",
+            "handlers": {},
+            "visible": true
         }
     }
 }
