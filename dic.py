@@ -7,6 +7,12 @@ dic = {
         "R": "Узнать больше"
     },
 
+    "close_help": {
+        "E": "Close help",
+        "U": "Закрити довідку",
+        "R": "Закрыть справку"
+    },
+
     "not_logged_in": {
         "E": "You are not logged in...",
         "U": "Ви не увійшли...",

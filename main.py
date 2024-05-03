@@ -16,6 +16,7 @@ from fw import ss_dic
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
     specialities_R, specialities_U, specialities_E, init_new_project
 from utilities import _send_email, _random_code_alphanumeric, _basic_data_validation
+from assets.help import he
 
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
@@ -30,6 +31,7 @@ class PCol:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+
 
 def get_table_as_dataframe(state):
     _get_table_as_dataframe(state)
@@ -443,6 +445,13 @@ def handle_hash_change(state, payload):
         state['country'] = route_vars['country']
 
 
+def show_help(state):
+    state["help_section"] = 1
+
+
+def hide_help(state):
+    state["help_section"] = 0
+
 initial_state = ss.init_state(
     {
         "lang": "E",
@@ -490,7 +499,10 @@ initial_state = ss.init_state(
         "fd": ss_dic,
 
         "header": "sz0yrwbz6osv58bn",
-        "footer": "zm3lzacgv0ahymqf"
+        "footer": "zm3lzacgv0ahymqf",
+
+        "help": he,
+        "help_section": 0,
 
         # "my_invitations": None,
         # "user_message": {
