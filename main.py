@@ -489,6 +489,9 @@ initial_state = ss.init_state(
         },
         "fd": ss_dic,
 
+        "header": "sz0yrwbz6osv58bn",
+        "footer": "zm3lzacgv0ahymqf"
+
         # "my_invitations": None,
         # "user_message": {
         #    "first_name": None,

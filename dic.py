@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 dic = {
 
+    "learn_more": {
+        "E": "Learn more",
+        "U": "Дізнатися більше",
+        "R": "Узнать больше"
+    },
+
     "not_logged_in": {
         "E": "You are not logged in...",
         "U": "Ви не увійшли...",
@@ -723,21 +729,27 @@ dic = {
         "E": "To become a full-fledged member of the Community, you need **to register**.\n\n"
              "Registered Clients can add an unlimited number of Projects, have access to all  Engineers' Profiles and "
              "can invite them to participate Projects.\n\n"
-             "Accordingly, Registered Engineers have the opportunity to view Projects and offer their services.\n\n"
-             "_It's absolutely free for you. But you can support us with a donation so that we can improve our "
-             "platform._",
+             "Accordingly, Registered Engineers have the opportunity to view Projects and offer their services.\n\n",
+
         "U": "Щоб стати повноправним учасником Спілки, необхідно **зареєструватися**.\n\n"
              "Зареєстровані Замовники можуть додавати необмежену кількість Проектів, мають доступ до Анкет усіх "
              "Інженерів та можуть запрошувати їх до участі в своїх Проектах.\n\n"
-             "Відповідно, зареєстровані Інженери мають можливість переглядати Проекти і пропонувати свої послуги.\n\n"
-             "_Для Вас це абсолютно безкоштовно. Але Ви можете підтримати нас донатом, щоб ми могли "
-             "покращувати нашу платформу._",
+             "Відповідно, зареєстровані Інженери мають можливість переглядати Проекти і пропонувати свої послуги.\n\n",
+
         "R": "Чтобы стать полноправным участником Сообщества, необходимо **зарегистрироваться**.\n\n"
              "Зарегистрированные Заказчики могут добавлять неограниченное количество Проектов, имеют доступ к "
              "Анкетам всех Инженеров и могут приглашать их к участию в своих Проектах.\n\n"
              "Соответственно, Зарегистрированные Инженеры имеют возможность просматривать Проекты и предлагать "
              "свои услуги Заказчикам.\n\n"
-             "_Для Вас это абсолютно бесплатно. Но Вы можете поддержать нас донатом, чтобы мы могли улучшать нашу "
+
+    },
+
+    "how_it_works_2": {
+        "E": "_It's absolutely free for you. But you can support us with a donation so that we can improve our "
+             "platform._",
+        "U": "_Для Вас це абсолютно безкоштовно. Але Ви можете підтримати нас донатом, щоб ми могли "
+             "покращувати нашу платформу._",
+        "R": "_Для Вас это абсолютно бесплатно. Но Вы можете поддержать нас донатом, чтобы мы могли улучшать нашу "
              "платформу._"
     },
 
