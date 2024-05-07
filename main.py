@@ -452,6 +452,7 @@ def show_help(state):
 def hide_help(state):
     state["help_section"] = 0
 
+
 initial_state = ss.init_state(
     {
         "lang": "E",
