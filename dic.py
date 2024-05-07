@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 dic = {
 
+    "cheer": {
+        "E": "Cheer us up with coffee!",
+        "U": "Підтримайте нас кавою!",
+        "R": "Поддержите нас кофе!"
+    },
+
+
     "learn_more": {
         "E": "Learn more",
         "U": "Дізнатися більше",

@@ -10087,7 +10087,10 @@
         "hn0asjm1z4qk0sqz": {
             "id": "hn0asjm1z4qk0sqz",
             "type": "horizontalstack",
-            "content": {},
+            "content": {
+                "contentHAlign": "center",
+                "contentPadding": "15px 0px 0px 0px"
+            },
             "isCodeManaged": false,
             "position": 7,
             "parentId": "6awi48g6he8cn8ru",
@@ -12919,6 +12922,45 @@
             "position": 2,
             "parentId": "ok01itu04pop4ocj",
             "handlers": {},
+            "visible": true
+        },
+        "ibu0gafrve4a24jo": {
+            "id": "ibu0gafrve4a24jo",
+            "type": "image",
+            "content": {
+                "src": "static/coffee.gif",
+                "caption": "",
+                "maxWidth": "40",
+                "maxHeight": "40",
+                "cssClasses": ""
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "jatps5v7mjeuglxv",
+            "visible": true
+        },
+        "jatps5v7mjeuglxv": {
+            "id": "jatps5v7mjeuglxv",
+            "type": "horizontalstack",
+            "parentId": "6awi48g6he8cn8ru",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "handlers": {},
+            "position": 8,
+            "visible": true
+        },
+        "a1s1om225ydtwjgi": {
+            "id": "a1s1om225ydtwjgi",
+            "type": "link",
+            "parentId": "jatps5v7mjeuglxv",
+            "content": {
+                "url": "https://www.buymeacoffee.com/ps_power",
+                "text": "@{dic.cheer[lang]}",
+                "primaryTextColor": "#ffdd00"
+            },
+            "handlers": {},
+            "position": 1,
             "visible": true
         }
     }
