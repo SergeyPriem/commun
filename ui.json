@@ -12924,43 +12924,45 @@
             "handlers": {},
             "visible": true
         },
-        "ibu0gafrve4a24jo": {
-            "id": "ibu0gafrve4a24jo",
-            "type": "image",
-            "content": {
-                "src": "static/coffee.gif",
-                "caption": "",
-                "maxWidth": "40",
-                "maxHeight": "40",
-                "cssClasses": ""
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "jatps5v7mjeuglxv",
-            "visible": true
-        },
-        "jatps5v7mjeuglxv": {
-            "id": "jatps5v7mjeuglxv",
+        "e30hb70i31z1521f": {
+            "id": "e30hb70i31z1521f",
             "type": "horizontalstack",
-            "parentId": "6awi48g6he8cn8ru",
             "content": {
                 "contentHAlign": "center"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 8,
+            "parentId": "6awi48g6he8cn8ru",
+            "handlers": {},
+            "visible": true
+        },
+        "r2ym4g5ohjcpn21n": {
+            "id": "r2ym4g5ohjcpn21n",
+            "type": "html",
+            "content": {
+                "styles": "{\n  \"padding\": \"16px\",\n  \"min-height\": \"64px\",\n  \"min-width\": \"64px\",\n  \"border-radius\": \"8px\"\n}",
+                "htmlInside": "<div style=\"text-align: center;\">\n  <a href=\"https://www.buymeacoffee.com/ps_power\" target=\"_blank\">\n    <img src=\"/static/coffee.gif\" alt=\"Support with coffee\" style=\"width:10%;\">\n  </a>\n</div>\n",
+                "element": "div"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "e30hb70i31z1521f",
+            "handlers": {},
             "visible": true
         },
         "a1s1om225ydtwjgi": {
             "id": "a1s1om225ydtwjgi",
             "type": "link",
-            "parentId": "jatps5v7mjeuglxv",
             "content": {
                 "url": "https://www.buymeacoffee.com/ps_power",
                 "text": "@{dic.cheer[lang]}",
-                "primaryTextColor": "#ffdd00"
+                "primaryTextColor": "#ffdd00",
+                "target": "_blank"
             },
+            "isCodeManaged": false,
+            "position": 9,
+            "parentId": "6awi48g6he8cn8ru",
             "handlers": {},
-            "position": 1,
             "visible": true
         }
     }
