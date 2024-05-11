@@ -1,6 +1,30 @@
 # -*- coding: utf-8 -*-
 dic = {
 
+    "help_info": {
+        "E": "Help Information",
+        "U": "Довідкова Інформація",
+        "R": "Справочная Информация"
+    },
+
+    "update_account": {
+        "E": "Update Account",
+        "U": "Оновити Аккаунт",
+        "R": "Обновить Аккаунт"
+    },
+
+    "my_account": {
+        "E": "My Account",
+        "U": "Мій Аккаунт",
+        "R": "Мой Аккаунт"
+    },
+
+    "personal": {
+        "E": "My Page",
+        "U": "Моя Сторінка",
+        "R": "Моя Страница"
+    },
+
     "cheer": {
         "E": "Cheer us up with coffee!",
         "U": "Підтримайте нас кавою!",

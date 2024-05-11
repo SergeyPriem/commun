@@ -514,7 +514,7 @@ def _get_new_current_projects(state):
             cur_projects = result.scalars().all()
 
             if cur_projects:
-                state['new_proj_quantity'] = len(cur_projects) or 0
+                state['new_proj_quantity'] = len(cur_projects)
                 state["new_current_projects"] = {
                     str(project.id): {
                         "name": project.name,
@@ -533,6 +533,7 @@ def _get_new_current_projects(state):
                     "message": False
                 }
             else:
+                state['new_proj_quantity'] = 0
                 state["new_current_projects_view"] = {
                     "content": False,
                     "message": dic['no_current_proj'][state["lang"]]

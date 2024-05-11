@@ -114,8 +114,7 @@ def log_user(state):
     }
 
     if state["user"]["logged"]:
-        print(f"{PCol.OKCYAN}User {state['user']['login']} with role {state['user']['role']} "
-              f"is logged in {datetime.datetime.now()}!")
+        print(f"{PCol.OKGREEN}{state['user']['role']} {state['user']['login']} | in: {datetime.datetime.now()}!")
         role = state["user"]["role"]
         if role == 'admin':
             state.add_notification("warning", "Warning!", "Wrong role...")
@@ -453,6 +452,16 @@ def hide_help(state):
     state["help_section"] = 0
 
 
+def switch_to_own_page(state):
+    if state["user"]["role"] == "client":
+        state.set_page("client_page")
+    if state["user"]["role"] == "engineer":
+        state.set_page("engineer_page")
+    if state["user"]["role"] == "installer":
+        state.set_page("installer_page")
+
+
+
 initial_state = ss.init_state(
     {
         "lang": "E",
@@ -563,6 +572,6 @@ initial_state = ss.init_state(
 
     })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?55")
+initial_state.import_stylesheet("theme", "/static/custom.css?58")
 
 print("Code executed successfully!")
