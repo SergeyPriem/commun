@@ -10682,7 +10682,7 @@
             "position": 0,
             "parentId": "jebu3eb9hc30noko",
             "handlers": {},
-            "visible": "new_current_projects"
+            "visible": "my_invitations"
         },
         "torlch5ole0s9nk5": {
             "id": "torlch5ole0s9nk5",
@@ -13035,13 +13035,14 @@
         "jms8tkrfqq7cfzi8": {
             "id": "jms8tkrfqq7cfzi8",
             "type": "horizontalstack",
-            "parentId": "gxdv8o2ytdcsgful",
             "content": {
                 "contentPadding": "50px 0px 0px 0px",
                 "contentHAlign": "center"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "gxdv8o2ytdcsgful",
+            "handlers": {},
             "visible": true
         },
         "ocb6io1in3chcn28": {
@@ -13052,6 +13053,7 @@
                 "useMarkdown": "yes",
                 "alignment": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "zcn32jlwgklzkqxl",
             "handlers": {},
@@ -13064,6 +13066,7 @@
                 "text": "@{dic.req_fields[lang]}",
                 "alignment": "center"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "zcn32jlwgklzkqxl",
             "handlers": {},
@@ -13073,6 +13076,7 @@
             "id": "p2t62f2ots73w18o",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "zcn32jlwgklzkqxl",
             "handlers": {},
@@ -13084,6 +13088,7 @@
             "content": {
                 "width": "0.2"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "p2t62f2ots73w18o",
             "handlers": {},
@@ -13095,6 +13100,7 @@
             "content": {
                 "width": "8"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "p2t62f2ots73w18o",
             "handlers": {},
@@ -13104,6 +13110,7 @@
             "id": "vab36d6det9odnu6",
             "type": "columns",
             "content": {},
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "411773w24b608lg8",
             "handlers": {},
@@ -13116,6 +13123,7 @@
                 "width": "1",
                 "contentVAlign": "center"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "vab36d6det9odnu6",
             "handlers": {},
@@ -13127,6 +13135,7 @@
             "content": {
                 "width": "2"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "vab36d6det9odnu6",
             "handlers": {},
@@ -13138,6 +13147,7 @@
             "content": {
                 "label": "@{dic.proj_name[lang]}*"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "9tsqeu37grhhek24",
             "handlers": {},
@@ -13154,6 +13164,7 @@
                 "label": "@{dic.proj_descr[lang]}*",
                 "rows": "5"
             },
+            "isCodeManaged": false,
             "position": 1,
             "parentId": "9tsqeu37grhhek24",
             "handlers": {},
@@ -13176,6 +13187,7 @@
                 "accentColor": "#dbeef6",
                 "secondaryTextColor": "#79c4d2"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "9tsqeu37grhhek24",
             "handlers": {},
@@ -13192,6 +13204,7 @@
                 "label": "@{dic.proj_comments[lang]}",
                 "rows": "5"
             },
+            "isCodeManaged": false,
             "position": 3,
             "parentId": "9tsqeu37grhhek24",
             "handlers": {},
@@ -13208,6 +13221,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "15px"
             },
+            "isCodeManaged": false,
             "position": 4,
             "parentId": "9tsqeu37grhhek24",
             "handlers": {},
@@ -13220,6 +13234,7 @@
                 "text": "@{dic.but_add_proj[lang]}",
                 "buttonTextColor": "#000000"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "gciba1kryr2liy7n",
             "handlers": {
@@ -13234,6 +13249,7 @@
                 "contentHAlign": "center",
                 "contentPadding": "15px"
             },
+            "isCodeManaged": false,
             "position": 5,
             "parentId": "9tsqeu37grhhek24",
             "handlers": {},
@@ -13245,6 +13261,7 @@
             "content": {
                 "width": "1"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "vab36d6det9odnu6",
             "handlers": {},
@@ -13256,6 +13273,7 @@
             "content": {
                 "width": "0.2"
             },
+            "isCodeManaged": false,
             "position": 2,
             "parentId": "p2t62f2ots73w18o",
             "handlers": {},
