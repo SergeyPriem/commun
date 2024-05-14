@@ -3508,22 +3508,6 @@
             "handlers": {},
             "visible": true
         },
-        "pcm1bkyq99b0fohu": {
-            "id": "pcm1bkyq99b0fohu",
-            "type": "button",
-            "content": {
-                "text": "@{dic.send_message[lang]}",
-                "buttonColor": "#142c5c",
-                "cssClasses": "but_as_link"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "yg9k6izvd2f9bb46",
-            "handlers": {
-                "ss-click": "connect_w_engineer"
-            },
-            "visible": true
-        },
         "jl4b68a93ffp47iv": {
             "id": "jl4b68a93ffp47iv",
             "type": "columns",
@@ -3546,18 +3530,6 @@
             "handlers": {},
             "visible": true
         },
-        "09cfmsx027r4yuou": {
-            "id": "09cfmsx027r4yuou",
-            "type": "column",
-            "content": {
-                "width": "1"
-            },
-            "isCodeManaged": false,
-            "position": 1,
-            "parentId": "jl4b68a93ffp47iv",
-            "handlers": {},
-            "visible": true
-        },
         "h06eesnozguzcvwl": {
             "id": "h06eesnozguzcvwl",
             "type": "column",
@@ -3565,20 +3537,8 @@
                 "width": "1"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 1,
             "parentId": "jl4b68a93ffp47iv",
-            "handlers": {},
-            "visible": true
-        },
-        "yg9k6izvd2f9bb46": {
-            "id": "yg9k6izvd2f9bb46",
-            "type": "horizontalstack",
-            "content": {
-                "contentHAlign": "center"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "h06eesnozguzcvwl",
             "handlers": {},
             "visible": true
         },
@@ -9294,8 +9254,8 @@
                 "text": "@{dic.skills[lang]}: @{item.description}"
             },
             "isCodeManaged": false,
-            "position": 1,
-            "parentId": "3fgi7mhwbxk1lfvd",
+            "position": 0,
+            "parentId": "97j708kfhegthu3a",
             "handlers": {},
             "visible": true
         },
@@ -9306,8 +9266,8 @@
                 "text": "@{dic.experience[lang]}: @{item.experience}"
             },
             "isCodeManaged": false,
-            "position": 3,
-            "parentId": "3fgi7mhwbxk1lfvd",
+            "position": 1,
+            "parentId": "97j708kfhegthu3a",
             "handlers": {},
             "visible": true
         },
@@ -9329,7 +9289,7 @@
             },
             "isCodeManaged": false,
             "position": 2,
-            "parentId": "3fgi7mhwbxk1lfvd",
+            "parentId": "97j708kfhegthu3a",
             "handlers": {},
             "visible": true
         },
@@ -13277,6 +13237,130 @@
             "position": 2,
             "parentId": "p2t62f2ots73w18o",
             "handlers": {},
+            "visible": true
+        },
+        "q50825ajyv70rg02": {
+            "id": "q50825ajyv70rg02",
+            "type": "text",
+            "parentId": "2fltj430842c500h",
+            "content": {
+                "text": "ENGINEERS"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "k2vgouvr4s85sd98": {
+            "id": "k2vgouvr4s85sd98",
+            "type": "text",
+            "parentId": "2fltj430842c500h",
+            "content": {
+                "text": "INSTALLERS"
+            },
+            "handlers": {},
+            "position": 2,
+            "visible": true
+        },
+        "ffm9lq1f7wdsb6a3": {
+            "id": "ffm9lq1f7wdsb6a3",
+            "type": "switchinput",
+            "parentId": "2fltj430842c500h",
+            "content": {
+                "label": "",
+                "separatorColor": "#b9ccf9"
+            },
+            "handlers": {},
+            "position": 1,
+            "visible": true
+        },
+        "qipsmz5w348onron": {
+            "id": "qipsmz5w348onron",
+            "type": "columns",
+            "parentId": "3fgi7mhwbxk1lfvd",
+            "content": {},
+            "handlers": {},
+            "position": 1,
+            "visible": true
+        },
+        "97j708kfhegthu3a": {
+            "id": "97j708kfhegthu3a",
+            "type": "column",
+            "parentId": "qipsmz5w348onron",
+            "content": {
+                "width": "1"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "4zer0qt7k51wg9s5": {
+            "id": "4zer0qt7k51wg9s5",
+            "type": "column",
+            "parentId": "qipsmz5w348onron",
+            "content": {
+                "width": "0.5"
+            },
+            "handlers": {},
+            "position": 1,
+            "visible": true
+        },
+        "xglrch8rk5snlyn6": {
+            "id": "xglrch8rk5snlyn6",
+            "type": "horizontalstack",
+            "parentId": "h06eesnozguzcvwl",
+            "content": {
+                "contentHAlign": "end"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "auu4rpgq3tv71wg9": {
+            "id": "auu4rpgq3tv71wg9",
+            "type": "button",
+            "parentId": "xglrch8rk5snlyn6",
+            "content": {
+                "text": "@{dic.hide[lang]}",
+                "buttonTextColor": "#152e61"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "sdsl7bwsemb19ij6": {
+            "id": "sdsl7bwsemb19ij6",
+            "type": "button",
+            "parentId": "xglrch8rk5snlyn6",
+            "content": {
+                "text": "@{dic.re}",
+                "buttonTextColor": "#152e61"
+            },
+            "handlers": {},
+            "position": 1,
+            "visible": true
+        },
+        "41y1v2jhtl2jhpci": {
+            "id": "41y1v2jhtl2jhpci",
+            "type": "button",
+            "parentId": "xglrch8rk5snlyn6",
+            "content": {
+                "text": "@{dic.invite_to_proj[lang]}",
+                "buttonTextColor": "#152e61"
+            },
+            "handlers": {},
+            "position": 2,
+            "visible": true
+        },
+        "b6qby1teqe2j80u6": {
+            "id": "b6qby1teqe2j80u6",
+            "type": "button",
+            "parentId": "xglrch8rk5snlyn6",
+            "content": {
+                "text": "@{dic.send_message[lang]}",
+                "buttonTextColor": "#152e61"
+            },
+            "handlers": {},
+            "position": 3,
             "visible": true
         }
     }
