@@ -321,8 +321,9 @@ def request_cv(state, context):
 
 
 def connect_w_engineer(state, context):
-    state["selected_engineers"] += [context["itemId"]]
-    state["selected_engineers"] = list(set(state["selected_engineers"]))
+    print(f"Connecting with engineer: {context['item']}")
+    # state["selected_engineers"] += [context["itemId"]]
+    # state["selected_engineers"] = list(set(state["selected_engineers"]))
 
 
 def admin_reg_section(state):
@@ -513,6 +514,8 @@ initial_state = ss.init_state(
 
         "help": he,
         "help_section": 0,
+
+        "reg_vis": ["2", "3", "4"],
 
         # "my_invitations": None,
         # "user_message": {

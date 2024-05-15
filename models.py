@@ -37,6 +37,7 @@ class User(Base):
     major = Column(String(200))
     company = Column(String(100))
     lang = Column(String(2), nullable=False)
+    visibility = Column(String(4), nullable=False, default='cei')
 
     # Relationship to access the projects owned by a user
     projects = relationship("Projects", backref="user")
