@@ -515,7 +515,7 @@ initial_state = ss.init_state(
         "help": he,
         "help_section": 0,
 
-        "reg_vis": ["2", "3", "4"],
+        "reg_vis": ["c", "e", "i"],
 
         # "my_invitations": None,
         # "user_message": {

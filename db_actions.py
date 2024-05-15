@@ -18,6 +18,11 @@ def _create_new_user(state):
     else:
         major = "-"
 
+    if state["reg_vis"]:
+        vis = "".join(state["reg_vis"])
+    else:
+        vis = "unv"
+
     try:
         with Session(engine) as session:
             new_user = User(
@@ -34,7 +39,8 @@ def _create_new_user(state):
                 experience=int(state["user"]["experience"] or 0),
                 major=major,
                 company=(state["user"]["company"] or "-").strip(),
-                lang=state["lang"]
+                lang=state["lang"],
+                visibility=vis
             )
             session.add(new_user)
             session.commit()
@@ -156,6 +162,7 @@ def _log_admin(state):
 
 def _get_new_engineers(state):
     if state["user"]["logged"]:
+        l0 = state["user"]["role"][0]
         if state["new_engineers"] is not None:
             return
 
@@ -163,7 +170,7 @@ def _get_new_engineers(state):
             try:
                 stuff = session.query(User).filter(
                     User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
-                    User.role == "engineer"
+                    User.role == "engineer", User.visibility.contains(l0)
                 ).all()
                 state["new_engineers"] = {str(stuff[i].login): {
                     "login": stuff[i].login,
@@ -181,13 +188,14 @@ def _get_new_engineers(state):
 
 def _get_new_installers(state):
     if state["user"]["logged"]:
+        l0 = state["user"]["role"][0]
         if state["new_installers"] is not None:
             return
         with Session(bind=engine) as session:
             try:
                 stuff = session.query(User).filter(
                     User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
-                    User.role == "installer"
+                    User.role == "installer", User.visibility.contains(l0)
                 ).all()
                 state["new_installers"] = {str(stuff[i].login): {
                     "login": stuff[i].login,
@@ -706,9 +714,11 @@ def _get_engineers(state, spec):
 
 
 def _get_all_engineers(state):
+    l0 = state["user"]["role"][0]
     with Session(bind=engine) as session:
         try:
-            stuff = session.query(User).filter(User.role == "engineer").all()
+            # Assuming User.visibility is a string and contains roles as single characters
+            stuff = session.query(User).filter(User.role == "engineer", User.visibility.contains(l0)).all()
             state["all_engineers"] = {str(stuff[i].login): {
                 "login": stuff[i].login,
                 "name": stuff[i].first_name,
@@ -722,9 +732,10 @@ def _get_all_engineers(state):
 
 
 def _get_all_installers(state):
+    l0 = state["user"]["role"][0]
     with Session(bind=engine) as session:
         try:
-            stuff = session.query(User).filter(User.role == "installer").all()
+            stuff = session.query(User).filter(User.role == "installer", User.visibility.contains(l0)).all()
             state["all_installers"] = {str(stuff[i].login): {
                 "login": stuff[i].login,
                 "name": stuff[i].first_name,

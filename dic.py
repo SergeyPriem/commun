@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 dic = {
 
+    "who_can_view": {
+        "E": "Who can view your profile",
+        "U": "Хто може переглядати Ваш профіль",
+        "R": "Кто может просматривать Ваш профиль"
+    },
+
     "help_info": {
         "E": "Help Information",
         "U": "Довідкова Інформація",
