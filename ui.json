@@ -15124,7 +15124,7 @@
             "type": "column",
             "content": {
                 "width": "1",
-                "contentHAlign": "start",
+                "contentHAlign": "center",
                 "contentVAlign": "center"
             },
             "isCodeManaged": false,
@@ -15192,7 +15192,7 @@
             "type": "column",
             "content": {
                 "width": "1",
-                "contentHAlign": "start",
+                "contentHAlign": "center",
                 "contentVAlign": "center"
             },
             "isCodeManaged": false,
