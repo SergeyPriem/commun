@@ -94,7 +94,7 @@ def _get_all_invitations_df(state):
 def _get_admin_data(state):
     with Session(bind=engine) as session:
         try:
-            stuff = session.query(User).filter(User.role == "admin").all()
+            stuff = session.query(User).filter("admin" == User.role).all()
             state["admin"] = {str(stuff[i].login): {
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
@@ -170,7 +170,7 @@ def _get_new_engineers(state):
             try:
                 stuff = session.query(User).filter(
                     User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
-                    User.role == "engineer", User.visibility.contains(l0)
+                    "engineer" == User.role, User.visibility.contains(l0)
                 ).all()
                 state["new_engineers"] = {str(stuff[i].login): {
                     "login": stuff[i].login,
@@ -195,7 +195,7 @@ def _get_new_installers(state):
             try:
                 stuff = session.query(User).filter(
                     User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
-                    User.role == "installer", User.visibility.contains(l0)
+                    'installer' == User.role, User.visibility.contains(l0)
                 ).all()
                 state["new_installers"] = {str(stuff[i].login): {
                     "login": stuff[i].login,
@@ -397,8 +397,8 @@ def _get_actual_own_projects(state):  # ui
             current_user = result.scalars().first()
 
             stmt = select(Projects).where(
-                Projects.owner == current_user.id,
-                Projects.status == "current"
+                current_user.id == Projects.owner,
+                "current" == Projects.status
             )
             result = session.execute(stmt)
             cur_projects = result.scalars().all()
@@ -513,7 +513,7 @@ def _get_new_current_projects(state):
             stmt = (
                 select(Projects, User)
                 .where(
-                    Projects.status == "current",
+                    "current" == Projects.status, Projects.visibility.contains(state["user"]["role"][0]),
                     Projects.created > (datetime.datetime.now() - datetime.timedelta(days=30))
                 )
                 .join(User, User.id == Projects.owner)
@@ -558,13 +558,15 @@ def _get_all_current_projects(state):
     with Session(bind=engine) as session:
         try:
             stmt = (
-                select(Projects, User).where(Projects.status == "current").join(User, User.id == Projects.owner)
+                select(Projects, User).where("current" == Projects.status,
+                                             Projects.visibility.contains(state["user"]["role"][0])
+                                             ).join(User, User.id == Projects.owner)
             )
             result = session.execute(stmt)
             cur_projects = result.scalars().all()
 
             if cur_projects:
-                state["actual_proj_quantity"] = len(cur_projects) or 0
+                state["actual_proj_quantity"] = len(cur_projects)
                 state["all_current_projects"] = {
                     str(project.id): {
                         "name": project.name,
@@ -579,6 +581,7 @@ def _get_all_current_projects(state):
                 }
                 state["all_current_projects_message"] = False
             else:
+                state["actual_proj_quantity"] = 0
                 state["all_current_projects_message"] = dic['no_new_proj'][state["lang"]]
 
         except SQLAlchemyError as e:
@@ -592,7 +595,8 @@ def _get_all_finished_projects(state):
     with Session(bind=engine) as session:
         try:
             stmt = (
-                select(Projects, User).where(Projects.status == "finished").join(User, User.id == Projects.owner)
+                select(Projects, User).where(
+                    "finished" == Projects.status).join(User, User.login == state["user"]["login"])
             )
             result = session.execute(stmt)
             fin_projects = result.scalars().all()
@@ -613,6 +617,7 @@ def _get_all_finished_projects(state):
                 state["all_finished_projects_message"] = False
 
             else:
+                state["all_finished_projects"] = None
                 state["all_finished_projects_message"] = dic['no_finished_proj'][state["lang"]]
 
         except SQLAlchemyError as e:
@@ -629,24 +634,37 @@ def _create_project(state):
     if all([state_name, state_description, state_comments, state_required_specialists]):
         with Session(bind=engine) as session:
             try:
-                # current_user = session.query(User).filter(User.login == state["user"]["login"]).first()
                 stmt = select(User).where(User.login == state["user"]["login"])
                 result = session.execute(stmt)
                 current_user = result.scalars().first()
+
+                # Check if a project with the same name and description already exists
+                existing_project = session.query(Projects).filter(
+                    Projects.name == state_name.strip(),
+                    Projects.description == state_description.strip(),
+                    current_user.id == Projects.owner
+                ).first()
+
+                if existing_project:
+                    state.add_notification("warning", "Warning!", state["dic"]["proj_exists"][state["lang"]])
+                    return
+
                 new_project = Projects(
                     name=state_name.strip(),
                     owner=current_user.id,
                     description=state_description.strip(),
-                    status="current",  # "finished", "cancelled", "suspended"
+                    status="current",
                     comments=state_comments.strip(),
                     created=datetime.datetime.now(),
                     required_specialists=state_required_specialists,
-                    assigned_engineers=state_assigned_engineers
+                    assigned_engineers=state_assigned_engineers,
+                    visibility="".join(state["proj_vis"]) or "unv"
                 )
                 session.add(new_project)
                 session.commit()
                 state["add_project"]["show_message"] = 1
                 state["add_project"]["show_section"] = 0
+                state.add_notification("success", "Info!", state["dic"]["proj_created"][state["lang"]])
             except SQLAlchemyError as e:
                 state.add_notification("warning", "Warning!", f"An error occurred: {e}")
     else:
@@ -718,7 +736,7 @@ def _get_all_engineers(state):
     with Session(bind=engine) as session:
         try:
             # Assuming User.visibility is a string and contains roles as single characters
-            stuff = session.query(User).filter(User.role == "engineer", User.visibility.contains(l0)).all()
+            stuff = session.query(User).filter("engineer" == User.role, User.visibility.contains(l0)).all()
             state["all_engineers"] = {str(stuff[i].login): {
                 "login": stuff[i].login,
                 "name": stuff[i].first_name,
@@ -735,7 +753,7 @@ def _get_all_installers(state):
     l0 = state["user"]["role"][0]
     with Session(bind=engine) as session:
         try:
-            stuff = session.query(User).filter(User.role == "installer", User.visibility.contains(l0)).all()
+            stuff = session.query(User).filter("installer" == User.role, User.visibility.contains(l0)).all()
             state["all_installers"] = {str(stuff[i].login): {
                 "login": stuff[i].login,
                 "name": stuff[i].first_name,
@@ -828,8 +846,8 @@ def _offer_service(state, context):
 
             # Check if an invitation already exists for this user and project
             existing_invitation = session.query(Invitation).filter(
-                Invitation.user_id == user.id,
-                Invitation.project_id == project.id
+                user.id == Invitation.user_id,
+                project.id == Invitation.project_id
             ).first()
 
             if existing_invitation:
@@ -852,7 +870,7 @@ def _offer_service(state, context):
 
             # Commit the session to save the changes to the database
             session.commit()
-            owner_email = session.query(User.email).filter(User.id == project.owner).first()[0]
+            owner_email = session.query(User.email).filter(project.owner == User.id).first()[0]
 
             html_content = (
                 f"<p>You have got a cooperation proposal from engineer {user.login} for the project {project.name}. "
@@ -867,7 +885,7 @@ def _offer_service(state, context):
                        f"Пропозиція співпраці від інженера {user.login} для проекту {project.name} |\n "
                        f"Предложение о сотрудничестве от инженера {user.login} для проекта {project.name}.\n")
 
-            reply = _send_mail(owner_email,
+            reply = _send_mail(str(owner_email),
                                's.priemshiy@gmail.com',
                                subject,
                                html_content)
@@ -933,9 +951,12 @@ def _request_cv(state, context):
             client_login = state['user']['login']
             client = session.query(User).filter(User.login == client_login).first()
 
-            message_en = f"Client <strong>{client_login}</strong> asks You to provide the CV to his e-mail: {client.email}"
-            message_uk = f"Замовник <strong>{client_login}</strong> просить Вас надати резюме на його e-mail: {client.email}"
-            message_ru = f"Заказчик <strong>{client_login}</strong> просит Вас предоставить резюме на его e-mail: {client.email}"
+            message_en = (f"Client <strong>{client_login}"
+                          f"</strong> asks You to provide the CV to his e-mail: {client.email}")
+            message_uk = (f"Замовник <strong>{client_login}"
+                          f"</strong> просить Вас надати резюме на його e-mail: {client.email}")
+            message_ru = (f"Заказчик <strong>{client_login}"
+                          f"</strong> просит Вас предоставить резюме на его e-mail: {client.email}")
 
             html_content = (
                 f"<br>"
@@ -960,3 +981,45 @@ def _request_cv(state, context):
         except Exception as e:
 
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
+
+
+def _delete_project(state, context):
+    with Session(bind=engine) as session:
+        try:
+            project = session.query(Projects).filter(Projects.id == context["itemId"]).first()
+            project.status = "deleted"
+            project.visibility = "unv"
+            project.status_changed = datetime.datetime.now()
+            session.commit()
+            _get_all_finished_projects(state)
+            state.add_notification("info", "Info!", "Project deleted")
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
+def _finalise_project(state, context):
+    with Session(bind=engine) as session:
+        try:
+            project = session.query(Projects).filter(Projects.id == context["itemId"]).first()
+            project.status = "finished"
+            project.visibility = "unv"
+            project.status_changed = datetime.datetime.now()
+            session.commit()
+            _get_actual_own_projects(state)
+            state.add_notification("info", "Info!", "Project closed")
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
+def _resume_project(state, context):
+    with Session(bind=engine) as session:
+        try:
+            project = session.query(Projects).filter(Projects.id == context["itemId"]).first()
+            project.status = "current"
+            project.visibility = "cei"
+            project.status_changed = datetime.datetime.now()
+            session.commit()
+            _get_all_finished_projects(state)
+            state.add_notification("info", "Info!", "Project resumed")
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")

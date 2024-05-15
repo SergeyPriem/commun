@@ -6765,7 +6765,7 @@
             "id": "iczn9fuj028jvbe6",
             "type": "button",
             "content": {
-                "text": "@{dic.delete_proj[lang]}",
+                "text": "@{dic.finalise_proj[lang]}",
                 "buttonColor": "#152e61",
                 "cssClasses": ""
             },
@@ -6773,7 +6773,7 @@
             "position": 1,
             "parentId": "b2kd83kz6n57cag1",
             "handlers": {
-                "ss-click": "close_project"
+                "ss-click": "finalise_project"
             },
             "visible": true
         },
@@ -6996,7 +6996,7 @@
             "id": "ezz2w4bpdjdn7e3f",
             "type": "text",
             "content": {
-                "text": "@{dic.proj_owner[lang]}: @{user.login}"
+                "text": "@{dic.proj_owner[lang]}: @{item.owner}"
             },
             "isCodeManaged": false,
             "position": 1,
@@ -7045,14 +7045,16 @@
             "id": "21ws5u8nyrhwl8gq",
             "type": "button",
             "content": {
-                "text": "@{dic.update_proj[lang]}",
+                "text": "@{dic.resume_proj[lang]}",
                 "buttonColor": "#152e61",
                 "cssClasses": ""
             },
             "isCodeManaged": false,
             "position": 0,
             "parentId": "nc1k8r5ckhl1nv5p",
-            "handlers": {},
+            "handlers": {
+                "ss-click": "resume_project"
+            },
             "visible": true
         },
         "ivuknpa85mxofqpr": {
@@ -7067,7 +7069,7 @@
             "position": 1,
             "parentId": "nc1k8r5ckhl1nv5p",
             "handlers": {
-                "ss-click": "close_project"
+                "ss-click": "delete_project"
             },
             "visible": true
         },
@@ -12585,18 +12587,6 @@
             "handlers": {},
             "visible": true
         },
-        "99a9fpz2n8t28z5x": {
-            "id": "99a9fpz2n8t28z5x",
-            "type": "column",
-            "content": {
-                "width": "0.2"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "p2t62f2ots73w18o",
-            "handlers": {},
-            "visible": true
-        },
         "411773w24b608lg8": {
             "id": "411773w24b608lg8",
             "type": "column",
@@ -12604,7 +12594,7 @@
                 "width": "8"
             },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 0,
             "parentId": "p2t62f2ots73w18o",
             "handlers": {},
             "visible": true
@@ -12623,7 +12613,7 @@
             "id": "7lnwt2uui6x3az0q",
             "type": "column",
             "content": {
-                "width": "1",
+                "width": "0.8",
                 "contentVAlign": "center"
             },
             "isCodeManaged": false,
@@ -12762,23 +12752,11 @@
             "id": "1ulmei8fz34yu1ik",
             "type": "column",
             "content": {
-                "width": "1"
+                "width": "0.8"
             },
             "isCodeManaged": false,
             "position": 2,
             "parentId": "vab36d6det9odnu6",
-            "handlers": {},
-            "visible": true
-        },
-        "g503wplwixrjtwnc": {
-            "id": "g503wplwixrjtwnc",
-            "type": "column",
-            "content": {
-                "width": "0.2"
-            },
-            "isCodeManaged": false,
-            "position": 2,
-            "parentId": "p2t62f2ots73w18o",
             "handlers": {},
             "visible": true
         },
@@ -15217,6 +15195,74 @@
             "binding": {
                 "eventType": "ss-options-change",
                 "stateRef": "reg_vis"
+            }
+        },
+        "2o6iqnknqnptafv7": {
+            "id": "2o6iqnknqnptafv7",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 6,
+            "parentId": "9tsqeu37grhhek24",
+            "handlers": {},
+            "visible": true
+        },
+        "wpnq9k66bp84hbeq": {
+            "id": "wpnq9k66bp84hbeq",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentHAlign": "center",
+                "contentVAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "2o6iqnknqnptafv7",
+            "handlers": {},
+            "visible": true
+        },
+        "4c3i35ilwfh6y8n8": {
+            "id": "4c3i35ilwfh6y8n8",
+            "type": "text",
+            "content": {
+                "text": "@{dic.who_can_view[lang]}:"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "wpnq9k66bp84hbeq",
+            "handlers": {},
+            "visible": true
+        },
+        "81mcay2rdntu5qg0": {
+            "id": "81mcay2rdntu5qg0",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentHAlign": "center",
+                "contentVAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "2o6iqnknqnptafv7",
+            "handlers": {},
+            "visible": true
+        },
+        "av19e6ft78sxee6q": {
+            "id": "av19e6ft78sxee6q",
+            "type": "checkboxinput",
+            "content": {
+                "label": "",
+                "options": "{\n  \"c\": \"Clients\",  \n  \"e\": \"Engineers\",\n  \"i\": \"Installers\"  \n}",
+                "orientation": "horizontal"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "81mcay2rdntu5qg0",
+            "handlers": {},
+            "visible": true,
+            "binding": {
+                "eventType": "ss-options-change",
+                "stateRef": "proj_vis"
             }
         }
     }

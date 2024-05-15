@@ -9,7 +9,7 @@ from db_actions import _create_new_user, _log_admin, _get_new_engineers, _get_ne
     _add_user_message, _delete_subscription, _get_new_current_projects, \
     _get_all_current_projects, _get_all_finished_projects, _create_project, _add_invitation_by_client, _get_engineers, \
     _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, _offer_service, \
-    _get_table_as_dataframe, _request_cv
+    _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project
 from dic import dic
 from dic import error_messages as e_m
 from fw import ss_dic
@@ -341,16 +341,12 @@ def admin_code_section(state):
     state["admin"]["panel_sect"] = 0
 
 
-def close_project(state, context):
-    state.add_notification("info", "Context!", context["itemId"])
-    # with Session(bind=engine) as session:
-    #     try:
-    #         project = session.query(Projects).filter(Projects.id == context["itemId"]).first()
-    #         project.status = "finished"
-    #         session.commit()
-    #
-    #     except SQLAlchemyError as e:
-    #         state.add_notification(f"An error occurred: {e}")
+def delete_project(state, context):
+    _delete_project(state, context)
+
+
+def finalise_project(state, context):
+    _finalise_project(state, context)
 
 
 def set_selected_engineer(state, context):
@@ -438,6 +434,10 @@ def add_user_message(state):
     _add_user_message(state)
 
 
+def resume_project(state, context):
+    _resume_project(state, context)
+
+
 def handle_hash_change(state, payload):
     route_vars = payload.get("route_vars")
     if route_vars:
@@ -460,7 +460,6 @@ def switch_to_own_page(state):
         state.set_page("engineer_page")
     if state["user"]["role"] == "installer":
         state.set_page("installer_page")
-
 
 
 initial_state = ss.init_state(
@@ -513,9 +512,10 @@ initial_state = ss.init_state(
         "footer": "zm3lzacgv0ahymqf",
 
         "help": he,
-        "help_section": 0,
+        # "help_section": 0,
 
         "reg_vis": ["c", "e", "i"],
+        "proj_vis": ["c", "e", "i"],
 
         # "my_invitations": None,
         # "user_message": {

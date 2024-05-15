@@ -57,6 +57,7 @@ class Projects(Base):
     status_changed = Column(DateTime)
     required_specialists = Column(String(200))
     assigned_engineers = Column(String(200))
+    visibility = Column(String(4), nullable=False, default='cei')
     invitations = relationship("Invitation", back_populates="project")
 
 
