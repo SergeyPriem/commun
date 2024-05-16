@@ -454,12 +454,13 @@ def hide_help(state):
 
 
 def switch_to_own_page(state):
-    if state["user"]["role"] == "client":
-        state.set_page("client_page")
-    if state["user"]["role"] == "engineer":
-        state.set_page("engineer_page")
-    if state["user"]["role"] == "installer":
-        state.set_page("installer_page")
+    match state["user"]["role"]:
+        case "client":
+            state.set_page("client_page")
+        case "engineer":
+            state.set_page("engineer_page")
+        case "installer":
+            state.set_page("installer_page")
 
 
 initial_state = ss.init_state(
