@@ -12,7 +12,21 @@ from models import *
 from utilities import _hash_password, _err_handler, _valid_email, _send_mail
 
 
-def _create_new_user(state):
+def _create_user(state):
+    """
+    Create a new user in the database.
+
+    This function takes the user information from the state dictionary, processes it,
+    and attempts to create a new user in the database. If the user already exists,
+    it handles the IntegrityError and updates the state with an appropriate message.
+
+    Parameters:
+    state (dict): The state dictionary containing user information and other application state.
+
+    Returns:
+    int: HTTP status code indicating the result of the operation.
+         200 if the user was successfully created, 500 if the user already exists or due to exception.
+    """
     if state["user"]["major"]:
         major = ", ".join(state["user"]["major"])
     else:
@@ -55,25 +69,42 @@ def _create_new_user(state):
 
 
 def _log_out_user(state):
+    """
+    Log out the current user by updating their visit log.
+
+    This function retrieves the most recent visit log entry for the current user,
+    updates the `date_time_out` field to the current time, and commits the changes
+    to the database. If no visit log entry is found, it adds a notification to the state.
+
+    Parameters:
+    state (dict): The state dictionary containing user information and other application state.
+
+    Returns:
+    None: This function updates the state dictionary directly and commits changes to the database.
+    """
     with Session(bind=engine) as session:
         try:
+            # Retrieve the most recent visit log entry for the current user
             visit = session.query(
                 VisitLog).filter(VisitLog.user_login == state["user"]["login"]
                                  ).order_by(VisitLog.id.desc()).first()
             if visit:
+                # Update the date_time_out field to the current time
                 visit.date_time_out = datetime.datetime.now()
                 # Commit the changes
                 session.commit()
             else:
+                # Add a notification if no visit log entry is found
                 state.add_notification("warning", "Warning!", "User not found")
         except SQLAlchemyError as e:
+            # Add a notification if an error occurs
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
 
 
 def _get_all_invitations_df(state):
     with Session(bind=engine) as session:
         try:
-            stmt = select(Invitation, Projects, User).join(Projects, Projects.id == Invitation.project_id).join(
+            stmt = select(Invitation, Project, User).join(Project, Project.id == Invitation.project_id).join(
                 User, User.id == Invitation.user_id)
             result = session.execute(stmt)
             invitations = result.scalars().all()
@@ -92,9 +123,24 @@ def _get_all_invitations_df(state):
 
 
 def _get_admin_data(state):
+    """
+    Retrieve data for all users with the role 'admin' and update the state with this information.
+
+    This function queries the database to get all users with the role 'admin'. It then updates the
+    state dictionary with the retrieved admin data, including their login, name, description,
+    date they joined, and experience.
+
+    Parameters:
+    state (dict): The state dictionary containing user information and other application state.
+
+    Returns:
+    None: This function updates the state dictionary directly.
+    """
     with Session(bind=engine) as session:
         try:
+            # Query to select all users with the role 'admin'
             stuff = session.query(User).filter("admin" == User.role).all()
+            # Update state with the retrieved admin data
             state["admin"] = {str(stuff[i].login): {
                 "name": stuff[i].first_name,
                 "description": stuff[i].description,
@@ -103,10 +149,23 @@ def _get_admin_data(state):
             } for i in range(len(stuff))}
 
         except SQLAlchemyError as e:
+            # Add a notification if an error occurs
             state.add_notification(f"An error occurred: {e}")
 
 
 def admin_panel_section(state):
+    """
+    Activate the admin panel section in the application state.
+
+    This function sets the relevant sections of the admin panel to their initial states,
+    indicating that the admin panel section is active.
+
+    Parameters:
+    state (dict): The state dictionary containing user information and other application state.
+
+    Returns:
+    None: This function updates the state dictionary directly.
+    """
     state["admin"]["reg_sect"] = 0
     state["admin"]["code_sect"] = 0
     state["admin"]["log_sect"] = 0
@@ -161,6 +220,19 @@ def _log_admin(state):
 
 
 def _get_new_engineers(state):
+    """
+    Retrieve new engineers who joined within the last 30 days and are visible to the user's role.
+
+    This function queries the database to get all users with the role "engineer",
+    who joined within the last 30 days, and whose visibility matches the user's role.
+    It then updates the state with the retrieved engineers and their details.
+
+    Parameters:
+    state (dict): The state dictionary containing user information and other application state.
+
+    Returns:
+    None: This function updates the state dictionary directly.
+    """
     if state["user"]["logged"]:
         l0 = state["user"]["role"][0]
         if state["new_engineers"] is not None:
@@ -168,10 +240,12 @@ def _get_new_engineers(state):
 
         with Session(bind=engine) as session:
             try:
+                # Query to select new engineers who joined within the last 30 days
                 stuff = session.query(User).filter(
                     User.date_time > (datetime.datetime.now() - datetime.timedelta(days=30)),
                     "engineer" == User.role, User.visibility.contains(l0)
                 ).all()
+                # Update state with the retrieved engineers
                 state["new_engineers"] = {str(stuff[i].login): {
                     "login": stuff[i].login,
                     "name": stuff[i].first_name,
@@ -285,8 +359,8 @@ def _get_my_invitations_dict(state):
             # Query all invitations for the given user along with the project owner's login and email
             user_id = session.query(User.id).filter(User.login == state['user']['login']).first()[0]
             invitations = session.query(Invitation, User.login, User.email).join(
-                Projects, Projects.id == Invitation.project_id).join(
-                User, User.id == Projects.owner).filter(Invitation.user_id == user_id).all()
+                Project, Project.id == Invitation.project_id).join(
+                User, User.id == Project.owner).filter(Invitation.user_id == user_id).all()
 
             if not invitations:
                 state.add_notification("info", "Info", "You have no invitations")
@@ -314,6 +388,9 @@ def _get_my_invitations_dict(state):
                 }
             state['my_invitations'] = invitations_info
             state['invitations_quantity'] = len(invitations_info) or 0
+
+            state['no_invitations'] = 1 if len(invitations_info) == 0 else 0
+
             time2 = time.time()
             print(f"function took {round((time2 - time1) * 1000.0, 2)} ms")
         except SQLAlchemyError as e:
@@ -396,9 +473,9 @@ def _get_actual_own_projects(state):  # ui
             result = session.execute(stmt)
             current_user = result.scalars().first()
 
-            stmt = select(Projects).where(
-                current_user.id == Projects.owner,
-                "current" == Projects.status
+            stmt = select(Project).where(
+                current_user.id == Project.owner,
+                "current" == Project.status
             )
             result = session.execute(stmt)
             cur_projects = result.scalars().all()
@@ -440,7 +517,7 @@ def _add_user_message(state):
 
     with Session(engine) as session:
         try:
-            message = Messages(
+            message = Message(
                 first_name=state["user_message"]["first_name"],
                 last_name=state["user_message"]["last_name"],
                 email=state["user_message"]["email"],
@@ -505,23 +582,39 @@ def _delete_subscription(state):
 
 
 def _get_new_current_projects(state):
+    """
+    Retrieve new current projects that are visible to the user's role and created within the last 30 days.
+
+    This function queries the database to get all projects with the status "current", visibility that matches
+    the user's role, and created within the last 30 days. It then updates the state with the retrieved projects
+    and their details.
+
+    Parameters:
+    state (dict): The state dictionary containing user information and other application state.
+
+    Returns:
+    None: This function updates the state dictionary directly.
+    """
     if not state["user"]["logged"]:
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
+            # Query to select new current projects visible to the user's role and created within the last 30 days
             stmt = (
-                select(Projects, User)
+                select(Project, User)
                 .where(
-                    "current" == Projects.status, Projects.visibility.contains(state["user"]["role"][0]),
-                    Projects.created > (datetime.datetime.now() - datetime.timedelta(days=30))
+                    "current" == Project.status,
+                    Project.visibility.contains(state["user"]["role"][0]),
+                    Project.created > (datetime.datetime.now() - datetime.timedelta(days=30))
                 )
-                .join(User, User.id == Projects.owner)
+                .join(User, User.id == Project.owner)
             )
             result = session.execute(stmt)
             cur_projects = result.scalars().all()
 
             if cur_projects:
+                # Update state with the retrieved projects
                 state['new_proj_quantity'] = len(cur_projects)
                 state["new_current_projects"] = {
                     str(project.id): {
@@ -533,7 +626,6 @@ def _get_new_current_projects(state):
                         "required_specialists": project.required_specialists,
                         "assigned_engineers": project.assigned_engineers,
                         "created": project.created.strftime('%Y-%m-%d'),
-
                     } for project in cur_projects
                 }
                 state["new_current_projects_view"] = {
@@ -552,20 +644,35 @@ def _get_new_current_projects(state):
 
 
 def _get_all_current_projects(state):
+    """
+    Retrieve all current projects that are visible to the user's role.
+
+    This function queries the database to get all projects with the status "current" and
+    visibility that matches the user's role. It then updates the state with the retrieved
+    projects and their details.
+
+    Parameters:
+    state (dict): The state dictionary containing user information and other application state.
+
+    Returns:
+    None: This function updates the state dictionary directly.
+    """
     if not state["user"]["logged"]:
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
+            # Query to select all current projects visible to the user's role
             stmt = (
-                select(Projects, User).where("current" == Projects.status,
-                                             Projects.visibility.contains(state["user"]["role"][0])
-                                             ).join(User, User.id == Projects.owner)
+                select(Project, User).where("current" == Project.status,
+                                             Project.visibility.contains(state["user"]["role"][0])
+                                             ).join(User, User.id == Project.owner)
             )
             result = session.execute(stmt)
             cur_projects = result.scalars().all()
 
             if cur_projects:
+                # Update state with the retrieved projects
                 state["actual_proj_quantity"] = len(cur_projects)
                 state["all_current_projects"] = {
                     str(project.id): {
@@ -588,6 +695,41 @@ def _get_all_current_projects(state):
             state.add_notification(f"An error occurred: {e}")
 
 
+def _get_my_current_projects(state):
+    """
+    Retrieve the current projects owned by the user and update the state with this information.
+    :param state:
+    :return:
+    """
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        return
+    with Session(bind=engine) as session:
+        try:
+            # stmt = select(User).where(User.login == state["user"]["login"])
+            # result = session.execute(stmt)
+            # current_user = result.scalars().first()
+            #
+            # stmt = select(Projects).where(
+            #     current_user.id == Projects.owner,
+            #     "current" == Projects.status
+            # )
+            result = session.execute(stmt)
+            cur_projects = result.scalars().all()
+
+            state["current_own_projects"] = {str(cur_projects[i].id): {
+                "name": cur_projects[i].name,
+                "description": cur_projects[i].description,
+                "status": cur_projects[i].status,
+                "comments": cur_projects[i].comments,
+                "required_specialists": cur_projects[i].required_specialists,
+                "assigned_engineers": cur_projects[i].assigned_engineers,
+                "created": cur_projects[i].created.strftime('%Y-%m-%d')
+            } for i in range(len(cur_projects))}
+
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
 def _get_all_finished_projects(state):
     if not state["user"]["logged"]:
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
@@ -595,8 +737,8 @@ def _get_all_finished_projects(state):
     with Session(bind=engine) as session:
         try:
             stmt = (
-                select(Projects, User).where(
-                    "finished" == Projects.status).join(User, User.login == state["user"]["login"])
+                select(Project, User).where(
+                    "finished" == Project.status).join(User, User.login == state["user"]["login"])
             )
             result = session.execute(stmt)
             fin_projects = result.scalars().all()
@@ -639,17 +781,17 @@ def _create_project(state):
                 current_user = result.scalars().first()
 
                 # Check if a project with the same name and description already exists
-                existing_project = session.query(Projects).filter(
-                    Projects.name == state_name.strip(),
-                    Projects.description == state_description.strip(),
-                    current_user.id == Projects.owner
+                existing_project = session.query(Project).filter(
+                    Project.name == state_name.strip(),
+                    Project.description == state_description.strip(),
+                    current_user.id == Project.owner
                 ).first()
 
                 if existing_project:
                     state.add_notification("warning", "Warning!", state["dic"]["proj_exists"][state["lang"]])
                     return
 
-                new_project = Projects(
+                new_project = Project(
                     name=state_name.strip(),
                     owner=current_user.id,
                     description=state_description.strip(),
@@ -681,7 +823,7 @@ def _add_invitation_by_client(state):
     with Session(bind=engine) as session:
         try:
             user = session.query(User).filter(User.login == state["selected_eng_for_proj"]).first()
-            project = session.query(Projects).filter(Projects.id == state['selected_proj_to_add_eng']).first()
+            project = session.query(Project).filter(Project.id == state['selected_proj_to_add_eng']).first()
             # Create a new Invitation object
             new_invitation = Invitation(
                 project_id=state['selected_proj_to_add_eng'],
@@ -842,7 +984,7 @@ def _offer_service(state, context):
     with Session(bind=engine) as session:
         try:
             user = session.query(User).filter(User.login == state["user"]["login"]).first()
-            project = session.query(Projects).filter(Projects.id == context['itemId']).first()
+            project = session.query(Project).filter(Project.id == context['itemId']).first()
 
             # Check if an invitation already exists for this user and project
             existing_invitation = session.query(Invitation).filter(
@@ -986,7 +1128,7 @@ def _request_cv(state, context):
 def _delete_project(state, context):
     with Session(bind=engine) as session:
         try:
-            project = session.query(Projects).filter(Projects.id == context["itemId"]).first()
+            project = session.query(Project).filter(Project.id == context["itemId"]).first()
             project.status = "deleted"
             project.visibility = "unv"
             project.status_changed = datetime.datetime.now()
@@ -1000,7 +1142,7 @@ def _delete_project(state, context):
 def _finalise_project(state, context):
     with Session(bind=engine) as session:
         try:
-            project = session.query(Projects).filter(Projects.id == context["itemId"]).first()
+            project = session.query(Project).filter(Project.id == context["itemId"]).first()
             project.status = "finished"
             project.visibility = "unv"
             project.status_changed = datetime.datetime.now()
@@ -1014,7 +1156,7 @@ def _finalise_project(state, context):
 def _resume_project(state, context):
     with Session(bind=engine) as session:
         try:
-            project = session.query(Projects).filter(Projects.id == context["itemId"]).first()
+            project = session.query(Project).filter(Project.id == context["itemId"]).first()
             project.status = "current"
             project.visibility = "cei"
             project.status_changed = datetime.datetime.now()

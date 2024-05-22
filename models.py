@@ -19,7 +19,7 @@ Base = declarative_base()
 
 
 class User(Base):
-    __tablename__ = 'User'
+    __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
     first_name = Column(String(50), nullable=False)
@@ -44,8 +44,8 @@ class User(Base):
     invitations = relationship("Invitation", back_populates="user")
 
 
-class Projects(Base):
-    __tablename__ = 'Projects'
+class Project(Base):
+    __tablename__ = 'projects'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(50))
@@ -61,8 +61,58 @@ class Projects(Base):
     invitations = relationship("Invitation", back_populates="project")
 
 
+class CV(Base):
+    __tablename__ = 'cvs'
+
+    id = Column(Integer, primary_key=True)
+    sender_id = Column(Integer, ForeignKey('User.id'), nullable=False)
+    receiver_id = Column(Integer, ForeignKey('User.id'), nullable=False)
+    request_dt = Column(DateTime, nullable=False)
+    status = Column(String(50), nullable=True)
+    status_dt = Column(DateTime, nullable=True)
+
+    # Relationships
+    sender = relationship('User', foreign_keys=[sender_id])
+    receiver = relationship('User', foreign_keys=[receiver_id])
+
+
+class Message(Base):
+    __tablename__ = 'messages'
+    id = Column(Integer, primary_key=True)
+    sender_id = Column(Integer, ForeignKey('User.id'))
+    receiver_id = Column(Integer, ForeignKey('User.id'))
+    message_text = Column(String)
+    message_dt = Column(DateTime, nullable=False)
+    read_dt = Column(DateTime, nullable=True)
+    # Relationships
+    sender = relationship("User", foreign_keys=[sender_id])
+    receiver = relationship("User", foreign_keys=[receiver_id])
+
+
+class HiddenUser(Base):
+    __tablename__ = 'hidden_users'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('User.id'))
+    hidden_user_id = Column(Integer, ForeignKey('User.id'))
+    date_time = Column(DateTime, nullable=False)
+    # Relationships
+    user = relationship("User", foreign_keys=[user_id])
+    hidden_user = relationship("User", foreign_keys=[hidden_user_id])
+
+
+class HiddenProject(Base):
+    __tablename__ = 'hidden_projects'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('User.id'))
+    project_id = Column(Integer, ForeignKey('Projects.id'))
+    date_time = Column(DateTime, nullable=False)
+    # Relationships
+    user = relationship("User", foreign_keys=[user_id])
+    project = relationship("Projects", foreign_keys=[project_id])
+
+
 class Invitation(Base):
-    __tablename__ = 'Invitation'
+    __tablename__ = 'invitations'
 
     id = Column(Integer, primary_key=True)
     project_id = Column(Integer, ForeignKey('Projects.id'),
@@ -80,28 +130,17 @@ class Invitation(Base):
 
 
 class Subscription(Base):
-    __tablename__ = 'Subscription'
+    __tablename__ = 'subscriptions'
 
     id = Column(Integer, primary_key=True)
     first_name = Column(String(50), nullable=True)
     last_name = Column(String(50), nullable=True)
     email = Column(String(100), nullable=False)
-    date_time = Column(DateTime, nullable=False)
-
-
-class Messages(Base):
-    __tablename__ = 'Messages'
-
-    id = Column(Integer, primary_key=True)
-    first_name = Column(String(50), nullable=True)
-    last_name = Column(String(50), nullable=True)
-    email = Column(String(100), nullable=False)
-    message = Column(String(1000), nullable=False)
     date_time = Column(DateTime, nullable=False)
 
 
 class VisitLog(Base):
-    __tablename__ = 'VisitLog'
+    __tablename__ = 'visit_logs'
 
     id = Column(Integer, primary_key=True)
     user_login = Column(String(100), nullable=False)

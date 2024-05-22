@@ -1,6 +1,31 @@
 # -*- coding: utf-8 -*-
 dic = {
 
+    "no_invitations": {
+        "E": "No invitations",
+        "U": "Немає запрошень",
+        "R": "Нет приглашений"
+    },
+
+    "no_proposals": {
+        "E": "No proposals",
+        "U": "Немає пропозицій",
+        "R": "Нет предложений"
+    },
+
+    "declined_proj": {
+        "E": "Declined Projects",
+        "U": "Відхилені Проекти",
+        "R": "Отклоненные Проекты"
+    },
+
+
+    "my_proposals": {
+        "E": "My Proposals",
+        "U": "Мої Пропозиції",
+        "R": "Мои Предложения"
+    },
+
     "proj_resumed": {
         "E": "Project resumed, visible to all",
         "U": "Проект відновлено, видимий для всіх",

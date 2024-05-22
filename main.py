@@ -4,12 +4,12 @@ import time
 
 import streamsync as ss
 
-from db_actions import _create_new_user, _log_admin, _get_new_engineers, _get_new_installers, _get_user_data, \
+from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_installers, _get_user_data, \
     _log_out_user, admin_panel_section, _decline_invitation, _get_actual_own_projects, \
     _add_user_message, _delete_subscription, _get_new_current_projects, \
     _get_all_current_projects, _get_all_finished_projects, _create_project, _add_invitation_by_client, _get_engineers, \
     _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, _offer_service, \
-    _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project
+    _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, _get_my_invitations_dict
 from dic import dic
 from dic import error_messages as e_m
 from fw import ss_dic
@@ -141,7 +141,7 @@ def validate_email_by_code(state):
 
         state["reg"]["code_message"] = "+ " + dic["code_confirmed"][state["lang"]]
 
-        if _create_new_user(state) == 200:
+        if _create_user(state) == 200:
             state["reg"]['form'] = 0
             state["reg"]['data_ok'] = 0
             time.sleep(2)
@@ -316,6 +316,51 @@ def get_all_installers(state):
     _get_all_installers(state)
 
 
+def show_my_invitations(state):
+    _get_my_invitations_dict(state)
+    state['invitations_section'] = 1
+    state['proposals_section'] = 0
+    state['current_projects_section'] = 0
+    state['declined_projects_section'] = 0
+    state['finished_projects_section'] = 0
+
+
+def show_my_current_projects(state):
+    _get_my_current_projects(state)
+    state['invitations_section'] = 0
+    state['proposals_section'] = 0
+    state['current_projects_section'] = 1
+    state['declined_projects_section'] = 0
+    state['finished_projects_section'] = 0
+
+
+def show_my_finished_projects(state):
+    _get_my_finished_projects(state)
+    state['invitations_section'] = 0
+    state['proposals_section'] = 0
+    state['current_projects_section'] = 0
+    state['declined_projects_section'] = 0
+    state['finished_projects_section'] = 1
+
+
+def show_my_proposals(state):
+    _get_my_proposals(state)
+    state['invitations_section'] = 0
+    state['proposals_section'] = 1
+    state['current_projects_section'] = 0
+    state['declined_projects_section'] = 0
+    state['finished_projects_section'] = 0
+
+
+def show_my_declined_projects(state):
+    _get_my_declined_projects(state)
+    state['invitations_section'] = 0
+    state['proposals_section'] = 0
+    state['current_projects_section'] = 0
+    state['declined_projects_section'] = 1
+    state['finished_projects_section'] = 0
+
+
 def request_cv(state, context):
     _request_cv(state, context)
 
@@ -378,7 +423,7 @@ def validate_admin_data(state):
 
 def validate_admin_code(state):
     if state['reg']['code_sent'] == state['reg']['code_entered']:
-        _create_new_user(state)
+        _create_user(state)
         admin_log_section(state)
 
 
@@ -517,6 +562,7 @@ initial_state = ss.init_state(
 
         "reg_vis": ["c", "e", "i"],
         "proj_vis": ["c", "e", "i"],
+
 
         # "my_invitations": None,
         # "user_message": {
