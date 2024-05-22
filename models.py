@@ -39,9 +39,19 @@ class User(Base):
     lang = Column(String(2), nullable=False)
     visibility = Column(String(4), nullable=False, default='cei')
 
-    # Relationship to access the projects owned by a user
-    projects = relationship("Projects", backref="user")
-    invitations = relationship("Invitation", back_populates="user")
+    # Existing relationships
+    rel_projects = relationship("Project", back_populates="rel_owner")
+    rel_invitations = relationship("Invitation", back_populates="rel_user")
+    rel_sent_cvs = relationship("CV", back_populates="rel_sender", foreign_keys="[CV.sender_id]")
+    rel_received_cvs = relationship("CV", back_populates="rel_receiver", foreign_keys="[CV.receiver_id]")
+    sent_messages = relationship("Message", back_populates="sender", foreign_keys="[Message.sender_id]")
+    received_messages = relationship("Message", back_populates="receiver", foreign_keys="[Message.receiver_id]")
+
+    # Relationships for HiddenUser
+    hidden_users = relationship("HiddenUser", foreign_keys="[HiddenUser.user_id]", back_populates="user")
+    hidden_by_users = relationship("HiddenUser", foreign_keys="[HiddenUser.hidden_user_id]",
+                                   back_populates="hidden_user")
+    hidden_projects = relationship("HiddenProject", back_populates="user")
 
 
 class Project(Base):
@@ -49,7 +59,7 @@ class Project(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(50))
-    owner = Column(Integer, ForeignKey('User.id'))  # owner is now a foreign key
+    owner = Column(Integer, ForeignKey('users.id'))  # Correct reference to the 'users' table
     description = Column(String(1000))
     status = Column(String(10))
     comments = Column(String(200))
@@ -58,75 +68,81 @@ class Project(Base):
     required_specialists = Column(String(200))
     assigned_engineers = Column(String(200))
     visibility = Column(String(4), nullable=False, default='cei')
-    invitations = relationship("Invitation", back_populates="project")
+
+    # Relationships
+    rel_owner = relationship("User", back_populates="rel_projects")
+    rel_invitations = relationship("Invitation", back_populates="rel_project")
+    hidden_by_users = relationship("HiddenProject", back_populates="project")
+
+class HiddenProject(Base):
+    __tablename__ = 'hidden_projects'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'))  # Correct reference to the 'users' table
+    project_id = Column(Integer, ForeignKey('projects.id'))  # Correct reference to the 'projects' table
+    date_time = Column(DateTime, nullable=False)
+
+    # Fixed Relationships using back_populates for clarity and explicitness
+    user = relationship("User", back_populates="hidden_projects")
+    project = relationship("Project", back_populates="hidden_by_users")
+
+
+
+class HiddenUser(Base):
+    __tablename__ = 'hidden_users'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    hidden_user_id = Column(Integer, ForeignKey('users.id'))
+    date_time = Column(DateTime, nullable=False)
+
+    # Updated Relationships
+    user = relationship("User", foreign_keys=[user_id], back_populates="hidden_users")
+    hidden_user = relationship("User", foreign_keys=[hidden_user_id], back_populates="hidden_by_users")
+
+
+class Message(Base):
+    __tablename__ = 'messages'
+    id = Column(Integer, primary_key=True)
+    sender_id = Column(Integer, ForeignKey('users.id'))
+    receiver_id = Column(Integer, ForeignKey('users.id'))
+    message_text = Column(String)
+    message_dt = Column(DateTime, nullable=False)
+    read_dt = Column(DateTime, nullable=True)
+
+    # Updated relationships with back_populates
+    sender = relationship("User", back_populates="sent_messages", foreign_keys=[sender_id])
+    receiver = relationship("User", back_populates="received_messages", foreign_keys=[receiver_id])
 
 
 class CV(Base):
     __tablename__ = 'cvs'
 
     id = Column(Integer, primary_key=True)
-    sender_id = Column(Integer, ForeignKey('User.id'), nullable=False)
-    receiver_id = Column(Integer, ForeignKey('User.id'), nullable=False)
+    sender_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    receiver_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     request_dt = Column(DateTime, nullable=False)
     status = Column(String(50), nullable=True)
     status_dt = Column(DateTime, nullable=True)
 
     # Relationships
-    sender = relationship('User', foreign_keys=[sender_id])
-    receiver = relationship('User', foreign_keys=[receiver_id])
-
-
-class Message(Base):
-    __tablename__ = 'messages'
-    id = Column(Integer, primary_key=True)
-    sender_id = Column(Integer, ForeignKey('User.id'))
-    receiver_id = Column(Integer, ForeignKey('User.id'))
-    message_text = Column(String)
-    message_dt = Column(DateTime, nullable=False)
-    read_dt = Column(DateTime, nullable=True)
-    # Relationships
-    sender = relationship("User", foreign_keys=[sender_id])
-    receiver = relationship("User", foreign_keys=[receiver_id])
-
-
-class HiddenUser(Base):
-    __tablename__ = 'hidden_users'
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('User.id'))
-    hidden_user_id = Column(Integer, ForeignKey('User.id'))
-    date_time = Column(DateTime, nullable=False)
-    # Relationships
-    user = relationship("User", foreign_keys=[user_id])
-    hidden_user = relationship("User", foreign_keys=[hidden_user_id])
-
-
-class HiddenProject(Base):
-    __tablename__ = 'hidden_projects'
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('User.id'))
-    project_id = Column(Integer, ForeignKey('Projects.id'))
-    date_time = Column(DateTime, nullable=False)
-    # Relationships
-    user = relationship("User", foreign_keys=[user_id])
-    project = relationship("Projects", foreign_keys=[project_id])
+    rel_sender = relationship('User', back_populates="rel_sent_cvs", foreign_keys=[sender_id])
+    rel_receiver = relationship('User', back_populates="rel_received_cvs", foreign_keys=[receiver_id])
 
 
 class Invitation(Base):
     __tablename__ = 'invitations'
 
     id = Column(Integer, primary_key=True)
-    project_id = Column(Integer, ForeignKey('Projects.id'),
-                        nullable=False)  # Assuming the project table is named 'project'
-    user_id = Column(Integer, ForeignKey('User.id'), nullable=False)  # Assuming the user table is named 'user'
+    project_id = Column(Integer, ForeignKey('projects.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     initiated_by = Column(Enum('engineer', 'client', 'installer'))
     status = Column(String(16000))
-    # 0 for "Pending", 1 for "Accepted", 2 for "Declined", 3 "Waiting for response", # 4 for "Cancelled"
     date_time = Column(DateTime, nullable=False)
     last_action_dt = Column(DateTime, nullable=False)
     last_action_by = Column(Enum('engineer', 'client', 'installer'))
+
     # Relationships
-    project = relationship('Projects', back_populates='invitations')
-    user = relationship('User', back_populates='invitations')
+    rel_project = relationship('Project', back_populates="rel_invitations")
+    rel_user = relationship('User', back_populates="rel_invitations")
 
 
 class Subscription(Base):

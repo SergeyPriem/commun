@@ -326,7 +326,7 @@ def show_my_invitations(state):
 
 
 def show_my_current_projects(state):
-    _get_my_current_projects(state)
+    # _get_my_current_projects(state)
     state['invitations_section'] = 0
     state['proposals_section'] = 0
     state['current_projects_section'] = 1
@@ -335,7 +335,7 @@ def show_my_current_projects(state):
 
 
 def show_my_finished_projects(state):
-    _get_my_finished_projects(state)
+    # _get_my_finished_projects(state)
     state['invitations_section'] = 0
     state['proposals_section'] = 0
     state['current_projects_section'] = 0
@@ -344,7 +344,7 @@ def show_my_finished_projects(state):
 
 
 def show_my_proposals(state):
-    _get_my_proposals(state)
+    # _get_my_proposals(state)
     state['invitations_section'] = 0
     state['proposals_section'] = 1
     state['current_projects_section'] = 0
@@ -353,7 +353,7 @@ def show_my_proposals(state):
 
 
 def show_my_declined_projects(state):
-    _get_my_declined_projects(state)
+    # _get_my_declined_projects(state)
     state['invitations_section'] = 0
     state['proposals_section'] = 0
     state['current_projects_section'] = 0
