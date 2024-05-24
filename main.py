@@ -5,11 +5,11 @@ import time
 import streamsync as ss
 
 from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_installers, _get_user_data, \
-    _log_out_user, admin_panel_section, _decline_invitation, _get_actual_own_projects, \
-    _add_user_message, _delete_subscription, _get_new_current_projects, \
-    _get_all_current_projects, _get_all_finished_projects, _create_project, _add_invitation_by_client, _get_engineers, \
-    _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, _offer_service, \
-    _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, _get_my_invitations_dict
+    _log_out_user, admin_panel_section, _decline_invitation, _get_actual_own_projects, _add_user_message, \
+    _delete_subscription, _get_new_projects, _get_all_finished_projects, _create_project, _invite, \
+    _get_engineers, _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, \
+    _offer_service, _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, \
+    _get_my_invitations, _get_current_projects, _get_my_invitations
 from dic import dic
 from dic import error_messages as e_m
 from fw import ss_dic
@@ -48,10 +48,11 @@ def get_actual_own_projects_dict(state):
         for key, value in state["current_own_projects"].items()}
 
 
-def add_invitation_by_client(state):
-    _add_invitation_by_client(state)
+def invite(state):
+    _invite(state)
 
-
+def get_my_invitations(state):
+    _get_my_invitations(state)
 def offer_service(state, context):
     _offer_service(state, context)
 
@@ -69,11 +70,11 @@ def get_suspended_own_projects(state):
 
 
 def get_new_current_projects(state):
-    _get_new_current_projects(state)
+    _get_new_projects(state)
 
 
 def get_all_current_projects(state):
-    _get_all_current_projects(state)
+    _get_current_projects(state)
 
 
 def get_all_finished_projects(state):
@@ -317,7 +318,7 @@ def get_all_installers(state):
 
 
 def show_my_invitations(state):
-    _get_my_invitations_dict(state)
+    _get_my_invitations(state)
     state['invitations_section'] = 1
     state['proposals_section'] = 0
     state['current_projects_section'] = 0
@@ -508,6 +509,17 @@ def switch_to_own_page(state):
             state.set_page("installer_page")
 
 
+def show_my_relations(state):
+    state["my_prospects"] = 1
+    state["my_projects"] = 0
+
+
+def show_my_projects(state):
+    state["my_prospects"] = 0
+    state["my_projects"] = 1
+
+
+
 initial_state = ss.init_state(
     {
         "lang": "E",
@@ -562,6 +574,9 @@ initial_state = ss.init_state(
 
         "reg_vis": ["c", "e", "i"],
         "proj_vis": ["c", "e", "i"],
+
+        "my_prospects": 0,
+        "my_projects": 0,
 
 
         # "my_invitations": None,

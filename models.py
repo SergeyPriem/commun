@@ -18,6 +18,18 @@ engine = create_engine(db_url, pool_size=5, max_overflow=20, pool_recycle=3600)
 Base = declarative_base()
 
 
+class HiddenUser(Base):
+    __tablename__ = 'hidden_users'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    hidden_user_id = Column(Integer, ForeignKey('users.id'))
+    date_time = Column(DateTime, nullable=False)
+
+    # Updated Relationships
+    user = relationship("User", foreign_keys=[user_id], back_populates="hidden_users")
+    hidden_user = relationship("User", foreign_keys=[hidden_user_id], back_populates="hidden_by_users")
+
+
 class User(Base):
     __tablename__ = 'users'
 
@@ -41,17 +53,16 @@ class User(Base):
 
     # Existing relationships
     rel_projects = relationship("Project", back_populates="rel_owner")
-    rel_invitations = relationship("Invitation", back_populates="rel_user")
     rel_sent_cvs = relationship("CV", back_populates="rel_sender", foreign_keys="[CV.sender_id]")
     rel_received_cvs = relationship("CV", back_populates="rel_receiver", foreign_keys="[CV.receiver_id]")
     sent_messages = relationship("Message", back_populates="sender", foreign_keys="[Message.sender_id]")
     received_messages = relationship("Message", back_populates="receiver", foreign_keys="[Message.receiver_id]")
-
-    # Relationships for HiddenUser
-    hidden_users = relationship("HiddenUser", foreign_keys="[HiddenUser.user_id]", back_populates="user")
-    hidden_by_users = relationship("HiddenUser", foreign_keys="[HiddenUser.hidden_user_id]",
-                                   back_populates="hidden_user")
+    hidden_users = relationship("HiddenUser", foreign_keys=[HiddenUser.user_id], back_populates="user")
+    hidden_by_users = relationship("HiddenUser", foreign_keys=[HiddenUser.hidden_user_id],
+                                  back_populates="hidden_user")
     hidden_projects = relationship("HiddenProject", back_populates="user")
+
+
 
 
 class Project(Base):
@@ -74,6 +85,24 @@ class Project(Base):
     rel_invitations = relationship("Invitation", back_populates="rel_project")
     hidden_by_users = relationship("HiddenProject", back_populates="project")
 
+
+
+class Invitation(Base):
+    __tablename__ = 'invitations'
+
+    id = Column(Integer, primary_key=True)
+    project_id = Column(Integer, ForeignKey('projects.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    invited_by = Column(Integer, ForeignKey('users.id'), nullable=False)
+    status = Column(Enum('pending', 'accepted', 'rejected', 'cancelled', 'deleted'))
+    date_time = Column(DateTime, nullable=False)
+    last_action_dt = Column(DateTime, nullable=False)
+    last_action_by = Column(Integer, ForeignKey('users.id'), nullable=False)
+
+    # Relationships
+    rel_project = relationship('Project', back_populates="rel_invitations")
+
+
 class HiddenProject(Base):
     __tablename__ = 'hidden_projects'
     id = Column(Integer, primary_key=True)
@@ -84,19 +113,6 @@ class HiddenProject(Base):
     # Fixed Relationships using back_populates for clarity and explicitness
     user = relationship("User", back_populates="hidden_projects")
     project = relationship("Project", back_populates="hidden_by_users")
-
-
-
-class HiddenUser(Base):
-    __tablename__ = 'hidden_users'
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
-    hidden_user_id = Column(Integer, ForeignKey('users.id'))
-    date_time = Column(DateTime, nullable=False)
-
-    # Updated Relationships
-    user = relationship("User", foreign_keys=[user_id], back_populates="hidden_users")
-    hidden_user = relationship("User", foreign_keys=[hidden_user_id], back_populates="hidden_by_users")
 
 
 class Message(Base):
@@ -126,23 +142,6 @@ class CV(Base):
     # Relationships
     rel_sender = relationship('User', back_populates="rel_sent_cvs", foreign_keys=[sender_id])
     rel_receiver = relationship('User', back_populates="rel_received_cvs", foreign_keys=[receiver_id])
-
-
-class Invitation(Base):
-    __tablename__ = 'invitations'
-
-    id = Column(Integer, primary_key=True)
-    project_id = Column(Integer, ForeignKey('projects.id'), nullable=False)
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-    initiated_by = Column(Enum('engineer', 'client', 'installer'))
-    status = Column(String(16000))
-    date_time = Column(DateTime, nullable=False)
-    last_action_dt = Column(DateTime, nullable=False)
-    last_action_by = Column(Enum('engineer', 'client', 'installer'))
-
-    # Relationships
-    rel_project = relationship('Project', back_populates="rel_invitations")
-    rel_user = relationship('User', back_populates="rel_invitations")
 
 
 class Subscription(Base):

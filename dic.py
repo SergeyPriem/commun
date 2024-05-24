@@ -1,6 +1,24 @@
 # -*- coding: utf-8 -*-
 dic = {
 
+    "i_proposed": {
+        "E": "I proposed",
+        "U": "Я запропонував",
+        "R": "Я предложил"
+    },
+
+    "accept": {
+        "E": "Accept",
+        "U": "Прийняти",
+        "R": "Принять"
+    },
+
+    "decline": {
+        "E": "Decline",
+        "U": "Відхилити",
+        "R": "Отклонить"
+    },
+
     "no_invitations": {
         "E": "No invitations",
         "U": "Немає запрошень",
@@ -272,10 +290,52 @@ dic = {
         "R": "Пригласить в Проект"
     },
 
-    "request_cv": {
+    "to_request_cv": {
         "E": "Request CV",
         "U": "Запитати Резюме",
         "R": "Запросить Резюме"
+    },
+
+    "my_colab": {
+        "E": "My Collaboration",
+        "U": "Моя Співпраця",
+        "R": "Моё Сотрудничество"
+    },
+
+    "request_cv": {
+        "E": "Requests for CV",
+        "U": "Запити Резюме",
+        "R": "Запросы Резюме"
+    },
+
+    "new_projects": {
+        "E": "New Projects",
+        "U": "Нові Проекти",
+        "R": "Новые Проекты"
+    },
+
+    "current_projects": {
+        "E": "Current Projects",
+        "U": "Поточні Проекти",
+        "R": "Текущие Проекты"
+    },
+
+    "finished_projects": {
+        "E": "Finished Projects",
+        "U": "Завершені Проекти",
+        "R": "Завершенные Проекты"
+    },
+
+    "declined_projects": {
+        "E": "Declined Projects",
+        "U": "Відхилені Проекти",
+        "R": "Отклоненные Проекты"
+    },
+
+    "deleted_projects": {
+        "E": "Deleted Projects",
+        "U": "Видалені Проекти",
+        "R": "Удаленные Проекты"
     },
 
     "show_hidden_eng": {
@@ -857,6 +917,12 @@ dic = {
 
     },
 
+    "no_proj_selected": {
+        "E": "No Project selected",
+        "U": "Проект не вибрано",
+        "R": "Проект не выбран"
+    },
+
     "how_it_works_2": {
         "E": "_It's absolutely free for you. But you can support us with a donation so that we can improve our "
              "platform._",
@@ -864,6 +930,30 @@ dic = {
              "покращувати нашу платформу._",
         "R": "_Для Вас это абсолютно бесплатно. Но Вы можете поддержать нас донатом, чтобы мы могли улучшать нашу "
              "платформу._"
+    },
+
+    "inv_exists": {
+        "E": "An invitation with the same details already exists.",
+        "U": "Запрошення з такими даними вже існує.",
+        "R": "Приглашение с такими данными уже существует."
+    },
+
+    "my_relations": {
+        "E": "My Prospects",
+        "U": "Мої Перспективи",
+        "R": "Мои Перспективы"
+    },
+
+    "my_projects": {
+        "E": "My Projects",
+        "U": "Мої Проекти",
+        "R": "Мои Проекты"
+    },
+
+    "my_messages": {
+        "E": "My Messages",
+        "U": "Мої Повідомлення",
+        "R": "Мои Сообщения"
     },
 
     "no_new_proj": {
@@ -892,8 +982,8 @@ dic = {
 
     "my_invitations": {
         "E": "My Invitations",
-        "U": "Мої запрошення",
-        "R": "Мои приглашения"
+        "U": "Мої Запрошення",
+        "R": "Мои Приглашения"
     },
 
     "support_us": {
