@@ -4,19 +4,19 @@ import time
 
 import streamsync as ss
 
+from assets.help import he
 from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_installers, _get_user_data, \
     _log_out_user, admin_panel_section, _decline_invitation, _get_actual_own_projects, _add_user_message, \
     _delete_subscription, _get_new_projects, _get_all_finished_projects, _create_project, _invite, \
     _get_engineers, _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, \
     _offer_service, _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, \
-    _get_my_invitations, _get_current_projects, _get_my_invitations
+    _get_current_projects, _get_my_invitations
 from dic import dic
 from dic import error_messages as e_m
 from fw import ss_dic
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
     specialities_R, specialities_U, specialities_E, init_new_project
 from utilities import _send_email, _random_code_alphanumeric, _basic_data_validation
-from assets.help import he
 
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
