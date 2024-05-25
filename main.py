@@ -10,7 +10,8 @@ from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_in
     _delete_subscription, _get_new_projects, _get_all_finished_projects, _create_project, _invite, \
     _get_engineers, _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, \
     _offer_service, _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, \
-    _get_current_projects, _get_my_invitations
+    _get_current_projects, _get_my_invitations, _apply_client_proposal, _decline_client_proposal, _add_message
+
 from dic import dic
 from dic import error_messages as e_m
 from fw import ss_dic
@@ -51,8 +52,11 @@ def get_actual_own_projects_dict(state):
 def invite(state):
     _invite(state)
 
+
 def get_my_invitations(state):
     _get_my_invitations(state)
+
+
 def offer_service(state, context):
     _offer_service(state, context)
 
@@ -510,14 +514,33 @@ def switch_to_own_page(state):
 
 
 def show_my_relations(state):
+    _get_my_invitations(state)
+    ...
     state["my_prospects"] = 1
     state["my_projects"] = 0
+
+
+def apply_client_proposal(state, context):
+    _apply_client_proposal(state, context)
+    _get_my_invitations(state)
+
+
+def decline_client_proposal(state, context):
+    _decline_client_proposal(state, context)
+    _get_my_invitations(state)
 
 
 def show_my_projects(state):
     state["my_prospects"] = 0
     state["my_projects"] = 1
 
+
+def prepare_message_context(state, context):
+    state["proj_message_context"] = context
+
+
+def add_message(state, context):
+    _add_message(state, context)
 
 
 initial_state = ss.init_state(
@@ -578,6 +601,9 @@ initial_state = ss.init_state(
         "my_prospects": 0,
         "my_projects": 0,
 
+        "message_switch": 0,
+        "proj_message": None,
+        "proj_message_context": None,
 
         # "my_invitations": None,
         # "user_message": {
