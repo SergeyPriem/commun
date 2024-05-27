@@ -65,3 +65,18 @@ textarea:focus {
 
 }
 
+.center-div {
+    position: fixed !important; /* Fixed/Sticky position */
+    top: 50% !important; /* Place the div in the middle of the page */
+    left: 50% !important; /* Place the div in the middle of the page */
+    transform: translate(-50%, -50%) !important; /* Translate the div from the middle */
+    width: 40% !important; /* Set the width to 50% of the screen */
+    height: 40% !important; /* Set the height to 50% of the screen */
+    z-index: 1 !important; /* Make sure it sits over other content */
+    /* Add your own styling */
+    background-color: #f9f9f9;
+    border: 1px solid #ffffff !important;
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.3) !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+}
