@@ -1,7 +1,17 @@
 # -*- coding: utf-8 -*-
 dic = {
 
+    "to_cancel": {
+        "E": "Cancel",
+        "U": "Скасувати",
+        "R": "Отменить"
+    },
 
+    "new_message": {
+        "E": "New Message",
+        "U": "Нове Повідомлення",
+        "R": "Новое Сообщение"
+    },
 
     "i_proposed": {
         "E": "I proposed",

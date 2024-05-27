@@ -442,7 +442,7 @@ def _decline_invitation(state, context):
             invitation = session.query(Invitation).filter(Invitation.id == context['itemId']).first()
 
             # Update the invitation status to 'declined'
-            if invitation.status.endswith('Declined'):
+            if invitation.status.endswith('declined'):
                 state.add_notification("warning", "Warning!", "You have already declined this invitation")
                 return
             invitation.status += (f"\n{state['user']['login']} "
@@ -615,7 +615,6 @@ def _get_new_projects(state):
                     } for project, user in cur_projects
                 }
 
-
                 state["new_current_projects_view"] = {
                     "content": True,
                     "message": False
@@ -629,6 +628,7 @@ def _get_new_projects(state):
 
         except SQLAlchemyError as e:
             state.add_notification(f"An error occurred: {e}")
+
 
 def _get_current_projects(state):
     """
@@ -655,7 +655,7 @@ def _get_current_projects(state):
                 .filter(
                 "current" == Project.status,
                 Project.visibility.contains(state["user"]["role"][0])
-                ).all()
+            ).all()
 
             if cur_projects:
                 # Update state with the retrieved projects
@@ -819,11 +819,11 @@ def _invite(state):
             inviting = session.query(User).filter(User.login == state["user"]["login"]).first()
             project = session.query(Project).filter(Project.id == state['selected_proj_to_add_eng']).first()
 
-            # Check if an invitation with the same project_id, user_id, and invited_by already exists
+            # Check if an invitation with the same project_id, user_id, and proposed_by already exists
             existing_invitation = session.query(Invitation).filter(
                 Invitation.project_id == state['selected_proj_to_add_eng'],
                 Invitation.user_id == invited.id,
-                Invitation.invited_by == inviting.id,
+                Invitation.proposed_by == inviting.id,
                 Invitation.status == 'pending'
             ).first()
 
@@ -836,7 +836,7 @@ def _invite(state):
             new_invitation = Invitation(
                 project_id=state['selected_proj_to_add_eng'],
                 user_id=invited.id,
-                invited_by=inviting.id,
+                proposed_by=inviting.id,
                 status='pending',
                 date_time=datetime.datetime.now(),
                 last_action_dt=datetime.datetime.now(),
@@ -903,10 +903,79 @@ def _get_my_invitations(state):
                 "assigned_engineers": project.assigned_engineers,
                 "created": project.created.strftime('%Y-%m-%d'),
                 "owner": session.query(User).get(project.owner).login,
+                "proposed_by": session.query(User).get(invitation.proposed_by).login,
             } for invitation, project in my_invitations}
 
         except SQLAlchemyError as e:
             print(f"An error occurred: {e}, {datetime.datetime.now()}")
+
+
+def _get_my_proposals(state):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        return
+    with Session(bind=engine) as session:
+        try:
+            current_user = session.query(User).filter(User.login == state["user"]["login"]).first()
+
+            my_proposals = session.query(Invitation, Project).join(
+                Project, Project.id == Invitation.project_id
+            ).filter(
+                current_user.id == Invitation.user_id
+            ).all()
+
+            if not my_proposals:
+                state["my_proposals"] = None
+                state["no_proposals_message"] = 1
+                return
+
+            state["no_proposals_message"] = 0
+            state["my_proposals"] = {str(proposal.id): {
+                "project": project.name,
+                "description": project.description,
+                "status": proposal.status,
+                "comments": project.comments,
+                "required_specialists": project.required_specialists,
+                "assigned_engineers": project.assigned_engineers,
+                "created": project.created.strftime('%Y-%m-%d'),
+                "owner": session.query(User).get(project.owner).login,
+            } for proposal, project in my_proposals}
+        except SQLAlchemyError as e:
+            print(f"An error occurred: {e}, {datetime.datetime.now()}")
+
+
+def _apply_client_proposal(state, context):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        return
+    with Session(bind=engine) as session:
+        try:
+            proposal = session.query(Invitation).filter(Invitation.id == context['itemId']).first()
+            project = session.query(Project).filter(Project.id == proposal.project_id).first()
+            project.assigned_engineers = state["user"]["login"]
+            proposal.status = "accepted"
+            session.commit()
+            state.add_notification("info", "Info", "You have accepted the proposal")
+            _get_my_proposals(state)
+        except SQLAlchemyError as e:
+            print(f"An error occurred: {e}, {datetime.datetime.now()}")
+            state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
+
+
+def _decline_client_proposal(state, context):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        return
+    with Session(bind=engine) as session:
+        try:
+            proposal = session.query(Invitation).filter(Invitation.id == context['itemId']).first()
+            proposal.status = "declined"
+            session.commit()
+            state.add_notification("info", "Info", "You have declined the proposal")
+            _get_my_proposals(state)
+        except SQLAlchemyError as e:
+            print(f"An error occurred: {e}, {datetime.datetime.now()}")
+            state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 def _get_engineers(state, spec):
     with Session(bind=engine) as session:
@@ -1216,3 +1285,49 @@ def _resume_project(state, context):
             state.add_notification("info", "Info!", "Project resumed")
         except SQLAlchemyError as e:
             state.add_notification(f"An error occurred: {e}")
+
+
+def _add_message(state):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        return
+
+    if len(state["proj_message"]) > 1000:
+        state.add_notification("warning", "Warning!", "Message is too long. Try again")
+        return
+
+    context = state["proj_message_context"]
+
+    if state["message_switch"]:
+        receiver_login = context["item"]["proposed_by"]
+    else:
+        receiver_login = context["item"]["owner"]
+
+    with Session(bind=engine) as session:
+        try:
+            # Query the database for the sender and receiver
+            sender = session.query(User).filter(User.login == state["user"]["login"]).first()
+            receiver = session.query(User).filter(User.login == receiver_login).first()
+            # my_invitations: item.owner; item.proposed_by
+
+            # If both the sender and receiver are found, create the message
+            if sender and receiver:
+                new_message = Message(
+                    sender_id=sender.id,
+                    receiver_id=receiver.id,
+                    message_text=state["proj_message"],
+                    message_dt=datetime.datetime.now()
+                )
+
+                # Add the new Message object to the session
+                session.add(new_message)
+
+                # Commit the session to save the changes to the database
+                session.commit()
+                state.set_page("engineer_page")
+                print(f"Message from {state['sender_login']} to {state['receiver_login']} added successfully")
+            else:
+                print("Sender or receiver not found")
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
