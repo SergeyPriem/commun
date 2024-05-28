@@ -10,7 +10,8 @@ from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_in
     _delete_subscription, _get_new_projects, _get_all_finished_projects, _create_project, _invite, \
     _get_engineers, _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, \
     _offer_service, _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, \
-    _get_current_projects, _get_my_invitations, _apply_client_proposal, _decline_client_proposal, _add_message
+    _get_current_projects, _get_my_invitations, _apply_client_proposal, _decline_client_proposal, _add_message, \
+    _update_read_date, _get_my_messages_new, _get_my_messages_read, _mark_as_unread
 
 from dic import dic
 from dic import error_messages as e_m
@@ -506,6 +507,7 @@ def hide_help(state):
 def switch_to_own_page(state):
     match state["user"]["role"]:
         case "client":
+            get_my_messages(state)
             state.set_page("client_page")
         case "engineer":
             state.set_page("engineer_page")
@@ -537,10 +539,35 @@ def show_my_projects(state):
 
 def prepare_message_context(state, context):
     state["proj_message_context"] = context
+    print(f"Message context: {context}")
+    change_modal_visibility(state)
 
 
-def add_message(state, context):
-    _add_message(state, context)
+def change_modal_visibility(state):
+    state["modal_vis"] = not state["modal_vis"]
+    state["proj_message"] = None
+
+
+def add_message(state):
+    _add_message(state)
+    change_modal_visibility(state)
+
+
+def get_my_messages(state):
+    _get_my_messages_new(state)
+    _get_my_messages_read(state)
+
+
+def update_read_date(state, context):
+    _update_read_date(state, context)
+    _get_my_messages_new(state)
+    _get_my_messages_read(state)
+
+
+def mark_as_unread(state, context):
+    _mark_as_unread(state, context)
+    _get_my_messages_new(state)
+    _get_my_messages_read(state)
 
 
 initial_state = ss.init_state(
@@ -605,6 +632,8 @@ initial_state = ss.init_state(
         "proj_message": None,
         "proj_message_context": None,
 
+        "modal_vis": False,
+
         # "my_invitations": None,
         # "user_message": {
         #    "first_name": None,
@@ -663,6 +692,6 @@ initial_state = ss.init_state(
 
     })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?66")
+initial_state.import_stylesheet("theme", "/static/custom.css?68")
 
 print("Code executed successfully!")

@@ -803,6 +803,8 @@ def _create_project(state):
         time.sleep(2)
         state["add_project"]["show_message"] = 0
         state["add_project"]["show_section"] = 1
+        _get_my_messages_new(state)
+        _get_my_messages_read(state)
         state.set_page("client_page")
 
 
@@ -865,6 +867,8 @@ def _invite(state):
                 state.add_notification("info", "Info!", f"Invitation to user {invited.login} sent successfully")
                 state["selected_proj_to_add_eng"] = None
                 state["selected_eng_for_proj"] = None
+                _get_my_messages_read(state)
+                _get_my_messages_new(state)
                 state.set_page("client_page")
             else:
                 state.add_notification("warning", "Warning!", "Invitation was not sent...")
@@ -976,6 +980,7 @@ def _decline_client_proposal(state, context):
         except SQLAlchemyError as e:
             print(f"An error occurred: {e}, {datetime.datetime.now()}")
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
+
 
 def _get_engineers(state, spec):
     with Session(bind=engine) as session:
@@ -1308,13 +1313,14 @@ def _add_message(state):
             # Query the database for the sender and receiver
             sender = session.query(User).filter(User.login == state["user"]["login"]).first()
             receiver = session.query(User).filter(User.login == receiver_login).first()
-            # my_invitations: item.owner; item.proposed_by
+            project = session.query(Project).filter(Project.name == context["item"]["project"]).first()
 
             # If both the sender and receiver are found, create the message
-            if sender and receiver:
+            if sender and receiver and project:
                 new_message = Message(
                     sender_id=sender.id,
                     receiver_id=receiver.id,
+                    project_id=project.id,
                     message_text=state["proj_message"],
                     message_dt=datetime.datetime.now()
                 )
@@ -1327,7 +1333,111 @@ def _add_message(state):
                 state.set_page("engineer_page")
                 print(f"Message from {state['sender_login']} to {state['receiver_login']} added successfully")
             else:
-                print("Sender or receiver not found")
+                print("Sender, receiver or project not found")
 
         except Exception as e:
             print(f"An error occurred: {e}")
+
+
+def _get_my_messages_new(state):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        return
+    with Session(bind=engine) as session:
+        try:
+            current_user = session.query(User).filter(User.login == state["user"]["login"]).first()
+
+            my_messages = session.query(Message, User).join(
+                User, User.id == Message.sender_id
+            ).filter(
+                current_user.id == Message.receiver_id,
+                Message.read_dt == None
+            ).all()
+
+            if not my_messages:
+                state["my_new_messages"] = None
+                state["no_new_messages_section"] = state["dic"]["no_messages_found"][state["lang"]]
+                return
+
+            state["no_new_messages_section"] = 0
+
+            state["my_new_messages"] = {str(message.id): {
+                "sender": session.query(User).get(message.sender_id).login,
+                "message_text": message.message_text,
+                "message_dt": message.message_dt.strftime('%Y-%m-%d %H:%M:%S'),
+                "project": session.query(Project).get(message.project_id).name,
+                "read_date": state["dic"]["not_read_yet"][state["lang"]]
+            } for message, user in my_messages}
+
+        except SQLAlchemyError as e:
+            print(f"An error occurred: {e}, {datetime.datetime.now()}")
+
+
+def _get_my_messages_read(state):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        return
+    with Session(bind=engine) as session:
+        try:
+            current_user = session.query(User).filter(User.login == state["user"]["login"]).first()
+
+            my_messages = session.query(Message, User).join(
+                User, User.id == Message.sender_id
+            ).filter(
+                current_user.id == Message.receiver_id,
+                Message.read_dt != None
+            ).all()
+
+            if not my_messages:
+                state["my_read_messages"] = None
+                state["no_read_messages_section"] = state["dic"]["no_messages_found"][state["lang"]]
+                return
+
+            state["no_read_messages_section"] = 0
+
+            state["my_read_messages"] = {str(message.id): {
+                "sender": session.query(User).get(message.sender_id).login,
+                "message_text": message.message_text,
+                "message_dt": message.message_dt.strftime('%Y-%m-%d %H:%M:%S'),
+                "project": session.query(Project).get(message.project_id).name,
+                "read_date": f"{state["dic"]["read"][state["lang"]]}: {message.read_dt.strftime('%Y-%m-%d %H:%M:%S')}"
+            } for message, user in my_messages}
+
+        except SQLAlchemyError as e:
+            print(f"An error occurred: {e}, {datetime.datetime.now()}")
+
+
+def _update_read_date(state, context):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        return
+
+    with Session(bind=engine) as session:
+        try:
+            message = session.query(Message).filter(Message.id == context["itemId"]).first()
+            if message.read_dt:
+                state.add_notification("warning", "Warning!", "Message already marked as read")
+                return
+            message.read_dt = datetime.datetime.now()
+            session.commit()
+            state.add_notification("info", "Info!", "Message marked as read")
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")
+
+
+def _mark_as_unread(state, context):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        return
+
+    with Session(bind=engine) as session:
+        try:
+            message = session.query(Message).filter(Message.id == context["itemId"]).first()
+            if not message.read_dt:
+                state.add_notification("warning", "Warning!", "Message already marked as unread")
+                return
+            message.read_dt = None
+            session.commit()
+            state.add_notification("info", "Info!", "Message marked as unread")
+        except SQLAlchemyError as e:
+            state.add_notification(f"An error occurred: {e}")

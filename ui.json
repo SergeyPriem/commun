@@ -3367,9 +3367,6 @@
             "isCodeManaged": false,
             "position": 10,
             "parentId": "root",
-            "handlers": {
-                "ss-page-open": "get_new_engineers"
-            },
             "visible": true
         },
         "vawb657utc62tjvh": {
@@ -6417,7 +6414,7 @@
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 5,
             "parentId": "n9gg8liqxltm0srr",
             "handlers": {
                 "click": "get_actual_own_projects"
@@ -6711,7 +6708,7 @@
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 5,
+            "position": 6,
             "parentId": "n9gg8liqxltm0srr",
             "handlers": {
                 "click": "get_all_finished_projects"
@@ -7007,7 +7004,7 @@
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 0,
+            "position": 1,
             "parentId": "n9gg8liqxltm0srr",
             "handlers": {
                 "click": "get_new_engineers"
@@ -7246,7 +7243,7 @@
                 "contentPadding": "20px"
             },
             "isCodeManaged": false,
-            "position": 6,
+            "position": 7,
             "parentId": "n9gg8liqxltm0srr",
             "visible": true
         },
@@ -7258,7 +7255,7 @@
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 2,
             "parentId": "n9gg8liqxltm0srr",
             "handlers": {
                 "click": "get_new_installers"
@@ -7495,7 +7492,7 @@
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 3,
             "parentId": "n9gg8liqxltm0srr",
             "handlers": {
                 "click": "get_all_engineers"
@@ -7618,7 +7615,7 @@
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 4,
             "parentId": "n9gg8liqxltm0srr",
             "handlers": {
                 "click": "get_all_installers"
@@ -11288,7 +11285,7 @@
                 "contentPadding": "0px 0px 0px px"
             },
             "isCodeManaged": false,
-            "position": 8,
+            "position": 9,
             "parentId": "n9gg8liqxltm0srr",
             "handlers": {}
         },
@@ -11325,7 +11322,7 @@
                 "name": "@{dic.my_account[lang]}"
             },
             "isCodeManaged": false,
-            "position": 7,
+            "position": 8,
             "parentId": "n9gg8liqxltm0srr",
             "handlers": {},
             "visible": true
@@ -17996,7 +17993,8 @@
             "position": 1,
             "parentId": "nk0xl8usu0ocmm1d",
             "handlers": {
-                "ss-click": "switch_to_own_page"
+                "ss-click": "switch_to_own_page",
+                "click": "get_my_messages"
             },
             "visible": "user.logged"
         },
@@ -19380,7 +19378,9 @@
             "isCodeManaged": false,
             "position": 1,
             "parentId": "ltrc5a2ey2ve3k2h",
-            "handlers": {},
+            "handlers": {
+                "ss-click": "change_modal_visibility"
+            },
             "visible": true
         },
         "3ihcbufp25o42o2t": {
@@ -19672,7 +19672,6 @@
             "position": 2,
             "parentId": "vuof505wxodzqeiv",
             "handlers": {
-                "ss-click": "$goToPage_send_message",
                 "click": "prepare_message_context"
             },
             "visible": true
@@ -21332,16 +21331,17 @@
             "content": {
                 "title": "@{dic.new_message[lang]}",
                 "accentColor": "#ffffff",
-                "containerBackgroundColor": "#1d4087",
+                "containerBackgroundColor": "#152e61",
                 "contentHAlign": "center",
                 "primaryTextColor": "#ffffff",
-                "cssClasses": "center-div"
+                "cssClasses": "center-div",
+                "separatorColor": "#75b892"
             },
             "isCodeManaged": false,
             "position": 15,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
-            "visible": "my_projects"
+            "visible": "modal_vis"
         },
         "159vfbi486t15a0c": {
             "id": "159vfbi486t15a0c",
@@ -21381,7 +21381,7 @@
             "id": "6vv5ps3eowqtcysr",
             "type": "column",
             "content": {
-                "width": "3",
+                "width": "7",
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
@@ -21463,7 +21463,11 @@
             "position": 0,
             "parentId": "yzond6ntqzbf3ulj",
             "handlers": {},
-            "visible": true
+            "visible": true,
+            "binding": {
+                "eventType": "ss-toggle",
+                "stateRef": "message_switch"
+            }
         },
         "e2bb8i1hgzcizh66": {
             "id": "e2bb8i1hgzcizh66",
@@ -21501,7 +21505,11 @@
             "position": 2,
             "parentId": "6vv5ps3eowqtcysr",
             "handlers": {},
-            "visible": true
+            "visible": true,
+            "binding": {
+                "eventType": "ss-change",
+                "stateRef": "proj_message"
+            }
         },
         "bv13lnjedz7rz1mv": {
             "id": "bv13lnjedz7rz1mv",
@@ -21555,8 +21563,362 @@
             "position": 1,
             "parentId": "b8i4r1gwiyomp1ff",
             "handlers": {
-                "ss-click": "add_message"
+                "ss-click": "change_modal_visibility"
             },
+            "visible": true
+        },
+        "bc6xaec834xr0oif": {
+            "id": "bc6xaec834xr0oif",
+            "type": "tab",
+            "content": {
+                "name": "@{dic.my_messages[lang]}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "n9gg8liqxltm0srr",
+            "handlers": {
+                "click": "get_my_messages"
+            },
+            "visible": true
+        },
+        "o9oujkd24m9loekx": {
+            "id": "o9oujkd24m9loekx",
+            "type": "text",
+            "content": {
+                "text": "## @{no_new_messages_section}",
+                "useMarkdown": "yes",
+                "alignment": "center",
+                "primaryTextColor": "#2baacf"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "bc6xaec834xr0oif",
+            "handlers": {},
+            "visible": "no_new_messages_section"
+        },
+        "0425mnok763q798c": {
+            "id": "0425mnok763q798c",
+            "type": "repeater",
+            "content": {
+                "repeaterObject": "@{my_new_messages}",
+                "keyVariable": "itemId",
+                "valueVariable": "item"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "bc6xaec834xr0oif",
+            "handlers": {},
+            "visible": true
+        },
+        "h6wo92jo1c8j06xd": {
+            "id": "h6wo92jo1c8j06xd",
+            "type": "section",
+            "content": {
+                "title": "@{item.sender} - @{item.project}",
+                "separatorColor": "#75b892",
+                "containerBackgroundColor": "#152e61"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "0425mnok763q798c",
+            "handlers": {},
+            "visible": true
+        },
+        "qu5ieslzemt9uinh": {
+            "id": "qu5ieslzemt9uinh",
+            "type": "text",
+            "content": {
+                "text": "@{item.message_text}"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "z52gwsf8qw7itdkm",
+            "handlers": {},
+            "visible": true
+        },
+        "staau38ogaivr9gc": {
+            "id": "staau38ogaivr9gc",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "h6wo92jo1c8j06xd",
+            "handlers": {},
+            "visible": true
+        },
+        "z52gwsf8qw7itdkm": {
+            "id": "z52gwsf8qw7itdkm",
+            "type": "column",
+            "content": {
+                "width": "8",
+                "contentVAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "staau38ogaivr9gc",
+            "handlers": {},
+            "visible": true
+        },
+        "rru6ddgh2tnhfcoh": {
+            "id": "rru6ddgh2tnhfcoh",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentVAlign": "center",
+                "contentHAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "staau38ogaivr9gc",
+            "handlers": {},
+            "visible": true
+        },
+        "efqlakaqv8h1xw1s": {
+            "id": "efqlakaqv8h1xw1s",
+            "type": "text",
+            "content": {
+                "text": "@{dic.created[lang]}: @{item.message_dt} | @{item.read_date}",
+                "primaryTextColor": "#2eb2d3"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "z52gwsf8qw7itdkm",
+            "handlers": {},
+            "visible": true
+        },
+        "7pq0kn1h066zqwt8": {
+            "id": "7pq0kn1h066zqwt8",
+            "type": "repeater",
+            "content": {
+                "repeaterObject": "@{my_read_messages}",
+                "keyVariable": "itemId",
+                "valueVariable": "item"
+            },
+            "isCodeManaged": false,
+            "position": 5,
+            "parentId": "bc6xaec834xr0oif",
+            "handlers": {},
+            "visible": true
+        },
+        "jzg8s1ipd4xt27uv": {
+            "id": "jzg8s1ipd4xt27uv",
+            "type": "section",
+            "content": {
+                "title": "@{item.sender} - @{item.project}",
+                "separatorColor": "#75b892",
+                "containerBackgroundColor": "#152e61"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "7pq0kn1h066zqwt8",
+            "handlers": {},
+            "visible": true
+        },
+        "cnpi58on45m1xcli": {
+            "id": "cnpi58on45m1xcli",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "jzg8s1ipd4xt27uv",
+            "handlers": {},
+            "visible": true
+        },
+        "vnghqy3f13xiyuas": {
+            "id": "vnghqy3f13xiyuas",
+            "type": "column",
+            "content": {
+                "width": "8",
+                "contentVAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "cnpi58on45m1xcli",
+            "handlers": {},
+            "visible": true
+        },
+        "g4e6kw4y2snnws82": {
+            "id": "g4e6kw4y2snnws82",
+            "type": "text",
+            "content": {
+                "text": "@{item.message_text}"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "vnghqy3f13xiyuas",
+            "handlers": {},
+            "visible": true
+        },
+        "suks72ho9uqf7xv3": {
+            "id": "suks72ho9uqf7xv3",
+            "type": "text",
+            "content": {
+                "text": "@{dic.created[lang]}: @{item.message_dt} | @{item.read_date}",
+                "primaryTextColor": "#2eb2d3"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "vnghqy3f13xiyuas",
+            "handlers": {},
+            "visible": true
+        },
+        "8zplt12oapne1yuu": {
+            "id": "8zplt12oapne1yuu",
+            "type": "separator",
+            "content": {
+                "separatorColor": "#1d4087"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "cnpi58on45m1xcli",
+            "handlers": {},
+            "visible": true
+        },
+        "ro8hhsrbbj1mqiei": {
+            "id": "ro8hhsrbbj1mqiei",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentVAlign": "center",
+                "contentHAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "cnpi58on45m1xcli",
+            "handlers": {},
+            "visible": true
+        },
+        "8sbbcatov5r4eojp": {
+            "id": "8sbbcatov5r4eojp",
+            "type": "separator",
+            "content": {
+                "separatorColor": "#152e61"
+            },
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "bc6xaec834xr0oif",
+            "handlers": {},
+            "visible": true
+        },
+        "m0y6qm7aicaucdra": {
+            "id": "m0y6qm7aicaucdra",
+            "type": "text",
+            "content": {
+                "text": "## @{dic.read_messages[lang]}",
+                "useMarkdown": "yes",
+                "alignment": "center"
+            },
+            "isCodeManaged": false,
+            "position": 4,
+            "parentId": "bc6xaec834xr0oif",
+            "handlers": {},
+            "visible": true
+        },
+        "1olv4pgf6id8sqfg": {
+            "id": "1olv4pgf6id8sqfg",
+            "type": "text",
+            "content": {
+                "text": "## @{dic.new_messages[lang]}",
+                "useMarkdown": "yes",
+                "alignment": "center"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "bc6xaec834xr0oif",
+            "handlers": {},
+            "visible": true
+        },
+        "f4qust3zmdjjcejs": {
+            "id": "f4qust3zmdjjcejs",
+            "type": "text",
+            "content": {
+                "text": "## @{no_read_messages_section}",
+                "useMarkdown": "yes",
+                "alignment": "center",
+                "primaryTextColor": "#2baacf"
+            },
+            "isCodeManaged": false,
+            "position": 6,
+            "parentId": "bc6xaec834xr0oif",
+            "handlers": {},
+            "visible": "no_read_messages_section"
+        },
+        "0az8l6lct84fd5s7": {
+            "id": "0az8l6lct84fd5s7",
+            "type": "text",
+            "parentId": "rru6ddgh2tnhfcoh",
+            "content": {
+                "text": "@{dic.to_answer[lang]}",
+                "alignment": "center",
+                "cssClasses": "custom_pointer"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "z5q854p24haepl3q": {
+            "id": "z5q854p24haepl3q",
+            "type": "text",
+            "parentId": "rru6ddgh2tnhfcoh",
+            "content": {
+                "text": "@{dic.mark_as_read[lang]}",
+                "alignment": "center",
+                "cssClasses": "custom_pointer"
+            },
+            "handlers": {
+                "ss-click": "update_read_date"
+            },
+            "position": 2,
+            "visible": true
+        },
+        "ew0kb3i4dry65vjy": {
+            "id": "ew0kb3i4dry65vjy",
+            "type": "separator",
+            "parentId": "rru6ddgh2tnhfcoh",
+            "content": {
+                "separatorColor": "#1d4087"
+            },
+            "handlers": {},
+            "position": 1,
+            "visible": true
+        },
+        "5pgb12j7ria3e8r8": {
+            "id": "5pgb12j7ria3e8r8",
+            "type": "text",
+            "parentId": "ro8hhsrbbj1mqiei",
+            "content": {
+                "text": "@{dic.to_answer[lang]}",
+                "alignment": "center",
+                "cssClasses": "custom_pointer"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "y4k0b9xo3fg6s4yl": {
+            "id": "y4k0b9xo3fg6s4yl",
+            "type": "text",
+            "parentId": "ro8hhsrbbj1mqiei",
+            "content": {
+                "text": "@{dic.mark_as_unread[lang]}",
+                "alignment": "center",
+                "cssClasses": "custom_pointer"
+            },
+            "handlers": {
+                "ss-click": "mark_as_unread"
+            },
+            "position": 2,
+            "visible": true
+        },
+        "lc530re48xpbymk5": {
+            "id": "lc530re48xpbymk5",
+            "type": "separator",
+            "parentId": "ro8hhsrbbj1mqiei",
+            "content": {
+                "separatorColor": "#1d4087"
+            },
+            "handlers": {},
+            "position": 1,
             "visible": true
         }
     }
