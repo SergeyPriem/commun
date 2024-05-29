@@ -297,8 +297,36 @@ dic = {
         "R": "Мы помогаем  найти общие интересы Заказчикам и Инженерам"
     },
 
+    "mission_intro": {
+        "E": "Life around us changes, our approach to work also changes. The practice of recent years and our personal "
+             "experience have shown that working remotely as an engineer can be quite successful. "
+             "Sometimes, it’s critically necessary, "
+             "considering the shortage of qualified engineers and limited relocation opportunities. "
+             "Supporting this viewpoint, we focus on helping Customers and Engineers find each other. "
+             "We are committed to bridging the gap between demand and supply in the engineering field, "
+             "irrespective of geographical boundaries. This is our contribution to the transforming engineering "
+             "labor market.",
+
+        "U": "Змінюється життя навколо нас, змінюється і наш підхід до роботи. Практика останніх років і "
+             "наш особистий досвід показали, що працювати інженером дистанційно можна досить успішно. "
+             "Іноді це навіть критично необхідно, враховуючи дефіцит "
+             "кваліфікованих інженерів і обмежені можливості переїзду. Враховуючи наведені зміни, ми "
+             "зосереджуємось на тому, щоб допомогти клієнтам та інженерам знайти один одного. Ми прагнемо подолати "
+             "розрив між попитом і пропозицією в інженерній галузі, незалежно від географічних кордонів. "
+             "Це наш внесок у ринок інженерної праці, що трансформується.",
+
+        "R": "Жизнь вокруг нас меняется, меняется и наш подход к работе. Практика последних лет и наш личный опыт "
+             "показали, что работать инженером удаленно можно достаточно успешно. "
+             "Иногда это даже критически необходимо, учитывая нехватку "
+             "квалифицированных инженеров и ограниченные возможности переезда. Учитывая приведенные изменения, "
+             "мы сосредотачиваемся на том, чтобы помочь Заказчикам и Инженерам найти друг друга. "
+             "Мы стремимся сократить разрыв между спросом и предложением в инженерной отрасли, "
+             "независимо от географических границ. Это наш вклад в трансформирующийся рынок инженерного труда."
+    },
+
+
     "mission_descr": {
-        "E": "We specialize in helping customers and engineers find each other. Our team searches and connects "
+        "E": "Our team searches and connects "
              "customers looking for professional engineers with talented engineers ready to take on a variety "
              "of projects. We understand that finding the right engineer can be a difficult task for the customer, "
              "while at the same time, finding an interesting project can be a challenge for the engineer. Our goal "
@@ -307,7 +335,7 @@ dic = {
              "successfully. If you are looking for an Engineer or ready to take on a new Project, contact us - we will "
              "help you find the perfect solution for your business.",
 
-        "U": "Ми спеціалізуємося на тому, щоб допомагати Замовникам та Інженерам знаходити один одного. Наша команда "
+        "U": "Наша команда "
              "займається пошуком та зв'язком між Замовниками, які шукають професійних Інженерів, та талановитими "
              "Інженерами, готовими взятися за різноманітні Проекти. Ми розуміємо, що пошук відповідного Інженера "
              "може бути складним завданням для Замовника, в той же час знайти цікавий Проект може бути викликом "
@@ -316,8 +344,7 @@ dic = {
              "деталі проекту та успішно співпрацювати. Якщо ви шукаєте Інженера або готові взяти участь у новому "
              "Проекті, зверніться до нас – ми допоможемо вам знайти ідеальне рішення для вашого бізнесу.",
 
-        "R": "Мы специализируемся на том, чтобы помогать Заказчикам и Инженерам находить друг друга. "
-             "Наша команда занимается поиском и связью между заказчиками, которые ищут профессиональных Инженеров, "
+        "R": "Наша команда занимается поиском и связью между заказчиками, которые ищут профессиональных Инженеров, "
              "и талантливыми Инженерами, готовыми взяться за разнообразные проекты. Мы понимаем, что поиск подходящего "
              "Инженера может быть сложной задачей для заказчика, в то же время, найти интересный проект может быть "
              "вызовом для Инженера. Наша цель - упростить этот процесс, сделать его более эффективным и "
