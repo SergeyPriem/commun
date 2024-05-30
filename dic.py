@@ -302,7 +302,7 @@ dic = {
              "experience have shown that working remotely as an engineer can be quite successful. "
              "Sometimes, it’s critically necessary, "
              "considering the shortage of qualified engineers and limited relocation opportunities. "
-             "Supporting this viewpoint, we focus on helping Customers and Engineers find each other. "
+             "With these changes, we are focused on helping our Clients and Engineers find each other. "
              "We are committed to bridging the gap between demand and supply in the engineering field, "
              "irrespective of geographical boundaries. This is our contribution to the transforming engineering "
              "labor market.",
