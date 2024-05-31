@@ -3,7 +3,7 @@ import datetime
 import time
 import bcrypt
 import pandas as pd
-from sqlalchemy import select
+from sqlalchemy import select, func
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session
 
@@ -1317,12 +1317,18 @@ def _add_message(state):
 
             # If both the sender and receiver are found, create the message
             if sender and receiver and project:
+                # Query for the maximum dialog_id in the Message table
+                max_dialog_id = session.query(func.max(Message.dialog_id)).scalar()
+                # If the table is empty, set dialog_id to 1, otherwise increment the maximum dialog_id by 1
+                dialog_id = 1 if max_dialog_id is None else max_dialog_id + 1
+
                 new_message = Message(
                     sender_id=sender.id,
                     receiver_id=receiver.id,
                     project_id=project.id,
                     message_text=state["proj_message"],
-                    message_dt=datetime.datetime.now()
+                    message_dt=datetime.datetime.now(),
+                    dialog_id=dialog_id  # Set the dialog_id
                 )
 
                 # Add the new Message object to the session
@@ -1330,7 +1336,50 @@ def _add_message(state):
 
                 # Commit the session to save the changes to the database
                 session.commit()
-                state.set_page("engineer_page")
+                # state.set_page(f"{state['user']['role']}_page")
+                print(f"Message from {state['sender_login']} to {state['receiver_login']} added successfully")
+            else:
+                print("Sender, receiver or project not found")
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+
+def _reply_to_message(state):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        return
+
+    if len(state["proj_message"]) > 1000:
+        state.add_notification("warning", "Warning!", "Message is too long. Try again")
+        return
+
+    context = state["proj_message_context"]
+
+    with Session(bind=engine) as session:
+        try:
+            # Query the database for the sender and receiver
+            sender = session.query(User).filter(User.login == state["user"]["login"]).first()
+            receiver = session.query(User).filter(User.login == context["item"]["sender"]).first()
+            project = session.query(Project).filter(Project.name == context["item"]["project"]).first()
+
+            # If both the sender and receiver are found, create the message
+            if sender and receiver and project:
+                new_message = Message(
+                    sender_id=sender.id,
+                    receiver_id=receiver.id,
+                    project_id=project.id,
+                    message_text=state["proj_message"],
+                    message_dt=datetime.datetime.now(),
+                    dialog_id=context["item"]["dialog_id"]  # Set the dialog_id
+                )
+
+                # Add the new Message object to the session
+                session.add(new_message)
+
+                # Commit the session to save the changes to the database
+                session.commit()
+                # state.set_page(f"{state['user']['role']}_page")
                 print(f"Message from {state['sender_login']} to {state['receiver_login']} added successfully")
             else:
                 print("Sender, receiver or project not found")
@@ -1366,7 +1415,8 @@ def _get_my_messages_new(state):
                 "message_text": message.message_text,
                 "message_dt": message.message_dt.strftime('%Y-%m-%d %H:%M:%S'),
                 "project": session.query(Project).get(message.project_id).name,
-                "read_date": state["dic"]["not_read_yet"][state["lang"]]
+                "read_date": state["dic"]["not_read_yet"][state["lang"]],
+                "dialog_id": message.dialog_id  # Added this line
             } for message, user in my_messages}
 
         except SQLAlchemyError as e:
@@ -1400,7 +1450,8 @@ def _get_my_messages_read(state):
                 "message_text": message.message_text,
                 "message_dt": message.message_dt.strftime('%Y-%m-%d %H:%M:%S'),
                 "project": session.query(Project).get(message.project_id).name,
-                "read_date": f"{state["dic"]["read"][state["lang"]]}: {message.read_dt.strftime('%Y-%m-%d %H:%M:%S')}"
+                "read_date": f"{state["dic"]["read"][state["lang"]]}: {message.read_dt.strftime('%Y-%m-%d %H:%M:%S')}",
+                "dialog_id": message.dialog_id  # Added this line
             } for message, user in my_messages}
 
         except SQLAlchemyError as e:
