@@ -11,7 +11,7 @@ from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_in
     _get_engineers, _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, \
     _offer_service, _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, \
     _get_current_projects, _get_my_invitations, _apply_client_proposal, _decline_client_proposal, _add_message, \
-    _update_read_date, _get_my_messages_new, _get_my_messages_read, _mark_as_unread
+    _update_read_date, _get_my_messages_new, _get_my_messages_read, _mark_as_unread, _reply_to_message
 
 from dic import dic
 from dic import error_messages as e_m
@@ -543,6 +543,12 @@ def prepare_message_context(state, context):
     change_modal_visibility(state)
 
 
+def prepare_reply_context(state, context):
+    state["proj_message_context"] = context
+    print(f"Reply context: {context}")
+    change_modal_visibility(state)
+
+
 def change_modal_visibility(state):
     state["modal_vis"] = not state["modal_vis"]
     state["proj_message"] = None
@@ -550,6 +556,11 @@ def change_modal_visibility(state):
 
 def add_message(state):
     _add_message(state)
+    change_modal_visibility(state)
+
+
+def reply_to_message(state, context):
+    _reply_to_message(state)
     change_modal_visibility(state)
 
 
@@ -692,6 +703,6 @@ initial_state = ss.init_state(
 
     })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?68")
+initial_state.import_stylesheet("theme", "/static/custom.css?69")
 
 print("Code executed successfully!")

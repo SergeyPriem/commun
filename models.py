@@ -116,6 +116,7 @@ class Message(Base):
     receiver_id = Column(Integer, ForeignKey('users.id'))
     project_id = Column(Integer, ForeignKey('projects.id'), nullable=True)
     message_text = Column(String(1000), nullable=False)
+    dialog_id = Column(Integer, nullable=False)
     message_dt = Column(DateTime, nullable=False)
     read_dt = Column(DateTime, nullable=True)
 
