@@ -1492,3 +1492,11 @@ def _mark_as_unread(state, context):
             state.add_notification("info", "Info!", "Message marked as unread")
         except SQLAlchemyError as e:
             state.add_notification(f"An error occurred: {e}")
+
+
+def _execute_function(func_name, state, context):
+    if func_name:
+        try:
+            globals()[func_name](state, context)
+        except KeyError:
+            state.add_notification('error', "Error", "Function not found")

@@ -81,3 +81,17 @@ textarea:focus {
     box-sizing: border-box !important;
     overflow-y: auto !important;
 }
+
+.text-as-link {
+    cursor: pointer !important;
+}
+
+.text-as-link:hover {
+    text-decoration: underline !important;
+}
+
+.underlined-text {
+    text-decoration: underline;
+    text-decoration-color: #1d87fd;
+}
+

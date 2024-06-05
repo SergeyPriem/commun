@@ -1201,6 +1201,7 @@ dic = {
 
 
 }
+
 error_messages = {
     "first_name": {
         "E": "Enter the name longer than two characters",
@@ -1279,3 +1280,90 @@ error_messages = {
     },
 
 }
+
+MENU_TEMPLATE = {
+    "home": {
+        "E": "HOME",
+        "R": "ГЛАВНАЯ",
+        "U": "ГОЛОВНА"
+    },
+    "about": {
+        "E": "ABOUT",
+        "R": "О НАС",
+        "U": "ПРО НАС"
+    },
+    "projects": {
+        "E": "PROJECTS",
+        "R": "ПРОЕКТЫ",
+        "U": "ПРОЕКТИ"
+    },
+    "contacts": {
+        "E": "CONTACTS",
+        "R": "КОНТАКТЫ",
+        "U": "КОНТАКТИ"
+    }
+}
+
+
+eng_menu = {
+    "my_prospects": {
+        "E": "My Prospects",
+        "U": "Мої Перспективи",
+        "R": "Мои Перспективы"
+    },
+
+    "my_projects": {
+        "E": "My Projects",
+        "U": "Мої Проекти",
+        "R": "Мои Проекты"
+    }
+}
+
+my_prospects_menu = {
+    "my_invitations": {
+        "E": "My Invitations",
+        "U": "Мої Запрошення",
+        "R": "Мои Приглашения"
+    },
+
+    "my_proposals": {
+        "E": "My Proposals",
+        "U": "Мої Пропозиції",
+        "R": "Мои Предложения"
+    },
+
+    "my_messages": {
+        "E": "My Messages",
+        "U": "Мої Повідомлення",
+        "R": "Мои Сообщения"
+    },
+
+    "my_cv_requests": {
+        "E": "CV Requests",
+        "U": "Запити на Резюме",
+        "R": "Запросы на Резюме"
+    }
+
+}
+
+my_projects_menu = {
+    "my_current_projects": {
+        "E": "My Current Projects",
+        "U": "Мої Поточні Проекти",
+        "R": "Мои Текущие Проекты"
+    },
+
+    "my_finished_projects": {
+        "E": "My Finished Projects",
+        "U": "Мої Завершені Проекти",
+        "R": "Мои Завершенные Проекты"
+    },
+
+    "my_deleted_projects": {
+        "E": "My Deleted Projects",
+        "U": "Мої Видалені Проекти",
+        "R": "Мои Удаленные Проекты"
+    }
+}
+
+
