@@ -25,12 +25,12 @@ from utilities import _send_email, _random_code_alphanumeric, _basic_data_valida
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 
-def create_prospects_menu(state, context):
-    state["my_prospects_menu"] = create_menu("my_prospects_menu", my_prospects_menu, None)
+def _create_prospects_menu(state, context):
+    state["my_prospects_menu"] = _create_menu("my_prospects_menu", my_prospects_menu, None)
 
 
-def create_projects_menu(state, context):
-    state["my_projects_menu"] = create_menu("my_projects_menu", my_projects_menu, None)
+def _create_projects_menu(state, context):
+    state["my_projects_menu"] = _create_menu("my_projects_menu", my_projects_menu, None)
 
 
 def _execute_menu_function(menu_name, state, context):
@@ -47,7 +47,7 @@ def _execute_menu_function(menu_name, state, context):
             state.add_notification('error', "Error", "Function not found")
 
 
-def create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
+def _create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
     return {
         key: {
             "text": item,
@@ -69,13 +69,6 @@ def change_menu(state, context):
 
     state[menu_name][context['itemId']]["css"] = "underlined-text"
     state[menu_name][context['itemId']]["selected"] = True
-
-    try:
-        print(context)
-    except Exception as e:
-        print(f"Error: {e}")
-        print("Context is not printable")
-
     _execute_menu_function(menu_name, state, context)
 
 
@@ -190,7 +183,7 @@ def log_user(state):
             if role == 'engineer':
                 _prepare_eng_page(state)
             if role in ('engineer', 'installer'):
-                state['eng_menu'] = create_menu("eng_menu", eng_menu, None)
+                state['eng_menu'] = _create_menu("eng_menu", eng_menu, None)
 
                 state["vacancies"]["content"] = 1
                 state["vacancies"]["warning"] = 0
@@ -705,7 +698,7 @@ initial_state = wf.init_state(
 
         "eng_menu": None,
 
-        'main_menu': create_menu("main_menu", main_menu, 0),
+        'main_menu': _create_menu("main_menu", main_menu, 0),
 
         # "my_invitations": None,
         # "user_message": {

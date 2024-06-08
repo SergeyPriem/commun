@@ -33,14 +33,14 @@ eng_menu = {
         "E": "My Prospects",
         "U": "Мої Перспективи",
         "R": "Мои Перспективы",
-        "fun": "create_prospects_menu"
+        "fun": "_create_prospects_menu"
     },
 
     "my_projects": {
         "E": "My Projects",
         "U": "Мої Проекти",
         "R": "Мои Проекты",
-        "fun": "create_projects_menu"
+        "fun": "_create_projects_menu"
     }
 }
 
