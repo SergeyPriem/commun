@@ -49,7 +49,7 @@ init_login = {
     "db_message_text": ""
 }
 
-init_projects = init_engineers = init_vacancy = dict(warning=1, content=0)
+init_projects = init_engineers = init_vacancies = dict(warning=1, content=0)
 
 specialities = {
         "ar": "Architecture",
