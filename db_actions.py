@@ -496,6 +496,9 @@ def _get_actual_own_projects(state):  # ui
 
 
 def _add_user_message(state):
+    if not state["user_message"]:
+        state.add_notification('error', 'Error', "E-mail is empty. Try again")
+        return
     if not _valid_email(state["user_message"]["email"]):
         state.add_notification('error', 'Error', "Wrong e-mail. Try again")
         return
@@ -1494,9 +1497,3 @@ def _mark_as_unread(state, context):
             state.add_notification(f"An error occurred: {e}")
 
 
-def _execute_function(func_name, state, context):
-    if func_name:
-        try:
-            globals()[func_name](state, context)
-        except KeyError:
-            state.add_notification('error', "Error", "Function not found")

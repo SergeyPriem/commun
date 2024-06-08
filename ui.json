@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "streamsync_version": "0.5.0"
+        "writer_version": "0.6.0"
     },
     "components": {
         "root": {
@@ -15,7 +15,7 @@
             "isCodeManaged": false,
             "position": 0,
             "handlers": {
-                "ss-hashchange": "handle_hash_change"
+                "wf-hashchange": "handle_hash_change"
             },
             "visible": true
         },
@@ -23,10 +23,11 @@
             "id": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "type": "page",
             "content": {
-                "pageMode": "compact",
+                "pageMode": "wide",
                 "emptinessColor": "#152e61",
                 "key": "about",
-                "accentColor": "#152e61"
+                "accentColor": "#152e61",
+                "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -130,9 +131,10 @@
             "id": "e7rhayvymnj50ly4",
             "type": "page",
             "content": {
-                "pageMode": "compact",
+                "pageMode": "wide",
                 "emptinessColor": "#152e61",
-                "key": "engineers"
+                "key": "engineers",
+                "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
             "position": 2,
@@ -221,7 +223,7 @@
             "id": "l3ygcr8fduzeqn3s",
             "type": "page",
             "content": {
-                "pageMode": "compact",
+                "pageMode": "wide",
                 "emptinessColor": "#152e61",
                 "key": "projects"
             },
@@ -229,7 +231,7 @@
             "position": 3,
             "parentId": "root",
             "handlers": {
-                "ss-page-open": "get_all_current_projects"
+                "wf-page-open": "get_all_current_projects"
             },
             "visible": true
         },
@@ -463,7 +465,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user_message.first_name"
             }
         },
@@ -525,7 +527,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user_message.last_name"
             }
         },
@@ -541,7 +543,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user_message.email"
             }
         },
@@ -558,7 +560,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user_message.message"
             }
         },
@@ -581,13 +583,13 @@
             "content": {
                 "text": "@{dic.to_send[lang]}",
                 "buttonTextColor": "#152e61",
-                "icon": "mail-send-line"
+                "icon": "outgoing_mail"
             },
             "isCodeManaged": false,
             "position": 0,
             "parentId": "1nxrqri07s45kb28",
             "handlers": {
-                "ss-click": "add_user_message"
+                "wf-click": "add_user_message"
             },
             "visible": true
         },
@@ -742,7 +744,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.first_name"
             }
         },
@@ -758,7 +760,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.last_name"
             }
         },
@@ -774,7 +776,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.email"
             }
         },
@@ -790,7 +792,7 @@
             "position": 0,
             "parentId": "hz781hxfwb01xqpc",
             "handlers": {
-                "ss-click": "validate_reg_data"
+                "wf-click": "validate_reg_data"
             },
             "visible": true
         },
@@ -823,9 +825,10 @@
             "id": "lg1dg4rk9qkvx4gf",
             "type": "page",
             "content": {
-                "pageMode": "compact",
+                "pageMode": "wide",
                 "emptinessColor": "#152e61",
-                "key": "login"
+                "key": "login",
+                "primaryTextColor": "#152e61"
             },
             "isCodeManaged": false,
             "position": 7,
@@ -841,7 +844,8 @@
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
-                "primaryTextColor": "#ffffff"
+                "primaryTextColor": "#ffffff",
+                "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
             "position": 3,
@@ -949,7 +953,9 @@
             "id": "tkovsp9oqnxurn5u",
             "type": "textinput",
             "content": {
-                "label": "@{dic.login[lang]}*"
+                "label": "@{dic.login[lang]}*",
+                "cssClasses": "",
+                "placeholder": ""
             },
             "isCodeManaged": false,
             "position": 0,
@@ -957,7 +963,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.login"
             }
         },
@@ -966,7 +972,8 @@
             "type": "textinput",
             "content": {
                 "label": "@{dic.password[lang]}*",
-                "passwordMode": "yes"
+                "passwordMode": "yes",
+                "placeholder": ""
             },
             "isCodeManaged": false,
             "position": 1,
@@ -974,7 +981,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.password"
             }
         },
@@ -997,14 +1004,14 @@
             "content": {
                 "text": "@{dic.to_log_in[lang]}",
                 "buttonTextColor": "#152e61",
-                "icon": "login-box-line",
+                "icon": "login",
                 "cssClasses": ""
             },
             "isCodeManaged": false,
             "position": 0,
             "parentId": "ytksua2spdlpux2o",
             "handlers": {
-                "ss-click": "log_user"
+                "wf-click": "log_user"
             },
             "visible": true
         },
@@ -1037,9 +1044,10 @@
             "id": "u58nuzt98hnjh39p",
             "type": "page",
             "content": {
-                "pageMode": "compact",
+                "pageMode": "wide",
                 "emptinessColor": "#152e61",
-                "key": "vacancy"
+                "key": "vacancies",
+                "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
             "position": 1,
@@ -1060,7 +1068,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.password"
             }
         },
@@ -1076,7 +1084,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.login"
             }
         },
@@ -1092,7 +1100,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.phone"
             }
         },
@@ -1232,7 +1240,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "reg.code_entered"
             }
         },
@@ -1246,7 +1254,7 @@
             "position": 0,
             "parentId": "1zd63ax8r8b1ahbv",
             "handlers": {
-                "ss-click": "validate_email_by_code"
+                "wf-click": "validate_email_by_code"
             },
             "visible": ""
         },
@@ -1519,7 +1527,7 @@
             "id": "hqk5anytgnpvypz6",
             "type": "text",
             "content": {
-                "text": "# **@{dic.vacancy[lang]}**",
+                "text": "# **@{dic.vacancies[lang]}**",
                 "useMarkdown": "yes",
                 "alignment": "center"
             },
@@ -1786,7 +1794,7 @@
             "id": "m6xgo3h4vqd4aheg",
             "type": "message",
             "content": {
-                "message": "@{dic.eng_warning[lang]}",
+                "message": "-@{dic.eng_warning[lang]}",
                 "cssClasses": ""
             },
             "isCodeManaged": false,
@@ -1799,7 +1807,7 @@
             "id": "ntz9zkxjy5kozt18",
             "type": "message",
             "content": {
-                "message": "@{dic.vacancy_warning[lang]}",
+                "message": "- @{dic.vacancies_warning[lang]}",
                 "cssClasses": ""
             },
             "isCodeManaged": false,
@@ -1832,7 +1840,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.password2"
             }
         },
@@ -1895,7 +1903,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.description"
             }
         },
@@ -2011,7 +2019,7 @@
             "position": 0,
             "parentId": "pntto9ktldo4mpiw",
             "handlers": {
-                "ss-click": "show_client_form"
+                "wf-click": "show_client_form"
             },
             "visible": true
         },
@@ -2025,7 +2033,7 @@
             "position": 1,
             "parentId": "pntto9ktldo4mpiw",
             "handlers": {
-                "ss-click": "show_engineer_form"
+                "wf-click": "show_engineer_form"
             },
             "visible": true
         },
@@ -2044,7 +2052,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-number-change",
+                "eventType": "wf-number-change",
                 "stateRef": "user.experience"
             }
         },
@@ -2185,7 +2193,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.first_name"
             }
         },
@@ -2201,7 +2209,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.last_name"
             }
         },
@@ -2217,7 +2225,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.email"
             }
         },
@@ -2233,7 +2241,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.phone"
             }
         },
@@ -2262,7 +2270,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.password"
             }
         },
@@ -2278,7 +2286,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.login"
             }
         },
@@ -2295,7 +2303,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.password2"
             }
         },
@@ -2358,7 +2366,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.description"
             }
         },
@@ -2386,7 +2394,7 @@
             "position": 0,
             "parentId": "8uiugy2sy0tnm04t",
             "handlers": {
-                "ss-click": "validate_reg_data"
+                "wf-click": "validate_reg_data"
             },
             "visible": true
         },
@@ -2427,7 +2435,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.company"
             }
         },
@@ -2441,7 +2449,7 @@
             "position": 2,
             "parentId": "pntto9ktldo4mpiw",
             "handlers": {
-                "ss-click": "show_installer_form"
+                "wf-click": "show_installer_form"
             },
             "visible": true
         },
@@ -2582,7 +2590,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.first_name"
             }
         },
@@ -2598,7 +2606,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.last_name"
             }
         },
@@ -2614,7 +2622,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.email"
             }
         },
@@ -2630,7 +2638,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.phone"
             }
         },
@@ -2659,7 +2667,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.password"
             }
         },
@@ -2675,7 +2683,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.login"
             }
         },
@@ -2692,7 +2700,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.password2"
             }
         },
@@ -2711,7 +2719,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-number-change",
+                "eventType": "wf-number-change",
                 "stateRef": "user.experience"
             }
         },
@@ -2774,7 +2782,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.description"
             }
         },
@@ -2802,7 +2810,7 @@
             "position": 0,
             "parentId": "infkgkvn80siolid",
             "handlers": {
-                "ss-click": "validate_reg_data"
+                "wf-click": "validate_reg_data"
             },
             "visible": true
         },
@@ -3267,7 +3275,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "new_project.name"
             }
         },
@@ -3284,7 +3292,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "new_project.description"
             }
         },
@@ -3307,7 +3315,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-options-change",
+                "eventType": "wf-options-change",
                 "stateRef": "new_project.required_specialists"
             }
         },
@@ -3324,7 +3332,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "new_project.comments"
             }
         },
@@ -3351,7 +3359,7 @@
             "position": 0,
             "parentId": "9ksx12bg9ai1cj87",
             "handlers": {
-                "ss-click": "create_project"
+                "wf-click": "create_project"
             },
             "visible": true
         },
@@ -3462,10 +3470,11 @@
             "id": "w9qq644dtxpua1qo",
             "type": "page",
             "content": {
-                "pageMode": "compact",
+                "pageMode": "wide",
                 "emptinessColor": "#152e61",
                 "key": "engineer_page",
-                "accentColor": "#152e61"
+                "accentColor": "#152e61",
+                "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
             "position": 11,
@@ -3483,7 +3492,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 14,
+            "position": 15,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "user.login"
@@ -3572,7 +3581,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.url"
             }
         },
@@ -3596,7 +3605,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-options-change",
+                "eventType": "wf-options-change",
                 "stateRef": "user.major"
             }
         },
@@ -3613,7 +3622,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.url"
             }
         },
@@ -3630,7 +3639,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.url"
             }
         },
@@ -3773,7 +3782,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.login"
             }
         },
@@ -3790,7 +3799,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.password"
             }
         },
@@ -3845,7 +3854,7 @@
             "position": 0,
             "parentId": "1qaozt10ck1vf47v",
             "handlers": {
-                "ss-click": "log_admin"
+                "wf-click": "log_admin"
             },
             "visible": true
         },
@@ -3928,7 +3937,7 @@
             "position": 0,
             "parentId": "6bwwj5zjck7o0rmq",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -3972,7 +3981,7 @@
             "position": 0,
             "parentId": "954f7lzjmvtxxtop",
             "handlers": {
-                "ss-click": "admin_log_section"
+                "wf-click": "admin_log_section"
             },
             "visible": "user.not_logged"
         },
@@ -3989,7 +3998,7 @@
             "position": 1,
             "parentId": "954f7lzjmvtxxtop",
             "handlers": {
-                "ss-click": "admin_reg_section"
+                "wf-click": "admin_reg_section"
             },
             "visible": "user.not_logged"
         },
@@ -4006,7 +4015,7 @@
             "position": 2,
             "parentId": "954f7lzjmvtxxtop",
             "handlers": {
-                "ss-click": "quit_fun"
+                "wf-click": "quit_fun"
             },
             "visible": "user.logged"
         },
@@ -4083,7 +4092,7 @@
             "position": 0,
             "parentId": "h4z7nxljnp4bt769",
             "handlers": {
-                "ss-click": "switch_to_eng"
+                "wf-click": "switch_to_eng"
             },
             "visible": true
         },
@@ -4101,7 +4110,7 @@
             "position": 1,
             "parentId": "h4z7nxljnp4bt769",
             "handlers": {
-                "ss-click": "switch_to_ukr"
+                "wf-click": "switch_to_ukr"
             },
             "visible": true
         },
@@ -4118,7 +4127,7 @@
             "position": 2,
             "parentId": "h4z7nxljnp4bt769",
             "handlers": {
-                "ss-click": "switch_to_rus"
+                "wf-click": "switch_to_rus"
             },
             "visible": true
         },
@@ -4273,7 +4282,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.first_name"
             }
         },
@@ -4289,7 +4298,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.last_name"
             }
         },
@@ -4305,7 +4314,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.email"
             }
         },
@@ -4321,7 +4330,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.phone"
             }
         },
@@ -4350,7 +4359,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.password"
             }
         },
@@ -4366,7 +4375,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.login"
             }
         },
@@ -4383,7 +4392,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "user.password2"
             }
         },
@@ -4423,7 +4432,7 @@
             "position": 0,
             "parentId": "6n5qvj5iugc581l7",
             "handlers": {
-                "ss-click": "validate_admin_data"
+                "wf-click": "validate_admin_data"
             },
             "visible": ""
         },
@@ -4603,11 +4612,11 @@
             "position": 0,
             "parentId": "ng0t2zepu49l4kqn",
             "handlers": {
-                "ss-option-change": "get_table_as_dataframe"
+                "wf-option-change": "get_table_as_dataframe"
             },
             "visible": true,
             "binding": {
-                "eventType": "ss-option-change",
+                "eventType": "wf-option-change",
                 "stateRef": "db_table_name"
             }
         },
@@ -4734,7 +4743,7 @@
             "position": 0,
             "parentId": "ur8xhn12oohioryn",
             "handlers": {
-                "ss-click": "validate_admin_code"
+                "wf-click": "validate_admin_code"
             },
             "visible": true
         },
@@ -4788,7 +4797,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "reg.code_entered"
             }
         },
@@ -4945,7 +4954,7 @@
             "id": "dugh9lh04v3upws6",
             "type": "text",
             "content": {
-                "text": "### @{dic.mission_descr[lang]}",
+                "text": "@{dic.mission_descr[lang]}",
                 "useMarkdown": "yes"
             },
             "isCodeManaged": false,
@@ -5141,7 +5150,7 @@
             "position": 0,
             "parentId": "rgl3gq7fwqwn31kh",
             "handlers": {
-                "ss-click": "offer_service"
+                "wf-click": "offer_service"
             },
             "visible": true
         },
@@ -5420,7 +5429,7 @@
             "position": 0,
             "parentId": "4qmm7fpd4ukz4i7y",
             "handlers": {
-                "ss-click": "offer_service"
+                "wf-click": "offer_service"
             },
             "visible": true
         },
@@ -5722,7 +5731,7 @@
             "position": 0,
             "parentId": "l6wk7o3lxxblteis",
             "handlers": {
-                "ss-click": "connect_w_engineer"
+                "wf-click": "connect_w_engineer"
             },
             "visible": true
         },
@@ -5903,7 +5912,7 @@
             "position": 3,
             "parentId": "u58nuzt98hnjh39p",
             "handlers": {},
-            "visible": "vacancy.content"
+            "visible": "vacancies.content"
         },
         "029n4pyz9y007lvt": {
             "id": "029n4pyz9y007lvt",
@@ -6040,7 +6049,7 @@
             "position": 2,
             "parentId": "u58nuzt98hnjh39p",
             "handlers": {},
-            "visible": "vacancy.warning"
+            "visible": "vacancies.warning"
         },
         "m74ij3hg5cap59a2": {
             "id": "m74ij3hg5cap59a2",
@@ -6229,7 +6238,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "subscription.first_name"
             }
         },
@@ -6245,7 +6254,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "subscription.last_name"
             }
         },
@@ -6261,7 +6270,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "subscription.email"
             }
         },
@@ -6290,7 +6299,7 @@
             "position": 0,
             "parentId": "qhqnhrss3529zfjd",
             "handlers": {
-                "ss-click": "add_to_subscription"
+                "wf-click": "add_to_subscription"
             },
             "visible": true
         },
@@ -6389,7 +6398,7 @@
             "position": 0,
             "parentId": "qn1k8dp5wdkkf2ms",
             "handlers": {
-                "ss-click": "$goToPage_client_page"
+                "wf-click": "$goToPage_client_page"
             },
             "visible": true
         },
@@ -6570,7 +6579,7 @@
             "position": 1,
             "parentId": "b2kd83kz6n57cag1",
             "handlers": {
-                "ss-click": "finalise_project"
+                "wf-click": "finalise_project"
             },
             "visible": true
         },
@@ -6850,7 +6859,7 @@
             "position": 0,
             "parentId": "nc1k8r5ckhl1nv5p",
             "handlers": {
-                "ss-click": "resume_project"
+                "wf-click": "resume_project"
             },
             "visible": true
         },
@@ -6866,7 +6875,7 @@
             "position": 1,
             "parentId": "nc1k8r5ckhl1nv5p",
             "handlers": {
-                "ss-click": "delete_project"
+                "wf-click": "delete_project"
             },
             "visible": true
         },
@@ -7147,7 +7156,7 @@
             "position": 0,
             "parentId": "vwuczbuyrx17fzpj",
             "handlers": {
-                "ss-click": "connect_w_engineer"
+                "wf-click": "connect_w_engineer"
             },
             "visible": true
         },
@@ -7163,7 +7172,7 @@
             "position": 2,
             "parentId": "vwuczbuyrx17fzpj",
             "handlers": {
-                "ss-click": "set_selected_engineer"
+                "wf-click": "set_selected_engineer"
             },
             "visible": true
         },
@@ -7398,7 +7407,7 @@
             "position": 0,
             "parentId": "yuontcyps4ux9bk4",
             "handlers": {
-                "ss-click": "connect_w_engineer"
+                "wf-click": "connect_w_engineer"
             },
             "visible": true
         },
@@ -7940,7 +7949,7 @@
             "position": 0,
             "parentId": "twi241fj4flkv7dd",
             "handlers": {
-                "ss-click": "$goToPage_subscribe"
+                "wf-click": "$goToPage_subscribe"
             },
             "visible": true
         },
@@ -7972,7 +7981,7 @@
             "position": 0,
             "parentId": "zpifdxkvzphmep9m",
             "handlers": {
-                "ss-click": "$goToPage_support_us"
+                "wf-click": "$goToPage_support_us"
             },
             "visible": true
         },
@@ -8003,7 +8012,7 @@
             "position": 0,
             "parentId": "raiwhobvkdshjt9u",
             "handlers": {
-                "ss-click": "$goToPage_contact_us"
+                "wf-click": "$goToPage_contact_us"
             },
             "visible": true
         },
@@ -8061,7 +8070,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-option-change",
+                "eventType": "wf-option-change",
                 "stateRef": "selected_proj_to_add_eng"
             }
         },
@@ -8100,7 +8109,7 @@
             "position": 0,
             "parentId": "1wi40axapnh5raof",
             "handlers": {
-                "ss-click": "$goToPage_client_page"
+                "wf-click": "$goToPage_client_page"
             },
             "visible": true
         },
@@ -8114,7 +8123,7 @@
             "position": 0,
             "parentId": "vqaum1s9hju0byk6",
             "handlers": {
-                "ss-click": "invite"
+                "wf-click": "invite"
             },
             "visible": true
         },
@@ -8341,7 +8350,7 @@
             "position": 0,
             "parentId": "8cywknb8kju7unke",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -8375,7 +8384,7 @@
             "position": 0,
             "parentId": "0fje6rq5hhqejhf3",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -8840,7 +8849,7 @@
             "position": 1,
             "parentId": "yncc454drpo8n2pl",
             "handlers": {
-                "ss-click": "show_unsubscribe_window"
+                "wf-click": "show_unsubscribe_window"
             },
             "visible": true
         },
@@ -8938,7 +8947,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "subscription.first_name"
             }
         },
@@ -9025,7 +9034,7 @@
             "position": 1,
             "parentId": "vwuczbuyrx17fzpj",
             "handlers": {
-                "ss-click": "request_cv"
+                "wf-click": "request_cv"
             },
             "visible": true
         },
@@ -9125,7 +9134,7 @@
             "position": 0,
             "parentId": "k7zv7t2ei3ek60jp",
             "handlers": {
-                "ss-click": "connect_w_engineer"
+                "wf-click": "connect_w_engineer"
             },
             "visible": true
         },
@@ -9141,8 +9150,8 @@
             "position": 2,
             "parentId": "k7zv7t2ei3ek60jp",
             "handlers": {
-                "ss-click": "set_selected_engineer",
-                "click": "get_actual_own_projects_dict"
+                "click": "get_actual_own_projects_dict",
+                "wf-click": "set_selected_engineer"
             },
             "visible": true
         },
@@ -9158,7 +9167,7 @@
             "position": 1,
             "parentId": "k7zv7t2ei3ek60jp",
             "handlers": {
-                "ss-click": "request_cv"
+                "wf-click": "request_cv"
             },
             "visible": true
         },
@@ -9175,7 +9184,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-toggle",
+                "eventType": "wf-toggle",
                 "stateRef": "show_hidden_eng"
             }
         },
@@ -9192,7 +9201,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-toggle",
+                "eventType": "wf-toggle",
                 "stateRef": "show_hidden_ins"
             }
         },
@@ -9208,7 +9217,7 @@
             "position": 1,
             "parentId": "yuontcyps4ux9bk4",
             "handlers": {
-                "ss-click": "request_cv"
+                "wf-click": "request_cv"
             },
             "visible": true
         },
@@ -9308,7 +9317,7 @@
             "position": 0,
             "parentId": "5h0s22vv61v1slq8",
             "handlers": {
-                "ss-click": "connect_w_engineer"
+                "wf-click": "connect_w_engineer"
             },
             "visible": true
         },
@@ -9338,7 +9347,7 @@
             "position": 1,
             "parentId": "5h0s22vv61v1slq8",
             "handlers": {
-                "ss-click": "request_cv"
+                "wf-click": "request_cv"
             },
             "visible": true
         },
@@ -9693,7 +9702,7 @@
             "position": 0,
             "parentId": "od6em17tgz3qmfxg",
             "handlers": {
-                "ss-click": "accept_invitation"
+                "wf-click": "accept_invitation"
             },
             "visible": true
         },
@@ -9709,7 +9718,7 @@
             "position": 0,
             "parentId": "ooatink6uc702t2l",
             "handlers": {
-                "ss-click": "request_for_invitation"
+                "wf-click": "request_for_invitation"
             },
             "visible": true
         },
@@ -9725,7 +9734,7 @@
             "position": 1,
             "parentId": "od6em17tgz3qmfxg",
             "handlers": {
-                "ss-click": "decline_invitation"
+                "wf-click": "decline_invitation"
             },
             "visible": true
         },
@@ -9873,7 +9882,7 @@
             "position": 0,
             "parentId": "j0ptaw0eplo4e7t0",
             "handlers": {
-                "ss-click": "prepare_eng_page"
+                "wf-click": "prepare_eng_page"
             },
             "visible": true
         },
@@ -10170,7 +10179,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "current_invitation_message"
             }
         },
@@ -10187,7 +10196,7 @@
             "position": 1,
             "parentId": "j0ptaw0eplo4e7t0",
             "handlers": {
-                "ss-click": "send_request"
+                "wf-click": "send_request"
             },
             "visible": true
         },
@@ -10433,7 +10442,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "unsubscribe.email"
             }
         },
@@ -10488,7 +10497,7 @@
             "position": 1,
             "parentId": "bmiwrrn9e9cg042l",
             "handlers": {
-                "ss-click": "delete_subscription"
+                "wf-click": "delete_subscription"
             },
             "visible": true
         },
@@ -10586,7 +10595,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "subscription.first_name"
             }
         },
@@ -10638,7 +10647,7 @@
             "position": 0,
             "parentId": "bmiwrrn9e9cg042l",
             "handlers": {
-                "ss-click": "show_subscribe_window"
+                "wf-click": "show_subscribe_window"
             },
             "visible": true
         },
@@ -10800,18 +10809,6 @@
             "handlers": {},
             "visible": true
         },
-        "euaozf8k3038yx7s": {
-            "id": "euaozf8k3038yx7s",
-            "type": "reuse",
-            "content": {
-                "proxyId": "@{}"
-            },
-            "isCodeManaged": false,
-            "position": 3,
-            "parentId": "k97az8z9rei13cpb",
-            "handlers": {},
-            "visible": true
-        },
         "7r3pon9m25uc1lyz": {
             "id": "7r3pon9m25uc1lyz",
             "type": "reuse",
@@ -10892,7 +10889,7 @@
             "position": 0,
             "parentId": "k35alfl3fbgp1g41",
             "handlers": {
-                "ss-click": "$goToPage_subscribe"
+                "wf-click": "$goToPage_subscribe"
             },
             "visible": true
         },
@@ -10924,7 +10921,7 @@
             "position": 0,
             "parentId": "1wfsin5tujr4pemi",
             "handlers": {
-                "ss-click": "$goToPage_support_us"
+                "wf-click": "$goToPage_support_us"
             },
             "visible": true
         },
@@ -10955,7 +10952,7 @@
             "position": 0,
             "parentId": "687ag2y96km7m0lg",
             "handlers": {
-                "ss-click": "$goToPage_contact_us"
+                "wf-click": "$goToPage_contact_us"
             },
             "visible": true
         },
@@ -11002,7 +10999,7 @@
                 "proxyId": "@{footer}"
             },
             "isCodeManaged": false,
-            "position": 15,
+            "position": 16,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": true
@@ -11103,7 +11100,7 @@
             "position": 0,
             "parentId": "s2gh1bgluz2njkkn",
             "handlers": {
-                "ss-click": "show_help"
+                "wf-click": "show_help"
             },
             "visible": true
         },
@@ -11180,7 +11177,7 @@
             "position": 0,
             "parentId": "p4pmiqcuh2r6w85z",
             "handlers": {
-                "ss-click": "hide_help"
+                "wf-click": "hide_help"
             },
             "visible": true
         },
@@ -11450,7 +11447,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "new_project.name"
             }
         },
@@ -11467,7 +11464,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "new_project.description"
             }
         },
@@ -11490,7 +11487,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-options-change",
+                "eventType": "wf-options-change",
                 "stateRef": "new_project.required_specialists"
             }
         },
@@ -11507,7 +11504,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "new_project.comments"
             }
         },
@@ -11535,7 +11532,7 @@
             "position": 0,
             "parentId": "gciba1kryr2liy7n",
             "handlers": {
-                "ss-click": "create_project"
+                "wf-click": "create_project"
             },
             "visible": true
         },
@@ -13823,7 +13820,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-options-change",
+                "eventType": "wf-options-change",
                 "stateRef": "reg_vis"
             }
         },
@@ -13929,7 +13926,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-options-change",
+                "eventType": "wf-options-change",
                 "stateRef": "reg_vis"
             }
         },
@@ -13997,7 +13994,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-options-change",
+                "eventType": "wf-options-change",
                 "stateRef": "reg_vis"
             }
         },
@@ -14237,7 +14234,7 @@
             "position": 0,
             "parentId": "64mg9e8eh5ord3ar",
             "handlers": {
-                "ss-click": "offer_service"
+                "wf-click": "offer_service"
             },
             "visible": true
         },
@@ -14542,7 +14539,7 @@
             "position": 0,
             "parentId": "aybxhay6nxn8jgia",
             "handlers": {
-                "ss-click": "connect_w_engineer"
+                "wf-click": "connect_w_engineer"
             },
             "visible": true
         },
@@ -14833,7 +14830,7 @@
             "position": 0,
             "parentId": "au85ftd7v5r28j4c",
             "handlers": {
-                "ss-click": "offer_service"
+                "wf-click": "offer_service"
             },
             "visible": true
         },
@@ -15403,7 +15400,7 @@
             "position": 0,
             "parentId": "iz6xo5qgllgjdt9s",
             "handlers": {
-                "ss-click": "accept_invitation"
+                "wf-click": "accept_invitation"
             },
             "visible": true
         },
@@ -15419,7 +15416,7 @@
             "position": 1,
             "parentId": "iz6xo5qgllgjdt9s",
             "handlers": {
-                "ss-click": "decline_invitation"
+                "wf-click": "decline_invitation"
             },
             "visible": true
         },
@@ -15459,7 +15456,7 @@
             "position": 0,
             "parentId": "qjwy0e5me8kevoa2",
             "handlers": {
-                "ss-click": "request_for_invitation"
+                "wf-click": "request_for_invitation"
             },
             "visible": true
         },
@@ -15686,7 +15683,7 @@
             "position": 0,
             "parentId": "zvhod3qm3b26953c",
             "handlers": {
-                "ss-click": "offer_service"
+                "wf-click": "offer_service"
             },
             "visible": true
         },
@@ -15991,7 +15988,7 @@
             "position": 0,
             "parentId": "wnrtmmayymu8bdhw",
             "handlers": {
-                "ss-click": "connect_w_engineer"
+                "wf-click": "connect_w_engineer"
             },
             "visible": true
         },
@@ -16282,7 +16279,7 @@
             "position": 0,
             "parentId": "971o8x73r358vzp9",
             "handlers": {
-                "ss-click": "offer_service"
+                "wf-click": "offer_service"
             },
             "visible": true
         },
@@ -16967,7 +16964,7 @@
             "position": 0,
             "parentId": "2z5i4qtoi039v0rn",
             "handlers": {
-                "ss-click": "accept_invitation"
+                "wf-click": "accept_invitation"
             },
             "visible": true
         },
@@ -16983,7 +16980,7 @@
             "position": 1,
             "parentId": "2z5i4qtoi039v0rn",
             "handlers": {
-                "ss-click": "decline_invitation"
+                "wf-click": "decline_invitation"
             },
             "visible": true
         },
@@ -17024,7 +17021,7 @@
             "position": 0,
             "parentId": "i1jqr65m3xh779js",
             "handlers": {
-                "ss-click": "request_for_invitation"
+                "wf-click": "request_for_invitation"
             },
             "visible": true
         },
@@ -17097,7 +17094,7 @@
             "position": 0,
             "parentId": "3co2g6vpa8g0ytbz",
             "handlers": {
-                "ss-click": "show_my_invitations"
+                "wf-click": "show_my_invitations"
             },
             "visible": true
         },
@@ -17114,7 +17111,7 @@
             "position": 2,
             "parentId": "3co2g6vpa8g0ytbz",
             "handlers": {
-                "ss-click": "show_my_current_projects"
+                "wf-click": "show_my_current_projects"
             },
             "visible": true
         },
@@ -17131,7 +17128,7 @@
             "position": 4,
             "parentId": "3co2g6vpa8g0ytbz",
             "handlers": {
-                "ss-click": "show_my_finished_projects"
+                "wf-click": "show_my_finished_projects"
             },
             "visible": true
         },
@@ -17281,7 +17278,7 @@
             "position": 0,
             "parentId": "2deh8xbmqn53gc5j",
             "handlers": {
-                "ss-click": "offer_service"
+                "wf-click": "offer_service"
             },
             "visible": true
         },
@@ -17559,7 +17556,7 @@
             "position": 0,
             "parentId": "v61q5xvlu4ubg3vf",
             "handlers": {
-                "ss-click": "offer_service"
+                "wf-click": "offer_service"
             },
             "visible": true
         },
@@ -17746,7 +17743,7 @@
             "id": "pvmdfgohpg8ihp50",
             "type": "column",
             "content": {
-                "width": "2.8",
+                "width": "2.4",
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
@@ -17768,79 +17765,11 @@
             "handlers": {},
             "visible": true
         },
-        "j0vvq0ogsnt4wghy": {
-            "id": "j0vvq0ogsnt4wghy",
-            "type": "button",
-            "content": {
-                "text": "@{dic.about_us[lang]}",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#ffffff",
-                "cssClasses": "but_as_link"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "muvor9s8fscz1rul",
-            "handlers": {
-                "ss-click": "$goToPage_about"
-            },
-            "visible": true
-        },
-        "65nsm5eq27kfgjwl": {
-            "id": "65nsm5eq27kfgjwl",
-            "type": "button",
-            "content": {
-                "text": "@{dic.projects[lang]}",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#ffffff",
-                "cssClasses": "but_as_link"
-            },
-            "isCodeManaged": false,
-            "position": 1,
-            "parentId": "muvor9s8fscz1rul",
-            "handlers": {
-                "ss-click": "$goToPage_projects"
-            },
-            "visible": true
-        },
-        "wlkgw1kthygibvpr": {
-            "id": "wlkgw1kthygibvpr",
-            "type": "button",
-            "content": {
-                "text": "@{dic.engineers[lang]}",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#ffffff",
-                "cssClasses": "but_as_link"
-            },
-            "isCodeManaged": false,
-            "position": 2,
-            "parentId": "muvor9s8fscz1rul",
-            "handlers": {
-                "ss-click": "$goToPage_engineers"
-            },
-            "visible": true
-        },
-        "k6pb5v54n3w60q6y": {
-            "id": "k6pb5v54n3w60q6y",
-            "type": "button",
-            "content": {
-                "text": "@{dic.vacancy[lang]}",
-                "buttonColor": "#152e61",
-                "buttonTextColor": "#ffffff",
-                "cssClasses": "but_as_link"
-            },
-            "isCodeManaged": false,
-            "position": 3,
-            "parentId": "muvor9s8fscz1rul",
-            "handlers": {
-                "ss-click": "$goToPage_vacancy"
-            },
-            "visible": true
-        },
         "t8rgskk8rzyjw61j": {
             "id": "t8rgskk8rzyjw61j",
             "type": "column",
             "content": {
-                "width": "1.4",
+                "width": "1.5",
                 "contentHAlign": "center",
                 "contentVAlign": "center"
             },
@@ -17848,24 +17777,6 @@
             "position": 1,
             "parentId": "9gohn05xrnmd8e3z",
             "handlers": {},
-            "visible": true
-        },
-        "zrkqyn63a91h8s72": {
-            "id": "zrkqyn63a91h8s72",
-            "type": "text",
-            "content": {
-                "text": "# **@{dic.community[lang]}**",
-                "useMarkdown": "yes",
-                "primaryTextColor": "#ffffff",
-                "alignment": "center",
-                "cssClasses": "custom_pointer"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "t8rgskk8rzyjw61j",
-            "handlers": {
-                "ss-click": "$goToPage_about"
-            },
             "visible": true
         },
         "bt9lcy3iyq0j5hgg": {
@@ -17908,7 +17819,7 @@
             "position": 0,
             "parentId": "nk0xl8usu0ocmm1d",
             "handlers": {
-                "ss-click": "$goToPage_login"
+                "wf-click": "$goToPage_login"
             },
             "visible": "user.not_logged"
         },
@@ -17925,7 +17836,7 @@
             "position": 2,
             "parentId": "nk0xl8usu0ocmm1d",
             "handlers": {
-                "ss-click": "$goToPage_registration"
+                "wf-click": "$goToPage_registration"
             },
             "visible": "user.not_logged"
         },
@@ -17942,8 +17853,8 @@
             "position": 1,
             "parentId": "nk0xl8usu0ocmm1d",
             "handlers": {
-                "ss-click": "switch_to_own_page",
-                "click": "get_my_messages"
+                "click": "get_my_messages",
+                "wf-click": "switch_to_own_page"
             },
             "visible": "user.logged"
         },
@@ -17960,7 +17871,7 @@
             "position": 3,
             "parentId": "nk0xl8usu0ocmm1d",
             "handlers": {
-                "ss-click": "quit_fun"
+                "wf-click": "quit_fun"
             },
             "visible": "user.logged"
         },
@@ -17994,7 +17905,7 @@
             "position": 0,
             "parentId": "z885d0keu7ki5p0p",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -18013,19 +17924,6 @@
             "handlers": {},
             "visible": true
         },
-        "bc2r55vls9obo3pp": {
-            "id": "bc2r55vls9obo3pp",
-            "type": "horizontalstack",
-            "content": {
-                "contentPadding": "0px",
-                "contentHAlign": "center"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "u40d9wj5vw86bxil",
-            "handlers": {},
-            "visible": true
-        },
         "4inifxabqd2v8xhs": {
             "id": "4inifxabqd2v8xhs",
             "type": "text",
@@ -18036,9 +17934,9 @@
             },
             "isCodeManaged": false,
             "position": 0,
-            "parentId": "bc2r55vls9obo3pp",
+            "parentId": "0ub6ajotz2j9f9o7",
             "handlers": {
-                "ss-click": "switch_to_eng"
+                "wf-click": "switch_to_eng"
             },
             "visible": true
         },
@@ -18052,9 +17950,9 @@
             },
             "isCodeManaged": false,
             "position": 1,
-            "parentId": "bc2r55vls9obo3pp",
+            "parentId": "0ub6ajotz2j9f9o7",
             "handlers": {
-                "ss-click": "switch_to_ukr"
+                "wf-click": "switch_to_ukr"
             },
             "visible": true
         },
@@ -18068,9 +17966,9 @@
             },
             "isCodeManaged": false,
             "position": 2,
-            "parentId": "bc2r55vls9obo3pp",
+            "parentId": "0ub6ajotz2j9f9o7",
             "handlers": {
-                "ss-click": "switch_to_rus"
+                "wf-click": "switch_to_rus"
             },
             "visible": true
         },
@@ -18102,7 +18000,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-options-change",
+                "eventType": "wf-options-change",
                 "stateRef": "proj_vis"
             }
         },
@@ -18131,7 +18029,7 @@
             "position": 0,
             "parentId": "s5pqxqr852y5pnn4",
             "handlers": {
-                "ss-click": "switch_to_eng"
+                "wf-click": "switch_to_eng"
             },
             "visible": true
         },
@@ -18147,7 +18045,7 @@
             "position": 1,
             "parentId": "s5pqxqr852y5pnn4",
             "handlers": {
-                "ss-click": "switch_to_ukr"
+                "wf-click": "switch_to_ukr"
             },
             "visible": true
         },
@@ -18163,7 +18061,7 @@
             "position": 2,
             "parentId": "s5pqxqr852y5pnn4",
             "handlers": {
-                "ss-click": "switch_to_rus"
+                "wf-click": "switch_to_rus"
             },
             "visible": true
         },
@@ -18193,7 +18091,7 @@
             "position": 1,
             "parentId": "3co2g6vpa8g0ytbz",
             "handlers": {
-                "ss-click": "show_my_proposals"
+                "wf-click": "show_my_proposals"
             },
             "visible": true
         },
@@ -18620,7 +18518,7 @@
             "position": 0,
             "parentId": "ogwkyg0hp1x9e2co",
             "handlers": {
-                "ss-click": "accept_invitation"
+                "wf-click": "accept_invitation"
             },
             "visible": true
         },
@@ -18636,7 +18534,7 @@
             "position": 1,
             "parentId": "ogwkyg0hp1x9e2co",
             "handlers": {
-                "ss-click": "decline_invitation"
+                "wf-click": "decline_invitation"
             },
             "visible": true
         },
@@ -18677,7 +18575,7 @@
             "position": 0,
             "parentId": "yn0m2ibtx58k426j",
             "handlers": {
-                "ss-click": "request_for_invitation"
+                "wf-click": "request_for_invitation"
             },
             "visible": true
         },
@@ -18707,7 +18605,7 @@
             "position": 3,
             "parentId": "3co2g6vpa8g0ytbz",
             "handlers": {
-                "ss-click": "show_my_current_projects"
+                "wf-click": "show_my_current_projects"
             },
             "visible": true
         },
@@ -18781,7 +18679,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 8,
+            "position": 9,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "eng_menu.my_projects.selected"
@@ -18812,7 +18710,7 @@
             "position": 0,
             "parentId": "amxczs2owsfwid4q",
             "handlers": {
-                "ss-click": "get_new_current_projects"
+                "wf-click": "get_new_current_projects"
             },
             "visible": true
         },
@@ -18829,7 +18727,7 @@
             "position": 1,
             "parentId": "amxczs2owsfwid4q",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -18846,7 +18744,7 @@
             "position": 2,
             "parentId": "amxczs2owsfwid4q",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -18863,7 +18761,7 @@
             "position": 3,
             "parentId": "amxczs2owsfwid4q",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -18880,7 +18778,7 @@
             "position": 4,
             "parentId": "amxczs2owsfwid4q",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -18912,9 +18810,10 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 7,
+            "position": 8,
             "parentId": "w9qq644dtxpua1qo",
-            "handlers": {}
+            "handlers": {},
+            "visible": "my_prospects_menu.my_cv_requests.selected"
         },
         "qongu5ehoozq5zit": {
             "id": "qongu5ehoozq5zit",
@@ -18937,13 +18836,14 @@
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
                 "primaryTextColor": "#ffffff",
-                "buttonTextColor": "#ffffff"
+                "buttonTextColor": "#ffffff",
+                "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 5,
+            "position": 6,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
-            "visible": "my_prospects_menu"
+            "visible": "my_prospects_menu.my_proposals.selected"
         },
         "ju5rm2edzbl2ig57": {
             "id": "ju5rm2edzbl2ig57",
@@ -18968,9 +18868,10 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 6,
+            "position": 7,
             "parentId": "w9qq644dtxpua1qo",
-            "handlers": {}
+            "handlers": {},
+            "visible": "my_prospects_menu.my_messages.selected"
         },
         "rb8k382liiiq77gl": {
             "id": "rb8k382liiiq77gl",
@@ -18996,7 +18897,7 @@
                 "buttonTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 9,
+            "position": 10,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {}
         },
@@ -19023,7 +18924,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 10,
+            "position": 11,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {}
         },
@@ -19050,7 +18951,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 11,
+            "position": 12,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {}
         },
@@ -19077,7 +18978,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 12,
+            "position": 13,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {}
         },
@@ -19104,7 +19005,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 13,
+            "position": 14,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {}
         },
@@ -19254,7 +19155,7 @@
             "position": 0,
             "parentId": "ltrc5a2ey2ve3k2h",
             "handlers": {
-                "ss-click": "offer_service"
+                "wf-click": "offer_service"
             },
             "visible": true
         },
@@ -19270,7 +19171,7 @@
             "position": 1,
             "parentId": "ltrc5a2ey2ve3k2h",
             "handlers": {
-                "ss-click": "change_modal_visibility"
+                "wf-click": "change_modal_visibility"
             },
             "visible": true
         },
@@ -19547,7 +19448,7 @@
             "position": 0,
             "parentId": "vuof505wxodzqeiv",
             "handlers": {
-                "ss-click": "apply_client_proposal"
+                "wf-click": "apply_client_proposal"
             },
             "visible": true
         },
@@ -19706,7 +19607,7 @@
             "position": 1,
             "parentId": "vuof505wxodzqeiv",
             "handlers": {
-                "ss-click": "decline_client_proposal"
+                "wf-click": "decline_client_proposal"
             },
             "visible": true
         },
@@ -19844,7 +19745,7 @@
             "position": 0,
             "parentId": "gxnrqte82weefqq6",
             "handlers": {
-                "ss-click": "offer_service"
+                "wf-click": "offer_service"
             },
             "visible": true
         },
@@ -19874,7 +19775,7 @@
             "position": 1,
             "parentId": "gxnrqte82weefqq6",
             "handlers": {
-                "ss-click": "offer_service"
+                "wf-click": "offer_service"
             },
             "visible": true
         },
@@ -20193,7 +20094,7 @@
             "position": 0,
             "parentId": "4i5o9rhr0vb6p0tg",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -20210,7 +20111,7 @@
             "position": 1,
             "parentId": "4i5o9rhr0vb6p0tg",
             "handlers": {
-                "ss-click": "$goToPage_projects"
+                "wf-click": "$goToPage_projects"
             },
             "visible": true
         },
@@ -20227,7 +20128,7 @@
             "position": 2,
             "parentId": "4i5o9rhr0vb6p0tg",
             "handlers": {
-                "ss-click": "$goToPage_engineers"
+                "wf-click": "$goToPage_engineers"
             },
             "visible": true
         },
@@ -20235,7 +20136,7 @@
             "id": "nan6xopse7znicr9",
             "type": "button",
             "content": {
-                "text": "@{dic.vacancy[lang]}",
+                "text": "@{dic.vacancies[lang]}",
                 "buttonColor": "#919191",
                 "buttonTextColor": "#121212",
                 "cssClasses": "but_as_link"
@@ -20244,7 +20145,7 @@
             "position": 3,
             "parentId": "4i5o9rhr0vb6p0tg",
             "handlers": {
-                "ss-click": "$goToPage_vacancy"
+                "wf-click": "$goToPage_vacancies"
             },
             "visible": true
         },
@@ -20276,7 +20177,7 @@
             "position": 0,
             "parentId": "jajc8nwfluh1pcz7",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -20320,7 +20221,7 @@
             "position": 0,
             "parentId": "fa8o877b2aio2zv9",
             "handlers": {
-                "ss-click": "$goToPage_login"
+                "wf-click": "$goToPage_login"
             },
             "visible": "user.not_logged"
         },
@@ -20337,7 +20238,7 @@
             "position": 2,
             "parentId": "fa8o877b2aio2zv9",
             "handlers": {
-                "ss-click": "$goToPage_registration"
+                "wf-click": "$goToPage_registration"
             },
             "visible": "user.not_logged"
         },
@@ -20354,7 +20255,7 @@
             "position": 1,
             "parentId": "fa8o877b2aio2zv9",
             "handlers": {
-                "ss-click": "switch_to_own_page"
+                "wf-click": "switch_to_own_page"
             },
             "visible": "user.logged"
         },
@@ -20371,7 +20272,7 @@
             "position": 3,
             "parentId": "fa8o877b2aio2zv9",
             "handlers": {
-                "ss-click": "quit_fun"
+                "wf-click": "quit_fun"
             },
             "visible": "user.logged"
         },
@@ -20405,7 +20306,7 @@
             "position": 0,
             "parentId": "v9pj6593uivut8zt",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -20449,7 +20350,7 @@
             "position": 0,
             "parentId": "o2zsaptett1u3s8l",
             "handlers": {
-                "ss-click": "switch_to_eng"
+                "wf-click": "switch_to_eng"
             },
             "visible": true
         },
@@ -20465,7 +20366,7 @@
             "position": 1,
             "parentId": "o2zsaptett1u3s8l",
             "handlers": {
-                "ss-click": "switch_to_ukr"
+                "wf-click": "switch_to_ukr"
             },
             "visible": true
         },
@@ -20481,7 +20382,7 @@
             "position": 2,
             "parentId": "o2zsaptett1u3s8l",
             "handlers": {
-                "ss-click": "switch_to_rus"
+                "wf-click": "switch_to_rus"
             },
             "visible": true
         },
@@ -20594,7 +20495,7 @@
             "position": 0,
             "parentId": "hrdhfvgh0ut8y71j",
             "handlers": {
-                "ss-click": "$goToPage_subscribe"
+                "wf-click": "$goToPage_subscribe"
             },
             "visible": true
         },
@@ -20626,7 +20527,7 @@
             "position": 0,
             "parentId": "ypdoepgcblyy3ytx",
             "handlers": {
-                "ss-click": "$goToPage_support_us"
+                "wf-click": "$goToPage_support_us"
             },
             "visible": true
         },
@@ -20657,7 +20558,7 @@
             "position": 0,
             "parentId": "p5c0ix466ngzzd1y",
             "handlers": {
-                "ss-click": "$goToPage_contact_us"
+                "wf-click": "$goToPage_contact_us"
             },
             "visible": true
         },
@@ -20751,7 +20652,7 @@
             "position": 0,
             "parentId": "6up08eqpkbxnu2t9",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -20768,7 +20669,7 @@
             "position": 1,
             "parentId": "6up08eqpkbxnu2t9",
             "handlers": {
-                "ss-click": "$goToPage_projects"
+                "wf-click": "$goToPage_projects"
             },
             "visible": true
         },
@@ -20785,7 +20686,7 @@
             "position": 2,
             "parentId": "6up08eqpkbxnu2t9",
             "handlers": {
-                "ss-click": "$goToPage_engineers"
+                "wf-click": "$goToPage_engineers"
             },
             "visible": true
         },
@@ -20793,7 +20694,7 @@
             "id": "6sykd5oqdx17cxvv",
             "type": "button",
             "content": {
-                "text": "@{dic.vacancy[lang]}",
+                "text": "@{dic.vacancies[lang]}",
                 "buttonColor": "#152e61",
                 "buttonTextColor": "#ffffff",
                 "cssClasses": "but_as_link"
@@ -20802,7 +20703,7 @@
             "position": 3,
             "parentId": "6up08eqpkbxnu2t9",
             "handlers": {
-                "ss-click": "$goToPage_vacancy"
+                "wf-click": "$goToPage_vacancies"
             },
             "visible": true
         },
@@ -20834,7 +20735,7 @@
             "position": 0,
             "parentId": "h6aw7iwqyrdnx43l",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -20878,7 +20779,7 @@
             "position": 0,
             "parentId": "0qtkwyxjqwv9rxtz",
             "handlers": {
-                "ss-click": "$goToPage_login"
+                "wf-click": "$goToPage_login"
             },
             "visible": "user.not_logged"
         },
@@ -20895,7 +20796,7 @@
             "position": 2,
             "parentId": "0qtkwyxjqwv9rxtz",
             "handlers": {
-                "ss-click": "$goToPage_registration"
+                "wf-click": "$goToPage_registration"
             },
             "visible": "user.not_logged"
         },
@@ -20912,7 +20813,7 @@
             "position": 1,
             "parentId": "0qtkwyxjqwv9rxtz",
             "handlers": {
-                "ss-click": "switch_to_own_page"
+                "wf-click": "switch_to_own_page"
             },
             "visible": "user.logged"
         },
@@ -20929,7 +20830,7 @@
             "position": 3,
             "parentId": "0qtkwyxjqwv9rxtz",
             "handlers": {
-                "ss-click": "quit_fun"
+                "wf-click": "quit_fun"
             },
             "visible": "user.logged"
         },
@@ -20963,7 +20864,7 @@
             "position": 0,
             "parentId": "0sc9z0uxxoeiqnbv",
             "handlers": {
-                "ss-click": "$goToPage_about"
+                "wf-click": "$goToPage_about"
             },
             "visible": true
         },
@@ -21007,7 +20908,7 @@
             "position": 0,
             "parentId": "18hmahwzps5csi19",
             "handlers": {
-                "ss-click": "switch_to_eng"
+                "wf-click": "switch_to_eng"
             },
             "visible": true
         },
@@ -21023,7 +20924,7 @@
             "position": 1,
             "parentId": "18hmahwzps5csi19",
             "handlers": {
-                "ss-click": "switch_to_ukr"
+                "wf-click": "switch_to_ukr"
             },
             "visible": true
         },
@@ -21039,7 +20940,7 @@
             "position": 2,
             "parentId": "18hmahwzps5csi19",
             "handlers": {
-                "ss-click": "switch_to_rus"
+                "wf-click": "switch_to_rus"
             },
             "visible": true
         },
@@ -21213,7 +21114,7 @@
             "position": 3,
             "parentId": "jzu9jhbznwr2fk7l",
             "handlers": {
-                "ss-click": "add_message"
+                "wf-click": "add_message"
             },
             "visible": true
         },
@@ -21230,7 +21131,7 @@
                 "separatorColor": "#75b892"
             },
             "isCodeManaged": false,
-            "position": 16,
+            "position": 17,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "modal_vis"
@@ -21357,7 +21258,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-toggle",
+                "eventType": "wf-toggle",
                 "stateRef": "message_switch"
             }
         },
@@ -21399,7 +21300,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "proj_message"
             }
         },
@@ -21415,7 +21316,7 @@
             "position": 0,
             "parentId": "b8i4r1gwiyomp1ff",
             "handlers": {
-                "ss-click": "add_message"
+                "wf-click": "add_message"
             },
             "visible": true
         },
@@ -21455,7 +21356,7 @@
             "position": 1,
             "parentId": "b8i4r1gwiyomp1ff",
             "handlers": {
-                "ss-click": "change_modal_visibility"
+                "wf-click": "change_modal_visibility"
             },
             "visible": true
         },
@@ -21747,7 +21648,7 @@
             "position": 0,
             "parentId": "rru6ddgh2tnhfcoh",
             "handlers": {
-                "ss-click": "prepare_reply_context"
+                "wf-click": "prepare_reply_context"
             },
             "visible": true
         },
@@ -21763,7 +21664,7 @@
             "position": 2,
             "parentId": "rru6ddgh2tnhfcoh",
             "handlers": {
-                "ss-click": "update_read_date"
+                "wf-click": "update_read_date"
             },
             "visible": true
         },
@@ -21791,7 +21692,7 @@
             "position": 0,
             "parentId": "ro8hhsrbbj1mqiei",
             "handlers": {
-                "ss-click": "prepare_reply_context"
+                "wf-click": "prepare_reply_context"
             },
             "visible": true
         },
@@ -21807,7 +21708,7 @@
             "position": 2,
             "parentId": "ro8hhsrbbj1mqiei",
             "handlers": {
-                "ss-click": "mark_as_unread"
+                "wf-click": "mark_as_unread"
             },
             "visible": true
         },
@@ -22003,7 +21904,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-toggle",
+                "eventType": "wf-toggle",
                 "stateRef": "message_switch"
             }
         },
@@ -22045,7 +21946,7 @@
             "handlers": {},
             "visible": true,
             "binding": {
-                "eventType": "ss-change",
+                "eventType": "wf-change",
                 "stateRef": "proj_message"
             }
         },
@@ -22073,7 +21974,7 @@
             "position": 0,
             "parentId": "op4zgtc2v4j35egp",
             "handlers": {
-                "ss-click": "reply_to_message"
+                "wf-click": "reply_to_message"
             },
             "visible": true
         },
@@ -22089,7 +21990,7 @@
             "position": 1,
             "parentId": "op4zgtc2v4j35egp",
             "handlers": {
-                "ss-click": "change_modal_visibility"
+                "wf-click": "change_modal_visibility"
             },
             "visible": true
         },
@@ -22189,23 +22090,6 @@
             "handlers": {},
             "visible": true
         },
-        "7p2f8d2357kcymoh": {
-            "id": "7p2f8d2357kcymoh",
-            "type": "text",
-            "content": {
-                "text": "### **@{item.text[lang]}**",
-                "alignment": "center",
-                "useMarkdown": "yes",
-                "cssClasses": "text-as-link @{item.css}"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "kbdoatmmmis2b6hv",
-            "handlers": {
-                "ss-click": "change_menu"
-            },
-            "visible": true
-        },
         "u2iz3o584z5b7rb2": {
             "id": "u2iz3o584z5b7rb2",
             "type": "repeater",
@@ -22233,7 +22117,7 @@
             "position": 0,
             "parentId": "u2iz3o584z5b7rb2",
             "handlers": {
-                "ss-click": "change_menu"
+                "wf-click": "change_menu"
             },
             "visible": true
         },
@@ -22273,63 +22157,6 @@
             "isCodeManaged": false,
             "position": 3,
             "parentId": "vnk8f1a5w1acioiw",
-            "handlers": {},
-            "visible": true
-        },
-        "f0idmsd3z3sc5rn4": {
-            "id": "f0idmsd3z3sc5rn4",
-            "type": "repeater",
-            "content": {
-                "keyVariable": "itemId",
-                "valueVariable": "item",
-                "repeaterObject": "@{my_prospects_menu}"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "767dyq3bw03z0nhc",
-            "handlers": {},
-            "visible": true
-        },
-        "07h8h0u8whe2wc3y": {
-            "id": "07h8h0u8whe2wc3y",
-            "type": "column",
-            "content": {
-                "width": "1"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "f0idmsd3z3sc5rn4",
-            "handlers": {},
-            "visible": true
-        },
-        "aeyv7kubmcq6bunb": {
-            "id": "aeyv7kubmcq6bunb",
-            "type": "text",
-            "content": {
-                "text": "### **@{item.text[lang]}**",
-                "alignment": "center",
-                "useMarkdown": "yes",
-                "cssClasses": "text-as-link @{item.css}"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "07h8h0u8whe2wc3y",
-            "handlers": {
-                "ss-click": "change_menu"
-            },
-            "visible": true
-        },
-        "1nra8gi90j63043k": {
-            "id": "1nra8gi90j63043k",
-            "type": "text",
-            "content": {
-                "text": "## **@{eng_menu.my_prospects.text[lang]}**",
-                "useMarkdown": "yes",
-                "alignment": "left"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "88n8uhjzmspjz3bh",
             "handlers": {},
             "visible": true
         },
@@ -22380,6 +22207,472 @@
             "position": 0,
             "parentId": "0x938dirwebiiigu",
             "handlers": {},
+            "visible": true
+        },
+        "sfk66p3qtz8r4q3p": {
+            "id": "sfk66p3qtz8r4q3p",
+            "type": "heading",
+            "content": {
+                "text": "@{item.text[lang]}",
+                "headingType": "h4",
+                "alignment": "center",
+                "cssClasses": "text-as-link @{item.css}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "kbdoatmmmis2b6hv",
+            "handlers": {
+                "click": "change_menu"
+            },
+            "visible": true
+        },
+        "5v7f1py1g94oifpc": {
+            "id": "5v7f1py1g94oifpc",
+            "type": "heading",
+            "content": {
+                "text": "@{eng_menu.my_prospects.text[lang]}",
+                "headingType": "h2"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "88n8uhjzmspjz3bh",
+            "handlers": {},
+            "visible": true
+        },
+        "g9a0g5rqv30ipyxp": {
+            "id": "g9a0g5rqv30ipyxp",
+            "type": "repeater",
+            "content": {
+                "keyVariable": "itemId",
+                "valueVariable": "item",
+                "repeaterObject": "@{main_menu}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "muvor9s8fscz1rul",
+            "handlers": {},
+            "visible": true
+        },
+        "cnfb9dxopzfnjdo0": {
+            "id": "cnfb9dxopzfnjdo0",
+            "type": "heading",
+            "content": {
+                "text": "@{item.text[lang]}",
+                "primaryTextColor": "#ffffff",
+                "cssClasses": "text-as-link @{item.css}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "g9a0g5rqv30ipyxp",
+            "handlers": {
+                "click": "change_menu"
+            },
+            "visible": true
+        },
+        "wiulr6syymivnhtk": {
+            "id": "wiulr6syymivnhtk",
+            "type": "heading",
+            "content": {
+                "text": "@{dic.community[lang]}",
+                "headingType": "h1",
+                "alignment": "center",
+                "primaryTextColor": "#ffffff"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "t8rgskk8rzyjw61j",
+            "handlers": {},
+            "visible": true
+        },
+        "0ub6ajotz2j9f9o7": {
+            "id": "0ub6ajotz2j9f9o7",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "u40d9wj5vw86bxil",
+            "handlers": {},
+            "visible": true
+        },
+        "e2hz94ubiinfbgv7": {
+            "id": "e2hz94ubiinfbgv7",
+            "type": "section",
+            "content": {
+                "title": "@{my_prospects_menu.my_invitations.text[lang]}",
+                "accentColor": "#ffffff",
+                "containerBackgroundColor": "#1d4087",
+                "contentHAlign": "center",
+                "primaryTextColor": "#ffffff"
+            },
+            "isCodeManaged": false,
+            "position": 5,
+            "parentId": "w9qq644dtxpua1qo",
+            "handlers": {},
+            "visible": "my_prospects_menu.my_invitations.selected"
+        },
+        "bk0sg8x6gpg6w082": {
+            "id": "bk0sg8x6gpg6w082",
+            "type": "separator",
+            "content": {
+                "separatorColor": "#ffffff"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "e2hz94ubiinfbgv7",
+            "handlers": {},
+            "visible": true
+        },
+        "jodawijp2g33mt56": {
+            "id": "jodawijp2g33mt56",
+            "type": "repeater",
+            "content": {
+                "repeaterObject": "@{my_invitations}",
+                "keyVariable": "itemId",
+                "valueVariable": "item"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "e2hz94ubiinfbgv7",
+            "handlers": {},
+            "visible": true
+        },
+        "6rca9gbdjqu4h9r0": {
+            "id": "6rca9gbdjqu4h9r0",
+            "type": "section",
+            "content": {
+                "title": "@{dic.proj_name[lang]}: @{item.project} ",
+                "containerBackgroundColor": "#152e61",
+                "contentHAlign": "start",
+                "separatorColor": "#75b892",
+                "cssClasses": "custom_div",
+                "primaryTextColor": "#ffffff"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "jodawijp2g33mt56",
+            "handlers": {}
+        },
+        "xrruyfoih1v4vgcj": {
+            "id": "xrruyfoih1v4vgcj",
+            "type": "separator",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "6rca9gbdjqu4h9r0",
+            "handlers": {},
+            "visible": true
+        },
+        "197o3kg9mxd8ts0q": {
+            "id": "197o3kg9mxd8ts0q",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 4,
+            "parentId": "6rca9gbdjqu4h9r0",
+            "handlers": {},
+            "visible": true
+        },
+        "42pgoo9aco3z1kzh": {
+            "id": "42pgoo9aco3z1kzh",
+            "type": "column",
+            "content": {
+                "width": ".6"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "197o3kg9mxd8ts0q",
+            "handlers": {},
+            "visible": true
+        },
+        "op71z4myv3lxex7b": {
+            "id": "op71z4myv3lxex7b",
+            "type": "text",
+            "content": {
+                "text": "@{dic.proj_added[lang]}: @{item.created}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "42pgoo9aco3z1kzh",
+            "handlers": {},
+            "visible": true
+        },
+        "7ktwdy3pih92x58p": {
+            "id": "7ktwdy3pih92x58p",
+            "type": "text",
+            "content": {
+                "text": "@{dic.proj_owner[lang]}: @{item.owner}"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "42pgoo9aco3z1kzh",
+            "handlers": {},
+            "visible": true
+        },
+        "sci2ign13hlkc7s8": {
+            "id": "sci2ign13hlkc7s8",
+            "type": "text",
+            "content": {
+                "text": "@{dic.proj_owner[lang]}: @{item.owner}"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "42pgoo9aco3z1kzh",
+            "handlers": {},
+            "visible": true
+        },
+        "sh3xts5as0t0gsmi": {
+            "id": "sh3xts5as0t0gsmi",
+            "type": "column",
+            "content": {
+                "width": ".3"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "197o3kg9mxd8ts0q",
+            "handlers": {},
+            "visible": true
+        },
+        "4nhsna1jq4k10ld1": {
+            "id": "4nhsna1jq4k10ld1",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentVAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "197o3kg9mxd8ts0q",
+            "handlers": {},
+            "visible": true
+        },
+        "eeizqqzy0clakbep": {
+            "id": "eeizqqzy0clakbep",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "4nhsna1jq4k10ld1",
+            "handlers": {},
+            "visible": true
+        },
+        "ayjl3o4wtaqxieww": {
+            "id": "ayjl3o4wtaqxieww",
+            "type": "button",
+            "content": {
+                "text": "@{dic.accept[lang]}",
+                "buttonColor": "#377644",
+                "cssClasses": "",
+                "buttonTextColor": "#ffffff"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "eeizqqzy0clakbep",
+            "handlers": {
+                "wf-click": "offer_service"
+            },
+            "visible": true
+        },
+        "41rol57oy5ian6tc": {
+            "id": "41rol57oy5ian6tc",
+            "type": "button",
+            "content": {
+                "text": "@{dic.ask_question[lang]}",
+                "buttonColor": "#3156a0",
+                "cssClasses": "",
+                "buttonTextColor": "#ffffff"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "eeizqqzy0clakbep",
+            "handlers": {},
+            "visible": true
+        },
+        "yjb0kk4f3zf9250c": {
+            "id": "yjb0kk4f3zf9250c",
+            "type": "button",
+            "content": {
+                "text": "@{dic.decline[lang]}",
+                "buttonColor": "#c81414",
+                "cssClasses": "",
+                "buttonTextColor": "#ffffff"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "eeizqqzy0clakbep",
+            "handlers": {
+                "wf-click": "offer_service"
+            },
+            "visible": true
+        },
+        "5r45vw8cpnuwkbkm": {
+            "id": "5r45vw8cpnuwkbkm",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "6rca9gbdjqu4h9r0",
+            "handlers": {},
+            "visible": true
+        },
+        "vuzho8moepe53vog": {
+            "id": "vuzho8moepe53vog",
+            "type": "column",
+            "content": {
+                "width": "0.2"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "5r45vw8cpnuwkbkm",
+            "handlers": {},
+            "visible": true
+        },
+        "dqhqhkhmyjqhjhkb": {
+            "id": "dqhqhkhmyjqhjhkb",
+            "type": "text",
+            "content": {
+                "text": "@{dic.proj_descr[lang]}: "
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "vuzho8moepe53vog",
+            "handlers": {},
+            "visible": true
+        },
+        "017iaw67o7260fj6": {
+            "id": "017iaw67o7260fj6",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "5r45vw8cpnuwkbkm",
+            "handlers": {},
+            "visible": true
+        },
+        "ev59ifyh62kjup31": {
+            "id": "ev59ifyh62kjup31",
+            "type": "text",
+            "content": {
+                "text": "@{item.description}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "017iaw67o7260fj6",
+            "handlers": {},
+            "visible": true
+        },
+        "cv1sdf11y75zuh2e": {
+            "id": "cv1sdf11y75zuh2e",
+            "type": "separator",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "6rca9gbdjqu4h9r0",
+            "handlers": {},
+            "visible": true
+        },
+        "bixa6oy2vtyrx2p9": {
+            "id": "bixa6oy2vtyrx2p9",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "6rca9gbdjqu4h9r0",
+            "handlers": {},
+            "visible": true
+        },
+        "atsh8lxr02d7lflc": {
+            "id": "atsh8lxr02d7lflc",
+            "type": "column",
+            "content": {
+                "width": "0.2"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "bixa6oy2vtyrx2p9",
+            "handlers": {},
+            "visible": true
+        },
+        "kk09rlzhzm8rddf0": {
+            "id": "kk09rlzhzm8rddf0",
+            "type": "text",
+            "content": {
+                "text": "@{dic.proj_comments[lang]}: "
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "atsh8lxr02d7lflc",
+            "handlers": {},
+            "visible": true
+        },
+        "prkycgxfhd3j8hab": {
+            "id": "prkycgxfhd3j8hab",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "bixa6oy2vtyrx2p9",
+            "handlers": {},
+            "visible": true
+        },
+        "8cz11pl7rzgjmfm0": {
+            "id": "8cz11pl7rzgjmfm0",
+            "type": "text",
+            "content": {
+                "text": "@{item.comments}",
+                "alignment": "left"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "prkycgxfhd3j8hab",
+            "handlers": {},
+            "visible": true
+        },
+        "n1vzmhgzgdwy0f7a": {
+            "id": "n1vzmhgzgdwy0f7a",
+            "type": "repeater",
+            "content": {
+                "keyVariable": "itemId",
+                "valueVariable": "item",
+                "repeaterObject": "@{my_projects_menu}"
+            },
+            "position": 0,
+            "parentId": "767dyq3bw03z0nhc",
+            "handlers": {},
+            "visible": true
+        },
+        "ee9s314nh7pv75uj": {
+            "id": "ee9s314nh7pv75uj",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "position": 0,
+            "parentId": "n1vzmhgzgdwy0f7a",
+            "handlers": {},
+            "visible": true
+        },
+        "h7x4loy6c4pob0sw": {
+            "id": "h7x4loy6c4pob0sw",
+            "type": "heading",
+            "content": {
+                "text": "@{item.text[lang]}",
+                "headingType": "h4",
+                "alignment": "center",
+                "cssClasses": "text-as-link @{item.css}"
+            },
+            "position": 0,
+            "parentId": "ee9s314nh7pv75uj",
+            "handlers": {
+                "click": "change_menu"
+            },
             "visible": true
         }
     }

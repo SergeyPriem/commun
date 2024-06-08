@@ -2,7 +2,7 @@
 import datetime
 import time
 
-import streamsync as ss
+import writer as wf
 
 from assets.help import he
 from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_installers, _get_user_data, \
@@ -11,17 +11,72 @@ from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_in
     _get_engineers, _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, \
     _offer_service, _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, \
     _get_current_projects, _get_my_invitations, _apply_client_proposal, _decline_client_proposal, _add_message, \
-    _update_read_date, _get_my_messages_new, _get_my_messages_read, _mark_as_unread, _reply_to_message, \
-    _execute_function
+    _update_read_date, _get_my_messages_new, _get_my_messages_read, _mark_as_unread, _reply_to_message
 
-from dic import dic, my_prospects_menu, eng_menu
+from dic import dic
+from menus import eng_menu, my_prospects_menu, main_menu, my_projects_menu
 from dic import error_messages as e_m
 from fw import ss_dic
-from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancy, \
+from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancies, \
     specialities_R, specialities_U, specialities_E, init_new_project
+
 from utilities import _send_email, _random_code_alphanumeric, _basic_data_validation
 
 print(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
+
+def create_prospects_menu(state, context):
+    state["my_prospects_menu"] = create_menu("my_prospects_menu", my_prospects_menu, None)
+
+
+def create_projects_menu(state, context):
+    state["my_projects_menu"] = create_menu("my_projects_menu", my_projects_menu, None)
+
+
+def _execute_menu_function(menu_name, state, context):
+    print(f"Executing function for menu: {menu_name}")
+    print(f"Context: {context}")
+
+    function = context.get('item').get('text').get("fun")
+
+    if function:
+        try:
+            globals()[function](state, context)
+        except Exception as e:
+            print(f"Error: {e}")
+            state.add_notification('error', "Error", "Function not found")
+
+
+def create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
+    return {
+        key: {
+            "text": item,
+            "css": "underlined-text" if i == init_index else None,
+            "menu_name": menu_name,
+            "selected": i == init_index,
+            "func": f"_get_{key}"
+        }
+        for i, (key, item) in enumerate(menu.items())
+    }
+
+
+def change_menu(state, context):
+    menu_name = context['item']['menu_name']
+
+    for key in state[menu_name].items():
+        state[menu_name][key[0]]["css"] = None
+        state[menu_name][key[0]]["selected"] = False
+
+    state[menu_name][context['itemId']]["css"] = "underlined-text"
+    state[menu_name][context['itemId']]["selected"] = True
+
+    try:
+        print(context)
+    except Exception as e:
+        print(f"Error: {e}")
+        print("Context is not printable")
+
+    _execute_menu_function(menu_name, state, context)
 
 
 class PCol:
@@ -137,11 +192,8 @@ def log_user(state):
             if role in ('engineer', 'installer'):
                 state['eng_menu'] = create_menu("eng_menu", eng_menu, None)
 
-                state["my_prospects_menu"] = create_menu(
-                    "my_prospects_menu", my_prospects_menu, None)
-
-                state["vacancy"]["content"] = 1
-                state["vacancy"]["warning"] = 0
+                state["vacancies"]["content"] = 1
+                state["vacancies"]["warning"] = 0
     else:
         state.set_page('wrong_login')
         state["engineers"]["content"] = state["engineers"]["warning"] = state["projects"]["content"] = \
@@ -264,7 +316,7 @@ def quit_fun(state):
     state["user"] = init_user
     state["projects"] = init_projects
     state["engineers"] = init_engineers
-    state["vacancy"] = init_vacancy
+    state["vacancies"] = init_vacancies
     state["specs"] = specialities
     state.set_page('about')
 
@@ -587,35 +639,7 @@ def mark_as_unread(state, context):
     _get_my_messages_read(state)
 
 
-def create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
-    return {
-        key: {
-            "text": item,
-            "css": "underlined-text" if i == init_index else None,
-            "menu_name": menu_name,
-            "selected": i == init_index,
-            "func": f"_get_{key}"
-        }
-        for i, (key, item) in enumerate(menu.items())
-    }
-
-
-def change_menu(state, context):
-    menu_name = context['item']['menu_name']
-
-    for key in state[menu_name].items():
-        state[menu_name][key[0]]["css"] = None
-        state[menu_name][key[0]]["selected"] = False
-
-    state[menu_name][context['itemId']]["css"] = "underlined-text"
-    state[menu_name][context['itemId']]["selected"] = True
-
-    function = state[menu_name][context['itemId']]['text']['fun']
-
-    _execute_function(function, state, context)
-
-
-initial_state = ss.init_state(
+initial_state = wf.init_state(
     {
         "lang": "E",
         "dic": dic,
@@ -624,7 +648,7 @@ initial_state = ss.init_state(
         "user": init_user,
         "projects": init_projects,
         "engineers": init_engineers,
-        "vacancy": init_vacancy,
+        "vacancies": init_vacancies,
         "specs": specialities_E,
         "new_project": init_new_project,
 
@@ -679,7 +703,9 @@ initial_state = ss.init_state(
 
         "modal_vis": False,
 
-        "eng_menu": None
+        "eng_menu": None,
+
+        'main_menu': create_menu("main_menu", main_menu, 0),
 
         # "my_invitations": None,
         # "user_message": {
@@ -739,6 +765,6 @@ initial_state = ss.init_state(
 
     })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?70")
+initial_state.import_stylesheet("theme", "/static/custom.css?76")
 
 print("Code executed successfully!")
