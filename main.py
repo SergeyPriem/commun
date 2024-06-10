@@ -15,6 +15,7 @@ from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_in
 
 from dic import dic
 from menus import eng_menu, my_prospects_menu, main_menu, my_projects_menu
+from navi import go_about, go_projects, go_engineers, go_vacancies
 from dic import error_messages as e_m
 from fw import ss_dic
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancies, \
@@ -33,9 +34,7 @@ def _create_projects_menu(state, context):
     state["my_projects_menu"] = _create_menu("my_projects_menu", my_projects_menu, None)
 
 
-def _execute_menu_function(menu_name, state, context):
-    print(f"Executing function for menu: {menu_name}")
-    print(f"Context: {context}")
+def _execute_menu_function(state, context):
 
     function = context.get('item').get('text').get("fun")
 
@@ -54,10 +53,12 @@ def _create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
             "css": "underlined-text" if i == init_index else None,
             "menu_name": menu_name,
             "selected": i == init_index,
-            "func": f"_get_{key}"
+            "fun": f"{item.get('fun')}",
         }
         for i, (key, item) in enumerate(menu.items())
     }
+
+
 
 
 def change_menu(state, context):
@@ -69,7 +70,7 @@ def change_menu(state, context):
 
     state[menu_name][context['itemId']]["css"] = "underlined-text"
     state[menu_name][context['itemId']]["selected"] = True
-    _execute_menu_function(menu_name, state, context)
+    _execute_menu_function(state, context)
 
 
 class PCol:

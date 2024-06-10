@@ -1,19 +1,19 @@
 # *-* coding: utf-8 *-*
 
 
-def go_engineers(state):
+def go_engineers(state, context):
     state.set_page('engineers')
 
 
-def go_about(state):
+def go_about(state, context):
     state.set_page('about')
 
 
-def go_projects(state):
+def go_projects(state, context):
     state.set_page('projects')
 
 
-def go_vacancies(state):
+def go_vacancies(state, context):
     state.set_page('vacancies')
 
 

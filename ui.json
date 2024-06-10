@@ -22643,6 +22643,7 @@
                 "valueVariable": "item",
                 "repeaterObject": "@{my_projects_menu}"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "767dyq3bw03z0nhc",
             "handlers": {},
@@ -22654,6 +22655,7 @@
             "content": {
                 "width": "1"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "n1vzmhgzgdwy0f7a",
             "handlers": {},
@@ -22668,11 +22670,45 @@
                 "alignment": "center",
                 "cssClasses": "text-as-link @{item.css}"
             },
+            "isCodeManaged": false,
             "position": 0,
             "parentId": "ee9s314nh7pv75uj",
             "handlers": {
                 "click": "change_menu"
             },
+            "visible": true
+        },
+        "tflbaxlpj2x4bttv": {
+            "id": "tflbaxlpj2x4bttv",
+            "type": "tabs",
+            "parentId": "88n8uhjzmspjz3bh",
+            "content": {},
+            "handlers": {},
+            "position": 4,
+            "visible": true
+        },
+        "pkggjqwx6kzhzs0i": {
+            "id": "pkggjqwx6kzhzs0i",
+            "type": "repeater",
+            "parentId": "tflbaxlpj2x4bttv",
+            "content": {
+                "repeaterObject": "@{my_prospects_menu}",
+                "keyVariable": "itemId",
+                "valueVariable": "item"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        },
+        "yorla2l7yejcxlx3": {
+            "id": "yorla2l7yejcxlx3",
+            "type": "tab",
+            "parentId": "pkggjqwx6kzhzs0i",
+            "content": {
+                "name": "@{item.text[lang]}"
+            },
+            "handlers": {},
+            "position": 0,
             "visible": true
         }
     }

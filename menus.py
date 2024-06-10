@@ -2,6 +2,8 @@
 
 
 main_menu = {
+    # "_active": 0,
+
     "about": {
         "E": "About",
         "U": "Про нас",
@@ -25,10 +27,13 @@ main_menu = {
         "U": "Вакансії",
         "R": "Вакансии",
         "fun": "go_vacancies"
-    }
+    },
+
 }
 
 eng_menu = {
+    # "_active": None,
+
     "my_prospects": {
         "E": "My Prospects",
         "U": "Мої Перспективи",
@@ -41,10 +46,12 @@ eng_menu = {
         "U": "Мої Проекти",
         "R": "Мои Проекты",
         "fun": "_create_projects_menu"
-    }
+    },
 }
 
 my_prospects_menu = {
+    # "_active": None,
+
     "my_invitations": {
         "E": "My Invitations",
         "U": "Мої Запрошення",
@@ -67,11 +74,14 @@ my_prospects_menu = {
         "E": "CV Requests",
         "U": "Запити на Резюме",
         "R": "Запросы на Резюме"
-    }
+    },
+
 
 }
 
 my_projects_menu = {
+    # "_active": None,
+
     "my_current_projects": {
         "E": "My Current Projects",
         "U": "Мої Поточні Проекти",
@@ -88,7 +98,7 @@ my_projects_menu = {
         "E": "My Deleted Projects",
         "U": "Мої Видалені Проекти",
         "R": "Мои Удаленные Проекты"
-    }
+    },
 }
 
 
