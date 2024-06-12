@@ -1390,9 +1390,9 @@ def _reply_to_message(state):
                 # Commit the session to save the changes to the database
                 session.commit()
                 # state.set_page(f"{state['user']['role']}_page")
-                print(f"Message from {state['sender_login']} to {state['receiver_login']} added successfully")
+                logger.debug(f"Message from {state['sender_login']} to {state['receiver_login']} added successfully")
             else:
-                print("Sender, receiver or project not found")
+                logger.warning("Sender, receiver or project not found")
 
         except Exception as e:
             logger.error(f"An error occurred: {e}")
