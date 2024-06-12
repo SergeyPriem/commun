@@ -11,10 +11,10 @@ LOGGING_CONFIG = {
     'handlers': {
         'file': {
             'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
             'filename': 'app.log',  # specify the output log file path
-            'maxBytes': 20*1024*1024,  # 20 MB
-            'backupCount': 1,  # keep only one backup
+            'when': 'midnight',  # rotate the log file at midnight
+            'backupCount': 14,  # keep 14 days of backup
             'formatter': 'standard'
         },
         'console': {
