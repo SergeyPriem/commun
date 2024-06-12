@@ -8,9 +8,17 @@ from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from dic import dic
+from logging_config import LOGGING_CONFIG
 from models import *
 from utilities import _hash_password, _err_handler, _valid_email, _send_mail
+import logging
+import logging.config
+import logging.handlers
 
+logging.config.dictConfig(LOGGING_CONFIG)
+
+# Now you can use logging as usual
+logger = logging.getLogger(__name__)
 
 def _create_user(state):
     """
@@ -428,7 +436,7 @@ def _accept_invitation(state, context):
             _get_my_invitations(state)
         except SQLAlchemyError as e:
             # Log the error and return a user-friendly message
-            print(f"An error occurred: {e}")
+            logger.error(f"An error occurred: {e}")
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
@@ -460,7 +468,7 @@ def _decline_invitation(state, context):
             _get_my_invitations(state)
         except SQLAlchemyError as e:
             # Log the error and return a user-friendly message
-            print(f"An error occurred: {e}")
+            logger.error(f"An error occurred: {e}")
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
@@ -586,7 +594,6 @@ def _delete_subscription(state):
 
 
 def _get_new_projects(state):
-    print("GET NEW PROJECTS")
     if not state["user"]["logged"]:
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
@@ -914,7 +921,7 @@ def _get_my_invitations(state):
             } for invitation, project in my_invitations}
 
         except SQLAlchemyError as e:
-            print(f"An error occurred: {e}, {datetime.datetime.now()}")
+            logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
 
 
 def _get_my_proposals(state):
@@ -948,7 +955,7 @@ def _get_my_proposals(state):
                 "owner": session.query(User).get(project.owner).login,
             } for proposal, project in my_proposals}
         except SQLAlchemyError as e:
-            print(f"An error occurred: {e}, {datetime.datetime.now()}")
+            logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
 
 
 def _apply_client_proposal(state, context):
@@ -965,7 +972,7 @@ def _apply_client_proposal(state, context):
             state.add_notification("info", "Info", "You have accepted the proposal")
             _get_my_proposals(state)
         except SQLAlchemyError as e:
-            print(f"An error occurred: {e}, {datetime.datetime.now()}")
+            logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
@@ -981,7 +988,7 @@ def _decline_client_proposal(state, context):
             state.add_notification("info", "Info", "You have declined the proposal")
             _get_my_proposals(state)
         except SQLAlchemyError as e:
-            print(f"An error occurred: {e}, {datetime.datetime.now()}")
+            logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
@@ -1076,7 +1083,7 @@ def _send_request(state):
             state.add_notification("info", "Info", "The request was sent successfully")
         except SQLAlchemyError as e:
             # Log the error and return a user-friendly message
-            print(f"An error occurred: {e}")
+            logger.error(f"An error occurred: {e}")
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
@@ -1340,12 +1347,12 @@ def _add_message(state):
                 # Commit the session to save the changes to the database
                 session.commit()
                 # state.set_page(f"{state['user']['role']}_page")
-                print(f"Message from {state['sender_login']} to {state['receiver_login']} added successfully")
+                logger.debug(f"Message from {state['sender_login']} to {state['receiver_login']} added successfully")
             else:
-                print("Sender, receiver or project not found")
+                logger.warning("Sender, receiver or project not found")
 
         except Exception as e:
-            print(f"An error occurred: {e}")
+            logger.error(f"An error occurred: {e}")
 
 
 def _reply_to_message(state):
@@ -1388,7 +1395,7 @@ def _reply_to_message(state):
                 print("Sender, receiver or project not found")
 
         except Exception as e:
-            print(f"An error occurred: {e}")
+            logger.error(f"An error occurred: {e}")
 
 
 def _get_my_messages_new(state):
@@ -1423,7 +1430,7 @@ def _get_my_messages_new(state):
             } for message, user in my_messages}
 
         except SQLAlchemyError as e:
-            print(f"An error occurred: {e}, {datetime.datetime.now()}")
+            logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
 
 
 def _get_my_messages_read(state):
@@ -1458,7 +1465,7 @@ def _get_my_messages_read(state):
             } for message, user in my_messages}
 
         except SQLAlchemyError as e:
-            print(f"An error occurred: {e}, {datetime.datetime.now()}")
+            logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
 
 
 def _update_read_date(state, context):
@@ -1494,6 +1501,6 @@ def _mark_as_unread(state, context):
             session.commit()
             state.add_notification("info", "Info!", "Message marked as unread")
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            logger.error(f"An error occurred: {e}")
 
 
