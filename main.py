@@ -14,6 +14,7 @@ from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_in
     _update_read_date, _get_my_messages_new, _get_my_messages_read, _mark_as_unread, _reply_to_message
 
 from dic import dic
+from logging_config import LOGGING_CONFIG
 from menus import eng_menu, my_prospects_menu, main_menu, my_projects_menu
 from navi import go_about, go_projects, go_engineers, go_vacancies
 from dic import error_messages as e_m
@@ -23,7 +24,20 @@ from init_states import specialities, init_user, init_reg, init_login, init_proj
 
 from utilities import _send_email, _random_code_alphanumeric, _basic_data_validation
 
-print(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+import logging
+import logging.config
+import logging.handlers
+
+logging.config.dictConfig(LOGGING_CONFIG)
+
+# Now you can use logging as usual
+logger = logging.getLogger(__name__)
+# logger.debug("This is a debug message")
+# logger.info("This is an info message")
+# logger.error("This is an error message")
+# logger.critical("This is a critical message")
+
+logger.debug(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 
 def _create_prospects_menu(state, context):
@@ -35,14 +49,13 @@ def _create_projects_menu(state, context):
 
 
 def _execute_menu_function(state, context):
-
     function = context.get('item').get('text').get("fun")
 
     if function:
         try:
             globals()[function](state, context)
         except Exception as e:
-            print(f"Error: {e}")
+            logger.error(f"Error: {e}")
             state.add_notification('error', "Error", "Function not found")
 
 
@@ -57,8 +70,6 @@ def _create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
         }
         for i, (key, item) in enumerate(menu.items())
     }
-
-
 
 
 def change_menu(state, context):
@@ -170,7 +181,7 @@ def log_user(state):
     }
 
     if state["user"]["logged"]:
-        print(f"{PCol.OKGREEN}{state['user']['role']} {state['user']['login']} | in: {datetime.datetime.now()}!")
+        logger.info(f"{PCol.OKGREEN}{state['user']['role']} {state['user']['login']} | in: {datetime.datetime.now()}!")
         role = state["user"]["role"]
         if role == 'admin':
             state.add_notification("warning", "Warning!", "Wrong role...")
@@ -424,7 +435,7 @@ def request_cv(state, context):
 
 
 def connect_w_engineer(state, context):
-    print(f"Connecting with engineer: {context['item']}")
+    logger.info(f"Connecting with engineer: {context['item']}")
     # state["selected_engineers"] += [context["itemId"]]
     # state["selected_engineers"] = list(set(state["selected_engineers"]))
 
@@ -591,13 +602,13 @@ def decline_client_proposal(state, context):
 
 def prepare_message_context(state, context):
     state["proj_message_context"] = context
-    print(f"Message context: {context}")
+    logger.info(f"Message context: {context}")
     change_modal_visibility(state)
 
 
 def prepare_reply_context(state, context):
     state["proj_message_context"] = context
-    print(f"Reply context: {context}")
+    logger.info(f"Reply context: {context}")
     change_modal_visibility(state)
 
 
@@ -761,4 +772,4 @@ initial_state = wf.init_state(
 
 initial_state.import_stylesheet("theme", "/static/custom.css?76")
 
-print("Code executed successfully!")
+logger.info("Code executed successfully!")

@@ -12,6 +12,6 @@ ENV PATH="/app/venv/bin:$PATH"
 WORKDIR /app
 
 
-ENTRYPOINT [ "streamsync", "run" ]
+ENTRYPOINT [ "writer", "run" ]
 EXPOSE 5000
 CMD [ ".",  "--port", "5000", "--host", "0.0.0.0" ]
