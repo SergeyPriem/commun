@@ -770,6 +770,6 @@ initial_state = wf.init_state(
 
     })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?76")
+initial_state.import_stylesheet("theme", "/static/custom.css?77")
 
 logger.info("MAIN executed successfully!")

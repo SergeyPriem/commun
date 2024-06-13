@@ -357,57 +357,6 @@ def _get_user_data(state):
             state["message"] = "- " + dic["user_not_found"][state["lang"]]
 
 
-# def _get_my_invitations(state):
-#     time1 = time.time()
-#
-#     if not state['user']['login']:
-#         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
-#         return
-#     with Session(bind=engine) as session:
-#         try:
-#             # Query all invitations for the given user along with the project owner's login and email
-#             user_id = session.query(User.id).filter(User.login == state['user']['login']).first()[0]
-#             invitations = session.query(Invitation, User.login, User.email).join(
-#                 Project, Project.id == Invitation.project_id).join(
-#                 User, User.id == Project.owner).filter(Invitation.user_id == user_id).all()
-#
-#             if not invitations:
-#                 state.add_notification("info", "Info", "You have no invitations")
-#                 return
-#
-#             # Initialize an empty dictionary
-#             invitations_info = {}
-#
-#             # Iterate over each invitation
-#             for invitation, proj_owner_login, proj_owner_email in invitations:
-#                 # Add the invitation info to the dictionary
-#                 invitations_info[str(invitation.id)] = {
-#                     "project": invitation.projects.name,
-#                     "proj_owner": proj_owner_login,
-#                     "proj_owner_email": proj_owner_email,  # add the project owner's email
-#                     "description": invitation.projects.description,
-#                     'comments': invitation.projects.comments,
-#                     "initiated_by": invitation.initiated_by,
-#                     "last_action_by": invitation.last_action_by.capitalize() if invitation.last_action_by else None,
-#                     "last_action_dt": invitation.last_action_dt.strftime('%Y-%m-%d %H:%M'),
-#                     'date_time': invitation.date_time.strftime('%Y-%m-%d %H:%M'),  # format the date and time
-#                     "status": invitation.status,
-#                     "created": invitation.project.created.strftime('%Y-%m-%d'),
-#                     "message": "555"
-#                 }
-#             state['my_invitations'] = invitations_info
-#             state['invitations_quantity'] = len(invitations_info) or 0
-#
-#             state['no_invitations'] = 1 if len(invitations_info) == 0 else 0
-#
-#             time2 = time.time()
-#             print(f"function took {round((time2 - time1) * 1000.0, 2)} ms")
-#         except SQLAlchemyError as e:
-#             # Log the error and return a user-friendly message
-#             print(f"An error occurred: {e}")
-#             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
-
-
 def _accept_invitation(state, context):
     if not state['user']['login']:
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
@@ -1256,7 +1205,7 @@ def _request_cv(state, context):
             else:
                 state.add_notification("warning", "Warning!", dic["request_not_sent"][state["lang"]])
         except Exception as e:
-
+            logger.error(f"An error occurred: {e}")
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
 
 

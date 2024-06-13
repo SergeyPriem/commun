@@ -101,3 +101,7 @@ textarea:focus {
 .black-text {
     color: black !important;
 }
+
+.white-text {
+    color: white !important;
+}
