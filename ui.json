@@ -1516,7 +1516,8 @@
             "id": "twbpto7y4rszih5q",
             "type": "column",
             "content": {
-                "width": "8"
+                "width": "8",
+                "contentVAlign": "center"
             },
             "isCodeManaged": false,
             "position": 1,
