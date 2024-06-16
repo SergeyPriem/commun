@@ -38,14 +38,16 @@ eng_menu = {
         "E": "My Prospects",
         "U": "Мої Перспективи",
         "R": "Мои Перспективы",
-        "fun": "_create_prospects_menu"
+        "fun": "_create_prospects_menu",
+        "reset": ["my_projects_menu", "my_prospects_menu"]
     },
 
     "my_projects": {
         "E": "My Projects",
         "U": "Мої Проекти",
         "R": "Мои Проекты",
-        "fun": "_create_projects_menu"
+        "fun": "_create_projects_menu",
+        "reset": ["my_prospects_menu", "my_projects_menu"]
     },
 }
 
@@ -85,7 +87,14 @@ my_projects_menu = {
     "my_current_projects": {
         "E": "My Current Projects",
         "U": "Мої Поточні Проекти",
-        "R": "Мои Текущие Проекты"
+        "R": "Мои Текущие Проекты",
+        "fun": None,
+    },
+
+    "my_declined_projects": {
+        "E": "My Declined Projects",
+        "U": "Мої Відхилені Проекти",
+        "R": "Мои Отклоненные Проекты"
     },
 
     "my_finished_projects": {

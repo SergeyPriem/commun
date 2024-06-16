@@ -49,38 +49,55 @@ def _create_projects_menu(state, context):
 
 
 def _execute_menu_function(state, context):
-    function = context.get('item').get('text').get("fun")
-
+    function = context.get('item').get("fun")
+    # print(f"Function: {function}")
+    print(f"{context=}")
     if function:
         try:
             globals()[function](state, context)
         except Exception as e:
             logger.error(f"Error: {e}")
-            state.add_notification('error', "Error", "Function not found")
+            state.add_notification('error', "Error", "Something went wrong...")
 
 
 def _create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
     return {
         key: {
+            "fun": item.pop('fun', None),
+            "reset": item.pop("reset", None),
             "text": item,
             "css": "underlined-text" if i == init_index else None,
-            "menu_name": menu_name,
-            "selected": i == init_index,
-            "fun": f"{item.get('fun')}",
-        }
-        for i, (key, item) in enumerate(menu.items())
+            "menu_name": menu_name
+        } for i, (key, item) in enumerate(menu.items())
     }
+
+
+def reset_menu_css(state, reset_list: list):
+    if reset_list:
+        if isinstance(reset_list, str):
+            reset_list = [reset_list]
+
+        for reset_menu in reset_list:
+            if state[reset_menu] is not None:
+                for key in state[reset_menu].items():
+                    state[reset_menu][key[0]]["css"] = None
+            else:
+                logger.error(f"Menu {reset_menu} is None")
+
+
+def update_menu_css(state, menu_name: str, context: dict):
+    for key in state[menu_name].items():
+        state[menu_name][key[0]]["css"] = None
+
+    state[menu_name][context['itemId']]["css"] = "underlined-text"
 
 
 def change_menu(state, context):
     menu_name = context['item']['menu_name']
+    reset_list = context['item']['reset']
 
-    for key in state[menu_name].items():
-        state[menu_name][key[0]]["css"] = None
-        state[menu_name][key[0]]["selected"] = False
-
-    state[menu_name][context['itemId']]["css"] = "underlined-text"
-    state[menu_name][context['itemId']]["selected"] = True
+    reset_menu_css(state, reset_list)
+    update_menu_css(state, menu_name, context)
     _execute_menu_function(state, context)
 
 
@@ -646,6 +663,10 @@ def mark_as_unread(state, context):
 
 initial_state = wf.init_state(
     {
+
+        "header": "sz0yrwbz6osv58bn",
+        "footer": "zm3lzacgv0ahymqf",
+
         "lang": "E",
         "dic": dic,
         "reg": init_reg,
@@ -689,9 +710,6 @@ initial_state = wf.init_state(
             "panel_sect": 0
         },
         "fd": ss_dic,
-
-        "header": "sz0yrwbz6osv58bn",
-        "footer": "zm3lzacgv0ahymqf",
 
         "help": he,
         # "help_section": 0,

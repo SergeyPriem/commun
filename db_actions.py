@@ -540,7 +540,7 @@ def _delete_subscription(state):
             state.set_page("about")
         except Exception as e:
             state.add_notification('warning', 'Warning', _err_handler(e, 'delete_subscription'))
-
+            logger
 
 def _get_new_projects(state):
     if not state["user"]["logged"]:
@@ -1037,6 +1037,9 @@ def _send_request(state):
 
 
 def _add_to_subscription(state):
+    if not state["subscription"]["email"]:
+        state.add_notification('error', 'Error', "E-mail is empty. Try again")
+        return
     if not _valid_email(state["subscription"]["email"]):
         state.add_notification('error', 'Error', "Wrong e-mail. Try again")
         return
