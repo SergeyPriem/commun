@@ -4839,7 +4839,7 @@
                 "contentPadding": "20px"
             },
             "isCodeManaged": false,
-            "position": 15,
+            "position": 13,
             "parentId": "fvp403ri0ttpd0qz",
             "handlers": {},
             "visible": true
@@ -9538,23 +9538,9 @@
                 "alignment": "left"
             },
             "isCodeManaged": false,
-            "position": 14,
+            "position": 12,
             "parentId": "fvp403ri0ttpd0qz",
             "handlers": {},
-            "visible": true
-        },
-        "geutwlj28k3kj75p": {
-            "id": "geutwlj28k3kj75p",
-            "type": "button",
-            "content": {
-                "text": "@{dic.learn_more[lang]}"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "s2gh1bgluz2njkkn",
-            "handlers": {
-                "wf-click": "show_help"
-            },
             "visible": true
         },
         "y2vrjn9cnlfccd0l": {
@@ -9562,19 +9548,6 @@
             "type": "separator",
             "content": {
                 "separatorColor": "#f8f7f7"
-            },
-            "isCodeManaged": false,
-            "position": 13,
-            "parentId": "fvp403ri0ttpd0qz",
-            "handlers": {},
-            "visible": true
-        },
-        "s2gh1bgluz2njkkn": {
-            "id": "s2gh1bgluz2njkkn",
-            "type": "horizontalstack",
-            "content": {
-                "contentPadding": "15px",
-                "contentHAlign": "center"
             },
             "isCodeManaged": false,
             "position": 11,
@@ -9603,85 +9576,6 @@
             "isCodeManaged": false,
             "position": 0,
             "parentId": "vqagxorsf1r4nhds",
-            "handlers": {},
-            "visible": true
-        },
-        "ok01itu04pop4ocj": {
-            "id": "ok01itu04pop4ocj",
-            "type": "section",
-            "content": {
-                "title": "help",
-                "containerBackgroundColor": "#3c865c",
-                "separatorColor": "#ffffff"
-            },
-            "isCodeManaged": false,
-            "position": 12,
-            "parentId": "fvp403ri0ttpd0qz",
-            "handlers": {},
-            "visible": "help_section"
-        },
-        "zu1cc3j8yxe7sy8u": {
-            "id": "zu1cc3j8yxe7sy8u",
-            "type": "button",
-            "content": {
-                "text": "@{dic.close_help[lang]}"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "p4pmiqcuh2r6w85z",
-            "handlers": {
-                "wf-click": "hide_help"
-            },
-            "visible": true
-        },
-        "5dg0teaocr0xbyw4": {
-            "id": "5dg0teaocr0xbyw4",
-            "type": "text",
-            "content": {
-                "text": "@{help.new_projects[lang]}",
-                "useMarkdown": "yes"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "ok01itu04pop4ocj",
-            "handlers": {},
-            "visible": true
-        },
-        "8tl7ntrkp2zylu7g": {
-            "id": "8tl7ntrkp2zylu7g",
-            "type": "text",
-            "content": {
-                "text": "@{help.active_projects[lang]}",
-                "useMarkdown": "yes"
-            },
-            "isCodeManaged": false,
-            "position": 1,
-            "parentId": "ok01itu04pop4ocj",
-            "handlers": {},
-            "visible": true
-        },
-        "p4pmiqcuh2r6w85z": {
-            "id": "p4pmiqcuh2r6w85z",
-            "type": "horizontalstack",
-            "content": {
-                "contentHAlign": "end"
-            },
-            "isCodeManaged": false,
-            "position": 3,
-            "parentId": "ok01itu04pop4ocj",
-            "handlers": {},
-            "visible": true
-        },
-        "m14vvbut2cay7vmp": {
-            "id": "m14vvbut2cay7vmp",
-            "type": "text",
-            "content": {
-                "text": "@{help.finished_projects[lang]}",
-                "useMarkdown": "yes"
-            },
-            "isCodeManaged": false,
-            "position": 2,
-            "parentId": "ok01itu04pop4ocj",
             "handlers": {},
             "visible": true
         },
