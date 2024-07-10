@@ -32,10 +32,6 @@ logging.config.dictConfig(LOGGING_CONFIG)
 
 # Now you can use logging as usual
 logger = logging.getLogger(__name__)
-# logger.debug("This is a debug message")
-# logger.info("This is an info message")
-# logger.error("This is an error message")
-# logger.critical("This is a critical message")
 
 logger.debug(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
@@ -81,8 +77,8 @@ def reset_menu_css(state, reset_list: list):
             if state[reset_menu] is not None:
                 for key in state[reset_menu].items():
                     state[reset_menu][key[0]]["css"] = None
-            else:
-                logger.error(f"Menu {reset_menu} is None")
+            # else:
+            #     logger.error(f"Menu {reset_menu} is None")
 
 
 def update_menu_css(state, menu_name: str, context: dict):
@@ -661,6 +657,14 @@ def mark_as_unread(state, context):
     _get_my_messages_read(state)
 
 
+def get_screen_size(state):
+    screen_size = state.call_frontend_function("js_scripts", "screen_size", [])
+    state["screen"]["width"] = screen_size[0]
+    state["screen"]["height"] = screen_size[1]
+
+    print(f"Screen size: {screen_size}")
+
+
 initial_state = wf.init_state(
     {
 
@@ -730,6 +734,11 @@ initial_state = wf.init_state(
 
         'main_menu': _create_menu("main_menu", main_menu, 0),
 
+        "screen": {
+            "width": None,
+            "height": None
+        }
+
         # "my_invitations": None,
         # "user_message": {
         #    "first_name": None,
@@ -789,4 +798,7 @@ initial_state = wf.init_state(
     })
 
 initial_state.import_stylesheet("theme", "/static/custom.css?78")
+# initial_state.import_frontend_module("js_scripts", "/static/my_scripts.js?5")
+
+# get_screen_size(initial_state)
 logger.info("MAIN executed successfully!")
