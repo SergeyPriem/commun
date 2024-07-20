@@ -293,27 +293,16 @@ def _get_new_installers(state):
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
 
 
-def _get_default_user_data(message_dict):
-    return {
-        "first_name": None,
-        "last_name": None,
-        "email": None,
-        "phone": None,
-        "role": None,
-        "login": message_dict,
-        "password": None,
-        "password2": None,
-        "logged": False,
-        "lang": "E"
-    }
+def _get_default_user_data(login):
+    default_user_data = {key: None for key in ["first_name", "last_name", "email", "phone", "role", "password", "password2"]}
+    default_user_data.update({"login": login, "logged": False, "lang": "E"})
+    return default_user_data
 
 
 def fill_user_data(state, user):
-    state["user"]["first_name"] = user.first_name
-    state["user"]["last_name"] = user.last_name
-    state["user"]["email"] = user.email
-    state["user"]["phone"] = user.phone
-    state["user"]["role"] = user.role
+    user_attrs = ["first_name", "last_name", "email", "phone", "role"]
+    for attr in user_attrs:
+        state["user"][attr] = getattr(user, attr)
 
 
 def _get_user_data(state):

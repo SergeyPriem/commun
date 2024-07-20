@@ -46,8 +46,7 @@ def _create_projects_menu(state, context):
 
 def _execute_menu_function(state, context):
     function = context.get('item').get("fun")
-    # print(f"Function: {function}")
-    print(f"{context=}")
+
     if function:
         try:
             globals()[function](state, context)
@@ -606,11 +605,6 @@ def apply_client_proposal(state, context):
 def decline_client_proposal(state, context):
     _decline_client_proposal(state, context)
     _get_my_invitations(state)
-
-
-# def show_my_projects(state):
-#     state["my_prospects"] = 0
-#     state["my_projects"] = 1
 
 
 def prepare_message_context(state, context):
