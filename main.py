@@ -730,8 +730,6 @@ initial_state = wf.init_state(
             "height": None
         },
 
-
-
         # "my_invitations": None,
         # "user_message": {
         #    "first_name": None,
