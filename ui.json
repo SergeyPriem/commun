@@ -4894,7 +4894,8 @@
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
-                "primaryTextColor": "#ffffff"
+                "primaryTextColor": "#ffffff",
+                "separatorColor": "#152e61"
             },
             "isCodeManaged": false,
             "position": 1,
@@ -5184,7 +5185,7 @@
             "visible": true,
             "binding": {
                 "eventType": "wf-change",
-                "stateRef": "subscription.email"
+                "stateRef": "subscribe.email"
             }
         },
         "qhqnhrss3529zfjd": {
@@ -7883,40 +7884,6 @@
             "isCodeManaged": false,
             "position": 1,
             "parentId": "b4xtl8duife32rr7",
-            "handlers": {},
-            "visible": true
-        },
-        "myu2kdeahok7qo4d": {
-            "id": "myu2kdeahok7qo4d",
-            "type": "link",
-            "content": {
-                "url": "https://send.monobank.ua/jar/9D7H5Y1i99",
-                "target": "_blank",
-                "text": "$",
-                "rel": "",
-                "primaryTextColor": "#1d4087",
-                "cssClasses": "support_button"
-            },
-            "isCodeManaged": false,
-            "position": 1,
-            "parentId": "6blnv24s3n6fos1e",
-            "handlers": {},
-            "visible": true
-        },
-        "bver5l6bb6qfxgtp": {
-            "id": "bver5l6bb6qfxgtp",
-            "type": "link",
-            "content": {
-                "url": "https://send.monobank.ua/jar/e8Ca6udaE",
-                "target": "_blank",
-                "text": "\u20ac",
-                "rel": "",
-                "primaryTextColor": "#1d4087",
-                "cssClasses": "support_button"
-            },
-            "isCodeManaged": false,
-            "position": 2,
-            "parentId": "6blnv24s3n6fos1e",
             "handlers": {},
             "visible": true
         },

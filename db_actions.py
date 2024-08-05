@@ -4,7 +4,7 @@ import time
 import bcrypt
 import pandas as pd
 from sqlalchemy import select, func
-from sqlalchemy.exc import IntegrityError, SQLAlchemyError
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError, NoResultFound
 from sqlalchemy.orm import Session
 
 from dic import dic
@@ -19,6 +19,7 @@ logging.config.dictConfig(LOGGING_CONFIG)
 
 # Now you can use logging as usual
 logger = logging.getLogger(__name__)
+
 
 def _create_user(state):
     """
@@ -183,48 +184,39 @@ def admin_panel_section(state):
 def _log_admin(state):
     with Session(bind=engine) as session:
         try:
-            # noinspection PyTypeChecker
             current_user = session.query(User).filter(
                 User.login == state["user"]["login"],
                 User.role == "admin"
             ).first()
 
-        except SQLAlchemyError as e:
-            state.add_notification(_err_handler(e, "log_admin"))
-            return
+            if not current_user:
+                state.add_notification("warning", "Warning!", "Admin not found...")
+                return
 
-        if current_user:
-            if bcrypt.checkpw(str(state["user"]["password"]).encode("utf-8"), current_user.h_pass.encode("utf-8")):
-
-                fill_user_data(state, current_user)
-
-                state["user"]["password"] = None
-                state["user"]["password2"] = None
-                state["user"]["logged"] = 1
-                state["user"]["not_logged"] = 0
-                state["user"]["lang"] = current_user.lang
-                state["message"] = None
-
-                try:
-                    visit_log = VisitLog(
-                        user_login=state["user"]["login"],
-                        date_time_in=datetime.datetime.now(),
-                        lang=state["lang"]
-                    )
-                    session.add(visit_log)
-                    session.commit()
-
-                except SQLAlchemyError as e:
-                    state["message"] = _err_handler(e, "_get_user_data")
-
-                finally:
-                    session.close()
-
-                admin_panel_section(state)
-            else:
+            if not bcrypt.checkpw(state["user"]["password"].encode("utf-8"), current_user.h_pass.encode("utf-8")):
                 state.add_notification("warning", "Warning!", "Wrong password...")
-        else:
-            state.add_notification("warning", "Warning!", "Admin not found...")
+                return
+
+            fill_user_data(state, current_user)
+
+            state["user"].update(
+                {"password": None, "password2": None, "logged": 1, "not_logged": 0, "lang": current_user.lang,
+                 "message": None})
+
+            visit_log = VisitLog(
+                user_login=state["user"]["login"],
+                date_time_in=datetime.datetime.now(),
+                lang=state["lang"]
+            )
+            session.add(visit_log)
+            session.commit()
+
+            admin_panel_section(state)
+
+        except SQLAlchemyError as e:
+            state["message"] = _err_handler(e, "_get_user_data" if 'visit_log' in locals() else "log_admin")
+        finally:
+            session.close()
 
 
 def _get_new_engineers(state):
@@ -294,7 +286,8 @@ def _get_new_installers(state):
 
 
 def _get_default_user_data(login):
-    default_user_data = {key: None for key in ["first_name", "last_name", "email", "phone", "role", "password", "password2"]}
+    default_user_data = {key: None for key in
+                         ["first_name", "last_name", "email", "phone", "role", "password", "password2"]}
     default_user_data.update({"login": login, "logged": False, "lang": "E"})
     return default_user_data
 
@@ -514,22 +507,34 @@ def _add_user_message(state):
 
 
 def _delete_subscription(state):
+    if state["unsubscribe"]["email"] is None:
+        state.add_notification("warning", "Warning!", "No email provided!")
+        return
+
+    if not _valid_email(state["unsubscribe"]["email"]):
+        state.add_notification("warning", "Warning!", "Wrong email format!")
+        return
+
     with Session(engine) as session:
         try:
-            unsubscribed = session.query(Subscription).filter(Subscription.email == state["subscription"]["email"])
+            unsubscribed = session.query(Subscription).filter(Subscription.email == state["unsubscribe"]["email"]).one()
 
-            if not unsubscribed:
-                state.add_notification("warning", "Warning!", "You are not subscribed")
-                return
+            if unsubscribed:
+                print(unsubscribed.email)
 
-            unsubscribed.delete()
-            session.commit()
-            state.add_notification('info', 'Info', "You are unsubscribed")
-            state["subscription"]["email"] = None
-            state.set_page("about")
+                session.delete(unsubscribed)
+                session.commit()
+                state.add_notification('info', 'Info', "You are unsubscribed")
+                state["unsubscribe"]["email"] = None
+                state.set_page("about")
+
+        except NoResultFound:
+            state.add_notification("info", "Info!", "You are not subscribed to the site news")
+
         except Exception as e:
             state.add_notification('warning', 'Warning', _err_handler(e, 'delete_subscription'))
-            logger
+            logger.error(_err_handler(e, 'delete_subscription'))
+
 
 def _get_new_projects(state):
     if not state["user"]["logged"]:
@@ -1026,31 +1031,31 @@ def _send_request(state):
 
 
 def _add_to_subscription(state):
-    if not state["subscription"]["email"]:
+    if not state["subscribe"]["email"]:
         state.add_notification('error', 'Error', "E-mail is empty. Try again")
         return
-    if not _valid_email(state["subscription"]["email"]):
+    if not _valid_email(state["subscribe"]["email"]):
         state.add_notification('error', 'Error', "Wrong e-mail. Try again")
         return
 
     with Session(engine) as session:
-        result = session.query(Subscription.email).filter(Subscription.email == state["subscription"]["email"]).first()
+        result = session.query(Subscription.email).filter(Subscription.email == state["subscribe"]["email"]).first()
         if result:
             state.add_notification('warning', 'Warning', "You are already subscribed")
             return
         try:
             subscriber = Subscription(
-                first_name=state["subscription"]["first_name"] or None,
-                last_name=state["subscription"]["last_name"] or None,
-                email=state["subscription"]["email"],
+                first_name=state["subscribe"]["first_name"] or None,
+                last_name=state["subscribe"]["last_name"] or None,
+                email=state["subscribe"]["email"],
                 date_time=datetime.datetime.now()
             )
             session.add(subscriber)
             session.commit()
             state.add_notification('info', 'Info', "You are subscribed")
-            state["subscription"]["first_name"] = None
-            state["subscription"]["last_name"] = None
-            state["subscription"]["email"] = None
+            state["subscribe"]["first_name"] = None
+            state["subscribe"]["last_name"] = None
+            state["subscribe"]["email"] = None
             state.set_page("about")
         except Exception as e:
             state.add_notification('warning', 'Warning', _err_handler(e, 'add_to_subscription'))
@@ -1351,7 +1356,7 @@ def _get_my_messages_new(state):
                 User, User.id == Message.sender_id
             ).filter(
                 current_user.id == Message.receiver_id,
-                Message.read_dt == None
+                Message.read_dt is None
             ).all()
 
             if not my_messages:
@@ -1386,7 +1391,7 @@ def _get_my_messages_read(state):
                 User, User.id == Message.sender_id
             ).filter(
                 current_user.id == Message.receiver_id,
-                Message.read_dt != None
+                Message.read_dt is not None
             ).all()
 
             if not my_messages:
@@ -1443,5 +1448,3 @@ def _mark_as_unread(state, context):
             state.add_notification("info", "Info!", "Message marked as unread")
         except SQLAlchemyError as e:
             logger.error(f"An error occurred: {e}")
-
-
