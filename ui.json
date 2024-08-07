@@ -21033,7 +21033,8 @@
             "type": "heading",
             "content": {
                 "text": "@{dic.mission_intro[lang]}",
-                "headingType": "h4"
+                "headingType": "h4",
+                "alignment": "left"
             },
             "isCodeManaged": false,
             "position": 1,
