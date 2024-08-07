@@ -105,3 +105,37 @@ textarea:focus {
 .white-text {
     color: white !important;
 }
+
+.header_new {
+    /* Расположение вверху экрана */
+    position: fixed !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    /* Занимает 80% ширины экрана при масштабе страницы 100% */
+    width: 100vw !important;
+    /*height: 20vh !important;*/
+
+    /* Масштабирование совместно с другим содержимым страницы*/
+    resize: vertical !important;
+    overflow: auto !important;
+}
+
+
+/* Footer div */
+.footer_new {
+    /* Расположение внизу экрана */
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    /* Занимает 80% ширины экрана при масштабе страницы 100% */
+    width: 100vw !important;
+
+    /* Масштабирование совместно с другим содержимым страницы*/
+    resize: vertical !important;
+    overflow: auto !important;
+}
+

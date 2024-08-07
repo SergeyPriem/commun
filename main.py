@@ -23,6 +23,7 @@ from logging_config import LOGGING_CONFIG
 from menus import eng_menu, my_prospects_menu, main_menu, my_projects_menu
 from utilities import _send_email, _random_code_alphanumeric, _basic_data_validation
 
+# Don't remove
 from navi import go_about, go_projects, go_engineers, go_vacancies
 
 logging.config.dictConfig(LOGGING_CONFIG)
@@ -659,8 +660,8 @@ def get_screen_size(state):
 initial_state = wf.init_state(
     {
 
-        "header": "sz0yrwbz6osv58bn",
-        "footer": "zm3lzacgv0ahymqf",
+        "header": "tbag25a2ixxatzmw",
+        "footer": "t06410yhnc7u920g",
 
         "lang": "E",
         "dic": dic,
@@ -788,7 +789,7 @@ initial_state = wf.init_state(
 
     })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?78")
+initial_state.import_stylesheet("theme", "/static/custom.css?123")
 # initial_state.import_frontend_module("js_scripts", "/static/my_scripts.js?5")
 
 # get_screen_size(initial_state)
