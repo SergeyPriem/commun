@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime
+import logging.config
+import logging.handlers
 import time
 
 import writer as wf
@@ -12,21 +14,16 @@ from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_in
     _offer_service, _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, \
     _get_current_projects, _get_my_invitations, _apply_client_proposal, _decline_client_proposal, _add_message, \
     _update_read_date, _get_my_messages_new, _get_my_messages_read, _mark_as_unread, _reply_to_message
-
 from dic import dic
-from logging_config import LOGGING_CONFIG
-from menus import eng_menu, my_prospects_menu, main_menu, my_projects_menu
-from navi import go_about, go_projects, go_engineers, go_vacancies
 from dic import error_messages as e_m
 from fw import ss_dic
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancies, \
     specialities_R, specialities_U, specialities_E, init_new_project
-
+from logging_config import LOGGING_CONFIG
+from menus import eng_menu, my_prospects_menu, main_menu, my_projects_menu
 from utilities import _send_email, _random_code_alphanumeric, _basic_data_validation
 
-import logging
-import logging.config
-import logging.handlers
+from navi import go_about, go_projects, go_engineers, go_vacancies
 
 logging.config.dictConfig(LOGGING_CONFIG)
 
@@ -731,7 +728,7 @@ initial_state = wf.init_state(
         "screen": {
             "width": None,
             "height": None
-        }
+        },
 
         # "my_invitations": None,
         # "user_message": {
