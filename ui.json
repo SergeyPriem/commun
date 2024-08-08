@@ -49,7 +49,7 @@
                 "contentPadding": "px"
             },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 2,
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "handlers": {},
             "visible": true
@@ -73,7 +73,7 @@
             "type": "columns",
             "content": {},
             "isCodeManaged": false,
-            "position": 2,
+            "position": 0,
             "parentId": "qwm9n95a8zwygfc1",
             "handlers": {},
             "visible": true
@@ -156,7 +156,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 2,
             "parentId": "e7rhayvymnj50ly4",
             "handlers": {}
         },
@@ -337,7 +337,8 @@
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
                 "primaryTextColor": "#ffffff",
-                "separatorColor": "#1d4087"
+                "separatorColor": "#1d4087",
+                "cssClasses": "center-center"
             },
             "isCodeManaged": false,
             "position": 1,
@@ -849,7 +850,8 @@
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
                 "primaryTextColor": "#ffffff",
-                "separatorColor": "#1d4087"
+                "separatorColor": "#1d4087",
+                "cssClasses": "center-center"
             },
             "isCodeManaged": false,
             "position": 3,
@@ -1477,7 +1479,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 2,
             "parentId": "u58nuzt98hnjh39p",
             "handlers": {}
         },
@@ -1554,7 +1556,7 @@
                 "buttonTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 3,
             "parentId": "e7rhayvymnj50ly4",
             "handlers": {},
             "visible": "engineers.content"
@@ -1803,7 +1805,7 @@
                 "cssClasses": ""
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 4,
             "parentId": "e7rhayvymnj50ly4",
             "handlers": {},
             "visible": "engineers.warning"
@@ -1921,7 +1923,8 @@
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
                 "primaryTextColor": "#ffffff",
-                "separatorColor": "#1d4087"
+                "separatorColor": "#1d4087",
+                "cssClasses": "center-center"
             },
             "isCodeManaged": false,
             "position": 1,
@@ -4871,7 +4874,7 @@
                 "contentHAlign": "center"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 3,
             "parentId": "u58nuzt98hnjh39p",
             "handlers": {},
             "visible": "vacancies.content"
@@ -4899,7 +4902,8 @@
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
                 "primaryTextColor": "#ffffff",
-                "separatorColor": "#152e61"
+                "separatorColor": "#152e61",
+                "cssClasses": "center-center"
             },
             "isCodeManaged": false,
             "position": 1,
@@ -5027,7 +5031,8 @@
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
-                "primaryTextColor": "#ffffff"
+                "primaryTextColor": "#ffffff",
+                "cssClasses": "center-center"
             },
             "isCodeManaged": false,
             "position": 1,
@@ -9088,8 +9093,7 @@
             "isCodeManaged": false,
             "position": 0,
             "parentId": "l3ygcr8fduzeqn3s",
-            "handlers": {},
-            "visible": true
+            "handlers": {}
         },
         "77qacv4cupw5hvbp": {
             "id": "77qacv4cupw5hvbp",
@@ -9098,7 +9102,7 @@
                 "proxyId": "@{footer}"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 5,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": true
@@ -9110,7 +9114,7 @@
                 "proxyId": "@{footer}"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 5,
             "parentId": "e7rhayvymnj50ly4",
             "handlers": {},
             "visible": true
@@ -9134,7 +9138,7 @@
                 "proxyId": "@{header}"
             },
             "isCodeManaged": false,
-            "position": 0,
+            "position": 1,
             "parentId": "u58nuzt98hnjh39p",
             "handlers": {}
         },
@@ -9145,7 +9149,7 @@
                 "proxyId": "@{footer}"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 5,
             "parentId": "u58nuzt98hnjh39p",
             "handlers": {},
             "visible": true
@@ -20430,10 +20434,11 @@
             "id": "ek61vifmwrntuixc",
             "type": "message",
             "content": {
-                "message": "- @{dic.projects_warning[lang]}"
+                "message": "- @{dic.projects_warning[lang]}",
+                "cssClasses": "center-center"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 4,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": "user.not_logged"
@@ -20443,10 +20448,10 @@
             "type": "message",
             "content": {
                 "message": "- @{dic.vacancies_warning[lang]}",
-                "cssClasses": ""
+                "cssClasses": "center-center"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 4,
             "parentId": "u58nuzt98hnjh39p",
             "handlers": {}
         },
@@ -20488,7 +20493,7 @@
                 "separatorColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 3,
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "handlers": {},
             "visible": true
@@ -20630,13 +20635,13 @@
                 "title": "",
                 "containerBackgroundColor": "#152e61",
                 "cssClasses": "header_new",
-                "buttonColor": "#152e61"
+                "buttonColor": "#152e61",
+                "separatorColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 0,
+            "position": 1,
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "handlers": {},
-            "visible": true
+            "handlers": {}
         },
         "o34w9gpa21gp7adf": {
             "id": "o34w9gpa21gp7adf",
@@ -20981,37 +20986,73 @@
         "qyj78c4wwn73235y": {
             "id": "qyj78c4wwn73235y",
             "type": "horizontalstack",
-            "parentId": "qwm9n95a8zwygfc1",
-            "content": {},
-            "handlers": {},
+            "content": {
+                "contentPadding": "40px"
+            },
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
             "visible": true
         },
-        "2ncfqp7fhd935dgr": {
-            "id": "2ncfqp7fhd935dgr",
+        "ljcee2j8j2l43wrv": {
+            "id": "ljcee2j8j2l43wrv",
             "type": "horizontalstack",
-            "parentId": "qwm9n95a8zwygfc1",
-            "content": {},
-            "handlers": {},
-            "position": 1,
-            "visible": true
-        },
-        "p402uftbi7odl90h": {
-            "id": "p402uftbi7odl90h",
-            "type": "horizontalstack",
-            "parentId": "qwm9n95a8zwygfc1",
-            "content": {},
-            "handlers": {},
-            "position": 3,
-            "visible": true
-        },
-        "ngbp0kjfxmwe6h57": {
-            "id": "ngbp0kjfxmwe6h57",
-            "type": "horizontalstack",
-            "parentId": "qwm9n95a8zwygfc1",
-            "content": {},
-            "handlers": {},
+            "content": {
+                "contentPadding": "30px"
+            },
+            "isCodeManaged": false,
             "position": 4,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
+            "visible": true
+        },
+        "zr5khg99v4yhboyh": {
+            "id": "zr5khg99v4yhboyh",
+            "type": "reuse",
+            "content": {
+                "proxyId": "@{footer}"
+            },
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "k97az8z9rei13cpb",
+            "handlers": {},
+            "visible": true
+        },
+        "hbqklyzifwy1q2et": {
+            "id": "hbqklyzifwy1q2et",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "40px"
+            },
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "l3ygcr8fduzeqn3s",
+            "handlers": {},
+            "visible": true
+        },
+        "f39plzpum2ockt6z": {
+            "id": "f39plzpum2ockt6z",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "40px"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "e7rhayvymnj50ly4",
+            "handlers": {},
+            "visible": true
+        },
+        "kgut75o6j0zfvkbs": {
+            "id": "kgut75o6j0zfvkbs",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "40px"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "u58nuzt98hnjh39p",
+            "handlers": {},
             "visible": true
         }
     }
