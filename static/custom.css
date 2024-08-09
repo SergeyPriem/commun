@@ -140,9 +140,8 @@ textarea:focus {
         resize: vertical !important;
         overflow: auto !important;
     }
-}
 
-.center-center {
+    .center-center {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -152,10 +151,13 @@ textarea:focus {
     overflow-y: auto;
 }
 
-.center-horizontally {
-    display: block;
+    .center-horizontally {
+        display: block;
 
-    margin-left: auto !important;
-    margin-right: auto !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
 }
+
 
