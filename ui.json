@@ -5028,7 +5028,7 @@
             "id": "yncc454drpo8n2pl",
             "type": "section",
             "content": {
-                "title": "Subscribe",
+                "title": "",
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
@@ -8717,11 +8717,12 @@
             "id": "3dll30ed3a3yyk6y",
             "type": "section",
             "content": {
-                "title": "Unsubscribe",
+                "title": "",
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
-                "primaryTextColor": "#ffffff"
+                "primaryTextColor": "#ffffff",
+                "cssClasses": "center-center"
             },
             "isCodeManaged": false,
             "position": 2,
@@ -21095,23 +21096,25 @@
         "a2oxhhvwno45zrw0": {
             "id": "a2oxhhvwno45zrw0",
             "type": "horizontalstack",
-            "parentId": "l3ygcr8fduzeqn3s",
             "content": {
                 "contentPadding": "20px"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 6,
+            "parentId": "l3ygcr8fduzeqn3s",
+            "handlers": {},
             "visible": true
         },
         "8bi8kjtwj8wmj1tw": {
             "id": "8bi8kjtwj8wmj1tw",
             "type": "horizontalstack",
-            "parentId": "l3ygcr8fduzeqn3s",
             "content": {
                 "contentPadding": "20px"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 8,
+            "parentId": "l3ygcr8fduzeqn3s",
+            "handlers": {},
             "visible": true
         }
     }
