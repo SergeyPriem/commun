@@ -106,7 +106,10 @@ textarea:focus {
     color: white !important;
 }
 
-.header_new {
+
+
+@media (min-width: 1200px) {
+    .header_new {
     /* Расположение вверху экрана */
     position: fixed !important;
     top: 0 !important;
@@ -120,23 +123,23 @@ textarea:focus {
     /* Масштабирование совместно с другим содержимым страницы*/
     resize: vertical !important;
     overflow: auto !important;
-}
+    }
 
 
-/* Footer div */
-.footer_new {
-    /* Расположение внизу экрана */
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    .footer_new {
+        /* Расположение внизу экрана */
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
 
-    /* Занимает 80% ширины экрана при масштабе страницы 100% */
-    width: 100vw !important;
+        /* Занимает 80% ширины экрана при масштабе страницы 100% */
+        width: 100vw !important;
 
-    /* Масштабирование совместно с другим содержимым страницы*/
-    resize: vertical !important;
-    overflow: auto !important;
+        /* Масштабирование совместно с другим содержимым страницы*/
+        resize: vertical !important;
+        overflow: auto !important;
+    }
 }
 
 .center-center {
@@ -151,7 +154,8 @@ textarea:focus {
 
 .center-horizontally {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 

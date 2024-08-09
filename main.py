@@ -650,11 +650,12 @@ def mark_as_unread(state, context):
 
 
 def get_screen_size(state):
-    screen_size = state.call_frontend_function("js_scripts", "screen_size", [])
-    state["screen"]["width"] = screen_size[0]
-    state["screen"]["height"] = screen_size[1]
+    state.call_frontend_function("js_scripts", "screen_size", [])
+    # state.call_frontend_function("js_scripts", "sendCustomEvent", [])
+    # state["screen"]["width"] = screen_size[0]
+    # state["screen"]["height"] = screen_size[1]
 
-    print(f"Screen size: {screen_size}")
+    # print(f"Screen size: {screen_size}")
 
 
 initial_state = wf.init_state(
@@ -789,8 +790,8 @@ initial_state = wf.init_state(
 
     })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?131")
-# initial_state.import_frontend_module("js_scripts", "/static/my_scripts.js?5")
+initial_state.import_stylesheet("theme", "/static/custom.css?141")
+# initial_state.import_frontend_module("js_scripts", "/static/my_scripts.js?7")
 
 # get_screen_size(initial_state)
 logger.info("MAIN executed successfully!")
