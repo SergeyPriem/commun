@@ -149,3 +149,9 @@ textarea:focus {
     overflow-y: auto;
 }
 
+.center-horizontally {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+

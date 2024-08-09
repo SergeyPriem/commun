@@ -60,7 +60,8 @@
             "content": {
                 "src": "static/hand_on_dwg.JPG",
                 "caption": "",
-                "maxWidth": ""
+                "maxWidth": "",
+                "cssClasses": "center-horizontally"
             },
             "isCodeManaged": false,
             "position": 6,
