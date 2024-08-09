@@ -790,7 +790,7 @@ initial_state = wf.init_state(
 
     })
 
-initial_state.import_stylesheet("theme", "/static/custom.css?142")
+initial_state.import_stylesheet("theme", "/static/custom.css?142св")
 # initial_state.import_frontend_module("js_scripts", "/static/my_scripts.js?7")
 
 # get_screen_size(initial_state)

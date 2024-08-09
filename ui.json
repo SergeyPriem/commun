@@ -621,10 +621,11 @@
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
-                "primaryTextColor": "#ffffff"
+                "primaryTextColor": "#ffffff",
+                "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 4,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "user.engineer"
@@ -792,7 +793,7 @@
             "content": {
                 "text": "@{dic.to_register[lang]}",
                 "buttonTextColor": "#152e61",
-                "icon": "registered-fill"
+                "icon": "Check"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -1122,7 +1123,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 5,
+            "position": 7,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "reg.data_ok"
@@ -1288,7 +1289,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 7,
+            "position": 9,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "email_confirmation.wrong_code"
@@ -1313,7 +1314,7 @@
                 "message": "- @{reg.data_error_message}"
             },
             "isCodeManaged": false,
-            "position": 6,
+            "position": 8,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "reg.data_error"
@@ -1925,10 +1926,10 @@
                 "contentHAlign": "center",
                 "primaryTextColor": "#ffffff",
                 "separatorColor": "#1d4087",
-                "cssClasses": "center-center"
+                "cssClasses": ""
             },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 3,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {}
         },
@@ -2011,7 +2012,8 @@
             "id": "f7bihfeukauya7fx",
             "type": "button",
             "content": {
-                "text": "@{dic.client[lang]}"
+                "text": "@{dic.client[lang]}",
+                "icon": ""
             },
             "isCodeManaged": false,
             "position": 0,
@@ -2062,10 +2064,11 @@
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
-                "primaryTextColor": "#ffffff"
+                "primaryTextColor": "#ffffff",
+                "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 5,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "user.client"
@@ -2386,7 +2389,7 @@
             "content": {
                 "text": "@{dic.to_register[lang]}",
                 "buttonTextColor": "#152e61",
-                "icon": "registered-fill"
+                "icon": "Check"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -2459,10 +2462,11 @@
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
-                "primaryTextColor": "#ffffff"
+                "primaryTextColor": "#ffffff",
+                "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 6,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "user.installer"
@@ -2802,7 +2806,7 @@
             "content": {
                 "text": "@{dic.to_register[lang]}",
                 "buttonTextColor": "#152e61",
-                "icon": "registered-fill"
+                "icon": "Check"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -6668,7 +6672,7 @@
             "type": "columns",
             "content": {},
             "isCodeManaged": false,
-            "position": 8,
+            "position": 10,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "reg.code_message"
@@ -6714,7 +6718,7 @@
             "type": "columns",
             "content": {},
             "isCodeManaged": false,
-            "position": 9,
+            "position": 11,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": "reg.code_ok"
@@ -9271,7 +9275,7 @@
                 "proxyId": "@{header}"
             },
             "isCodeManaged": false,
-            "position": 0,
+            "position": 1,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": true
@@ -9283,7 +9287,7 @@
                 "proxyId": "@{footer}"
             },
             "isCodeManaged": false,
-            "position": 10,
+            "position": 13,
             "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": true
@@ -21114,6 +21118,54 @@
             "isCodeManaged": false,
             "position": 8,
             "parentId": "l3ygcr8fduzeqn3s",
+            "handlers": {},
+            "visible": true
+        },
+        "gp9ntxl58l3xztvc": {
+            "id": "gp9ntxl58l3xztvc",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "20px"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "1cnhl56hpeydnmbz",
+            "handlers": {},
+            "visible": true
+        },
+        "1xu1xokjz5qw7cjh": {
+            "id": "1xu1xokjz5qw7cjh",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "20px"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "1cnhl56hpeydnmbz",
+            "handlers": {},
+            "visible": true
+        },
+        "sm17utgq25nqehac": {
+            "id": "sm17utgq25nqehac",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "15px"
+            },
+            "isCodeManaged": false,
+            "position": 12,
+            "parentId": "1cnhl56hpeydnmbz",
+            "handlers": {},
+            "visible": true
+        },
+        "oye1wilqgz5m6n8o": {
+            "id": "oye1wilqgz5m6n8o",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "15px"
+            },
+            "isCodeManaged": false,
+            "position": 14,
+            "parentId": "1cnhl56hpeydnmbz",
             "handlers": {},
             "visible": true
         }
