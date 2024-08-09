@@ -11,7 +11,8 @@
                 "buttonColor": "#ffffff",
                 "buttonTextColor": "#152e61",
                 "contentHAlign": "center",
-                "emptinessColor": "#38cc42"
+                "emptinessColor": "#1d4087",
+                "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -25,7 +26,7 @@
             "type": "page",
             "content": {
                 "pageMode": "wide",
-                "emptinessColor": "#152e61",
+                "emptinessColor": "#1d4087",
                 "key": "about",
                 "accentColor": "#152e61",
                 "separatorColor": "#1d4087",
@@ -3369,7 +3370,7 @@
             "id": "43ycgjacqx7n67x1",
             "type": "page",
             "content": {
-                "pageMode": "compact",
+                "pageMode": "w",
                 "emptinessColor": "#152e61",
                 "key": "client_page",
                 "accentColor": "#152e61"
@@ -3387,7 +3388,9 @@
                 "accentColor": "#ffffff",
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
-                "primaryTextColor": "#ffffff"
+                "primaryTextColor": "#ffffff",
+                "contentPadding": "50px",
+                "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
             "position": 1,
@@ -3436,19 +3439,6 @@
                 "text": "# **@{dic.client_pers_page[lang]}: _@{user.login}_**",
                 "useMarkdown": "yes",
                 "alignment": "center"
-            },
-            "isCodeManaged": false,
-            "position": 1,
-            "parentId": "vxlllsxzrojevr8c",
-            "handlers": {},
-            "visible": true
-        },
-        "0wcsat2q2i6govbe": {
-            "id": "0wcsat2q2i6govbe",
-            "type": "horizontalstack",
-            "content": {
-                "contentHAlign": "center",
-                "contentPadding": "15px"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -5338,7 +5328,7 @@
                 "buttonTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 2,
             "parentId": "vxlllsxzrojevr8c",
             "handlers": {},
             "visible": true
@@ -7060,7 +7050,7 @@
             "type": "separator",
             "content": {},
             "isCodeManaged": false,
-            "position": 2,
+            "position": 1,
             "parentId": "vxlllsxzrojevr8c",
             "handlers": {},
             "visible": true
@@ -9335,7 +9325,7 @@
                 "proxyId": "@{footer}"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 3,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": true
@@ -19243,7 +19233,7 @@
                 "separatorColor": "#75b892"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 2,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": "modal_vis"
@@ -20866,8 +20856,8 @@
             "content": {
                 "src": "static/rounded_helmet.png",
                 "caption": "",
-                "maxWidth": "60",
-                "maxHeight": "60",
+                "maxWidth": "50",
+                "maxHeight": "50",
                 "cssClasses": "custom_pointer"
             },
             "isCodeManaged": false,
@@ -21166,6 +21156,16 @@
             "isCodeManaged": false,
             "position": 14,
             "parentId": "1cnhl56hpeydnmbz",
+            "handlers": {},
+            "visible": true
+        },
+        "d9lhqc9b5ec8i7jn": {
+            "id": "d9lhqc9b5ec8i7jn",
+            "type": "horizontalstack",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 4,
+            "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": true
         }
