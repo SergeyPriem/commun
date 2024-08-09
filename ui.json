@@ -3378,6 +3378,9 @@
             "isCodeManaged": false,
             "position": 10,
             "parentId": "root",
+            "handlers": {
+                "wf-page-open": "create_client_menu"
+            },
             "visible": true
         },
         "vawb657utc62tjvh": {
@@ -5328,7 +5331,7 @@
                 "buttonTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 3,
             "parentId": "vxlllsxzrojevr8c",
             "handlers": {},
             "visible": true
@@ -20766,23 +20769,6 @@
             "handlers": {},
             "visible": true
         },
-        "w9m1w70fo7kge0bd": {
-            "id": "w9m1w70fo7kge0bd",
-            "type": "text",
-            "content": {
-                "text": "#### @{dic.log_in[lang]}",
-                "useMarkdown": "yes",
-                "primaryTextColor": "#ffffff",
-                "cssClasses": "text-as-link"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "qpy84wqhqgnxsg7c",
-            "handlers": {
-                "wf-click": "$goToPage_login"
-            },
-            "visible": "user.not_logged"
-        },
         "z3xay16m4fpsf83e": {
             "id": "z3xay16m4fpsf83e",
             "type": "text",
@@ -21167,6 +21153,62 @@
             "position": 4,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
+            "visible": true
+        },
+        "w9m1w70fo7kge0bd": {
+            "id": "w9m1w70fo7kge0bd",
+            "type": "text",
+            "content": {
+                "text": "#### @{dic.log_in[lang]}",
+                "useMarkdown": "yes",
+                "primaryTextColor": "#ffffff",
+                "cssClasses": "text-as-link"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "qpy84wqhqgnxsg7c",
+            "handlers": {
+                "wf-click": "$goToPage_login"
+            },
+            "visible": "user.not_logged"
+        },
+        "ra5pue8slzneqzxf": {
+            "id": "ra5pue8slzneqzxf",
+            "type": "repeater",
+            "content": {
+                "keyVariable": "itemId",
+                "valueVariable": "item",
+                "repeaterObject": "@{client_menu}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "98aveex4j6pvadmh",
+            "handlers": {},
+            "visible": true
+        },
+        "98aveex4j6pvadmh": {
+            "id": "98aveex4j6pvadmh",
+            "type": "horizontalstack",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "vxlllsxzrojevr8c",
+            "handlers": {},
+            "visible": true
+        },
+        "63phqa1gvf8muib6": {
+            "id": "63phqa1gvf8muib6",
+            "type": "text",
+            "content": {
+                "text": "@{item.text[lang]}",
+                "cssClasses": "text-as-link @{item.css}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "ra5pue8slzneqzxf",
+            "handlers": {
+                "wf-click": "change_menu"
+            },
             "visible": true
         }
     }

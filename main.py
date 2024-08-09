@@ -20,7 +20,7 @@ from fw import ss_dic
 from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancies, \
     specialities_R, specialities_U, specialities_E, init_new_project
 from logging_config import LOGGING_CONFIG
-from menus import eng_menu, my_prospects_menu, main_menu, my_projects_menu
+from menus import eng_menu, my_prospects_menu, main_menu, my_projects_menu, client_menu
 from utilities import _send_email, _random_code_alphanumeric, _basic_data_validation
 
 # Don't remove
@@ -40,6 +40,10 @@ def _create_prospects_menu(state, context):
 
 def _create_projects_menu(state, context):
     state["my_projects_menu"] = _create_menu("my_projects_menu", my_projects_menu, None)
+
+
+def create_client_menu(state, context):
+    state["client_menu"] = _create_menu("my_client_menu", client_menu, None)
 
 
 def _execute_menu_function(state, context):

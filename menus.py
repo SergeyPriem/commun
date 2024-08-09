@@ -108,6 +108,89 @@ my_projects_menu = {
         "U": "Мої Видалені Проекти",
         "R": "Мои Удаленные Проекты"
     },
+
+
+}
+
+client_menu = {
+    "my_messages": {
+        "E": "My Messages",
+        "U": "Мої Повідомлення",
+        "R": "Мои Сообщения",
+        "fun": "get_my_messages",
+        "reset": ["my_projects_menu", "my_projects_menu"]
+    },
+
+    "new_engines": {
+        "E": "New Engines",
+        "U": "Нові інженери",
+        "R": "Новые Инженеры",
+        "fun": "_create_new_engineers_menu",
+        "reset": ["my_projects_menu", "my_projects_menu"]
+    },
+    "new_installers": {
+        "E": "New Installers",
+        "U": "Нові Монтажники",
+        "R": "Новые Монтажники",
+        "fun": "_create_new_installers_menu",
+        "reset": ["my_projects_menu", "my_projects_menu"]
+    },
+
+    "all_engineers": {
+        "E": "All Engineers",
+        "U": "Всі інженери",
+        "R": "Все Инженеры",
+        "fun": "_create_all_engineers_menu",
+        "reset": ["my_projects_menu", "my_projects_menu"]
+    },
+
+    "all_installers": {
+        "E": "All Installers",
+        "U": "Всі Монтажники",
+        "R": "Все Монтажники",
+        "fun": "_create_all_installers_menu",
+        "reset": ["my_projects_menu", "my_projects_menu"]
+    },
+
+    "actual_projects": {
+        "E": "Actual Projects",
+        "U": "Актуальні Проекти",
+        "R": "Актуальные Проекты",
+        "fun": "_create_actual_projects_menu",
+        "reset": ["my_projects_menu", "my_projects_menu"]
+    },
+
+    "finished_projects": {
+        "E": "Finished Projects",
+        "U": "Завершені Проекти",
+        "R": "Завершенные Проекты",
+        "fun": "_create_finished_projects_menu",
+        "reset": ["my_projects_menu", "my_projects_menu"]
+    },
+
+    "add_project": {
+        "E": "Add Project",
+        "U": "Додати Проект",
+        "R": "Добавить Проект",
+        "fun": "_create_add_project_menu",
+        "reset": ["my_projects_menu", "my_projects_menu"]
+    },
+
+    "edit_account": {
+        "E": "Edit Account",
+        "U": "Редагувати Акаунт",
+        "R": "Редактировать Аккаунт",
+        "fun": "_create_edit_account_menu",
+        "reset": ["my_projects_menu", "my_projects_menu"]
+    },
+
+    "help": {
+        "E": "Help",
+        "U": "Допомога",
+        "R": "Помощь",
+        "fun": "_create_help_menu",
+        "reset": ["my_projects_menu", "my_projects_menu"]
+    },
 }
 
 
