@@ -43,7 +43,7 @@ def _create_projects_menu(state, context):
 
 
 def create_client_menu(state, context):
-    state["client_menu"] = _create_menu("my_client_menu", client_menu, None)
+    state["client_menu"] = _create_menu("client_menu", client_menu, None)
 
 
 def _execute_menu_function(state, context):
@@ -636,7 +636,7 @@ def reply_to_message(state, context):
     change_modal_visibility(state)
 
 
-def get_my_messages(state):
+def get_my_messages(state, context):
     _get_my_messages_new(state)
     _get_my_messages_read(state)
 
@@ -660,6 +660,9 @@ def get_screen_size(state):
     # state["screen"]["height"] = screen_size[1]
 
     # print(f"Screen size: {screen_size}")
+
+
+# Client page ----------------------------------------------------------------
 
 
 initial_state = wf.init_state(
@@ -791,6 +794,7 @@ initial_state = wf.init_state(
         # "new_installers": None,
         # "trusted_engineers": None,
         # "viewed_engineers": None,
+
 
     })
 

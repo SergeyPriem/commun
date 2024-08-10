@@ -156,8 +156,8 @@ client_menu = {
         "E": "Actual Projects",
         "U": "Актуальні Проекти",
         "R": "Актуальные Проекты",
-        "fun": "_create_actual_projects_menu",
-        "reset": ["my_projects_menu", "my_projects_menu"]
+        "fun": "get_actual_own_projects",
+        "reset": None
     },
 
     "finished_projects": {
@@ -180,16 +180,16 @@ client_menu = {
         "E": "Edit Account",
         "U": "Редагувати Акаунт",
         "R": "Редактировать Аккаунт",
-        "fun": "_create_edit_account_menu",
-        "reset": ["my_projects_menu", "my_projects_menu"]
+        "fun": None,
+        "reset": None,
     },
 
     "help": {
         "E": "Help",
         "U": "Допомога",
         "R": "Помощь",
-        "fun": "_create_help_menu",
-        "reset": ["my_projects_menu", "my_projects_menu"]
+        "fun": None,
+        "reset": None
     },
 }
 
