@@ -114,7 +114,7 @@ def get_table_as_dataframe(state):
     _get_table_as_dataframe(state)
 
 
-def get_actual_own_projects(state):
+def get_actual_own_projects(state, context):
     _get_actual_own_projects(state)
 
 
@@ -584,7 +584,7 @@ def hide_help(state):
 def switch_to_own_page(state):
     match state["user"]["role"]:
         case "client":
-            get_my_messages(state)
+            get_my_messages(state, context=None)
             state.set_page("client_page")
         case "engineer":
             state.set_page("engineer_page")

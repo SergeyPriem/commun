@@ -82,7 +82,6 @@ my_prospects_menu = {
 }
 
 my_projects_menu = {
-    # "_active": None,
 
     "my_current_projects": {
         "E": "My Current Projects",
@@ -118,7 +117,7 @@ client_menu = {
         "U": "Мої Повідомлення",
         "R": "Мои Сообщения",
         "fun": "get_my_messages",
-        "reset": ["my_projects_menu", "my_projects_menu"]
+        "reset": None,
     },
 
     "new_engines": {
@@ -126,14 +125,14 @@ client_menu = {
         "U": "Нові інженери",
         "R": "Новые Инженеры",
         "fun": "_create_new_engineers_menu",
-        "reset": ["my_projects_menu", "my_projects_menu"]
+        "reset": None
     },
     "new_installers": {
         "E": "New Installers",
         "U": "Нові Монтажники",
         "R": "Новые Монтажники",
         "fun": "_create_new_installers_menu",
-        "reset": ["my_projects_menu", "my_projects_menu"]
+        "reset": None
     },
 
     "all_engineers": {
@@ -141,7 +140,7 @@ client_menu = {
         "U": "Всі інженери",
         "R": "Все Инженеры",
         "fun": "_create_all_engineers_menu",
-        "reset": ["my_projects_menu", "my_projects_menu"]
+        "reset": None
     },
 
     "all_installers": {
@@ -149,7 +148,7 @@ client_menu = {
         "U": "Всі Монтажники",
         "R": "Все Монтажники",
         "fun": "_create_all_installers_menu",
-        "reset": ["my_projects_menu", "my_projects_menu"]
+        "reset": None
     },
 
     "actual_projects": {
@@ -165,7 +164,7 @@ client_menu = {
         "U": "Завершені Проекти",
         "R": "Завершенные Проекты",
         "fun": "_create_finished_projects_menu",
-        "reset": ["my_projects_menu", "my_projects_menu"]
+        "reset": None
     },
 
     "add_project": {
@@ -173,7 +172,7 @@ client_menu = {
         "U": "Додати Проект",
         "R": "Добавить Проект",
         "fun": "_create_add_project_menu",
-        "reset": ["my_projects_menu", "my_projects_menu"]
+        "reset": None
     },
 
     "edit_account": {

@@ -118,7 +118,7 @@ textarea:focus {
 
     /* Занимает 80% ширины экрана при масштабе страницы 100% */
     width: 100vw !important;
-    height: 9vh !important;
+    height: 10vh !important;
 
     /* Масштабирование совместно с другим содержимым страницы*/
     resize: vertical !important;
@@ -135,7 +135,7 @@ textarea:focus {
 
         /* Занимает 100% ширины экрана при масштабе страницы 100% */
         width: 100vw !important;
-        height: 7vh !important;
+        height: 8vh !important;
 
         /* Масштабирование совместно с другим содержимым страницы*/
         resize: vertical !important;
