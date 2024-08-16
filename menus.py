@@ -39,7 +39,7 @@ eng_menu = {
         "U": "Мої Перспективи",
         "R": "Мои Перспективы",
         "fun": "_create_prospects_menu",
-        "reset": None  #["my_projects_menu", "my_prospects_menu"]
+        "reset": ["my_projects_menu"]
     },
 
     "my_projects": {
@@ -47,7 +47,7 @@ eng_menu = {
         "U": "Мої Проекти",
         "R": "Мои Проекты",
         "fun": "_create_projects_menu",
-        "reset": None #["my_prospects_menu", "my_projects_menu"]
+        "reset": ["my_prospects_menu"]
     },
 }
 
