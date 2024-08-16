@@ -721,8 +721,7 @@ initial_state = wf.init_state(
         "reg_vis": ["c", "e", "i"],
         "proj_vis": ["c", "e", "i"],
 
-        # "my_prospects": 0,
-        # "my_projects": 0,
+
 
         "message_switch": 0,
         "proj_message": None,
@@ -733,67 +732,6 @@ initial_state = wf.init_state(
         "eng_menu": None,
 
         'main_menu': _create_menu("main_menu", main_menu, 0),
-
-        "screen": {
-            "width": None,
-            "height": None
-        },
-
-        # "my_invitations": None,
-        # "user_message": {
-        #    "first_name": None,
-        #    "last_name": None,
-        #    "email": None,
-        #    "message": None
-        # },
-        # "unsubscribe_code": None,
-        # "got_unsubscribe_code": None,
-        # "current_invitation_id": None,
-        # "current_invitation": None,
-        # "current_invitation_message": None,
-        # "invitations_quantity": None,
-        # "new_proj_quantity": None,
-        # 'actual_proj_quantity': None,
-        # "current_own_projects": {
-        #    "name": None,
-        #    "description": None,
-        #    "status": None,
-        #    "comments": None,
-        #    "required_specialists": None,
-        #    "assigned_engineers": None,
-        #    "created": None
-        # },
-        # "new_current_projects": None,
-        # "all_current_projects": None,
-        # "all_finished_projects": None,
-        # "all_engineers": None,
-        # "all_installers": None,
-        #
-        # "new_current_projects_message": None,
-        # "all_current_projects_message": None,
-        # "all_finished_projects_message": None,
-        # "all_engineers_message": None,
-        # "all_installers_message": None,
-        # "current_own_projects_dict": None,
-        # "selected_proj_to_add_eng": None,
-        # "selected_eng_for_proj": None,
-        # "user_invitation_status": None,
-        # "ar": None,  # "Architecture",
-        # "el": None,
-        # "ins": None,
-        # "low_cur": None,
-        # "plot_plan": None,
-        # "piping_linear": None,
-        # "piping_area": None,
-        # "hvac": None,
-        # "wss": None,
-        # "term": None,
-        # "civil": None,
-        # "selected_engineers": [],
-        # "new_engineers": None,
-        # "new_installers": None,
-        # "trusted_engineers": None,
-        # "viewed_engineers": None,
 
 
     })

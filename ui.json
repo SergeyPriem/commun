@@ -18762,16 +18762,6 @@
             "handlers": {},
             "visible": true
         },
-        "d9lhqc9b5ec8i7jn": {
-            "id": "d9lhqc9b5ec8i7jn",
-            "type": "horizontalstack",
-            "content": {},
-            "isCodeManaged": false,
-            "position": 3,
-            "parentId": "43ycgjacqx7n67x1",
-            "handlers": {},
-            "visible": true
-        },
         "ra5pue8slzneqzxf": {
             "id": "ra5pue8slzneqzxf",
             "type": "repeater",
@@ -18827,7 +18817,7 @@
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 5,
+            "position": 4,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": "user.login"
@@ -18879,7 +18869,7 @@
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 6,
+            "position": 5,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": "client_menu.add_project.css"
@@ -18961,7 +18951,7 @@
                 "contentPadding": "15px"
             },
             "isCodeManaged": false,
-            "position": 11,
+            "position": 10,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": true
@@ -18973,7 +18963,7 @@
                 "contentPadding": "15px"
             },
             "isCodeManaged": false,
-            "position": 13,
+            "position": 12,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": true
@@ -18985,7 +18975,7 @@
                 "proxyId": "@{footer}"
             },
             "isCodeManaged": false,
-            "position": 12,
+            "position": 11,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": true
@@ -21069,126 +21059,6 @@
             "handlers": {},
             "visible": true
         },
-        "eddt1viy7b808n70": {
-            "id": "eddt1viy7b808n70",
-            "type": "section",
-            "content": {
-                "title": "@{item.sender} - @{item.project}",
-                "separatorColor": "#75b892",
-                "containerBackgroundColor": "#152e61"
-            },
-            "isCodeManaged": false,
-            "position": 8,
-            "parentId": "zhenamn3h0xqnj5d",
-            "handlers": {},
-            "visible": true
-        },
-        "lfl65oe0vf33nc9s": {
-            "id": "lfl65oe0vf33nc9s",
-            "type": "columns",
-            "content": {},
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "eddt1viy7b808n70",
-            "handlers": {},
-            "visible": true
-        },
-        "c9wg2p7ys03olmxh": {
-            "id": "c9wg2p7ys03olmxh",
-            "type": "column",
-            "content": {
-                "width": "8",
-                "contentVAlign": "center"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "lfl65oe0vf33nc9s",
-            "handlers": {},
-            "visible": true
-        },
-        "g8cqhaeqn01xlkf7": {
-            "id": "g8cqhaeqn01xlkf7",
-            "type": "text",
-            "content": {
-                "text": "@{item.message_text}"
-            },
-            "isCodeManaged": false,
-            "position": 1,
-            "parentId": "c9wg2p7ys03olmxh",
-            "handlers": {},
-            "visible": true
-        },
-        "w02lyisptiizxk1u": {
-            "id": "w02lyisptiizxk1u",
-            "type": "text",
-            "content": {
-                "text": "@{dic.created[lang]}: @{item.message_dt} | @{item.read_date}",
-                "primaryTextColor": "#2eb2d3"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "c9wg2p7ys03olmxh",
-            "handlers": {},
-            "visible": true
-        },
-        "f6jrv4ov0cnou1p1": {
-            "id": "f6jrv4ov0cnou1p1",
-            "type": "column",
-            "content": {
-                "width": "1",
-                "contentVAlign": "center",
-                "contentHAlign": "center"
-            },
-            "isCodeManaged": false,
-            "position": 1,
-            "parentId": "lfl65oe0vf33nc9s",
-            "handlers": {},
-            "visible": true
-        },
-        "rle7mx1rsgxjlcca": {
-            "id": "rle7mx1rsgxjlcca",
-            "type": "text",
-            "content": {
-                "text": "@{dic.to_answer[lang]}",
-                "alignment": "center",
-                "cssClasses": "custom_pointer"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "f6jrv4ov0cnou1p1",
-            "handlers": {
-                "wf-click": "prepare_reply_context"
-            },
-            "visible": true
-        },
-        "gd8zesikmu1fs8w4": {
-            "id": "gd8zesikmu1fs8w4",
-            "type": "text",
-            "content": {
-                "text": "@{dic.mark_as_read[lang]}",
-                "alignment": "center",
-                "cssClasses": "custom_pointer"
-            },
-            "isCodeManaged": false,
-            "position": 2,
-            "parentId": "f6jrv4ov0cnou1p1",
-            "handlers": {
-                "wf-click": "update_read_date"
-            },
-            "visible": true
-        },
-        "yj2pk4n7x7fbtc8v": {
-            "id": "yj2pk4n7x7fbtc8v",
-            "type": "separator",
-            "content": {
-                "separatorColor": "#1d4087"
-            },
-            "isCodeManaged": false,
-            "position": 1,
-            "parentId": "f6jrv4ov0cnou1p1",
-            "handlers": {},
-            "visible": true
-        },
         "01la0xyth3iz1o48": {
             "id": "01la0xyth3iz1o48",
             "type": "repeater",
@@ -21212,8 +21082,8 @@
                 "containerBackgroundColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 7,
-            "parentId": "zhenamn3h0xqnj5d",
+            "position": 0,
+            "parentId": "eusrc9kdwkzvrf73",
             "handlers": {},
             "visible": true
         },
@@ -21335,18 +21205,6 @@
             "handlers": {},
             "visible": true
         },
-        "pvg5mgi46engh8ks": {
-            "id": "pvg5mgi46engh8ks",
-            "type": "separator",
-            "content": {
-                "separatorColor": "#152e61"
-            },
-            "isCodeManaged": false,
-            "position": 4,
-            "parentId": "zhenamn3h0xqnj5d",
-            "handlers": {},
-            "visible": true
-        },
         "kmg3e8t8ga4mlpka": {
             "id": "kmg3e8t8ga4mlpka",
             "type": "text",
@@ -21356,7 +21214,7 @@
                 "alignment": "center"
             },
             "isCodeManaged": false,
-            "position": 6,
+            "position": 5,
             "parentId": "zhenamn3h0xqnj5d",
             "handlers": {},
             "visible": true
@@ -21413,7 +21271,7 @@
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 7,
+            "position": 6,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": "client_menu.edit_account.css"
@@ -21501,7 +21359,7 @@
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 9,
+            "position": 8,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": "client_menu.help.css"
@@ -21870,7 +21728,7 @@
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 8,
+            "position": 7,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": "client_menu.actual_projects.css"
@@ -22237,7 +22095,7 @@
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 10,
+            "position": 9,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": "client_menu.all_engineers.css"
@@ -22582,11 +22440,11 @@
                 "containerBackgroundColor": "#1d4087",
                 "contentHAlign": "center",
                 "primaryTextColor": "#ffffff",
-                "contentPadding": "70px 0px 40px 0px",
+                "contentPadding": "40px 0px 40px 0px",
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 3,
             "parentId": "43ycgjacqx7n67x1",
             "handlers": {},
             "visible": "client_menu.my_messages.css"
@@ -22596,7 +22454,7 @@
             "type": "columns",
             "content": {},
             "isCodeManaged": false,
-            "position": 0,
+            "position": 1,
             "parentId": "3i16ides8jy1cid9",
             "handlers": {},
             "visible": true
@@ -22635,16 +22493,18 @@
             },
             "isCodeManaged": false,
             "position": 0,
-            "parentId": "zhenamn3h0xqnj5d",
+            "parentId": "pueybnrpvw806le5",
             "handlers": {},
             "visible": true
         },
         "svbxq4r0qkq5b5s0": {
             "id": "svbxq4r0qkq5b5s0",
             "type": "separator",
-            "content": {},
+            "content": {
+                "separatorColor": "#ffffff"
+            },
             "isCodeManaged": false,
-            "position": 5,
+            "position": 4,
             "parentId": "zhenamn3h0xqnj5d",
             "handlers": {},
             "visible": true
@@ -22684,8 +22544,8 @@
                 "containerBackgroundColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 2,
-            "parentId": "zhenamn3h0xqnj5d",
+            "position": 0,
+            "parentId": "i6cuz9aek2ibrjz5",
             "handlers": {},
             "visible": true
         },
@@ -22793,6 +22653,58 @@
             "position": 1,
             "parentId": "wfs3hgc6w3h3val9",
             "handlers": {},
+            "visible": true
+        },
+        "i6cuz9aek2ibrjz5": {
+            "id": "i6cuz9aek2ibrjz5",
+            "type": "repeater",
+            "content": {
+                "repeaterObject": "@{my_new_messages}",
+                "keyVariable": "itemId",
+                "valueVariable": "item"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "zhenamn3h0xqnj5d",
+            "handlers": {},
+            "visible": true
+        },
+        "eusrc9kdwkzvrf73": {
+            "id": "eusrc9kdwkzvrf73",
+            "type": "repeater",
+            "content": {
+                "repeaterObject": "@{my_read_messages}",
+                "keyVariable": "itemId",
+                "valueVariable": "item"
+            },
+            "isCodeManaged": false,
+            "position": 6,
+            "parentId": "zhenamn3h0xqnj5d",
+            "handlers": {},
+            "visible": true
+        },
+        "0021vyfzvipf2660": {
+            "id": "0021vyfzvipf2660",
+            "type": "separator",
+            "content": {
+                "separatorColor": "#ffffff"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "zhenamn3h0xqnj5d",
+            "handlers": {},
+            "visible": true
+        },
+        "pueybnrpvw806le5": {
+            "id": "pueybnrpvw806le5",
+            "type": "horizontalstack",
+            "parentId": "3i16ides8jy1cid9",
+            "content": {
+                "contentPadding": "20px",
+                "contentHAlign": "center"
+            },
+            "handlers": {},
+            "position": 0,
             "visible": true
         }
     }
