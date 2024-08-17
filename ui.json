@@ -7581,7 +7581,7 @@
                 "proxyId": "@{header}"
             },
             "isCodeManaged": false,
-            "position": 0,
+            "position": 1,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": true
@@ -7593,7 +7593,7 @@
                 "proxyId": "@{footer}"
             },
             "isCodeManaged": false,
-            "position": 13,
+            "position": 15,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": true
@@ -14493,7 +14493,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 3,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "user.login"
@@ -14536,7 +14536,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 4,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "eng_menu.my_prospects.css"
@@ -14553,7 +14553,7 @@
                 "buttonTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 6,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "my_prospects_menu.my_invitations.visibility"
@@ -14569,7 +14569,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 8,
+            "position": 10,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "my_prospects_menu.my_cv_requests.css"
@@ -14599,7 +14599,7 @@
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 6,
+            "position": 8,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "my_prospects_menu.my_proposals.css"
@@ -14627,7 +14627,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 7,
+            "position": 9,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "my_prospects_menu.my_messages.css"
@@ -14655,7 +14655,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 9,
+            "position": 11,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "my_projects_menu.my_current_projects.css"
@@ -14683,7 +14683,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 10,
+            "position": 12,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "my_projects_menu.my_declined_projects.css"
@@ -14711,7 +14711,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 11,
+            "position": 13,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "my_projects_menu.my_finished_projects.css"
@@ -14739,7 +14739,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 12,
+            "position": 14,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "my_projects_menu.my_deleted_projects.css"
@@ -16585,7 +16585,7 @@
                 "separatorColor": "#75b892"
             },
             "isCodeManaged": false,
-            "position": 14,
+            "position": 16,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "modal_vis"
@@ -17173,7 +17173,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 5,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "eng_menu.my_projects.css"
@@ -17265,7 +17265,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 5,
+            "position": 7,
             "parentId": "w9qq644dtxpua1qo",
             "handlers": {},
             "visible": "my_prospects_menu.my_invitations.css"
@@ -22698,13 +22698,62 @@
         "pueybnrpvw806le5": {
             "id": "pueybnrpvw806le5",
             "type": "horizontalstack",
-            "parentId": "3i16ides8jy1cid9",
             "content": {
                 "contentPadding": "20px",
                 "contentHAlign": "center"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "3i16ides8jy1cid9",
+            "handlers": {},
+            "visible": true
+        },
+        "kvy2st6qjdsat8c2": {
+            "id": "kvy2st6qjdsat8c2",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "20px"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "w9qq644dtxpua1qo",
+            "handlers": {},
+            "visible": true
+        },
+        "gz3j108u28mwf4ej": {
+            "id": "gz3j108u28mwf4ej",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "20px"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "w9qq644dtxpua1qo",
+            "handlers": {},
+            "visible": true
+        },
+        "geaq14ar07tpxiic": {
+            "id": "geaq14ar07tpxiic",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "15px"
+            },
+            "isCodeManaged": false,
+            "position": 17,
+            "parentId": "w9qq644dtxpua1qo",
+            "handlers": {},
+            "visible": true
+        },
+        "fi8bv4he3uv5qpkn": {
+            "id": "fi8bv4he3uv5qpkn",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "15px"
+            },
+            "isCodeManaged": false,
+            "position": 18,
+            "parentId": "w9qq644dtxpua1qo",
+            "handlers": {},
             "visible": true
         }
     }
