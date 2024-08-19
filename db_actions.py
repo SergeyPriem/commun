@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import datetime
+import logging.config
+import logging.handlers
 import time
+
 import bcrypt
 import pandas as pd
 from sqlalchemy import select, func
@@ -11,9 +14,6 @@ from dic import dic
 from logging_config import LOGGING_CONFIG
 from models import *
 from utilities import _hash_password, _err_handler, _valid_email, _send_mail
-import logging
-import logging.config
-import logging.handlers
 
 logging.config.dictConfig(LOGGING_CONFIG)
 
@@ -403,37 +403,6 @@ def _decline_invitation(state, context):
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
-def _get_actual_own_projects(state):  # ui
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
-        return
-    with Session(bind=engine) as session:
-        try:
-            stmt = select(User).where(User.login == state["user"]["login"])
-            result = session.execute(stmt)
-            current_user = result.scalars().first()
-
-            stmt = select(Project).where(
-                current_user.id == Project.owner,
-                "current" == Project.status
-            )
-            result = session.execute(stmt)
-            cur_projects = result.scalars().all()
-
-            state["current_own_projects"] = {str(cur_projects[i].id): {
-                "name": cur_projects[i].name,
-                "description": cur_projects[i].description,
-                "status": cur_projects[i].status,
-                "comments": cur_projects[i].comments,
-                "required_specialists": cur_projects[i].required_specialists,
-                "assigned_engineers": cur_projects[i].assigned_engineers,
-                "created": cur_projects[i].created.strftime('%Y-%m-%d')
-            } for i in range(len(cur_projects))}
-
-        except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
-
-
 def _add_user_message(state):
     if not state["user_message"]:
         state.add_notification('error', 'Error', "E-mail is empty. Try again")
@@ -461,6 +430,15 @@ def _add_user_message(state):
     with Session(engine) as session:
         try:
             message = Message(
+
+                sender_id=Column(Integer, ForeignKey('users.id')),
+                receiver_id=Column(Integer, ForeignKey('users.id')),
+                project_id=Column(Integer, ForeignKey('projects.id'), nullable=True),
+                message_text=Column(String(1000), nullable=False),
+                dialog_id=Column(Integer, nullable=False),
+                message_dt=Column(DateTime, nullable=False),
+                read_dt=Column(DateTime, nullable=True),
+
                 first_name=state["user_message"]["first_name"],
                 last_name=state["user_message"]["last_name"],
                 email=state["user_message"]["email"],
@@ -854,7 +832,7 @@ def _get_my_invitations(state):
             state["my_invitations"] = {str(invitation.id): {
                 "project": project.name,
                 "description": project.description,
-                "status": invitation.status,
+                "status": project.status,
                 "comments": project.comments,
                 "required_specialists": project.required_specialists,
                 "assigned_engineers": project.assigned_engineers,
@@ -1228,7 +1206,7 @@ def _finalise_project(state, context):
             project.visibility = "unv"
             project.status_changed = datetime.datetime.now()
             session.commit()
-            _get_actual_own_projects(state)
+            _get_my_current_projects(state)
             state.add_notification("info", "Info!", "Project closed")
         except SQLAlchemyError as e:
             state.add_notification(f"An error occurred: {e}")

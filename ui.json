@@ -17372,7 +17372,7 @@
             "id": "sci2ign13hlkc7s8",
             "type": "text",
             "content": {
-                "text": "@{dic.proj_owner[lang]}: @{item.owner}"
+                "text": "@{dic.proj_status[lang]}: @{item.status}"
             },
             "isCodeManaged": false,
             "position": 2,

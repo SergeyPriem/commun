@@ -7,7 +7,7 @@ import writer as wf
 
 from assets.help import he
 from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_installers, _get_user_data, \
-    _log_out_user, admin_panel_section, _decline_invitation, _get_actual_own_projects, _add_user_message, \
+    _log_out_user, admin_panel_section, _decline_invitation, _get_my_current_projects, _add_user_message, \
     _delete_subscription, _get_new_projects, _get_all_finished_projects, _create_project, _invite, \
     _get_engineers, _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, \
     _offer_service, _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, \
@@ -114,11 +114,11 @@ def get_table_as_dataframe(state):
 
 
 def get_actual_own_projects(state, context):
-    _get_actual_own_projects(state)
+    _get_my_current_projects(state)
 
 
 def get_actual_own_projects_dict(state):
-    _get_actual_own_projects(state)
+    _get_my_current_projects(state)
     state["current_own_projects_dict"] = {
         str(key): value["name"]
         for key, value in state["current_own_projects"].items()}

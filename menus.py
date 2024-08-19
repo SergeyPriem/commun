@@ -191,5 +191,3 @@ client_menu = {
         "reset": None
     },
 }
-
-
