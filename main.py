@@ -35,12 +35,10 @@ logger.debug(f"You are using the main.py file from {datetime.datetime.now().strf
 
 def _create_prospects_menu(state, context):
     state["my_prospects_menu"] = _create_menu("my_prospects_menu", my_prospects_menu, None)
-    print("prospects menu created")
 
 
 def _create_projects_menu(state, context):
     state["my_projects_menu"] = _create_menu("my_projects_menu", my_projects_menu, None)
-    print("projects menu created")
 
 
 def create_client_menu(state, context):
@@ -49,8 +47,6 @@ def create_client_menu(state, context):
 
 def _execute_menu_function(state, context):
     function = context.get('item').get("fun")
-
-    # state.add_notification("info", "info", f"Function to execute: {function}")
 
     if function:
         try:
@@ -724,8 +720,6 @@ initial_state = wf.init_state(
         "reg_vis": ["c", "e", "i"],
         "proj_vis": ["c", "e", "i"],
 
-
-
         "message_switch": 0,
         "proj_message": None,
         "proj_message_context": None,
@@ -738,7 +732,6 @@ initial_state = wf.init_state(
         "my_projects_menu": None,
 
         'main_menu': _create_menu("main_menu", main_menu, 0),
-
 
     })
 

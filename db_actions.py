@@ -159,7 +159,7 @@ def _get_admin_data(state):
 
         except SQLAlchemyError as e:
             # Add a notification if an error occurs
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def admin_panel_section(state):
@@ -255,7 +255,7 @@ def _get_new_engineers(state):
                 } for i in range(len(stuff))}
 
             except SQLAlchemyError as e:
-                state.add_notification(f"An error occurred: {e}")
+                state.add_notification("warning","Warning!, "f"An error occurred: {e}")
     else:
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
 
@@ -280,7 +280,7 @@ def _get_new_installers(state):
                 } for i in range(len(stuff))}
 
             except SQLAlchemyError as e:
-                state.add_notification(f"An error occurred: {e}")
+                state.add_notification("warning","Warning!, "f"An error occurred: {e}")
     else:
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
 
@@ -558,7 +558,7 @@ def _get_new_projects(state):
                 }
 
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def _get_current_projects(state):
@@ -609,7 +609,7 @@ def _get_current_projects(state):
                 state["all_current_projects_message"] = dic['no_new_proj'][state["lang"]]
 
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def _get_my_current_projects(state):
@@ -645,7 +645,7 @@ def _get_my_current_projects(state):
             } for i in range(len(cur_projects))}
 
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def _get_all_finished_projects(state):
@@ -681,7 +681,7 @@ def _get_all_finished_projects(state):
                 state["all_finished_projects_message"] = dic['no_finished_proj'][state["lang"]]
 
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def _create_project(state):
@@ -926,7 +926,7 @@ def _get_engineers(state, spec):
             } for i in range(len(stuff))}
 
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def _get_all_engineers(state):
@@ -944,7 +944,7 @@ def _get_all_engineers(state):
             } for i in range(len(stuff))}
 
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def _get_all_installers(state):
@@ -961,7 +961,7 @@ def _get_all_installers(state):
             } for i in range(len(stuff))}
 
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def _prepare_eng_page(state):
@@ -1142,7 +1142,7 @@ def _get_table_as_dataframe(state):
 
 def _request_cv(state, context):
     if not state['user']['login']:
-        state.add_notification('warning', "Warning", dic["not_logged_in"][state['lang']])
+        state.add_notification('warning', "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
@@ -1195,7 +1195,7 @@ def _delete_project(state, context):
             _get_all_finished_projects(state)
             state.add_notification("info", "Info!", "Project deleted")
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def _finalise_project(state, context):
@@ -1209,7 +1209,7 @@ def _finalise_project(state, context):
             _get_my_current_projects(state)
             state.add_notification("info", "Info!", "Project closed")
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def _resume_project(state, context):
@@ -1223,7 +1223,7 @@ def _resume_project(state, context):
             _get_all_finished_projects(state)
             state.add_notification("info", "Info!", "Project resumed")
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def _add_message(state):
@@ -1407,7 +1407,7 @@ def _update_read_date(state, context):
             session.commit()
             state.add_notification("info", "Info!", "Message marked as read")
         except SQLAlchemyError as e:
-            state.add_notification(f"An error occurred: {e}")
+            state.add_notification("warning","Warning!, "f"An error occurred: {e}")
 
 
 def _mark_as_unread(state, context):
