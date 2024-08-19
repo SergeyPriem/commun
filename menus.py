@@ -57,25 +57,29 @@ my_prospects_menu = {
     "my_invitations": {
         "E": "My Invitations",
         "U": "Мої Запрошення",
-        "R": "Мои Приглашения"
+        "R": "Мои Приглашения",
+        "fun": None
     },
 
     "my_proposals": {
         "E": "My Proposals",
         "U": "Мої Пропозиції",
-        "R": "Мои Предложения"
+        "R": "Мои Предложения",
+        "fun": None
     },
 
     "my_messages": {
         "E": "My Messages",
         "U": "Мої Повідомлення",
-        "R": "Мои Сообщения"
+        "R": "Мои Сообщения",
+        "fun": None
     },
 
     "my_cv_requests": {
         "E": "CV Requests",
         "U": "Запити на Резюме",
-        "R": "Запросы на Резюме"
+        "R": "Запросы на Резюме",
+        "fun": None
     },
 
 
@@ -93,19 +97,22 @@ my_projects_menu = {
     "my_declined_projects": {
         "E": "My Declined Projects",
         "U": "Мої Відхилені Проекти",
-        "R": "Мои Отклоненные Проекты"
+        "R": "Мои Отклоненные Проекты",
+        "fun": None,
     },
 
     "my_finished_projects": {
         "E": "My Finished Projects",
         "U": "Мої Завершені Проекти",
-        "R": "Мои Завершенные Проекты"
+        "R": "Мои Завершенные Проекты",
+        "fun": None,
     },
 
     "my_deleted_projects": {
         "E": "My Deleted Projects",
         "U": "Мої Видалені Проекти",
-        "R": "Мои Удаленные Проекты"
+        "R": "Мои Удаленные Проекты",
+        "fun": None,
     },
 
 

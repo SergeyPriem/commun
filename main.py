@@ -35,10 +35,12 @@ logger.debug(f"You are using the main.py file from {datetime.datetime.now().strf
 
 def _create_prospects_menu(state, context):
     state["my_prospects_menu"] = _create_menu("my_prospects_menu", my_prospects_menu, None)
+    print("prospects menu created")
 
 
 def _create_projects_menu(state, context):
     state["my_projects_menu"] = _create_menu("my_projects_menu", my_projects_menu, None)
+    print("projects menu created")
 
 
 def create_client_menu(state, context):
@@ -47,6 +49,8 @@ def create_client_menu(state, context):
 
 def _execute_menu_function(state, context):
     function = context.get('item').get("fun")
+
+    # state.add_notification("info", "info", f"Function to execute: {function}")
 
     if function:
         try:
@@ -59,8 +63,8 @@ def _execute_menu_function(state, context):
 def _create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
     return {
         key: {
-            "fun": item.pop('fun', None),
-            "reset": item.pop("reset", None),
+            "fun": item.get('fun', None),  # pop
+            "reset": item.get("reset", None),  # pop
             "text": item,
             "css": "underlined-text" if i == init_index else None,
             "menu_name": menu_name
@@ -729,6 +733,9 @@ initial_state = wf.init_state(
         "modal_vis": False,
 
         "eng_menu": None,
+
+        "my_prospects_menu": None,
+        "my_projects_menu": None,
 
         'main_menu': _create_menu("main_menu", main_menu, 0),
 

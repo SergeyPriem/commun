@@ -3465,7 +3465,7 @@
             "id": "w9qq644dtxpua1qo",
             "type": "page",
             "content": {
-                "pageMode": "",
+                "pageMode": "wide",
                 "emptinessColor": "#152e61",
                 "key": "engineer_page",
                 "accentColor": "#152e61",
