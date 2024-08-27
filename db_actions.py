@@ -316,7 +316,6 @@ def _get_user_data(state):
                 state["user"]["password"] = None
                 state["user"]["password2"] = None
                 state["user"]["logged"] = 1
-                state["user"]["not_logged"] = 0
                 state["user"]["lang"] = current_user.lang
                 state["message"] = None
 

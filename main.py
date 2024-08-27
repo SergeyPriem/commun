@@ -211,7 +211,6 @@ def log_user(state):
                 state['eng_menu'] = _create_menu("eng_menu", eng_menu, None)
 
                 state["vacancies"]["content"] = 1
-                state["vacancies"]["warning"] = 0
     else:
         state.set_page('wrong_login')
         state["engineers"]["content"] = state["engineers"]["warning"] = state["projects"]["content"] = \
