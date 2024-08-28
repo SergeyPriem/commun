@@ -39,7 +39,9 @@
             "isCodeManaged": false,
             "position": 0,
             "parentId": "root",
-            "handlers": {},
+            "handlers": {
+                "wf-page-open": "show_cookie"
+            },
             "visible": {
                 "expression": true,
                 "binding": "",
@@ -24206,7 +24208,8 @@
             "id": "ljcee2j8j2l43wrv",
             "type": "horizontalstack",
             "content": {
-                "contentPadding": "15px"
+                "contentPadding": "15px",
+                "contentHAlign": "center"
             },
             "isCodeManaged": false,
             "position": 4,
@@ -24302,7 +24305,8 @@
             "id": "cokg30qhpb6odzgm",
             "type": "horizontalstack",
             "content": {
-                "contentPadding": "20px"
+                "contentPadding": "20px",
+                "contentHAlign": "center"
             },
             "isCodeManaged": false,
             "position": 2,
@@ -29653,6 +29657,22 @@
             "visible": {
                 "expression": true,
                 "binding": "",
+                "reversed": false
+            }
+        },
+        "l2u4qdg1n3yiqp73": {
+            "id": "l2u4qdg1n3yiqp73",
+            "type": "message",
+            "content": {
+                "message": "@{dic.dont_use_cookie[lang]}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "cokg30qhpb6odzgm",
+            "handlers": {},
+            "visible": {
+                "expression": "custom",
+                "binding": "cookie_visible",
                 "reversed": false
             }
         }

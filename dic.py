@@ -1208,6 +1208,11 @@ dic = {
         "R": "Отписаться",
     },
 
+    "dont_use_cookie": {
+        "E": "We don't use cookie",
+        "U": "Ми не використовуємо cookie",
+        "R": "Мы не используем cookie"
+    }
 
 }
 
@@ -1289,10 +1294,6 @@ error_messages = {
         "R": "Логин должен содержать хотя бы одну букву"
     },
 
-    "dont_use_cookie": {
-        "E": "We don't use cookie",
-        "U": "Ми не використовуємо cookie",
-        "R": "Мы не используем cookie"
-    }
+
 
 }
