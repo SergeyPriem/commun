@@ -1282,10 +1282,17 @@ error_messages = {
         "U": "Введіть опис ваших навичок",
         "R": "Введите описание навыков"
     },
+
     "only_digits": {
         "E": "Login should contain at least one letter",
         "U": "Логін повинен містити принаймні одну літеру",
         "R": "Логин должен содержать хотя бы одну букву"
     },
+
+    "dont_use_cookie": {
+        "E": "We don't use cookie",
+        "U": "Ми не використовуємо cookie",
+        "R": "Мы не используем cookie"
+    }
 
 }

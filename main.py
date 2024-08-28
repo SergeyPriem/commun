@@ -187,10 +187,10 @@ def log_user(state):
     }
 
     content_states = {
-        'client': (1, 0, 0, 1),
-        'engineer': (0, 1, 1, 0),
-        'installer': (1, 0, 1, 0),
-        'admin': (1, 0, 1, 0)
+        'client': (1, 0, 1),
+        'engineer': (0, 1, 0),
+        'installer': (1, 1, 0),
+        'admin': (1, 1, 0)
     }
 
     if state["user"]["logged"]:
@@ -203,8 +203,7 @@ def log_user(state):
         else:
             state["lang"] = state["user"]["lang"]
             state.set_page(role_pages[role])
-            state["engineers"]["content"], state["engineers"]["warning"], state["projects"]["content"], \
-                state["projects"]["warning"] = content_states[role]
+            state["engineers"]["content"], state["projects"]["content"], state["projects"]["warning"] = content_states[role]
             if role == 'engineer':
                 _prepare_eng_page(state)
             if role in ('engineer', 'installer'):
@@ -213,8 +212,7 @@ def log_user(state):
                 state["vacancies"]["content"] = 1
     else:
         state.set_page('wrong_login')
-        state["engineers"]["content"] = state["engineers"]["warning"] = state["projects"]["content"] = \
-            state["projects"]["warning"] = 0
+        state["engineers"]["content"] = state["projects"]["content"] = 0
 
 
 def validate_email_by_code(state):
@@ -660,6 +658,11 @@ def get_screen_size(state):
     # print(f"Screen size: {screen_size}")
 
 
+def show_cookie(state):
+    time.sleep(3)
+    state["cookie_visible"] = False
+
+
 # Client page ----------------------------------------------------------------
 
 
@@ -732,6 +735,8 @@ initial_state = wf.init_state(
 
         'main_menu': _create_menu("main_menu", main_menu, 0),
 
+        "cookie_visible": True,
+
     })
 
 initial_state.import_stylesheet("theme", "/static/custom.css?155")
@@ -739,3 +744,5 @@ initial_state.import_stylesheet("theme", "/static/custom.css?155")
 
 # get_screen_size(initial_state)
 logger.info("MAIN executed successfully!")
+
+
