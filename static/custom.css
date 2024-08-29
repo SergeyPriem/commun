@@ -161,13 +161,13 @@ textarea:focus {
 
 }
 
-.message-center {
+.bottom-message {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 30%;
+    bottom: 10%;
     width: 100%; /* Устанавливаем ширину контейнера */
-    height: 100vh; /* Высота контейнера равна высоте окна браузера */
+    height: 10vh; /* Высота контейнера равна высоте окна браузера */
 }
 
 
