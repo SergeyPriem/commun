@@ -659,8 +659,9 @@ def get_screen_size(state):
 
 
 def show_cookie(state):
-    time.sleep(1.5)
-    state["cookie_visible"] = False
+    if state['cookie_visible']:
+        time.sleep(1.5)
+        state["cookie_visible"] = False
 
 
 # Client page ----------------------------------------------------------------
