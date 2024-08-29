@@ -29680,13 +29680,14 @@
         "kh00jvumf8j34wtp": {
             "id": "kh00jvumf8j34wtp",
             "type": "horizontalstack",
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "content": {
                 "contentHAlign": "center",
-                "cssClasses": "center-center"
+                "cssClasses": "message-center"
             },
-            "handlers": {},
+            "isCodeManaged": false,
             "position": 7,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
             "visible": {
                 "expression": "custom",
                 "binding": "cookie_visible",
