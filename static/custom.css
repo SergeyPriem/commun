@@ -163,12 +163,11 @@ textarea:focus {
 
 .message-center {
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    /* Set the width and height to 50% of the screen */
-    width: 50%;
-    overflow-y: auto;
+    transform: translateX(-50%);
+    bottom: 30%;
+    width: 100%; /* Устанавливаем ширину контейнера */
+    height: 100vh; /* Высота контейнера равна высоте окна браузера */
 }
 
 
