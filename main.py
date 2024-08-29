@@ -659,7 +659,7 @@ def get_screen_size(state):
 
 
 def show_cookie(state):
-    time.sleep(3)
+    time.sleep(2)
     state["cookie_visible"] = False
 
 

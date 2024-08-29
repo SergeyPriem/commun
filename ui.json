@@ -29664,12 +29664,29 @@
             "id": "l2u4qdg1n3yiqp73",
             "type": "message",
             "content": {
-                "message": "@{dic.dont_use_cookie[lang]}"
+                "message": "+ @{dic.dont_use_cookie[lang]}",
+                "cssClasses": ""
             },
             "isCodeManaged": false,
             "position": 0,
-            "parentId": "cokg30qhpb6odzgm",
+            "parentId": "kh00jvumf8j34wtp",
             "handlers": {},
+            "visible": {
+                "expression": true,
+                "binding": "",
+                "reversed": false
+            }
+        },
+        "kh00jvumf8j34wtp": {
+            "id": "kh00jvumf8j34wtp",
+            "type": "horizontalstack",
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "content": {
+                "contentHAlign": "center",
+                "cssClasses": "center-center"
+            },
+            "handlers": {},
+            "position": 7,
             "visible": {
                 "expression": "custom",
                 "binding": "cookie_visible",
