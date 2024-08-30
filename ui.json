@@ -1756,7 +1756,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 4,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": {
@@ -9620,7 +9620,7 @@
                 "proxyId": "@{footer}"
             },
             "isCodeManaged": false,
-            "position": 6,
+            "position": 7,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": {
@@ -15173,7 +15173,7 @@
                 "primaryTextColor": "#ffffff"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 5,
             "parentId": "l3ygcr8fduzeqn3s",
             "visible": {
                 "expression": "custom",
@@ -24249,7 +24249,7 @@
                 "contentPadding": "20px"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 3,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": {
@@ -24346,7 +24346,7 @@
                 "contentPadding": "20px"
             },
             "isCodeManaged": false,
-            "position": 5,
+            "position": 6,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": {
@@ -24362,7 +24362,7 @@
                 "contentPadding": "20px"
             },
             "isCodeManaged": false,
-            "position": 7,
+            "position": 8,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": {
@@ -29718,7 +29718,7 @@
                 "cssClasses": "center-center"
             },
             "isCodeManaged": false,
-            "position": 8,
+            "position": 2,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": {
