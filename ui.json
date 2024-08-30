@@ -24249,7 +24249,7 @@
                 "contentPadding": "20px"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 2,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": {
@@ -29718,7 +29718,7 @@
                 "cssClasses": "center-center"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 3,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": {
