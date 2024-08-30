@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "writer_version": "0.7.1"
+        "writer_version": "0.7.2"
     },
     "components": {
         "root": {
@@ -2330,8 +2330,8 @@
                 "cssClasses": ""
             },
             "isCodeManaged": false,
-            "position": 4,
-            "parentId": "e7rhayvymnj50ly4",
+            "position": 0,
+            "parentId": "8m7mm66y8qx6ud4d",
             "handlers": {},
             "visible": {
                 "expression": "custom",
@@ -6137,7 +6137,12 @@
             "isCodeManaged": false,
             "position": 0,
             "parentId": "4a8yntoesnyo19sm",
-            "handlers": {}
+            "handlers": {},
+            "visible": {
+                "expression": true,
+                "binding": "",
+                "reversed": false
+            }
         },
         "81f1n656fskd5tlq": {
             "id": "81f1n656fskd5tlq",
@@ -9615,7 +9620,7 @@
                 "proxyId": "@{footer}"
             },
             "isCodeManaged": false,
-            "position": 7,
+            "position": 6,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": {
@@ -23516,14 +23521,14 @@
             "type": "message",
             "content": {
                 "message": "- @{dic.projects_warning[lang]}",
-                "cssClasses": "center-center"
+                "cssClasses": ""
             },
             "isCodeManaged": false,
-            "position": 5,
-            "parentId": "l3ygcr8fduzeqn3s",
+            "position": 0,
+            "parentId": "7troe7fuapaczjrn",
             "handlers": {},
             "visible": {
-                "expression": "custom",
+                "expression": true,
                 "binding": "user.logged",
                 "reversed": true
             }
@@ -24341,7 +24346,7 @@
                 "contentPadding": "20px"
             },
             "isCodeManaged": false,
-            "position": 6,
+            "position": 5,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": {
@@ -24357,7 +24362,7 @@
                 "contentPadding": "20px"
             },
             "isCodeManaged": false,
-            "position": 8,
+            "position": 7,
             "parentId": "l3ygcr8fduzeqn3s",
             "handlers": {},
             "visible": {
@@ -29692,6 +29697,34 @@
                 "expression": "custom",
                 "binding": "cookie_visible",
                 "reversed": false
+            }
+        },
+        "8m7mm66y8qx6ud4d": {
+            "id": "8m7mm66y8qx6ud4d",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 4,
+            "parentId": "e7rhayvymnj50ly4",
+            "handlers": {}
+        },
+        "7troe7fuapaczjrn": {
+            "id": "7troe7fuapaczjrn",
+            "type": "horizontalstack",
+            "content": {
+                "contentHAlign": "center",
+                "cssClasses": "center-center"
+            },
+            "isCodeManaged": false,
+            "position": 8,
+            "parentId": "l3ygcr8fduzeqn3s",
+            "handlers": {},
+            "visible": {
+                "expression": "custom",
+                "binding": "user.logged",
+                "reversed": true
             }
         }
     }
