@@ -6,4 +6,4 @@ SQLAlchemy==2.0.29
 mysqlclient==2.2.4
 watchdog==3.0.0
 plotly==5.22.0
-writer==0.7.2
+writer==0.7.4
