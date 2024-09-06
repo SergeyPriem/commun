@@ -672,10 +672,8 @@ def get_screen_size(state):
     # print(f"Screen size: {screen_size}")
 
 
-def show_cookie(state):
-    if state['cookie_visible']:
-        time.sleep(1.5)
-        state["cookie_visible"] = False
+def hide_cookie(state):
+    state["cookie_visible"] = False
 
 
 initial_state = wf.init_state(
@@ -752,8 +750,5 @@ initial_state = wf.init_state(
     })
 
 initial_state.import_stylesheet("theme", "/static/custom.css?163")
-# initial_state.import_frontend_module("js_scripts", "/static/my_scripts.js?7")
 
-
-# get_screen_size(initial_state)
 logger.info("MAIN executed successfully!")

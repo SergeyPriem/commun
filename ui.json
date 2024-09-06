@@ -18,7 +18,7 @@
             "position": 0,
             "handlers": {
                 "wf-hashchange": "handle_hash_change",
-                "load": "show_cookie"
+                "click": "hide_cookie"
             },
             "visible": {
                 "expression": true,
@@ -29663,23 +29663,6 @@
                 "reversed": false
             }
         },
-        "l2u4qdg1n3yiqp73": {
-            "id": "l2u4qdg1n3yiqp73",
-            "type": "message",
-            "content": {
-                "message": "+ @{dic.dont_use_cookie[lang]}",
-                "cssClasses": ""
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "kh00jvumf8j34wtp",
-            "handlers": {},
-            "visible": {
-                "expression": "custom",
-                "binding": "cookie_visible",
-                "reversed": false
-            }
-        },
         "kh00jvumf8j34wtp": {
             "id": "kh00jvumf8j34wtp",
             "type": "horizontalstack",
@@ -30822,25 +30805,8 @@
                 "reversed": false
             }
         },
-        "5wdqvy4hvgj1qo7l": {
-            "id": "5wdqvy4hvgj1qo7l",
-            "type": "horizontalstack",
-            "content": {
-                "contentHAlign": "center",
-                "cssClasses": "bottom-message"
-            },
-            "isCodeManaged": false,
-            "position": 7,
-            "parentId": "ndwz7rl6a8vfxtjg",
-            "handlers": {},
-            "visible": {
-                "expression": "custom",
-                "binding": "cookie_visible",
-                "reversed": false
-            }
-        },
-        "rtjwr4y4uwvgi941": {
-            "id": "rtjwr4y4uwvgi941",
+        "l2u4qdg1n3yiqp73": {
+            "id": "l2u4qdg1n3yiqp73",
             "type": "message",
             "content": {
                 "message": "+ @{dic.dont_use_cookie[lang]}",
@@ -30848,11 +30814,11 @@
             },
             "isCodeManaged": false,
             "position": 0,
-            "parentId": "5wdqvy4hvgj1qo7l",
+            "parentId": "kh00jvumf8j34wtp",
             "handlers": {},
             "visible": {
-                "expression": true,
-                "binding": "",
+                "expression": "custom",
+                "binding": "cookie_visible",
                 "reversed": false
             }
         }
