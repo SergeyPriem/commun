@@ -29739,9 +29739,6 @@
             "isCodeManaged": false,
             "position": 20,
             "parentId": "root",
-            "handlers": {
-                "wf-page-open": "show_cookie"
-            },
             "visible": {
                 "expression": true,
                 "binding": "",

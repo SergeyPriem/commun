@@ -515,7 +515,7 @@ def _delete_subscription(state):
 
 def _get_new_projects(state):
     if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        # state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
@@ -575,7 +575,7 @@ def _get_current_projects(state):
     None: This function updates the state dictionary directly.
     """
     if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        # state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:

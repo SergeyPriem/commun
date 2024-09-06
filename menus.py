@@ -8,26 +8,26 @@ main_menu = {
         "E": "About",
         "U": "Про нас",
         "R": "О нас",
-        "fun": "go_about"
+        "fun": "go_page"
     },
     "projects": {
         "E": "Projects",
         "U": "Проекти",
         "R": "Проекты",
-        "fun": "go_projects",
+        "fun": "go_page",
     },
     "engineers": {
         "E": "Engineers",
         "U": "Інженери",
         "R": "Инженеры",
-        "fun": "go_engineers"
+        "fun": "go_page"
     },
 
     "announcements": {
         "E": "Announcement",
         "U": "Оголошення",
         "R": "Объявление",
-        "fun": "go_announcements"
+        "fun": "go_page"
     },
 
 
@@ -35,7 +35,7 @@ main_menu = {
         "E": "Vacancies",
         "U": "Вакансії",
         "R": "Вакансии",
-        "fun": "go_vacancies"
+        "fun": "go_page"
     },
 
 }

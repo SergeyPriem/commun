@@ -3,6 +3,7 @@ import datetime
 import logging.config
 import logging.handlers
 import time
+
 import writer as wf
 
 from assets.help import he
@@ -22,15 +23,16 @@ from logging_config import LOGGING_CONFIG
 from menus import eng_menu, my_prospects_menu, main_menu, my_projects_menu, client_menu
 from utilities import _send_email, _random_code_alphanumeric, _basic_data_validation
 
-# Don't remove
-from navi import go_about, go_projects, go_engineers, go_vacancies, go_announcements
-
 logging.config.dictConfig(LOGGING_CONFIG)
 
 # Now you can use logging as usual
 logger = logging.getLogger(__name__)
 
 logger.debug(f"You are using the main.py file from {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
+
+def go_page(state, context):
+    state.set_page(context.get('itemId', 'page_not_found'))
 
 
 def _create_prospects_menu(state, context):
@@ -77,7 +79,6 @@ def _create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
             "menu_name": menu_name
         } for i, (key, item) in enumerate(menu.items())
     }
-
 
 
 def reset_menu_css(state, reset_list: list):
@@ -215,7 +216,8 @@ def log_user(state):
         else:
             state["lang"] = state["user"]["lang"]
             state.set_page(role_pages[role])
-            state["engineers"]["content"], state["projects"]["content"], state["projects"]["warning"] = content_states[role]
+            state["engineers"]["content"], state["projects"]["content"], state["projects"]["warning"] = content_states[
+                role]
             if role == 'engineer':
                 _prepare_eng_page(state)
             if role in ('engineer', 'installer'):
@@ -676,9 +678,6 @@ def show_cookie(state):
         state["cookie_visible"] = False
 
 
-# Client page ----------------------------------------------------------------
-
-
 initial_state = wf.init_state(
     {
 
@@ -758,5 +757,3 @@ initial_state.import_stylesheet("theme", "/static/custom.css?163")
 
 # get_screen_size(initial_state)
 logger.info("MAIN executed successfully!")
-
-
