@@ -23,7 +23,7 @@ from menus import eng_menu, my_prospects_menu, main_menu, my_projects_menu, clie
 from utilities import _send_email, _random_code_alphanumeric, _basic_data_validation
 
 # Don't remove
-from navi import go_about, go_projects, go_engineers, go_vacancies
+from navi import go_about, go_projects, go_engineers, go_vacancies, go_announcements
 
 logging.config.dictConfig(LOGGING_CONFIG)
 
@@ -56,16 +56,28 @@ def _execute_menu_function(state, context):
             state.add_notification('error', "Error", "Something went wrong...")
 
 
+# def _create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
+#     return {
+#         key: {
+#             "fun": item.get('fun', None),  # pop
+#             "reset": item.get("reset", None),  # pop
+#             "text": item,
+#             "css": "underlined-text" if i == init_index else None,
+#             "menu_name": menu_name
+#         } for i, (key, item) in enumerate(menu.items())
+#     }
+
 def _create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
     return {
         key: {
-            "fun": item.get('fun', None),  # pop
-            "reset": item.get("reset", None),  # pop
+            "fun": item.pop('fun', None),
+            "reset": item.pop("reset", None),
             "text": item,
             "css": "underlined-text" if i == init_index else None,
             "menu_name": menu_name
         } for i, (key, item) in enumerate(menu.items())
     }
+
 
 
 def reset_menu_css(state, reset_list: list):

@@ -22,6 +22,15 @@ main_menu = {
         "R": "Инженеры",
         "fun": "go_engineers"
     },
+
+    "announcements": {
+        "E": "Announcement",
+        "U": "Оголошення",
+        "R": "Объявление",
+        "fun": "go_announcements"
+    },
+
+
     "vacancies": {
         "E": "Vacancies",
         "U": "Вакансії",

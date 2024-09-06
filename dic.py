@@ -1,6 +1,21 @@
 # -*- coding: utf-8 -*-
 dic = {
 
+    "announcements": {
+        "E": "Announcements",
+        "U": "Оголошення",
+        "R": "Объявления"
+    },
+
+    "an_description": {
+        "E": "Important stakeholders' announcements from  will be published here",
+        "U": "Важливі оголошення учасників будут публікуватись тут",
+        "R": "Важные объявления участников будут опубликованы здесь"
+
+
+
+    },
+
     "no_messages_found": {
         "E": "No messages found",
         "U": "Повідомлення не знайдено",
