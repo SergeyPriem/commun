@@ -31490,8 +31490,8 @@
             "content": {
                 "src": "static/404-1.jpeg",
                 "caption": "",
-                "maxWidth": "2400",
-                "maxHeight": "1600"
+                "maxWidth": "-1",
+                "maxHeight": "-1"
             },
             "isCodeManaged": false,
             "position": 0,
