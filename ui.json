@@ -38,7 +38,7 @@
                 "cssClasses": ""
             },
             "isCodeManaged": false,
-            "position": 0,
+            "position": 1,
             "parentId": "root",
             "visible": {
                 "expression": true,
@@ -56,7 +56,7 @@
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 3,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -171,7 +171,7 @@
                 "key": "projects"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 4,
             "parentId": "root",
             "handlers": {
                 "wf-page-open": "get_all_current_projects"
@@ -291,7 +291,7 @@
                 "key": "contact_us"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 5,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -642,7 +642,7 @@
                 "key": "registration"
             },
             "isCodeManaged": false,
-            "position": 6,
+            "position": 7,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -940,7 +940,7 @@
                 "primaryTextColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 7,
+            "position": 8,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -1224,7 +1224,7 @@
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 2,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -3562,7 +3562,7 @@
                 "accentColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 8,
+            "position": 9,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -3865,7 +3865,7 @@
                 "accentColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 9,
+            "position": 10,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -4205,7 +4205,7 @@
                 "accentColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 10,
+            "position": 11,
             "parentId": "root",
             "handlers": {
                 "wf-page-open": "create_client_menu"
@@ -4329,7 +4329,7 @@
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 11,
+            "position": 12,
             "parentId": "root",
             "visible": {
                 "expression": true,
@@ -4438,7 +4438,7 @@
                 "accentColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 12,
+            "position": 13,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -6013,7 +6013,7 @@
                 "key": "support_us"
             },
             "isCodeManaged": false,
-            "position": 13,
+            "position": 14,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -6165,7 +6165,7 @@
                 "separatorColor": "#1d4087"
             },
             "isCodeManaged": false,
-            "position": 5,
+            "position": 6,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -6704,7 +6704,7 @@
                 "accentColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 14,
+            "position": 15,
             "parentId": "root",
             "visible": {
                 "expression": true,
@@ -7098,7 +7098,7 @@
                 "accentColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 15,
+            "position": 16,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -8185,7 +8185,7 @@
                 "emptinessColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 16,
+            "position": 17,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -9772,7 +9772,7 @@
                 "primaryTextColor": "#fdfcfc"
             },
             "isCodeManaged": false,
-            "position": 17,
+            "position": 18,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -12966,7 +12966,7 @@
                 "accentColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 18,
+            "position": 19,
             "parentId": "root",
             "visible": {
                 "expression": true,
@@ -20340,7 +20340,7 @@
                 "accentColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 19,
+            "position": 20,
             "parentId": "root",
             "handlers": {},
             "visible": {
@@ -23211,7 +23211,7 @@
                 "separatorColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 3,
+            "position": 2,
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "handlers": {},
             "visible": {
@@ -23397,7 +23397,7 @@
                 "separatorColor": "#152e61"
             },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 0,
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "handlers": {}
         },
@@ -23808,22 +23808,6 @@
                 "reversed": false
             }
         },
-        "qyj78c4wwn73235y": {
-            "id": "qyj78c4wwn73235y",
-            "type": "horizontalstack",
-            "content": {
-                "contentPadding": "20px"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "handlers": {},
-            "visible": {
-                "expression": true,
-                "binding": "",
-                "reversed": false
-            }
-        },
         "zr5khg99v4yhboyh": {
             "id": "zr5khg99v4yhboyh",
             "type": "reuse",
@@ -23882,42 +23866,6 @@
             "position": 0,
             "parentId": "u58nuzt98hnjh39p",
             "handlers": {},
-            "visible": {
-                "expression": true,
-                "binding": "",
-                "reversed": false
-            }
-        },
-        "8bib10tkt6a88zy6": {
-            "id": "8bib10tkt6a88zy6",
-            "type": "horizontalstack",
-            "content": {
-                "contentPadding": "15px"
-            },
-            "isCodeManaged": false,
-            "position": 4,
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "handlers": {},
-            "visible": {
-                "expression": true,
-                "binding": "",
-                "reversed": false
-            }
-        },
-        "cokg30qhpb6odzgm": {
-            "id": "cokg30qhpb6odzgm",
-            "type": "horizontalstack",
-            "content": {
-                "contentPadding": "0px",
-                "contentHAlign": "center",
-                "contentVAlign": "center"
-            },
-            "isCodeManaged": false,
-            "position": 2,
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "handlers": {
-                "click": "$goToPage_about"
-            },
             "visible": {
                 "expression": true,
                 "binding": "",
@@ -29274,7 +29222,7 @@
                 "cssClasses": "bottom-message"
             },
             "isCodeManaged": false,
-            "position": 5,
+            "position": 3,
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "handlers": {},
             "visible": {
@@ -29323,7 +29271,7 @@
                 "cssClasses": ""
             },
             "isCodeManaged": false,
-            "position": 20,
+            "position": 21,
             "parentId": "root",
             "visible": {
                 "expression": true,
@@ -30397,7 +30345,7 @@
                 "cssClasses": ""
             },
             "isCodeManaged": false,
-            "position": 21,
+            "position": 0,
             "parentId": "root",
             "visible": {
                 "expression": true,
@@ -31516,14 +31464,34 @@
                 "reversed": false
             }
         },
+        "cokg30qhpb6odzgm": {
+            "id": "cokg30qhpb6odzgm",
+            "type": "horizontalstack",
+            "content": {
+                "contentPadding": "0px",
+                "contentHAlign": "center",
+                "contentVAlign": "center"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {
+                "click": "$goToPage_about"
+            },
+            "visible": {
+                "expression": true,
+                "binding": "",
+                "reversed": false
+            }
+        },
         "1zzn9wh6dwe3l7aw": {
             "id": "1zzn9wh6dwe3l7aw",
             "type": "image",
             "content": {
                 "src": "static/404-1.jpeg",
                 "caption": "",
-                "maxWidth": "1840",
-                "maxHeight": "1000"
+                "maxWidth": "2400",
+                "maxHeight": "1600"
             },
             "isCodeManaged": false,
             "position": 0,
