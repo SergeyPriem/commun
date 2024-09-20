@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "writer_version": "0.7.4"
+        "writer_version": "0.7.5"
     },
     "components": {
         "root": {
@@ -30497,15 +30497,14 @@
             "id": "ti3jjb2tghwsmvaz",
             "type": "horizontalstack",
             "content": {
-                "contentHAlign": "center",
-                "contentPadding": "15px"
+                "contentHAlign": "center"
             },
             "isCodeManaged": false,
             "position": 5,
             "parentId": "bu4twzk8kbjxwvfx",
             "handlers": {},
             "visible": {
-                "expression": true,
+                "expression": "custom",
                 "binding": "",
                 "reversed": false
             }
