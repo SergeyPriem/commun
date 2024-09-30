@@ -673,6 +673,9 @@ def get_screen_size(state):
     # print(f"Screen size: {screen_size}")
 
 
+def screen_size(state, payload):
+    print(f"My event{payload}")
+
 def hide_cookie(state):
     state["cookie_visible"] = False
 

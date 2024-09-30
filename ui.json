@@ -23577,8 +23577,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "xtnr287yp3sagc85": {
@@ -27841,8 +27841,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "47b8w5suxq7f4ila": {
