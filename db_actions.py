@@ -21,6 +21,12 @@ logging.config.dictConfig(LOGGING_CONFIG)
 logger = logging.getLogger(__name__)
 
 
+def not_user_logged(state):
+    if not state["user"]["logged"]:
+        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+        return True
+    return False
+
 def _create_user(state):
     """
     Create a new user in the database.
@@ -36,15 +42,8 @@ def _create_user(state):
     int: HTTP status code indicating the result of the operation.
          200 if the user was successfully created, 500 if the user already exists or due to exception.
     """
-    if state["user"]["major"]:
-        major = ", ".join(state["user"]["major"])
-    else:
-        major = "-"
-
-    if state["reg_vis"]:
-        vis = "".join(state["reg_vis"])
-    else:
-        vis = "unv"
+    major = ", ".join(state["user"]["major"]) if state["user"]["major"] else "-"
+    vis = "".join(state["reg_vis"]) if state["reg_vis"] else "unv"
 
     try:
         with Session(engine) as session:
@@ -93,20 +92,16 @@ def _log_out_user(state):
     """
     with Session(bind=engine) as session:
         try:
-            # Retrieve the most recent visit log entry for the current user
-            visit = session.query(
-                VisitLog).filter(VisitLog.user_login == state["user"]["login"]
-                                 ).order_by(VisitLog.id.desc()).first()
+            visit = session.query(VisitLog).filter(
+                VisitLog.user_login == state["user"]["login"]
+            ).order_by(VisitLog.id.desc()).first()
+
             if visit:
-                # Update the date_time_out field to the current time
                 visit.date_time_out = datetime.datetime.now()
-                # Commit the changes
                 session.commit()
             else:
-                # Add a notification if no visit log entry is found
                 state.add_notification("warning", "Warning!", "User not found")
         except SQLAlchemyError as e:
-            # Add a notification if an error occurs
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
 
 
@@ -403,66 +398,81 @@ def _decline_invitation(state, context):
 
 
 def _add_guest_message(state):
-
     user_message = state["user_message"]
 
+    # Check if the email is valid
     if not _valid_email(user_message["email"]):
         state.add_notification('error', 'Error', "Wrong e-mail. Try again")
         return
 
+    # Check if the message is too short
     if len(user_message["message"]) < 10:
         state.add_notification('error', 'Error', "Message is too short. Try again")
         return
 
-    # if len(user_message["first_name"]) < 1:
-    #     state.add_notification('error', 'Error', "First name is too short. Try again")
-    #     return
-    #
-    # if len(user_message["last_name"]) < 1:
-    #     state.add_notification('error', 'Error', "Last name is too short. Try again")
-    #     return
-
+    # Check if the message is too long
     if len(user_message["message"]) > 1000:
         state.add_notification('error', 'Error', "Message is too long. Try again or divide by 1000 symbols")
         return
 
-    with Session(engine) as session:
-        try:
-            reply = _send_mail(
-                "info@power-design.pro",
-                "s.priemshiy@gmail.com",
-                "New Message from Site Visitor",
-                f"""
-                <html>
-                    <body>
-                        <h1>Hello!</h1>
-                        <p>
-                        You have got a message from site visitor {user_message["first_name"]} 
-                        {user_message["last_name"]} ({user_message["email"]})
-                        with the following content:
-                        </p>
-                        <h2>
-                            {user_message["message"]}
-                        </h2>
-                        <p>
-                            by {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}
-                        </p>
-                    </body>
-                </html>"""
-            )
-            if reply == 200:
-                state.add_notification("info", "Info!",
-                                       "Thank you for your message. The administration will be notified")
-                time.sleep(2)
-                state.set_page("about")
-            else:
-                state.add_notification("warning", "Warning!", "Invitation was not sent...")
+    # Get the current time
+    current_time = datetime.datetime.now()
 
-            for key in ["first_name", "last_name", "email", "message"]:
-                user_message[key] = None
+    # Remove timestamps older than 1 hour
+    state["user_message"]["timestamps"] = [
+        timestamp for timestamp in state["user_message"]["timestamps"] if (current_time - timestamp).seconds < 3600
+    ]
+
+    # Check if the user has sent more than 10 messages in the last hour
+    if len(state["user_message"]["timestamps"]) >= 10:
+        state.add_notification('error', 'Error', "You have reached the limit of 10 messages per hour. Try again later.")
+        return
+
+    # Check if the user is sending messages too quickly
+    if state["user_message"]["timestamps"] and (current_time - state["user_message"]["timestamps"][-1]).seconds < 30:
+        state.add_notification(
+            'error', 'Error',
+            "You are sending messages too quickly. Please wait 30 seconds before sending another message.")
+        return
+
+    # Add the current timestamp to the log
+    state["user_message"]["timestamps"].append(current_time)
+
+    try:
+        reply = _send_mail(
+            "info@power-design.pro",
+            "s.priemshiy@gmail.com",
+            "New Message from Site Visitor",
+            f"""
+            <html>
+                <body>
+                    <h1>Hello!</h1>
+                    <p>
+                    You have got a message from site visitor {user_message["first_name"]} 
+                    {user_message["last_name"]} ({user_message["email"]})
+                    with the following content:
+                    </p>
+                    <h2>
+                        {user_message["message"]}
+                    </h2>
+                    <p>
+                        by {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}
+                    </p>
+                </body>
+            </html>"""
+        )
+        if reply == 200:
+            state.add_notification("info", "Info", "Thank you for your message. The administration will be notified")
+            time.sleep(2)
             state.set_page("about")
-        except Exception as e:
-            state.add_notification('warning', 'Warning', _err_handler(e, 'add_user_message'))
+        else:
+            state.add_notification("warning", "Warning!", "Invitation was not sent...")
+
+        for key in ["first_name", "last_name", "email", "message"]:
+            user_message[key] = None
+        state.set_page("about")
+    except Exception as e:
+        state.add_notification('warning', 'Warning', _err_handler(e, 'add_user_message'))
 
 
 def _delete_subscription(state):
@@ -488,7 +498,7 @@ def _delete_subscription(state):
                 state.set_page("about")
 
         except NoResultFound:
-            state.add_notification("info", "Info!", "You are not subscribed to the site news")
+            state.add_notification("info", "Info", "You are not subscribed to the site news")
 
         except Exception as e:
             state.add_notification('warning', 'Warning', _err_handler(e, 'delete_subscription'))
@@ -557,7 +567,6 @@ def _get_current_projects(state):
     None: This function updates the state dictionary directly.
     """
     if not state["user"]["logged"]:
-        # state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
     with Session(bind=engine) as session:
         try:
@@ -599,9 +608,9 @@ def _get_my_current_projects(state):
     :param state:
     :return:
     """
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
+
     with Session(bind=engine) as session:
         try:
             stmt = select(User).where(User.login == state["user"]["login"])
@@ -630,8 +639,7 @@ def _get_my_current_projects(state):
 
 
 def _get_all_finished_projects(state):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -705,7 +713,7 @@ def _create_project(state):
                 session.commit()
                 state["add_project"]["show_message"] = 1
                 state["add_project"]["show_section"] = 0
-                state.add_notification("success", "Info!", state["dic"]["proj_created"][state["lang"]])
+                state.add_notification("success", "Info", state["dic"]["proj_created"][state["lang"]])
             except SQLAlchemyError as e:
                 state.add_notification("warning", "Warning!", f"An error occurred: {e}")
     else:
@@ -721,8 +729,7 @@ def _create_project(state):
 
 
 def _invite(state):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
     if not state["selected_proj_to_add_eng"]:
         state.add_notification("warning", "Warning!", dic["no_proj_selected"][state["lang"]])
@@ -776,7 +783,7 @@ def _invite(state):
                                <br><br>
                                <b>Power Design Pro Team</b>""")
             if reply == 200:
-                state.add_notification("info", "Info!", f"Invitation to user {invited.login} sent successfully")
+                state.add_notification("info", "Info", f"Invitation to user {invited.login} sent successfully")
                 state["selected_proj_to_add_eng"] = None
                 state["selected_eng_for_proj"] = None
                 _get_my_messages_read(state)
@@ -790,8 +797,7 @@ def _invite(state):
 
 
 def _get_my_invitations(state):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -827,8 +833,7 @@ def _get_my_invitations(state):
 
 
 def _get_my_proposals(state):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -861,8 +866,7 @@ def _get_my_proposals(state):
 
 
 def _apply_client_proposal(state, context):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -879,8 +883,7 @@ def _apply_client_proposal(state, context):
 
 
 def _decline_client_proposal(state, context):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -1105,18 +1108,16 @@ def _get_table_as_dataframe(state):
         state["db_table"] = df
         return
 
+    date_columns = ["date_time", "date_time_in", "date_time_out"]
+
     if "h_pass" in df.columns:
         df = df.drop(columns=["h_pass"])
+        date_columns = ["date_time"]
 
-        # df['your_column'] = pd.to_datetime(df['your_column'], unit='s')
-
-        df["date_time"] = pd.to_datetime(df["date_time"], unit='ms')
-        df["date_time"] = df["date_time"].dt.strftime('%Y-%m-%d %H:%M:%S')
-    else:
-        df["date_time_in"] = pd.to_datetime(df["date_time_in"], unit='ms')
-        df["date_time_in"] = df["date_time_in"].dt.strftime('%Y-%m-%d %H:%M:%S')
-        df["date_time_out"] = pd.to_datetime(df["date_time_out"], unit='ms')
-        df["date_time_out"] = df["date_time_out"].dt.strftime('%Y-%m-%d %H:%M:%S')
+    for col in date_columns:
+        if col in df.columns:
+            df[col] = pd.to_datetime(df[col], unit='ms')
+            df[col] = df[col].dt.strftime('%Y-%m-%d %H:%M:%S')
 
     state["db_table"] = df
 
@@ -1125,36 +1126,35 @@ def _request_cv(state, context):
     if not state['user']['login']:
         state.add_notification('warning', "Warning!", dic["not_logged_in"][state['lang']])
         return
+
     with Session(bind=engine) as session:
         try:
             user_login = context["itemId"]
             user = session.query(User).filter(User.login == user_login).first()
-
             client_login = state['user']['login']
             client = session.query(User).filter(User.login == client_login).first()
 
-            message_en = (f"Client <strong>{client_login}"
-                          f"</strong> asks You to provide the CV to his e-mail: {client.email}")
-            message_uk = (f"Замовник <strong>{client_login}"
-                          f"</strong> просить Вас надати резюме на його e-mail: {client.email}")
-            message_ru = (f"Заказчик <strong>{client_login}"
-                          f"</strong> просит Вас предоставить резюме на его e-mail: {client.email}")
+            messages = {
+                "en": f"Client <strong>{client_login}</strong> asks You to provide the CV to his e-mail: {client.email}",
+                "uk": f"Замовник <strong>{client_login}</strong> просить Вас надати резюме на його e-mail: {client.email}",
+                "ru": f"Заказчик <strong>{client_login}</strong> просит Вас предоставить резюме на его e-mail: {client.email}"
+            }
 
             html_content = (
                 f"<br>"
-                f"<p>{message_en}</p><hr>"
-                f"<p>{message_uk}</p><hr>"
-                f"<p>{message_ru}</p>"
+                f"<p>{messages['en']}</p><hr>"
+                f"<p>{messages['uk']}</p><hr>"
+                f"<p>{messages['ru']}</p>"
                 f"<br>"
                 f"<p>Best Regards, Administration</p>"
             )
 
-            reply = _send_mail(user.email,
-                               "s.priemshiy@gmail.com",
-                               "Request forQ CV from Client | Запит резюме від Замовника | Запрос резюме от Заказчика",
+            reply = _send_mail(user.email, "s.priemshiy@gmail.com",
+                               "Request for CV from Client | Запит резюме від Замовника | Запрос резюме от Заказчика",
                                html_content)
+
             if reply == 200:
-                state.add_notification("info", "Info!", f"{dic['req_of_cv'][state['lang']]}{user.login}")
+                state.add_notification("info", "Info", f"{dic['req_of_cv'][state['lang']]}{user.login}")
                 state["selected_proj_to_add_eng"] = None
                 state["selected_eng_for_proj"] = None
                 state.set_page("client_page")
@@ -1163,6 +1163,7 @@ def _request_cv(state, context):
         except Exception as e:
             logger.error(f"An error occurred: {e}")
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
+
 
 
 def _delete_project(state, context):
@@ -1174,7 +1175,7 @@ def _delete_project(state, context):
             project.status_changed = datetime.datetime.now()
             session.commit()
             _get_all_finished_projects(state)
-            state.add_notification("info", "Info!", "Project deleted")
+            state.add_notification("info", "Info", "Project deleted")
         except SQLAlchemyError as e:
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
@@ -1188,7 +1189,7 @@ def _finalise_project(state, context):
             project.status_changed = datetime.datetime.now()
             session.commit()
             _get_my_current_projects(state)
-            state.add_notification("info", "Info!", "Project closed")
+            state.add_notification("info", "Info", "Project closed")
         except SQLAlchemyError as e:
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
@@ -1202,14 +1203,13 @@ def _resume_project(state, context):
             project.status_changed = datetime.datetime.now()
             session.commit()
             _get_all_finished_projects(state)
-            state.add_notification("info", "Info!", "Project resumed")
+            state.add_notification("info", "Info", "Project resumed")
         except SQLAlchemyError as e:
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
 def _add_message(state):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
 
     if len(state["proj_message"]) > 1000:
@@ -1261,8 +1261,7 @@ def _add_message(state):
 
 
 def _reply_to_message(state):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
 
     if len(state["proj_message"]) > 1000:
@@ -1304,8 +1303,7 @@ def _reply_to_message(state):
 
 
 def _get_my_messages_new(state):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -1339,8 +1337,7 @@ def _get_my_messages_new(state):
 
 
 def _get_my_messages_read(state):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -1374,8 +1371,7 @@ def _get_my_messages_read(state):
 
 
 def _update_read_date(state, context):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
 
     with Session(bind=engine) as session:
@@ -1386,14 +1382,13 @@ def _update_read_date(state, context):
                 return
             message.read_dt = datetime.datetime.now()
             session.commit()
-            state.add_notification("info", "Info!", "Message marked as read")
+            state.add_notification("info", "Info", "Message marked as read")
         except SQLAlchemyError as e:
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
 def _mark_as_unread(state, context):
-    if not state["user"]["logged"]:
-        state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
+    if not_user_logged(state):
         return
 
     with Session(bind=engine) as session:
@@ -1404,6 +1399,6 @@ def _mark_as_unread(state, context):
                 return
             message.read_dt = None
             session.commit()
-            state.add_notification("info", "Info!", "Message marked as unread")
+            state.add_notification("info", "Info", "Message marked as unread")
         except SQLAlchemyError as e:
             logger.error(f"An error occurred: {e}")

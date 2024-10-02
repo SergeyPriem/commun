@@ -127,15 +127,18 @@ def timing(f):
             "{:s} function took {:.3f} ms".format(f.__name__, (time2 - time1) * 1000.0)
         )
         return ret
-
     return wrap
 
 
+# def _validate_phone_number(input_string):
+#     pattern = re.compile(r'^\+\d{11,12}$')
+#     if pattern.match(input_string):
+#         return True
+#     return False
+
 def _validate_phone_number(input_string):
-    pattern = re.compile(r'^\+\d{11,12}$')
-    if pattern.match(input_string):
-        return True
-    return False
+    return bool(re.match(r'^\+\d{11,12}$', input_string))
+
 
 
 def _basic_data_validation(state):

@@ -729,6 +729,8 @@ initial_state = wf.init_state(
             "last_name": "",
             "email": "",
             "message": "",
+            "timestamps": [],
+            "counter": 0
         },
 
     })
