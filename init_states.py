@@ -14,7 +14,6 @@ init_user = {
     "description": None,  # description for project or experience
     "company": None,
     "logged": 0,
-    "not_logged": 1,
     "url": None,
     "message": None,
     "engineer": 0,
@@ -25,13 +24,10 @@ init_user = {
 
 init_reg = {
     "data_ok": 0,
-    "data_error": 0,
     "data_error_message": "",
     "code_section": 0,
     "code_message": None,
     "code_ok": 0,
-    "code_error": 0,
-    "db_message": 0,
     "db_message_text": "",
     "code_sent": None,
     "code_entered": None
@@ -40,12 +36,9 @@ init_reg = {
 init_login = {
     "form": 1,
     "data_ok": 0,
-    "data_error": 0,
     "data_error_message": "",
     "code": 0,
     "code_ok": 0,
-    "code_error": 0,
-    "db_message": 0,
     "db_message_text": ""
 }
 

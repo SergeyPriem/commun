@@ -647,8 +647,8 @@
             "handlers": {},
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "u571ggffv12jyglo": {
@@ -945,8 +945,8 @@
             "handlers": {},
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "uw2fmpw0wuvq90ll": {
@@ -967,8 +967,8 @@
             "handlers": {},
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "5am56xypk8geh0jb": {
@@ -1557,7 +1557,7 @@
             "handlers": {},
             "visible": {
                 "expression": "custom",
-                "binding": "reg.data_error",
+                "binding": "reg.data_error_message",
                 "reversed": false
             }
         },
@@ -4867,8 +4867,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "6xpehwl8yzisepkf": {
@@ -4888,8 +4888,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "kx7twkwk0ma7ksek": {
@@ -20125,8 +20125,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "9k5vf8erh9ycyiy3": {
@@ -20146,8 +20146,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "ayfu0d15i0okdeii": {
@@ -20831,8 +20831,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "bq836zr3m7kyndoe": {
@@ -20852,8 +20852,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "kekk14sw3as4w3ku": {
@@ -29986,8 +29986,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "50mcm51oiqar3agg": {
@@ -30049,8 +30049,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "dhs0y9jd0gkf3uit": {
@@ -31111,8 +31111,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "y7taul04kg1i0p86": {
@@ -31174,8 +31174,8 @@
             },
             "visible": {
                 "expression": "custom",
-                "binding": "user.not_logged",
-                "reversed": false
+                "binding": "user.logged",
+                "reversed": true
             }
         },
         "y8fkqrvlx0sy7szn": {
@@ -31495,6 +31495,18 @@
             "isCodeManaged": false,
             "position": 0,
             "parentId": "cokg30qhpb6odzgm",
+            "handlers": {}
+        },
+        "ap2qnsaxp9twxb0o": {
+            "id": "ap2qnsaxp9twxb0o",
+            "type": "fileinput",
+            "content": {
+                "label": "Upload the file",
+                "allowMultipleFiles": "yes"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "4vuaeri6nlxyrrfj",
             "handlers": {}
         }
     }

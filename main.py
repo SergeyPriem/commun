@@ -58,17 +58,6 @@ def _execute_menu_function(state, context):
             state.add_notification('error', "Error", "Something went wrong...")
 
 
-# def _create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
-#     return {
-#         key: {
-#             "fun": item.get('fun', None),  # pop
-#             "reset": item.get("reset", None),  # pop
-#             "text": item,
-#             "css": "underlined-text" if i == init_index else None,
-#             "menu_name": menu_name
-#         } for i, (key, item) in enumerate(menu.items())
-#     }
-
 def _create_menu(menu_name: str, menu: dict, init_index=None) -> dict:
     return {
         key: {
@@ -200,10 +189,10 @@ def log_user(state):
     }
 
     content_states = {
-        'client': (1, 0, 1),
-        'engineer': (0, 1, 0),
-        'installer': (1, 1, 0),
-        'admin': (1, 1, 0)
+        'client': (1, 0, ),
+        'engineer': (0, 1, ),
+        'installer': (1, 1, ),
+        'admin': (1, 1, )
     }
 
     if state["user"]["logged"]:
@@ -216,13 +205,11 @@ def log_user(state):
         else:
             state["lang"] = state["user"]["lang"]
             state.set_page(role_pages[role])
-            state["engineers"]["content"], state["projects"]["content"], state["projects"]["warning"] = content_states[
-                role]
+            state["engineers"]["content"], state["projects"]["content"] = content_states[role]
             if role == 'engineer':
                 _prepare_eng_page(state)
             if role in ('engineer', 'installer'):
                 state['eng_menu'] = _create_menu("eng_menu", eng_menu, None)
-
                 state["vacancies"]["content"] = 1
     else:
         state.set_page('wrong_login')
@@ -241,12 +228,8 @@ def validate_email_by_code(state):
             state.set_page("login")
 
         state["reg"]["code_section"] = 0
-        state["reg"]['code_error'] = 0
         state["reg"]['code_ok'] = 1
-        state["reg"]['db_message'] = 1
-
     else:
-        state["reg"]['code_error'] = 1
         state["reg"]['code_ok'] = 0
         state["reg"]["code_section"] = 1
         state["reg"]["code_message"] = "- " + dic["wrong_code"][state["lang"]]
@@ -256,10 +239,7 @@ def send_confirmation_code(state):
     state['reg']['code_sent'] = _random_code_alphanumeric(6)
 
     reply = _send_email(state)
-    if reply['status'] == 200:
-        state["reg"]["code_section"] = 1
-    else:
-        state["reg"]["code_section"] = 0
+    state["reg"]["code_section"] = 1 if reply['status'] == 200 else 0
 
 
 def validate_reg_data(state):
@@ -287,13 +267,10 @@ def validate_reg_data(state):
             troubles.append(e_m["empty_description"])
 
     if len(troubles) > 0:
-
         troubles_text = [t[lang] for t in troubles]
-        state["reg"]["data_error"] = 1
         state["reg"]["data_error_message"] = ", ".join(troubles_text)
     else:
-        state["reg"]["data_error"] = 0
-        state["reg"]["data_error_message"] = None
+        state["reg"]["data_error_message"] = ""
         state["reg"]["data_ok"] = 1
         state["reg"]["form"] = 0
         state["user"]["client"] = 0
@@ -308,7 +285,6 @@ def show_client_form(state):
     state["user"]["engineer"] = 0
     state["user"]["installer"] = 0
     state["user"]["role"] = "client"
-    state["reg"]["data_error"] = 0
     state["reg"]["code_ok"] = 0
     state["reg"]["data_ok"] = 0
 
@@ -318,7 +294,6 @@ def show_engineer_form(state):
     state["user"]["engineer"] = 1
     state["user"]["installer"] = 0
     state["user"]["role"] = "engineer"
-    state["reg"]["data_error"] = 0
     state["reg"]["code_ok"] = 0
     state["reg"]["data_ok"] = 0
 
@@ -328,7 +303,6 @@ def show_installer_form(state):
     state["user"]["engineer"] = 0
     state["user"]["installer"] = 1
     state["user"]["role"] = "installer"
-    state["reg"]["data_error"] = 0
     state["reg"]["code_ok"] = 0
     state["reg"]["data_ok"] = 0
 
@@ -464,7 +438,6 @@ def connect_w_engineer(state, context):
     # state["selected_engineers"] = list(set(state["selected_engineers"]))
 
 
-
 def admin_reg_section(state):
     state["user"]["role"] = "admin"
     state["admin"]["reg_sect"] = 1
@@ -491,7 +464,6 @@ def finalise_project(state, context):
 def set_selected_engineer(state, context):
     get_actual_own_projects_dict(state)
     state["selected_eng_for_proj"] = str(context["itemId"])
-
     state.set_page("invite_to_project")
 
 
@@ -675,6 +647,7 @@ def get_screen_size(state):
 
 def screen_size(state, payload):
     print(f"My event{payload}")
+
 
 def hide_cookie(state):
     state["cookie_visible"] = False

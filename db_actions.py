@@ -200,7 +200,7 @@ def _log_admin(state):
             fill_user_data(state, current_user)
 
             state["user"].update(
-                {"password": None, "password2": None, "logged": 1, "not_logged": 0, "lang": current_user.lang,
+                {"password": None, "password2": None, "logged": 1, "lang": current_user.lang,
                  "message": None})
 
             visit_log = VisitLog(
@@ -403,81 +403,64 @@ def _decline_invitation(state, context):
 
 
 def _add_user_message(state):
-    if not state["user_message"]:
+    user_message = state["user_message"]
+
+    if not user_message:
         state.add_notification('error', 'Error', "E-mail is empty. Try again")
         return
-    if not _valid_email(state["user_message"]["email"]):
+    if not _valid_email(user_message["email"]):
         state.add_notification('error', 'Error', "Wrong e-mail. Try again")
         return
 
-    if len(state["user_message"]["message"]) < 10:
+    if len(user_message["message"]) < 10:
         state.add_notification('error', 'Error', "Message is too short. Try again")
         return
 
-    if len(state["user_message"]["first_name"]) < 1:
+    if len(user_message["first_name"]) < 1:
         state.add_notification('error', 'Error', "First name is too short. Try again")
         return
 
-    if len(state["user_message"]["last_name"]) < 1:
+    if len(user_message["last_name"]) < 1:
         state.add_notification('error', 'Error', "Last name is too short. Try again")
         return
 
-    if len(state["user_message"]["message"]) > 1000:
+    if len(user_message["message"]) > 1000:
         state.add_notification('error', 'Error', "Message is too long. Try again")
         return
 
     with Session(engine) as session:
         try:
-            message = Message(
-
-                sender_id=Column(Integer, ForeignKey('users.id')),
-                receiver_id=Column(Integer, ForeignKey('users.id')),
-                project_id=Column(Integer, ForeignKey('projects.id'), nullable=True),
-                message_text=Column(String(1000), nullable=False),
-                dialog_id=Column(Integer, nullable=False),
-                message_dt=Column(DateTime, nullable=False),
-                read_dt=Column(DateTime, nullable=True),
-
-                first_name=state["user_message"]["first_name"],
-                last_name=state["user_message"]["last_name"],
-                email=state["user_message"]["email"],
-                message=state["user_message"]["message"],
-                date_time=datetime.datetime.now()
+            reply = _send_mail(
+                "info@power-design.pro",
+                "s.priemshiy@gmail.com",
+                "New Message from Site Visitor",
+                f"""
+                <html>
+                    <body>
+                        <h1>Hello!</h1>
+                        <p>
+                        You have got a message from site visitor {user_message["first_name"]} 
+                        {user_message["last_name"]} ({user_message["email"]})
+                        with the following content:
+                        </p>
+                        <h2>
+                            {user_message["message"]}
+                        </h2>
+                        <p>
+                            by {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}
+                        </p>
+                    </body>
+                </html>"""
             )
-            session.add(message)
-            session.commit()
-
-            reply = _send_mail("info@power-design.pro",
-                               "s.priemshiy@gmail.com",
-                               "New Message from Site Visitor",
-                               f"""
-                                <html>
-                                    <body>
-                                        <h1>Hello!</h1>
-                                        <p>
-                                        You have got a message from site visitor {state["user_message"]["first_name"]} 
-                                        {state["user_message"]["last_name"]} ({state["user_message"]["email"]})
-                                        with the following content:
-                                        </p>
-                                        <h2>
-                                            {state["user_message"]["message"]}
-                                        </h2>
-                                        <p>
-                                            by {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}
-                                        </p>
-                                    </body>
-                                </html>""")
             if reply == 200:
-                state.add_notification("info", "Info!", f"Thank you for your message. "
-                                                        f"The administration will be notified")
+                state.add_notification("info", "Info!",
+                                       "Thank you for your message. The administration will be notified")
                 state.set_page("about")
             else:
                 state.add_notification("warning", "Warning!", "Invitation was not sent...")
 
-            state["user_message"]["first_name"] = None
-            state["user_message"]["last_name"] = None
-            state["user_message"]["email"] = None
-            state["user_message"]["message"] = None
+            for key in ["first_name", "last_name", "email", "message"]:
+                user_message[key] = None
             state.set_page("about")
         except Exception as e:
             state.add_notification('warning', 'Warning', _err_handler(e, 'add_user_message'))
