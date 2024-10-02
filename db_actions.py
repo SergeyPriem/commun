@@ -453,10 +453,11 @@ def _add_guest_message(state):
             if reply == 200:
                 state.add_notification("info", "Info!",
                                        "Thank you for your message. The administration will be notified")
+                time.sleep(2)
                 state.set_page("about")
             else:
                 state.add_notification("warning", "Warning!", "Invitation was not sent...")
-            time.sleep(2)
+
             for key in ["first_name", "last_name", "email", "message"]:
                 user_message[key] = None
             state.set_page("about")
