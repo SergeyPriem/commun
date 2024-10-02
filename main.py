@@ -655,7 +655,6 @@ def hide_cookie(state):
 
 initial_state = wf.init_state(
     {
-
         "header": "tbag25a2ixxatzmw",
         "footer": "t06410yhnc7u920g",
 

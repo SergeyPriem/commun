@@ -6,7 +6,7 @@ import time
 
 import bcrypt
 import pandas as pd
-from sqlalchemy import select, func
+from sqlalchemy import select, func, and_
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError, NoResultFound
 from sqlalchemy.orm import Session
 
@@ -21,11 +21,12 @@ logging.config.dictConfig(LOGGING_CONFIG)
 logger = logging.getLogger(__name__)
 
 
-def not_user_logged(state):
+def user_not_logged(state):
     if not state["user"]["logged"]:
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return True
     return False
+
 
 def _create_user(state):
     """
@@ -176,12 +177,17 @@ def admin_panel_section(state):
     state["admin"]["panel_sect"] = 1
 
 
+
+
+
 def _log_admin(state):
     with Session(bind=engine) as session:
         try:
             current_user = session.query(User).filter(
-                User.login == state["user"]["login"],
-                User.role == "admin"
+                and_(
+                    User.login == state["user"]["login"],
+                    User.role == "admin"
+                )
             ).first()
 
             if not current_user:
@@ -608,7 +614,7 @@ def _get_my_current_projects(state):
     :param state:
     :return:
     """
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
 
     with Session(bind=engine) as session:
@@ -639,7 +645,7 @@ def _get_my_current_projects(state):
 
 
 def _get_all_finished_projects(state):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -729,7 +735,7 @@ def _create_project(state):
 
 
 def _invite(state):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
     if not state["selected_proj_to_add_eng"]:
         state.add_notification("warning", "Warning!", dic["no_proj_selected"][state["lang"]])
@@ -742,10 +748,12 @@ def _invite(state):
 
             # Check if an invitation with the same project_id, user_id, and proposed_by already exists
             existing_invitation = session.query(Invitation).filter(
-                Invitation.project_id == state['selected_proj_to_add_eng'],
-                Invitation.user_id == invited.id,
-                Invitation.proposed_by == inviting.id,
-                Invitation.status == 'pending'
+                and_(
+                    Invitation.project_id == state['selected_proj_to_add_eng'],
+                    Invitation.user_id == invited.id,
+                    Invitation.proposed_by == inviting.id,
+                    Invitation.status == 'pending'
+                )
             ).first()
 
             if existing_invitation:
@@ -797,7 +805,7 @@ def _invite(state):
 
 
 def _get_my_invitations(state):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -833,7 +841,7 @@ def _get_my_invitations(state):
 
 
 def _get_my_proposals(state):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -866,7 +874,7 @@ def _get_my_proposals(state):
 
 
 def _apply_client_proposal(state, context):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -883,7 +891,7 @@ def _apply_client_proposal(state, context):
 
 
 def _decline_client_proposal(state, context):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -1165,7 +1173,6 @@ def _request_cv(state, context):
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
 
 
-
 def _delete_project(state, context):
     with Session(bind=engine) as session:
         try:
@@ -1209,7 +1216,7 @@ def _resume_project(state, context):
 
 
 def _add_message(state):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
 
     if len(state["proj_message"]) > 1000:
@@ -1261,7 +1268,7 @@ def _add_message(state):
 
 
 def _reply_to_message(state):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
 
     if len(state["proj_message"]) > 1000:
@@ -1303,7 +1310,7 @@ def _reply_to_message(state):
 
 
 def _get_my_messages_new(state):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -1337,7 +1344,7 @@ def _get_my_messages_new(state):
 
 
 def _get_my_messages_read(state):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
     with Session(bind=engine) as session:
         try:
@@ -1371,7 +1378,7 @@ def _get_my_messages_read(state):
 
 
 def _update_read_date(state, context):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
 
     with Session(bind=engine) as session:
@@ -1388,7 +1395,7 @@ def _update_read_date(state, context):
 
 
 def _mark_as_unread(state, context):
-    if not_user_logged(state):
+    if user_not_logged(state):
         return
 
     with Session(bind=engine) as session:

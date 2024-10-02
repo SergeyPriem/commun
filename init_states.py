@@ -101,7 +101,7 @@ specialities_R = {
     "civil": "Строительная часть"
 }
 
-init_new_project = { # new_project
+init_new_project = {
     "name": None,
     "description": None,
     "comments": None,

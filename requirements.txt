@@ -1,9 +1,9 @@
-bcrypt==4.1.2
-numpy==1.26.4
-pandas==2.2.1
+bcrypt==4.2.0
+numpy==2.1.1
+pandas==2.2.3
 python-dotenv==1.0.1
-SQLAlchemy==2.0.29
+SQLAlchemy==2.0.35
 mysqlclient==2.2.4
-watchdog==3.0.0
-plotly==5.22.0
+watchdog==5.0.3
+plotly==5.24.1
 writer==0.7.5

@@ -30,7 +30,6 @@ main_menu = {
         "fun": "go_page"
     },
 
-
     "vacancies": {
         "E": "Vacancies",
         "U": "Вакансії",
@@ -61,7 +60,6 @@ eng_menu = {
 }
 
 my_prospects_menu = {
-    # "_active": None,
 
     "my_invitations": {
         "E": "My Invitations",
@@ -90,7 +88,6 @@ my_prospects_menu = {
         "R": "Запросы на Резюме",
         "fun": None
     },
-
 
 }
 
@@ -123,7 +120,6 @@ my_projects_menu = {
         "R": "Мои Удаленные Проекты",
         "fun": None,
     },
-
 
 }
 
