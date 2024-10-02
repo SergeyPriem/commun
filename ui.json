@@ -625,7 +625,7 @@
             "position": 0,
             "parentId": "1nxrqri07s45kb28",
             "handlers": {
-                "wf-click": "add_user_message"
+                "wf-click": "add_guest_message"
             },
             "visible": {
                 "expression": true,

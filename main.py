@@ -8,7 +8,7 @@ import writer as wf
 
 from assets.help import he
 from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_installers, _get_user_data, \
-    _log_out_user, admin_panel_section, _decline_invitation, _get_my_current_projects, _add_user_message, \
+    _log_out_user, admin_panel_section, _decline_invitation, _get_my_current_projects, _add_guest_message, \
     _delete_subscription, _get_new_projects, _get_all_finished_projects, _create_project, _invite, \
     _get_engineers, _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, \
     _offer_service, _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, \
@@ -541,8 +541,8 @@ def show_subscribe_window(state):
     state["subscribe"]["section"] = 1
 
 
-def add_user_message(state):
-    _add_user_message(state)
+def add_guest_message(state):
+    _add_guest_message(state)
 
 
 def resume_project(state, context):
@@ -723,6 +723,13 @@ initial_state = wf.init_state(
         'main_menu': _create_menu("main_menu", main_menu, 0),
 
         "cookie_visible": True,
+
+        "user_message": {
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "message": "",
+        },
 
     })
 

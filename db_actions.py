@@ -402,12 +402,10 @@ def _decline_invitation(state, context):
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
-def _add_user_message(state):
+def _add_guest_message(state):
+
     user_message = state["user_message"]
 
-    if not user_message:
-        state.add_notification('error', 'Error', "E-mail is empty. Try again")
-        return
     if not _valid_email(user_message["email"]):
         state.add_notification('error', 'Error', "Wrong e-mail. Try again")
         return
@@ -416,16 +414,16 @@ def _add_user_message(state):
         state.add_notification('error', 'Error', "Message is too short. Try again")
         return
 
-    if len(user_message["first_name"]) < 1:
-        state.add_notification('error', 'Error', "First name is too short. Try again")
-        return
-
-    if len(user_message["last_name"]) < 1:
-        state.add_notification('error', 'Error', "Last name is too short. Try again")
-        return
+    # if len(user_message["first_name"]) < 1:
+    #     state.add_notification('error', 'Error', "First name is too short. Try again")
+    #     return
+    #
+    # if len(user_message["last_name"]) < 1:
+    #     state.add_notification('error', 'Error', "Last name is too short. Try again")
+    #     return
 
     if len(user_message["message"]) > 1000:
-        state.add_notification('error', 'Error', "Message is too long. Try again")
+        state.add_notification('error', 'Error', "Message is too long. Try again or divide by 1000 symbols")
         return
 
     with Session(engine) as session:
@@ -458,7 +456,7 @@ def _add_user_message(state):
                 state.set_page("about")
             else:
                 state.add_notification("warning", "Warning!", "Invitation was not sent...")
-
+            time.sleep(2)
             for key in ["first_name", "last_name", "email", "message"]:
                 user_message[key] = None
             state.set_page("about")
