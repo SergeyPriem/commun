@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/png" href="./static/favicon.png?2" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Writer Framework</title>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				font-family: inherit;
+				color: currentColor;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			body {
+				font-size: 13px;
+			}
+
+			.material-symbols-outlined {
+				font-family: 'Material Symbols Outlined Variable', sans-serif;
+				font-size: 100%;
+				font-style: normal;
+			}
+
+			#app {
+				isolation: isolate;
+			}
+
+			#app > * {
+				min-height: 100vh;
+			}
+
+			#loading_L1 {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+			}
+
+			#loading_L2 {
+				position: absolute;
+				background: conic-gradient(from 180deg at 50% 50%, #FFF 0deg, #A95EF8 360deg);
+				width: 113px;
+				height: 113px;
+				top: calc(50% - 56.5px);
+				left: calc(50% - 56.5px);
+				border-radius: 50%;
+				animation: logoAnimation 1s infinite linear;
+			}
+
+			#loading_L1 svg {
+				top: calc(50% - 49.5px);
+				left: calc(50% - 49px);				
+				position: absolute;
+			}
+
+			@keyframes logoAnimation {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+
+		</style>
+		<script type="module" crossorigin src="./assets/index-DStp1AYb.js"></script>
+		<link rel="stylesheet" crossorigin href="./assets/index-cN-bUSqH.css">
+	</head>
+	<body>
+		<div id="app">
+			<!--
+			<div id="loading_L1">
+				<div id="loading_L2">	
+				</div>
+				<svg width="98" height="99" viewBox="0 0 98 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect y="1" width="98" height="98" rx="49" fill="black"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M69.4549 60.0928L76.0021 33.0802H66.897L66.897 33.0802H62.9077L69.4549 60.0928Z" fill="white"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M51.9127 33.0802H42.8076L51.9127 70.6464H55.959L55.959 70.6464H65.0641L55.959 33.0802H51.9128L51.9127 33.0802Z" fill="white"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M35.8587 33.0803H26.7535L26.7537 33.081H22.7073L31.8124 70.6471H40.9176L40.9174 70.6465H44.9638L35.8587 33.0803Z" fill="white"/>
+				</svg>
+			</div>
+			-->
+			<div id="loading_L1">
+				<div id="loading_L2">
+				</div>
+				<svg width="98" height="99" viewBox="0 0 98 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<image href="static/favicon.png" width="98" height="98" />
+				</svg>
+			</div>
+
+
+		</div>
+		<script type="text/javascript">
+			document.title = "Loading...";
+		</script>
+	</body>
+</html>

@@ -11,6 +11,7 @@ COPY --from=compile-image /app /app
 ENV PATH="/app/venv/bin:$PATH"
 WORKDIR /app
 
+COPY static/index.html .venv/Lib/site-packages/writer/static/index.html
 
 ENTRYPOINT [ "writer", "run" ]
 EXPOSE 5000
