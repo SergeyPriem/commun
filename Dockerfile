@@ -9,6 +9,7 @@ FROM python:3.12 AS run-image
 RUN apt-get update -y && mkdir /app
 COPY --from=compile-image /app /app
 ENV PATH="/app/venv/bin:$PATH"
+
 WORKDIR /app
 
 COPY static/index.html app/venv/lib/python3.12/site-packages/writer/static/index.html
