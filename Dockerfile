@@ -31,9 +31,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Stage 2: Final Stage
 FROM python:3.12-slim
 WORKDIR /app
+RUN apt-get update -y && apt-get install -y --no-install-recommends libpq-dev
 COPY --from=build-stage /app /app
 ENV PATH="/app/venv/bin:$PATH"
 COPY . .
 ENTRYPOINT [ "writer", "run" ]
 EXPOSE 5000
 CMD [ ".", "--port", "5000", "--host", "0.0.0.0" ]
+
