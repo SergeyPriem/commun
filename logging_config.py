@@ -31,5 +31,3 @@ LOGGING_CONFIG = {
         }
     }
 }
-
-

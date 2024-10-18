@@ -12,7 +12,7 @@ ENV PATH="/app/venv/bin:$PATH"
 
 WORKDIR /app
 
-COPY static/index.html app/venv/lib/python3.12/site-packages/writer/static/index.html
+COPY /app/static/index.html /app/venv/lib/python3.12/site-packages/writer/static/index.html
 
 ENTRYPOINT [ "writer", "run" ]
 EXPOSE 5000

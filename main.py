@@ -1,24 +1,12 @@
 # -*- coding: utf-8 -*-
-import datetime
-import logging.config
-import logging.handlers
-import time
 
 import writer as wf
-
 from assets.help import he
-from db_actions import _create_user, _log_admin, _get_new_engineers, _get_new_installers, _get_user_data, \
-    _log_out_user, admin_panel_section, _decline_invitation, _get_my_current_projects, _add_guest_message, \
-    _delete_subscription, _get_new_projects, _get_all_finished_projects, _create_project, _invite, \
-    _get_engineers, _get_all_engineers, _get_all_installers, _send_request, _prepare_eng_page, _add_to_subscription, \
-    _offer_service, _get_table_as_dataframe, _request_cv, _delete_project, _finalise_project, _resume_project, \
-    _get_current_projects, _get_my_invitations, _apply_client_proposal, _decline_client_proposal, _add_message, \
-    _update_read_date, _get_my_messages_new, _get_my_messages_read, _mark_as_unread, _reply_to_message
+from db_actions import *
 from dic import dic
 from dic import error_messages as e_m
 from fw import ss_dic
-from init_states import specialities, init_user, init_reg, init_login, init_projects, init_engineers, init_vacancies, \
-    specialities_R, specialities_U, specialities_E, init_new_project
+from init_states import *
 from logging_config import LOGGING_CONFIG
 from menus import eng_menu, my_prospects_menu, main_menu, my_projects_menu, client_menu
 from utilities import _send_email, _random_code_alphanumeric, _basic_data_validation
@@ -112,30 +100,30 @@ class PCol:
 
 
 def get_table_as_dataframe(state):
-    _get_table_as_dataframe(state)
+    db_get_table_as_dataframe(state)
 
 
 def get_actual_own_projects(state, context):
-    _get_my_current_projects(state)
+    db_get_my_current_projects(state)
 
 
 def get_actual_own_projects_dict(state):
-    _get_my_current_projects(state)
+    db_get_my_current_projects(state)
     state["current_own_projects_dict"] = {
         str(key): value["name"]
         for key, value in state["current_own_projects"].items()}
 
 
 def invite(state):
-    _invite(state)
+    db_invite(state)
 
 
 def get_my_invitations(state):
-    _get_my_invitations(state)
+    db_get_my_invitations(state)
 
 
 def offer_service(state, context):
-    _offer_service(state, context)
+    db_offer_service(state, context)
 
 
 def get_finished_own_projects(state):
@@ -151,35 +139,35 @@ def get_suspended_own_projects(state):
 
 
 def get_new_current_projects(state):
-    _get_new_projects(state)
+    db_get_new_projects(state)
 
 
 def get_all_current_projects(state):
-    _get_current_projects(state)
+    db_get_current_projects(state)
 
 
 def get_all_finished_projects(state):
-    _get_all_finished_projects(state)
+    db_get_all_finished_projects(state)
 
 
 def create_project(state):
-    _create_project(state)
+    db_create_project(state)
 
 
 def log_admin(state):
-    _log_admin(state)
+    db_log_admin(state)
 
 
 def get_new_engineers(state):
-    _get_new_engineers(state)
+    db_get_new_engineers(state)
 
 
 def get_new_installers(state):
-    _get_new_installers(state)
+    db_get_new_installers(state)
 
 
 def log_user(state):
-    _get_user_data(state)
+    db_get_user_data(state)
 
     role_pages = {
         'client': 'client_page',
@@ -207,7 +195,7 @@ def log_user(state):
             state.set_page(role_pages[role])
             state["engineers"]["content"], state["projects"]["content"] = content_states[role]
             if role == 'engineer':
-                _prepare_eng_page(state)
+                db_prepare_eng_page(state)
             if role in ('engineer', 'installer'):
                 state['eng_menu'] = _create_menu("eng_menu", eng_menu, None)
                 state["vacancies"]["content"] = 1
@@ -221,7 +209,7 @@ def validate_email_by_code(state):
 
         state["reg"]["code_message"] = "+ " + dic["code_confirmed"][state["lang"]]
 
-        if _create_user(state) == 200:
+        if db_create_user(state) == 200:
             state["reg"]['form'] = 0
             state["reg"]['data_ok'] = 0
             time.sleep(2)
@@ -313,7 +301,7 @@ def quit_fun(state):
     :param state:
     :return: None
     """
-    _log_out_user(state)
+    db_log_out_user(state)
     state["reg"] = init_reg
     state["login"] = init_login
     state["user"] = init_user
@@ -340,51 +328,51 @@ def switch_to_ukr(state):
 
 
 def prepare_el(state):
-    _get_engineers(state, "el")
+    db_get_engineers(state, "el")
 
 
 def prepare_ins(state):
-    _get_engineers(state, "ins")
+    db_get_engineers(state, "ins")
 
 
 def prepare_plot_plan(state):
-    _get_engineers(state, "plot_plan")
+    db_get_engineers(state, "plot_plan")
 
 
 def prepare_low_cur(state):
-    _get_engineers(state, "low_cur")
+    db_get_engineers(state, "low_cur")
 
 
 def prepare_piping_linear(state):
-    _get_engineers(state, "piping_linear")
+    db_get_engineers(state, "piping_linear")
 
 
 def prepare_piping_area(state):
-    _get_engineers(state, "piping_area")
+    db_get_engineers(state, "piping_area")
 
 
 def prepare_hvac(state):
-    _get_engineers(state, "hvac")
+    db_get_engineers(state, "hvac")
 
 
 def prepare_wss(state):
-    _get_engineers(state, "wss")
+    db_get_engineers(state, "wss")
 
 
 def prepare_ar(state):
-    _get_engineers(state, "ar")
+    db_get_engineers(state, "ar")
 
 
 def get_all_engineers(state):
-    _get_all_engineers(state)
+    db_get_all_engineers(state)
 
 
 def get_all_installers(state):
-    _get_all_installers(state)
+    db_get_all_installers(state)
 
 
 def show_my_invitations(state):
-    _get_my_invitations(state)
+    db_get_my_invitations(state)
     state['invitations_section'] = 1
     state['proposals_section'] = 0
     state['current_projects_section'] = 0
@@ -429,7 +417,7 @@ def show_my_declined_projects(state):
 
 
 def request_cv(state, context):
-    _request_cv(state, context)
+    db_request_cv(state, context)
 
 
 def connect_w_engineer(state, context):
@@ -454,11 +442,11 @@ def admin_code_section(state):
 
 
 def delete_project(state, context):
-    _delete_project(state, context)
+    db_delete_project(state, context)
 
 
 def finalise_project(state, context):
-    _finalise_project(state, context)
+    db_finalise_project(state, context)
 
 
 def set_selected_engineer(state, context):
@@ -489,7 +477,7 @@ def validate_admin_data(state):
 
 def validate_admin_code(state):
     if state['reg']['code_sent'] == state['reg']['code_entered']:
-        _create_user(state)
+        db_create_user(state)
         admin_log_section(state)
 
 
@@ -499,7 +487,7 @@ def validate_admin_login(state):
 
 
 def add_to_subscription(state):
-    _add_to_subscription(state)
+    db_add_to_subscription(state)
 
 
 def request_for_invitation(state, context):
@@ -509,11 +497,11 @@ def request_for_invitation(state, context):
 
 
 def send_request(state):
-    _send_request(state)
+    db_send_request(state)
 
 
 def decline_invitation(state, context):
-    _decline_invitation(state, context)
+    db_decline_invitation(state, context)
 
 
 def show_code_window(state):
@@ -528,7 +516,7 @@ def compare_unsubscription_codes(state):
 
 
 def delete_subscription(state):
-    _delete_subscription(state)
+    db_delete_subscription(state)
 
 
 def show_unsubscribe_window(state):
@@ -542,11 +530,11 @@ def show_subscribe_window(state):
 
 
 def add_guest_message(state):
-    _add_guest_message(state)
+    db_add_guest_message(state)
 
 
 def resume_project(state, context):
-    _resume_project(state, context)
+    db_resume_project(state, context)
 
 
 def handle_hash_change(state, payload):
@@ -583,13 +571,13 @@ def show_my_relations(state):
 
 
 def apply_client_proposal(state, context):
-    _apply_client_proposal(state, context)
-    _get_my_invitations(state)
+    db_apply_client_proposal(state, context)
+    db_get_my_invitations(state)
 
 
 def decline_client_proposal(state, context):
-    _decline_client_proposal(state, context)
-    _get_my_invitations(state)
+    db_decline_client_proposal(state, context)
+    db_get_my_invitations(state)
 
 
 def prepare_message_context(state, context):
@@ -610,30 +598,30 @@ def change_modal_visibility(state):
 
 
 def add_message(state):
-    _add_message(state)
+    db_add_message(state)
     change_modal_visibility(state)
 
 
 def reply_to_message(state, context):
-    _reply_to_message(state)
+    db_reply_to_message(state)
     change_modal_visibility(state)
 
 
 def get_my_messages(state, context):
-    _get_my_messages_new(state)
-    _get_my_messages_read(state)
+    db_get_my_messages_new(state)
+    db_get_my_messages_read(state)
 
 
 def update_read_date(state, context):
-    _update_read_date(state, context)
-    _get_my_messages_new(state)
-    _get_my_messages_read(state)
+    db_update_read_date(state, context)
+    db_get_my_messages_new(state)
+    db_get_my_messages_read(state)
 
 
 def mark_as_unread(state, context):
-    _mark_as_unread(state, context)
-    _get_my_messages_new(state)
-    _get_my_messages_read(state)
+    db_mark_as_unread(state, context)
+    db_get_my_messages_new(state)
+    db_get_my_messages_read(state)
 
 
 def get_screen_size(state):

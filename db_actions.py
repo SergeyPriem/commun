@@ -28,7 +28,7 @@ def user_not_logged(state):
     return False
 
 
-def _create_user(state):
+def db_create_user(state):
     """
     Create a new user in the database.
 
@@ -77,7 +77,7 @@ def _create_user(state):
         session.close()
 
 
-def _log_out_user(state):
+def db_log_out_user(state):
     """
     Log out the current user by updating their visit log.
 
@@ -106,7 +106,7 @@ def _log_out_user(state):
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
 
 
-def _get_all_invitations_df(state):
+def db_get_all_invitations_df(state):
     with Session(bind=engine) as session:
         try:
             stmt = select(Invitation, Project, User).join(Project, Project.id == Invitation.project_id).join(
@@ -127,7 +127,7 @@ def _get_all_invitations_df(state):
             return pd.DataFrame()
 
 
-def _get_admin_data(state):
+def db_get_admin_data(state):
     """
     Retrieve data for all users with the role 'admin' and update the state with this information.
 
@@ -177,10 +177,7 @@ def admin_panel_section(state):
     state["admin"]["panel_sect"] = 1
 
 
-
-
-
-def _log_admin(state):
+def db_log_admin(state):
     with Session(bind=engine) as session:
         try:
             current_user = session.query(User).filter(
@@ -220,7 +217,7 @@ def _log_admin(state):
             session.close()
 
 
-def _get_new_engineers(state):
+def db_get_new_engineers(state):
     """
     Retrieve new engineers who joined within the last 30 days and are visible to the user's role.
 
@@ -261,7 +258,7 @@ def _get_new_engineers(state):
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
 
 
-def _get_new_installers(state):
+def db_get_new_installers(state):
     if state["user"]["logged"]:
         l0 = state["user"]["role"][0]
         if state["new_installers"] is not None:
@@ -286,7 +283,7 @@ def _get_new_installers(state):
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
 
 
-def _get_default_user_data(login):
+def db_get_default_user_data(login):
     default_user_data = {key: None for key in
                          ["first_name", "last_name", "email", "phone", "role", "password", "password2"]}
     default_user_data.update({"login": login, "logged": False, "lang": "E"})
@@ -299,14 +296,14 @@ def fill_user_data(state, user):
         state["user"][attr] = getattr(user, attr)
 
 
-def _get_user_data(state):
+def db_get_user_data(state):
     with Session(bind=engine) as session:
         try:
             current_user = session.query(User).filter(User.login == state["user"]["login"]).first()
 
         except SQLAlchemyError as e:
             state["message"] = _err_handler(e, "_get_user_data")
-            return _get_default_user_data(None)
+            return db_get_default_user_data(None)
 
         if current_user:
             if bcrypt.checkpw(str(state["user"]["password"]).encode("utf-8"), current_user.h_pass.encode("utf-8")):
@@ -339,7 +336,7 @@ def _get_user_data(state):
             state["message"] = "- " + dic["user_not_found"][state["lang"]]
 
 
-def _accept_invitation(state, context):
+def db_accept_invitation(state, context):
     if not state['user']['login']:
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
@@ -364,14 +361,14 @@ def _accept_invitation(state, context):
 
             # Notify the user that the invitation was accepted
             state.add_notification("info", "Info", "The invitation was accepted successfully")
-            _get_my_invitations(state)
+            db_get_my_invitations(state)
         except SQLAlchemyError as e:
             # Log the error and return a user-friendly message
             logger.error(f"An error occurred: {e}")
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
-def _decline_invitation(state, context):
+def db_decline_invitation(state, context):
     if not state['user']['login']:
         state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
@@ -396,14 +393,14 @@ def _decline_invitation(state, context):
 
             # Notify the user that the invitation was declined
             state.add_notification("info", "Info", "The invitation was declined successfully")
-            _get_my_invitations(state)
+            db_get_my_invitations(state)
         except SQLAlchemyError as e:
             # Log the error and return a user-friendly message
             logger.error(f"An error occurred: {e}")
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
-def _add_guest_message(state):
+def db_add_guest_message(state):
     user_message = state["user_message"]
 
     # Check if the email is valid
@@ -481,7 +478,7 @@ def _add_guest_message(state):
         state.add_notification('warning', 'Warning', _err_handler(e, 'add_user_message'))
 
 
-def _delete_subscription(state):
+def db_delete_subscription(state):
     if state["unsubscribe"]["email"] is None:
         state.add_notification("warning", "Warning!", "No email provided!")
         return
@@ -511,7 +508,7 @@ def _delete_subscription(state):
             logger.error(_err_handler(e, 'delete_subscription'))
 
 
-def _get_new_projects(state):
+def db_get_new_projects(state):
     if not state["user"]["logged"]:
         # state.add_notification("warning", "Warning!", dic["not_logged_in"][state['lang']])
         return
@@ -558,7 +555,7 @@ def _get_new_projects(state):
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
-def _get_current_projects(state):
+def db_get_current_projects(state):
     """
     Retrieve all current projects that are visible to the user's role.
 
@@ -608,7 +605,7 @@ def _get_current_projects(state):
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
-def _get_my_current_projects(state):
+def db_get_my_current_projects(state):
     """
     Retrieve the current projects owned by the user and update the state with this information.
     :param state:
@@ -644,7 +641,7 @@ def _get_my_current_projects(state):
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
-def _get_all_finished_projects(state):
+def db_get_all_finished_projects(state):
     if user_not_logged(state):
         return
     with Session(bind=engine) as session:
@@ -679,7 +676,7 @@ def _get_all_finished_projects(state):
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
-def _create_project(state):
+def db_create_project(state):
     state_name = state["new_project"]["name"] or False
     state_description = state["new_project"]["description"] or False
     state_comments = state["new_project"]["comments"] or False
@@ -729,12 +726,12 @@ def _create_project(state):
         time.sleep(2)
         state["add_project"]["show_message"] = 0
         state["add_project"]["show_section"] = 1
-        _get_my_messages_new(state)
-        _get_my_messages_read(state)
+        db_get_my_messages_new(state)
+        db_get_my_messages_read(state)
         state.set_page("client_page")
 
 
-def _invite(state):
+def db_invite(state):
     if user_not_logged(state):
         return
     if not state["selected_proj_to_add_eng"]:
@@ -794,8 +791,8 @@ def _invite(state):
                 state.add_notification("info", "Info", f"Invitation to user {invited.login} sent successfully")
                 state["selected_proj_to_add_eng"] = None
                 state["selected_eng_for_proj"] = None
-                _get_my_messages_read(state)
-                _get_my_messages_new(state)
+                db_get_my_messages_read(state)
+                db_get_my_messages_new(state)
                 state.set_page("client_page")
             else:
                 state.add_notification("warning", "Warning!", "Invitation was not sent...")
@@ -804,7 +801,7 @@ def _invite(state):
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
 
 
-def _get_my_invitations(state):
+def db_get_my_invitations(state):
     if user_not_logged(state):
         return
     with Session(bind=engine) as session:
@@ -840,7 +837,7 @@ def _get_my_invitations(state):
             logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
 
 
-def _get_my_proposals(state):
+def db_get_my_proposals(state):
     if user_not_logged(state):
         return
     with Session(bind=engine) as session:
@@ -873,7 +870,7 @@ def _get_my_proposals(state):
             logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
 
 
-def _apply_client_proposal(state, context):
+def db_apply_client_proposal(state, context):
     if user_not_logged(state):
         return
     with Session(bind=engine) as session:
@@ -884,13 +881,13 @@ def _apply_client_proposal(state, context):
             proposal.status = "accepted"
             session.commit()
             state.add_notification("info", "Info", "You have accepted the proposal")
-            _get_my_proposals(state)
+            db_get_my_proposals(state)
         except SQLAlchemyError as e:
             logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
-def _decline_client_proposal(state, context):
+def db_decline_client_proposal(state, context):
     if user_not_logged(state):
         return
     with Session(bind=engine) as session:
@@ -899,13 +896,13 @@ def _decline_client_proposal(state, context):
             proposal.status = "declined"
             session.commit()
             state.add_notification("info", "Info", "You have declined the proposal")
-            _get_my_proposals(state)
+            db_get_my_proposals(state)
         except SQLAlchemyError as e:
             logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
-def _get_engineers(state, spec):
+def db_get_engineers(state, spec):
     with Session(bind=engine) as session:
         try:
             stuff = session.query(User).filter(User.major.contains(spec)).all()
@@ -921,7 +918,7 @@ def _get_engineers(state, spec):
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
-def _get_all_engineers(state):
+def db_get_all_engineers(state):
     l0 = state["user"]["role"][0]
     with Session(bind=engine) as session:
         try:
@@ -939,7 +936,7 @@ def _get_all_engineers(state):
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
-def _get_all_installers(state):
+def db_get_all_installers(state):
     l0 = state["user"]["role"][0]
     with Session(bind=engine) as session:
         try:
@@ -956,17 +953,17 @@ def _get_all_installers(state):
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
-def _prepare_eng_page(state):
+def db_prepare_eng_page(state):
     state['current_invitation'] = None
     state['current_invitation_id'] = None
     state['current_invitation_message'] = None
-    _get_my_invitations(state)
-    _get_current_projects(state)
-    _get_new_projects(state)
+    db_get_my_invitations(state)
+    db_get_current_projects(state)
+    db_get_new_projects(state)
     state.set_page("engineer_page")
 
 
-def _send_request(state):
+def db_send_request(state):
     with Session(bind=engine) as session:
         try:
             # Get the invitation to wait
@@ -991,7 +988,7 @@ def _send_request(state):
 
             session.commit()
 
-            _prepare_eng_page(state)
+            db_prepare_eng_page(state)
 
             state.add_notification("info", "Info", "The request was sent successfully")
         except SQLAlchemyError as e:
@@ -1000,7 +997,7 @@ def _send_request(state):
             state.add_notification("error", "Error!", "An unexpected error occurred. Please try again later.")
 
 
-def _add_to_subscription(state):
+def db_add_to_subscription(state):
     if not state["subscribe"]["email"]:
         state.add_notification('error', 'Error', "E-mail is empty. Try again")
         return
@@ -1031,7 +1028,7 @@ def _add_to_subscription(state):
             state.add_notification('warning', 'Warning', _err_handler(e, 'add_to_subscription'))
 
 
-def _offer_service(state, context):
+def db_offer_service(state, context):
     with Session(bind=engine) as session:
         try:
             user = session.query(User).filter(User.login == state["user"]["login"]).first()
@@ -1092,9 +1089,9 @@ def _offer_service(state, context):
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
 
 
-def _get_table_as_dataframe(state):
+def db_get_table_as_dataframe(state):
     if state["db_table_name"] == "Invitation":
-        df = _get_all_invitations_df(state)
+        df = db_get_all_invitations_df(state)
         try:
             df["date_time"] = pd.to_datetime(df["date_time"], unit='ms')
             df["date_time"] = df["date_time"].dt.strftime('%Y-%m-%d %H:%M:%S')
@@ -1130,7 +1127,7 @@ def _get_table_as_dataframe(state):
     state["db_table"] = df
 
 
-def _request_cv(state, context):
+def db_request_cv(state, context):
     if not state['user']['login']:
         state.add_notification('warning', "Warning!", dic["not_logged_in"][state['lang']])
         return
@@ -1173,7 +1170,7 @@ def _request_cv(state, context):
             state.add_notification("warning", "Warning!", f"An error occurred: {e}")
 
 
-def _delete_project(state, context):
+def db_delete_project(state, context):
     with Session(bind=engine) as session:
         try:
             project = session.query(Project).filter(Project.id == context["itemId"]).first()
@@ -1181,13 +1178,13 @@ def _delete_project(state, context):
             project.visibility = "unv"
             project.status_changed = datetime.datetime.now()
             session.commit()
-            _get_all_finished_projects(state)
+            db_get_all_finished_projects(state)
             state.add_notification("info", "Info", "Project deleted")
         except SQLAlchemyError as e:
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
-def _finalise_project(state, context):
+def db_finalise_project(state, context):
     with Session(bind=engine) as session:
         try:
             project = session.query(Project).filter(Project.id == context["itemId"]).first()
@@ -1195,13 +1192,13 @@ def _finalise_project(state, context):
             project.visibility = "unv"
             project.status_changed = datetime.datetime.now()
             session.commit()
-            _get_my_current_projects(state)
+            db_get_my_current_projects(state)
             state.add_notification("info", "Info", "Project closed")
         except SQLAlchemyError as e:
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
-def _resume_project(state, context):
+def db_resume_project(state, context):
     with Session(bind=engine) as session:
         try:
             project = session.query(Project).filter(Project.id == context["itemId"]).first()
@@ -1209,13 +1206,13 @@ def _resume_project(state, context):
             project.visibility = "cei"
             project.status_changed = datetime.datetime.now()
             session.commit()
-            _get_all_finished_projects(state)
+            db_get_all_finished_projects(state)
             state.add_notification("info", "Info", "Project resumed")
         except SQLAlchemyError as e:
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
-def _add_message(state):
+def db_add_message(state):
     if user_not_logged(state):
         return
 
@@ -1267,7 +1264,7 @@ def _add_message(state):
             logger.error(f"An error occurred: {e}")
 
 
-def _reply_to_message(state):
+def db_reply_to_message(state):
     if user_not_logged(state):
         return
 
@@ -1309,7 +1306,7 @@ def _reply_to_message(state):
             logger.error(f"An error occurred: {e}")
 
 
-def _get_my_messages_new(state):
+def db_get_my_messages_new(state):
     if user_not_logged(state):
         return
     with Session(bind=engine) as session:
@@ -1343,7 +1340,7 @@ def _get_my_messages_new(state):
             logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
 
 
-def _get_my_messages_read(state):
+def db_get_my_messages_read(state):
     if user_not_logged(state):
         return
     with Session(bind=engine) as session:
@@ -1377,7 +1374,7 @@ def _get_my_messages_read(state):
             logger.error(f"An error occurred: {e}, {datetime.datetime.now()}")
 
 
-def _update_read_date(state, context):
+def db_update_read_date(state, context):
     if user_not_logged(state):
         return
 
@@ -1394,7 +1391,7 @@ def _update_read_date(state, context):
             state.add_notification("warning", "Warning!, "f"An error occurred: {e}")
 
 
-def _mark_as_unread(state, context):
+def db_mark_as_unread(state, context):
     if user_not_logged(state):
         return
 
