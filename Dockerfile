@@ -26,7 +26,7 @@ RUN apt-get update -y && \
     python3 -m venv /app/venv
 ENV PATH="/app/venv/bin:$PATH"
 COPY requirements.txt requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt --verbose
 
 # Stage 2: Final Stage
 FROM python:3.12-slim
@@ -38,4 +38,5 @@ COPY . .
 ENTRYPOINT [ "writer", "run" ]
 EXPOSE 5000
 CMD [ ".", "--port", "5000", "--host", "0.0.0.0" ]
+
 
