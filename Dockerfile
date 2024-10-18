@@ -18,7 +18,6 @@
 #EXPOSE 5000
 #CMD [ ".",  "--port", "5000", "--host", "0.0.0.0" ]
 
-
 # Stage 1: Build Stage
 FROM python:3.12-slim AS build-stage
 WORKDIR /app
