@@ -12,6 +12,9 @@ load_dotenv()  # Загрузка переменных из .env файла
 
 db_url = os.getenv('DB_URL')
 
+# print(db_url)
+
+
 # engine = create_engine("sqlite:///db.sqlite3")
 engine = create_engine(db_url, pool_size=5, max_overflow=20, pool_recycle=3600)
 Base = declarative_base()
