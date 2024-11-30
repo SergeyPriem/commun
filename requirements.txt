@@ -7,3 +7,4 @@ mysqlclient==2.2.4
 watchdog==3.0.0
 plotly==5.22.0
 writer==0.8.1
+
