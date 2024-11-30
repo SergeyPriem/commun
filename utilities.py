@@ -3,6 +3,8 @@ import os
 import re
 import string
 import random
+from typing import Callable, Any
+
 import bcrypt
 import time
 import smtplib
@@ -66,7 +68,7 @@ def _send_mail(receiver: str, cc_rec: str, subj: str, html: str) -> None | str |
         s.quit()
 
 
-def _send_email(state):
+def _send_email(state) -> dict:
     if state["user"]["role"] == "admin":
         html = (f"<h2>New admin is registering with code: {state['reg']['code_sent']}</h2>"
                 f"<p>First name: {state['user']['first_name']}</p>"
@@ -74,7 +76,7 @@ def _send_email(state):
                 f"<p>Login: {state['user']['login']}</p>"
                 f"<p>Email: {state['user']['email']}</p>")
 
-        subject = f"Confirmation code for SITE ADMIN of power-design.pro"
+        subject = "Confirmation code for SITE ADMIN of power-design.pro"
 
         reply = _send_mail(receiver="s.priemshiy@gmail.com", html=html, subj=subject, cc_rec="p.s@email.ua")
 
@@ -83,7 +85,7 @@ def _send_email(state):
         html = (f"<h2>Your confirmation code is: {state['reg']['code_sent']}</h2>"
                 f"If you got this email by mistake, delete it...")
 
-        subject = f"Confirmation code for site power-design.pro"
+        subject = "Confirmation code for site power-design.pro"
 
         reply = _send_mail(receiver=state["user"]["email"], html=html, subj=subject, cc_rec="s.priemshiy@gmail.com")
 
@@ -99,7 +101,7 @@ def _send_email(state):
         }
 
 
-def _random_code_alphanumeric(length):
+def _random_code_alphanumeric(length: int) -> str:
     characters = string.ascii_letters + string.digits
     return ''.join(random.choice(characters) for _ in range(length))
 
@@ -118,8 +120,8 @@ def _hash_password(password: str) -> str:
     return hashed.decode()
 
 
-def timing(f):
-    def wrap(*args, **kwargs):
+def timing(f: Callable) -> Callable:
+    def wrap(*args: Any, **kwargs: Any) -> Any:
         time1 = time.time()
         ret = f(*args, **kwargs)
         time2 = time.time()
@@ -127,6 +129,7 @@ def timing(f):
             "{:s} function took {:.3f} ms".format(f.__name__, (time2 - time1) * 1000.0)
         )
         return ret
+
     return wrap
 
 
@@ -136,12 +139,11 @@ def timing(f):
 #         return True
 #     return False
 
-def _validate_phone_number(input_string):
+def _validate_phone_number(input_string: str) -> bool:
     return bool(re.match(r'^\+\d{11,12}$', input_string))
 
 
-
-def _basic_data_validation(state):
+def _basic_data_validation(state) -> list[dict]:
     troubles = []
 
     if state["user"]['first_name']:
